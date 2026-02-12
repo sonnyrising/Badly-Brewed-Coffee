@@ -1,7 +1,7 @@
 require 'sinatra'
 
 get "/" do
-    'Hello world!'
+    redirect "/public"
 end
 
 get "/login" do
