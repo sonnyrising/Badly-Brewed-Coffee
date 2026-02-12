@@ -1,0 +1,29 @@
+body{
+    margin: 0;
+    background-color: rgb(37, 37, 37);
+    color: white;
+    font-family: 'Tahoma', 'Helvetica';
+}
+
+header{
+    background-color: rgb(53, 53, 53);
+}
+
+.header-bar ul{
+    margin: 0;
+    padding: 10px;
+}
+
+header li{
+    display: inline-block;
+    padding: 0px 50px 0px 0px;
+}
+
+header a{
+    text-decoration: none;
+    color: white;
+}
+
+footer{
+    background-color: rgb(53, 53, 53);
+}
