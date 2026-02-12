@@ -5,5 +5,9 @@ get "/" do
 end
 
 get "/login" do
-    'Login page!'
+    erb :loginpage
+end
+
+post "/login" do
+    "Recieved login information!"
 end

@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <head>
+    <link href="/css/GenericTheme.css" rel="stylesheet">
+    <link href="/css/ModularElements.css" rel="stylesheet">
+    <link href="/css/UniversalStyle.css" rel="stylesheet">
     <title>Admin homepage</title>
 </head>
 <body>
@@ -7,20 +10,36 @@
         <section class="header-bar">
             <nav>
                 <ul>
-                    <li>Home</li>
-                    <li>Order history</li>
-                    <li>Contact us</li>
-                    <li>Log in</li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="#contactus">Contact us</a></li>
+                    <li><a href="/login">Log in</a></li>
                 </ul>
             </nav>
         </section>
     </header>
     <main>
-        <section>
+        <section id="login-form">
+            <div class="full-span-card" style="margin: 200px 0px 200px 0px">
+                <h1>Login</h1>
+                <form action="/login" method="post">
+                    <div>
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username" required/>
+                    </div>
 
+                    <div>
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required/>
+                    </div>
+
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
         </section>
     </main>
     <footer>
-
+        <section class="contact-us" id="contactus">
+            <h1>Contact us</h1>
+        </section>
     </footer>
 </body>
