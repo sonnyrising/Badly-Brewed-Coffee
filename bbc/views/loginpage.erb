@@ -1,45 +1,114 @@
-<!DOCTYPE html>
-<head>
-    <link href="/css/GenericTheme.css" rel="stylesheet">
-    <link href="/css/ModularElements.css" rel="stylesheet">
-    <link href="/css/UniversalStyle.css" rel="stylesheet">
-    <title>Admin homepage</title>
-</head>
-<body>
-    <header>
-        <section class="header-bar">
-            <nav>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="#contactus">Contact us</a></li>
-                    <li><a href="/login">Log in</a></li>
-                </ul>
-            </nav>
-        </section>
-    </header>
-    <main>
-        <section id="login-form">
-            <div class="full-span-card" style="margin: 200px 0px 200px 0px">
-                <h1>Login</h1>
-                <form action="/login" method="post">
-                    <div>
-                        <label for="username">Username:</label>
-                        <input type="text" id="username" name="username" required/>
-                    </div>
+<style>
 
-                    <div>
-                        <label for="password">Password:</label>
-                        <input type="password" id="password" name="password" required/>
-                    </div>
+  * {
+    box-sizing: border-box;
+  }
 
-                    <button type="submit">Submit</button>
-                </form>
+  /* Page Layout */
+  .login-wrapper {
+    display: flex;
+    justify-content: center;
+    padding-top: 100px;
+    width: 100%;
+    background-color: #161616;
+    min-height: 100vh;
+    font-family: 'IBM Plex Sans', sans-serif;
+  }
+
+  .login-card {
+    width: 33.33vw;
+    min-width: 320px;
+  }
+
+  /* Username Styling */
+  .manual-input-group {
+    margin-bottom: 24px;
+  }
+
+  #username {
+    width: 100%;
+    height: 40px;
+    background-color: #262626; 
+    border: none;
+    border-bottom: 1px solid #8d8d8d;
+    padding: 0 16px;
+    box-sizing: border-box;
+    color: white;
+    outline: none;
+  }
+
+  #username:focus {
+    outline: 2px solid white;
+    outline-offset: -2px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.75rem;
+    color: #f4f4f4;
+  }
+
+  /* Password Input Styling */
+  cds-password-input {
+    width: 100%;
+    margin-bottom: 24px;
+    
+    --cds-field: #262626;         
+    --cds-text-primary: #ffffff;  
+    --cds-text-secondary: #c6c6c6;
+    --cds-icon-primary: #ffffff;  
+    --cds-border-subtle: #8d8d8d;    
+    --cds-focus: #ffffff;         
+  }
+
+  cds-password-input::part(input) {
+    background-color: #262626;
+    color: white;
+    border-bottom: 1px solid #8d8d8d;
+  }
+
+  .button-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+
+
+</style>
+
+<% @title = "Login - Admin" %>
+
+<div class="login-wrapper">
+    <div class="login-card">
+        <h1 style="color: white; margin-bottom: 30px; text-align: center">Login</h1>
+        <form action="/login" method="post">
+            
+            <div class="manual-input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required/>
             </div>
-        </section>
-    </main>
-    <footer>
-        <section class="contact-us" id="contactus">
-            <h1>Contact us</h1>
-        </section>
-    </footer>
-</body>
+
+            <cds-password-input 
+                id="password" 
+                name="password" 
+                label="Password" 
+                required 
+                show-password-visibility-toggle="true">
+            </cds-password-input>
+
+            <div class="button-wrapper">
+              <cds-button-set>
+                <cds-button kind="primary" type="submit">
+                  Submit
+                </cds-button>
+
+                <cds-button kind="secondary">
+                  Forgot Password
+                </cds-button>
+              </cds-button-set>
+            </div>
+        </form>
+    </div>
+</div>
