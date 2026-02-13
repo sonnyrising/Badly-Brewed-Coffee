@@ -1,9 +1,13 @@
 require 'sinatra'
 
 get "/public" do
-    erb :publichomepage
+    erb :landingpage
 end
 
 get "/public/:name" do
-    'Hello, your name is #{params[:name]}!'
+    if params[:name] == "Steffan"
+        "Hi, Steffan!"
+    else
+        "No entry I'm afraid!"
+    end
 end

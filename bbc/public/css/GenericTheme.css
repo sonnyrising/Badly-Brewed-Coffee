@@ -3,10 +3,11 @@ body{
     background-color: rgb(37, 37, 37);
     color: white;
     font-family: 'Tahoma', 'Helvetica';
+    scroll-behavior: smooth;
 }
 
 header{
-    background-color: rgb(53, 53, 53);
+    background-color: rgba(53, 53, 53, 0);
 }
 
 .header-bar ul{

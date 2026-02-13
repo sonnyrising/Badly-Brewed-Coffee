@@ -1,7 +1,7 @@
 require 'sinatra'
 
 get "/" do
-    redirect "/public"
+  redirect "/public"
 end
 
 get "/login" do
