@@ -9,5 +9,12 @@ get "/login" do
 end
 
 post "/login" do
-    "Recieved login information!"
+    username = params[:uname]
+    password = params[:pword]
+
+    if username == "test" && password == "test"
+      "Logged in successfully!"
+    else
+      redirect "/login"
+    end
 end
