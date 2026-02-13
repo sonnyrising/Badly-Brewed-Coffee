@@ -7,24 +7,11 @@ body{
     animation: squish 2s ease-in-out forwards;
 }
 
-.fade-in-delay{
-    animation: fade-in 2s ease-in 2s forwards
-}
-
 @keyframes squish {
     0%{
         grid-template-columns: 1fr 1fr;
     }
     100%{
         grid-template-columns: 1fr 2fr;
-    }
-}
-
-@keyframes fade-in{
-    0%{
-        opacity: 0;
-    }
-    100%{
-        opactiy: 1;
     }
 }
