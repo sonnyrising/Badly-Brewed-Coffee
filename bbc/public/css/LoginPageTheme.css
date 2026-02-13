@@ -1,0 +1,17 @@
+body{
+    margin: 0;
+    overflow: hidden;
+}
+
+.squish{
+    animation: squish 2s ease-in-out forwards;
+}
+
+@keyframes squish {
+    0%{
+        grid-template-columns: 1fr 1fr;
+    }
+    100%{
+        grid-template-columns: 1fr 2fr;
+    }
+}

@@ -2,43 +2,32 @@
 <head>
     <link href="/css/GenericTheme.css" rel="stylesheet">
     <link href="/css/ModularElements.css" rel="stylesheet">
-    <title>Admin homepage</title>
+    <link href="/css/LoginPageTheme.css" rel="stylesheet">
+    <title>Login</title>
 </head>
 <body>
     <header>
-        <section class="header-bar">
-            <nav>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="#contactus">Contact us</a></li>
-                    <li><a href="/login">Log in</a></li>
-                </ul>
-            </nav>
-        </section>
+        
     </header>
     <main>
-        <section id="login-form">
-            <div class="full-span-card" style="margin: 100px 60px 200px 60px">
-                <h1>Login</h1>
-                <form action="/login" method="post" style="padding: 50px 0px 50px 50px">
-                    <div>
-                        <label for="username">Username:</label>
-                        <input type="text" id="username" name="username" required/>
-                    </div>
-
-                    <div>
-                        <label for="password">Password:</label>
-                        <input type="password" id="password" name="password" required/>
-                    </div>
-
-                    <button type="submit">Submit</button>
+        <div class="half-grid squish">
+            <div style="background-color: rgb(136, 73, 44); height: 100vh; box-shadow: 11px 5px 15px rgba(0, 0, 0, 0.3); z-index: 100;">
+                <h1 style="text-align: center;position: relative;top: 5vh;">Login</h1>
+                <form action="/login" method="post">
+                    <input type="text" id="username" name="username" placeholder="Username" required style="width: 25vw;height: 5vh;border: 2px solid #69312b;border-radius: 15px;position: relative;left: 50%;top: 20vh;transform: translateX(-50%);">
+                    <br>
+                    <input type="password" id="password" name="password" placeholder="Password" required style="width: 25vw;height: 5vh;border: 2px solid #69312b;border-radius: 15px;position: relative;left: 50%;top: 21vh;transform: translateX(-50%);">
+                    <br>
+                    <button type="submit" style="position: relative;top: 23vh;left: 50%;transform: translateX(-50%);width: 7vw;height: 5vh;border: 2px solid #69312b;border-radius: 7px;">Log in</button>
                 </form>
+                <p style="position: absolute;top: 90vh;left: 16%;transform: translateX(-50%);">Don't have an account? Sign up <a href="/" style="color:white;">here</a>.</p>
             </div>
-        </section>
+            <div style="background-color: rgb(255, 255, 255); height: 100vh;">
+                <img src="/imgs/CoffeeBeansSplash.png" alt="Whoops, we slipped up!" style="width:100%; height:100%; object-fit: cover;">
+            </div>
+        </div>
     </main>
     <footer>
-        <section class="contact-us" id="contactus">
-            <h1>Contact us</h1>
-        </section>
+
     </footer>
 </body>
