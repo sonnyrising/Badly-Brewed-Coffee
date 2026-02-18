@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <head>
     <link href="/css/GenericTheme.css" rel="stylesheet">
-    <link href="/css/ModularElements.css" rel="stylesheet">
     <link href="/css/LoginPageTheme.css" rel="stylesheet">
     <title>Login</title>
 </head>
@@ -10,8 +9,8 @@
         
     </header>
     <main>
-        <div class="half-grid squish">
-            <div style="background-color: rgb(136, 73, 44); height: 100vh; box-shadow: 11px 5px 15px rgba(0, 0, 0, 0.3); z-index: 100;">
+        <div style="display: grid; grid-template-columns: 1fr 2fr;" class="squish">
+            <div style="background-color: rgb(130 72 24); height: 100vh; box-shadow: 11px 5px 15px rgba(0, 0, 0, 0.3); z-index: 100;">
                 <h1 style="text-align: center;position: relative;top: 5vh;">Login</h1>
                 <form action="/login" method="post">
                     <input type="text" id="username" name="uname" placeholder="Username" required style="width: 25vw;height: 5vh;border: 2px solid #69312b;border-radius: 15px;position: relative;left: 50%;top: 20vh;transform: translateX(-50%);">
@@ -20,7 +19,7 @@
                     <br>
                     <button type="submit" style="position: relative;top: 23vh;left: 50%;transform: translateX(-50%);width: 7vw;height: 5vh;border: 2px solid #69312b;border-radius: 7px;">Log in</button>
                 </form>
-                <p style="position: absolute;top: 90vh;left: 16%;transform: translateX(-50%);">Don't have an account? Sign up <a href="/" style="color:white;">here</a>.</p>
+                <p style="position: absolute;top: 90vh;left: 16%;transform: translateX(-50%);">Don't have an account? Sign up <a href="/register" style="color:white;">here</a>.</p>
             </div>
             <div style="background-color: rgb(255, 255, 255); height: 100vh;">
                 <img src="/imgs/CoffeeBeansSplash.png" alt="Whoops, we slipped up!" style="width:100%; height:100%; object-fit: cover;">

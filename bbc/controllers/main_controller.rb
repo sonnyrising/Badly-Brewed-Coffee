@@ -10,14 +10,18 @@ get "/" do
 end
 
 get "/login" do
-    erb :loginpage
+  erb :loginpage
 end
 
 post "/login" do
     username = params[:uname]
     password = params[:pword]
+end
 
-    #user = DB.get_first_row("SELECT * FROM Users WHERE username = ?", [username])
+get "/register" do
+  erb :registerpage
+end
 
-    #puts "First result: #{user}"
+post "/register" do
+  "Registered new account!"
 end

@@ -5,9 +5,7 @@ get "/public" do
 end
 
 get "/public/:name" do
-    if params[:name] == "Steffan"
-        "Hi, Steffan!"
-    else
-        "No entry I'm afraid!"
-    end
+    @username = params[:name]
+    @coffeeprog = 1
+    erb :userhomepage
 end
