@@ -14,8 +14,10 @@ get "/login" do
 end
 
 post "/login" do
-    username = params[:uname]
-    password = params[:pword]
+    @username = params[:uname]
+    @password = params[:pword]
+
+    erb :userhomepage
 end
 
 get "/register" do

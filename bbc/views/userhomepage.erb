@@ -10,17 +10,20 @@
     <header>
         <nav>
             <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="#contactus">Contact us</a></li>
-                <li><a href="/login">Profile</a></li>
+                <li><a href="/" class="smooth-link">Home</a></li>
+                <li><a href="#contactus" class="smooth-link">Contact us</a></li>
+                <li><a href="/login" class="smooth-link">Profile</a></li>
+                <li><a href="/" class="smooth-link">Log out</a></li>
             </ul>
         </nav>
     </header>
     <main>
         <section id="hero">
-            <img src="/imgs/CoffeeBeansSplash.png" alt="Whoops, this image seems to have gone missing!">
-            <h1>Welcome back, <%= @username %></h1>
-            <p>You have <%= @coffeeprog %> coffees remaining until a freebie!</p>
+            <img src="/imgs/CoffeeBeansSplash.png" alt="Whoops, this image seems to have gone missing!" style="z-index: -1;position: absolute;height: 100vh;">
+            <div style="color: var(--colour5);width: 83vw;height: 83vh;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);background: transparent;backdrop-filter: blur(15px);box-shadow: 0px 0px 20px 0px #0000007a;border-radius: 30px; text-align: center;">
+                <h1>Welcome back, <%= @username %></h1>
+                <p>You have <%= @coffeeprog %> coffees remaining until a freebie!</p>
+            </div>
         </section>
         <section id="history">
 
