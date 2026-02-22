@@ -25,5 +25,10 @@ get "/register" do
 end
 
 post "/register" do
-  "Registered new account!"
+  @username = params[:uname]
+  @password = params[:pword]
+
+  if params[:pword] == params[:confirmpword]
+    erb :userhomepage
+  end
 end
