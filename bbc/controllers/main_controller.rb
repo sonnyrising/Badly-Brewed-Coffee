@@ -5,8 +5,11 @@ require 'json'
 #DB = SQLite3::Database.new '../db/usersdatabase.db'
 #DB.results_as_hash = true
 
+set :public_folder, File.expand_path('../public', __dir__)
+set :views, File.expand_path('../views', __dir__)
+
 get "/" do
-  redirect "/public"
+  erb :landingpage
 end
 
 get "/login" do
