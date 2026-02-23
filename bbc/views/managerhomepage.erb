@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="/css/GenericTheme.css" rel="stylesheet">
+  <title>Welcome Kenny Brewster</title>
+  <style>
+      .button {
+          background-color: rgb(130 72 24);
+          border: none;
+          color: white;
+          padding: 10px 20px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font: 16pt Helvetica, bold;
+          white-space: nowrap;
+          cursor: pointer;
+      }
+
+      .column-buttons {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 50px;
+          margin-top: 50px;
+      }
+
+      /* Quick splash screen CSS */
+      #splash-screen {
+          position: fixed;
+          top: 0; left: 0; width: 100vw; height: 100vh;
+          background-color: white;
+          display: flex; justify-content: center; align-items: center;
+          z-index: 9999;
+      }
+
+      /* Reusable class for the glass cards so we don't repeat inline styles */
+      .glass-card {
+          position: absolute;
+          background: transparent;
+          backdrop-filter: blur(15px);
+          box-shadow: 0px 0px 20px 0px #0000007a;
+          border-radius: 30px;
+          text-align: center;
+          color: black;
+          z-index: 10;
+          padding: 20px;
+          box-sizing: border-box;
+          overflow-y: auto; /* Adds a scrollbar if text gets too long */
+      }
+  </style>
+</head>
+
+<body>
+<div id="splash-screen">
+  <img src="/imgs/coffee_image.jpg" alt="Welcome Splash">
+</div>
+
+<div id="main-content" style="display: none;">
+  <main>
+    <div style="display: grid; grid-template-columns: 20vw 80vw;" class="squish">
+
+      <div style="background-color: rgb(130 72 24); height: 100vh; padding: 20px; box-shadow: 11px 5px 15px rgba(0, 0, 0, 0.3); z-index: 100; display: flex; flex-direction: column; align-items: center;">
+
+        <div style="width: 100%; text-align: left;">
+          <a href="/"><img src="/imgs/home.png" alt="Home" style="width:30px; height:30px;"></a>
+        </div>
+
+        <h1 style="text-align: center; margin-top: 2vh;">Welcome Kenny Brewster</h1>
+        <h4 style="color: lightgray; margin-top: 10px; text-align: center;">What would you like to do today, sir?</h4>
+
+        <div style="width: 100%; margin-left: 80px;" class="column-buttons">
+          <form action="/selectproducts" method="post">
+            <button class="button">Shop</button>
+          </form>
+          <form action="/orderhistory" method="post">
+            <button class="button">Your Orders</button>
+          </form>
+          <form action="/settings" method="post">
+            <button class="button">Settings</button>
+          </form>
+        </div>
+      </div>
+
+
+      <div style="background-color: rgb(255, 255, 255); height: 100vh; position: relative; overflow: hidden;" class="squish">
+
+        <img src="/imgs/dashboard.png" alt="Dashboard" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1;">
+
+        <nav style="position: absolute; top: 0; left: 0; width: 100%; height: 70px; display: flex; align-items: center; justify-content: flex-end; padding: 0 40px; box-sizing: border-box; z-index: 20; background: transparent; backdrop-filter: blur(15px); box-shadow: 0px 5px 15px 0px #00000030;">
+          <a href="#" style="color: black; text-decoration: none; margin-left: 30px; font-family: Helvetica, sans-serif; font-weight: bold; font-size: 14pt;">Coffees Sold</a>
+          <a href="#" style="color: black; text-decoration: none; margin-left: 30px; font-family: Helvetica, sans-serif; font-weight: bold; font-size: 14pt;">Beans Sold</a>
+          <a href="#" style="color: black; text-decoration: none; margin-left: 30px; font-family: Helvetica, sans-serif; font-weight: bold; font-size: 14pt;">Free Coffees Redeemed</a>
+          <a href="#" style="color: black; text-decoration: none; margin-left: 30px; font-family: Helvetica, sans-serif; font-weight: bold; font-size: 14pt;">Top Products</a>
+          <a href="#" style="color: black; text-decoration: none; margin-left: 30px; font-family: Helvetica, sans-serif; font-weight: bold; font-size: 14pt;">Top Customers</a>
+        </nav>
+
+        <div class="glass-card" style="top: 15%; left: 5%; width: 42%; height: 35%;">
+          <h1>Profits Pie Chart</h1>
+          <p>Make PIE CHART w database data</p>
+        </div>
+
+        <div class="glass-card" style="top: 15%; left: 53%; width: 42%; height: 35%; text-align: left;">
+          <h2 style="margin-top: 0; font-size: 18pt;">A brief summary of business successes:</h2>
+          <p style="font-size: 10pt; color: #333;">There should be a drop-down menu to select the period for the data shown.</p>
+          <ul style="font-size: 12pt;">
+            <li>Coffees sold</li>
+            <li>Profit from coffee</li>
+            <li>Beans sold</li>
+            <li>Profit from beans</li>
+            <li>Free coffees given away</li>
+            <li>Most popular coffee</li>
+            <li>Most popular beans</li>
+          </ul>
+        </div>
+
+        <div class="glass-card" style="top: 55%; left: 5%; width: 90%; height: 40%;">
+          <h1>Discounts / Recent Transactions</h1>
+          <p>From Database Data</p>
+        </div>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+    window.onload = function() {
+        // Changed back to 1000 (1 second) so you can actually see the splash screen!
+        // Feel free to change it back to 100 if you want it to be nearly instant.
+        setTimeout(function() {
+            document.getElementById('splash-screen').style.display = 'none';
+            document.getElementById('main-content').style.display = 'block';
+        }, 100);
+    };
+</script>
+</body>
+</html>
