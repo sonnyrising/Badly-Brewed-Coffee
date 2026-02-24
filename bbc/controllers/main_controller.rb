@@ -1,5 +1,5 @@
 require 'sinatra'
-require 'sqlite3'
+#equire 'sqlite3'
 require 'json'
 
 #DB = SQLite3::Database.new '../db/usersdatabase.db'
