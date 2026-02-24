@@ -100,3 +100,4 @@ W, [2026-02-24T14:19:08.876710 #382]  WARN -- : Database file not found (looking
 W, [2026-02-24T14:21:01.580684 #410]  WARN -- : Database file not found (looking for '/home/codio/workspace/project/bbc/db/db.sqlite3')
 W, [2026-02-24T14:23:41.759153 #438]  WARN -- : Database file not found (looking for '/home/codio/workspace/project/bbc/db/db.sqlite3')
 W, [2026-02-24T14:24:39.203256 #466]  WARN -- : Database file not found (looking for '/home/codio/workspace/project/bbc/db/db.sqlite3')
+W, [2026-02-24T15:12:12.655434 #259]  WARN -- : Database file not found (looking for '/home/codio/workspace/project/bbc/db/db.sqlite3')
