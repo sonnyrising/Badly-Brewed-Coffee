@@ -25,16 +25,6 @@
           margin-top: 50px;
       }
 
-      /* Quick splash screen CSS */
-      #splash-screen {
-          position: fixed;
-          top: 0; left: 0; width: 100vw; height: 100vh;
-          background-color: white;
-          display: flex; justify-content: center; align-items: center;
-          z-index: 9999;
-      }
-
-      /* Reusable class for the glass cards so we don't repeat inline styles */
       .glass-card {
           position: absolute;
           background: transparent;
@@ -46,17 +36,12 @@
           z-index: 10;
           padding: 20px;
           box-sizing: border-box;
-          overflow-y: auto; /* Adds a scrollbar if text gets too long */
+          overflow-y: auto;
       }
   </style>
 </head>
 
 <body>
-<div id="splash-screen">
-  <img src="/imgs/coffee_image.jpg" alt="Welcome Splash">
-</div>
-
-<div id="main-content" style="display: none;">
   <main>
     <div style="display: grid; grid-template-columns: 20vw 80vw;" class="squish">
 
@@ -122,17 +107,5 @@
       </div>
     </div>
   </main>
-</div>
-
-<script>
-    window.onload = function() {
-        // Changed back to 1000 (1 second) so you can actually see the splash screen!
-        // Feel free to change it back to 100 if you want it to be nearly instant.
-        setTimeout(function() {
-            document.getElementById('splash-screen').style.display = 'none';
-            document.getElementById('main-content').style.display = 'block';
-        }, 100);
-    };
-</script>
 </body>
 </html>
