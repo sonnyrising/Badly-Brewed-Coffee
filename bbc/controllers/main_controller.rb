@@ -2,6 +2,8 @@ require 'sinatra'
 require 'sqlite3'
 require 'json'
 
+require_relative 'manager_controller'
+
 #DB = SQLite3::Database.new '../db/usersdatabase.db'
 #DB.results_as_hash = true
 
@@ -20,7 +22,14 @@ post "/login" do
     @username = params[:uname]
     @password = params[:pword]
 
-    erb :userhomepage
+    if @username == "manager" && @password == "manager"
+      redirect "/manager"
+
+    elsif @username == "staff" && @password == "staff"
+      redirect "/staffhomepage"
+    else
+      redirect "/user/KennyBrewster"
+    end
 end
 
 get "/register" do
@@ -35,5 +44,3 @@ post "/register" do
     erb :userhomepage
   end
 end
-
-

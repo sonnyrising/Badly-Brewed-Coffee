@@ -1,6 +1,29 @@
 <!DOCTYPE html>
 <head>
-    <title>Staff homepage</title>
+    <link href="/css/GenericTheme.css" rel="stylesheet">
+    <title>Staff Homepage</title>
+    <style>
+    button {
+      background-color: rgb(130 72 24);
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      margin: 40px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font: 16pt Helvetica, bold;
+    }
+
+    column-buttons {
+      display: flex;              
+      flex-direction: column;     
+      align-items: center;        
+      gap: 50px;                  
+      margin-top: 50px;           
+    }
+    </style>
+
 </head>
 <body>
     <header>
@@ -9,9 +32,38 @@
         </nav>
     </header>
     <main>
-        <section>
+      <div style="display: grid;grid-template-columns: 20vw 80vw;" class="squish">
+            <div style="background-color: rgb(130 72 24); height: 100vh; padding:15px; box-shadow: 11px 5px 15px rgba(0, 0, 0, 0.3); z-index: 100;">
+              <a href="/"><img src="/imgs/home.png" alt="Home" style="width:30px; height:30px;"></a>
+                <h1 style="text-align: center;position: relative;top: 5vh;">My Staff Account</h1>
+                <div style="position: relative; top: 100px; left: 80px;" class="column-buttons">
+                  <form action="/selectproducts" method="post">
+                    <button class="button">Shop</button>
+                  </form>
+                  <form action="/settings" method="post">
+                    <button class="button">Settings</button>
+                  </form>
+                </div>
+            </div>
+            <div style="background-color: rgb(255, 255, 255); height: 100vh;" class="squish">
+              <a href="/"><img src="/imgs/dashboard.png" alt="Dashboard" style="width:100%; height:100vh;"></a>
+            </div>
 
-        </section>
+            <div style="color: black;width: 25vw;height: 40vh;position: absolute;top: 10%;left: 30%;background: transparent;backdrop-filter: blur(15px);box-shadow: 0px 0px 20px 0px #0000007a;border-radius: 30px; text-align: center;">
+              <h1>Profits Pie Chart</h1>
+              <p>Make PIE CHART w database data</p>
+            </div>
+
+            <div style="color: black;width: 25vw;height: 40vh;position: absolute;top: 10%;left: 60%;background: transparent;backdrop-filter: blur(15px);box-shadow: 0px 0px 20px 0px #0000007a;border-radius: 30px; text-align: center;">
+              <h1>History of BBC</h1>
+              <p>Write some waffle</p>
+            </div>
+
+            <div style="color: black;width: 55vw;height: 40vh;position: absolute;top: 55%;left: 30%;background: transparent;backdrop-filter: blur(15px);box-shadow: 0px 0px 20px 0px #0000007a;border-radius: 30px; text-align: center;">
+              <h1>Discounts / Recent Transactions</h1>
+              <p>From Database Data</p>
+            </div>
+        </div>
     </main>
     <footer>
 
