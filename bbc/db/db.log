@@ -83,6 +83,13 @@ W, [2026-02-23T17:45:44.556177 #477]  WARN -- : Database file not found (looking
 W, [2026-02-23T17:47:08.492582 #506]  WARN -- : Database file not found (looking for '/home/codio/workspace/project/bbc/db/db.sqlite3')
 W, [2026-02-23T17:47:39.887408 #534]  WARN -- : Database file not found (looking for '/home/codio/workspace/project/bbc/db/db.sqlite3')
 W, [2026-02-23T20:18:23.737609 #249]  WARN -- : Database file not found (looking for '/home/codio/workspace/project/bbc/db/db.sqlite3')
+<<<<<<< HEAD
+W, [2026-02-23T23:12:46.032603 #400]  WARN -- : Database file not found (looking for '/home/codio/workspace/project/bbc/db/db.sqlite3')
+W, [2026-02-24T15:31:49.788423 #295]  WARN -- : Database file not found (looking for '/home/codio/workspace/project/bbc/db/db.sqlite3')
+W, [2026-02-24T15:35:03.607816 #325]  WARN -- : Database file not found (looking for '/home/codio/workspace/project/bbc/db/db.sqlite3')
+W, [2026-02-24T15:40:21.684993 #355]  WARN -- : Database file not found (looking for '/home/codio/workspace/project/bbc/db/db.sqlite3')
+W, [2026-02-24T15:41:17.478262 #384]  WARN -- : Database file not found (looking for '/home/codio/workspace/project/bbc/db/db.sqlite3')
+=======
 W, [2026-02-23T20:35:42.266281 #292]  WARN -- : Database file not found (looking for '/home/codio/workspace/project/bbc/db/db.sqlite3')
 W, [2026-02-23T20:36:42.589514 #320]  WARN -- : Database file not found (looking for '/home/codio/workspace/project/bbc/db/db.sqlite3')
 W, [2026-02-23T21:46:06.259076 #269]  WARN -- : Database file not found (looking for '/home/codio/workspace/project/bbc/db/db.sqlite3')
@@ -106,4 +113,5 @@ W, [2026-02-24T15:08:30.016222 #678]  WARN -- : Database file not found (looking
 W, [2026-02-24T15:25:36.026540 #3197]  WARN -- : Database file not found (looking for '/home/codio/workspace/project/bbc/db/db.sqlite3')
 =======
 W, [2026-02-24T15:12:12.655434 #259]  WARN -- : Database file not found (looking for '/home/codio/workspace/project/bbc/db/db.sqlite3')
+>>>>>>> refs/remotes/origin/main
 >>>>>>> refs/remotes/origin/main
