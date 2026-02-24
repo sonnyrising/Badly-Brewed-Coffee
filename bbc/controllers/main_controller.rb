@@ -28,12 +28,8 @@ post "/login" do
     elsif @username == "staff" && @password == "staff"
       redirect "/staffhomepage"
     else
-      erb :userhomepage
+      redirect "/user/KennyBrewster"
     end
-end
-
-get "/userhomepage" do
-  erb :userhomepage
 end
 
 get "/register" do
@@ -47,20 +43,4 @@ post "/register" do
   if params[:pword] == params[:confirmpword]
     erb :userhomepage
   end
-end
-
-post "/settings" do
-  erb :settings
-end
-
-post "/selectproducts" do
-  erb :selectproducts
-end
-
-post "/orderhistory" do
-  erb :orderhistory
-end
-
-post "/basketpayment" do
-  erb :basketpayment
 end
