@@ -4,27 +4,24 @@ get "/public" do
     erb :landingpage
 end
 
-get "/public/:name" do
-    if params[:name] == "Steffan"
-        "Hi, Steffan!"
-    else
-        "No entry I'm afraid!"
-    end
+get "/user/:name" do
+    @name = params[:name]
+    erb :userhomepage
 end
 
-get "/settings" do
+get "/user/settings" do
   erb :settingspage
 end
 
-get "/selectproducts" do
+get "/user/selectproducts" do
   erb :selectproducts
 end
 
-get "/orderhistory" do
+get "/user/orderhistory" do
   erb :orderhistory
 end
 
-get "/thankyoupage" do
+get "/user/thankyoupage" do
   erb :thankyoupage
 end
 
