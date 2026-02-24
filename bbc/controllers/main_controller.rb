@@ -2,8 +2,6 @@ require 'sinatra'
 require 'sqlite3'
 require 'json'
 
-require_relative 'manager_controller'
-
 #DB = SQLite3::Database.new '../db/usersdatabase.db'
 #DB.results_as_hash = true
 
