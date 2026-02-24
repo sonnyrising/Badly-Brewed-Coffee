@@ -23,3 +23,8 @@ end
 get "/orderhistory" do
   erb :orderhistory
 end
+
+get "/thankyoupage" do
+  erb :thankyoupage
+end
+
