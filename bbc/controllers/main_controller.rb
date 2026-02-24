@@ -14,6 +14,9 @@ get "/" do
   erb :landingpage
 end
 
+
+#------------------------------ LOGIN AND REGISTER -------------------------------
+
 get "/login" do
   erb :loginpage
 end
@@ -43,4 +46,49 @@ post "/register" do
   if params[:pword] == params[:confirmpword]
     erb :userhomepage
   end
+end
+
+#----------------------------------- USER ROUTES ---------------------------------
+
+get "/user/:name" do
+    @name = params[:name]
+    erb :userhomepage
+end
+
+get "/user/settings" do
+  erb :settingspage
+end
+
+get "/user/selectproducts" do
+  erb :selectproducts
+end
+
+get "/user/orderhistory" do
+  erb :orderhistory
+end
+
+get "/user/thankyoupage" do
+  erb :thankyoupage
+end
+
+#------------------------------------- ADMIN ROUTES ---------------------------------
+
+get "/admin" do
+    erb :adminhomepage
+end
+
+get "/admin/login" do
+    'Admin login!'
+end
+
+#------------------------------------- MANAGER ROUTES -------------------------------
+
+get "/manager" do
+    erb :managerhomepage
+end
+
+#------------------------------------- STAFF ROUTES ---------------------------------
+
+get "/staff" do
+    erb :staffhomepage
 end
