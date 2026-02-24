@@ -60,3 +60,7 @@ end
 post "/orderhistory" do
   erb :orderhistory
 end
+
+post "/basketpayment" do
+  erb :basketpayment
+end
