@@ -24,9 +24,16 @@ post "/login" do
 
     if @username == "manager" && @password == "manager"
       redirect "/manager"  # Uses the existing manager route
+
+    elsif @username == "staff" && @password == "staff"
+      redirect "/staffhomepage"  # Uses the existing staff route
     else
       erb :userhomepage
     end
+end
+
+get "/userhomepage" do
+  erb :userhomepage
 end
 
 get "/register" do
@@ -42,4 +49,14 @@ post "/register" do
   end
 end
 
+post "/settings" do
+  erb :settings
+end
 
+post "/selectproducts" do
+  erb :selectproducts
+end
+
+post "/orderhistory" do
+  erb :orderhistory
+end
