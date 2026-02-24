@@ -2,11 +2,16 @@ require 'sinatra'
 require 'sqlite3'
 require 'json'
 
+require_relative 'manager_controller'
+
 #DB = SQLite3::Database.new '../db/usersdatabase.db'
 #DB.results_as_hash = true
 
+set :public_folder, File.expand_path('../public', __dir__)
+set :views, File.expand_path('../views', __dir__)
+
 get "/" do
-  redirect "/public"
+  erb :landingpage
 end
 
 get "/login" do
@@ -17,7 +22,11 @@ post "/login" do
     @username = params[:uname]
     @password = params[:pword]
 
-    erb :userhomepage
+    if @username == "manager" && @password == "manager"
+      redirect "/manager"  # Uses the existing manager route
+    else
+      erb :userhomepage
+    end
 end
 
 get "/register" do
