@@ -23,10 +23,10 @@ post "/login" do
     @password = params[:pword]
 
     if @username == "manager" && @password == "manager"
-      redirect "/manager"  # Uses the existing manager route
+      redirect "/manager"
 
     elsif @username == "staff" && @password == "staff"
-      redirect "/staffhomepage"  # Uses the existing staff route
+      redirect "/staffhomepage"
     else
       erb :userhomepage
     end
