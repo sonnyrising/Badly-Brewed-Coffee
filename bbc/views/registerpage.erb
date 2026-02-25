@@ -14,17 +14,23 @@
               <a href="/"><img src="/imgs/home.png" alt="Home" style="width:30px; height:30px;"></a>
               <a href="/userhomepage"><img src="/imgs/ShoppingCart.png" alt="Home" style="width:30px; height:30px;"></a>
                 <h1 style="text-align: center;position: relative;top: 5vh;">Register</h1>
-                <form action="/register" method="post">
-                    <input type="text" id="username" name="uname" placeholder="Username" required style="width: 25vw;height: 5vh;border: 2px solid #69312b;border-radius: 15px;position: relative;left: 50%;top: 20vh;transform: translateX(-50%);">
-                    <br>
-                    <input type="text" id="emailaddress" name="email" placeholder="Email Address" required style="width: 25vw;height: 5vh;border: 2px solid #69312b;border-radius: 15px;position: relative;left: 50%;top: 20vh;transform: translateX(-50%);">
-                    <br>
+                <% if !@form_was_submitted || @submission_error %>
+                  <form action="/register" method="post">
+                    <input type="text" name="uname" placeholder="Username" value="<%= h @uname %>" style="width: 25vw;height: 5vh;border: 2px solid #69312b;border-radius: 15px;position: relative;left: 50%;top: 20vh;transform: translateX(-50%);">
+                    <% if !@uname_error.nil? %>
+                      <p style="width: 25vw;height: 5vh;position: relative;left: 50%;top: 20vh;transform: translateX(-50%);"> <%= @uname_error %></p>
+                    <% end %>
+                    <input type="text" name="email" placeholder="Email Address" value="<%= h @email %>"  style="width: 25vw;height: 5vh;border: 2px solid #69312b;border-radius: 15px;position: relative;left: 50%;top: 20vh;transform: translateX(-50%);">
+                    <% if !@email_address_error.nil? %>
+                      <p style="width: 25vw;height: 5vh;position: relative;left: 50%;top: 20vh;transform: translateX(-50%);"> <&= @email_address_error %></p>
+                    <% end %>
                     <input type="password" id="password" name="pword" placeholder="Password" required style="width: 25vw;height: 5vh;border: 2px solid #69312b;border-radius: 15px;position: relative;left: 50%;top: 21vh;transform: translateX(-50%);">
                     <br>
                     <input type="password" id="confirmpassword" name="confirmpword" placeholder="Confirm Password" required style="width: 25vw;height: 5vh;border: 2px solid #69312b;border-radius: 15px;position: relative;left: 50%;top: 21vh;transform: translateX(-50%);">
                     <br>
                     <button type="submit" style="position: relative;top: 23vh;left: 50%;transform: translateX(-50%);width: 7vw;height: 5vh;border: 2px solid #69312b;border-radius: 7px;">Sign Up</button>
-                </form>
+                  </form>
+                <% end %>
                 <p style="position: absolute;top: 90vh;left: 16%;transform: translateX(-50%);">Already have an account? Login <a href="/login" style="color:white;">here</a>.</p>
             </div>
             <div style="background-color: rgb(255, 255, 255); height: 100vh;">

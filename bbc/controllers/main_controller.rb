@@ -38,12 +38,30 @@ get "/register" do
 end
 
 post "/register" do
-  @username = params[:uname]
-  @password = params[:pword]
+  @form_was_submitted = !params.empty?
 
-  if params[:pword] == params[:confirmpword]
-    erb :userhomepage
-  end
+  @uname = params.fetch("uname","").strip
+  @email = params.fetch("email","").strip
+
+  if @form_was_submitted
+    @uname_error = "Please enter a username" if @uname.empty?
+    @email_error = "Please enter a valid email" unless str_email_address?(@email)
+
+    unless @uname_error.nil? && @email_error.nil? 
+      @submission_error = "Please correct the errors below"
+    end 
+
+    if @submission_error.nil?
+      redirect "/user/#{@uname}"
+    end 
+  end 
+
+  #@username = params[:uname]
+  #@password = params[:pword]
+
+  #if params[:pword] == params[:confirmpword]
+   # erb :userhomepage
+  #end
 end
 
 #----------------------------------- USER ROUTES ---------------------------------
@@ -68,6 +86,7 @@ end
 get "/user/thankyoupage" do
   erb :thankyoupage
 end
+
 
 #------------------------------------- ADMIN ROUTES ---------------------------------
 
