@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <head>
-    <title>Admin homepage</title>
+    <link href="/css/GenericTheme.css" rel="stylesheet">
+    <title>My account</title>
+    <style>
+      * body{
+        overflow:hidden;
+      }
+
+      .menu-button {
+        color: white;
+      }
+    </style>
+
 </head>
 <body>
     <header>
@@ -9,9 +20,39 @@
         </nav>
     </header>
     <main>
-        <section>
+      <div style="display: grid;grid-template-columns: 20vw 80vw;">
+        <div style="background-color: rgb(130 72 24); height: 100vh; box-shadow: 11px 5px 15px rgba(0, 0, 0, 0.3); z-index: 100;">
+          <a href="/"><img src="/imgs/home.png" alt="Home" style="width:30px; height:30px;padding:15px;"></a>
+          <h1 style="text-align: center;padding: 40px 0px;">Admin panel</h1>
 
-        </section>
+          <div style="display: flex;flex-direction:column;align-items: center;font-style: italic;font-size: x-large;gap: 20px;">
+            <a href="#" class="smooth-link menu-button">Accounts</a>
+            <a href="#" class="smooth-link menu-button">Settings</a>
+            <a href="#" class="smooth-link menu-button">Feedback</a>
+          </div>
+        </div>
+        
+        <div style="background-color: rgb(255, 255, 255); height: 100vh;">
+          <img src="/imgs/dashboard.png" alt="Dashboard" style="width: 100%;height: 100%;object-fit: fill;"></a>
+
+          <div style="display: flex;flex-direction: row;flex-wrap: wrap;justify-content: center;gap: 32px;height: 85vh;position: absolute;top: 5vh;">
+            <div style="color: black;background: transparent;backdrop-filter: blur(15px);box-shadow: 0px 0px 20px 0px #0000007a;border-radius: 30px; text-align: center;">
+              <h1>Errors reported</h1>
+              <p>Place number statistic for unsolved errors</p>
+            </div>
+
+            <div style="color: black;background: transparent;backdrop-filter: blur(15px);box-shadow: 0px 0px 20px 0px #0000007a;border-radius: 30px; text-align: center;">
+              <h1>Website traffic</h1>
+              <p>Put number of site visits in 24hr here</p>
+            </div>
+
+            <div style="color: black;background: transparent;backdrop-filter: blur(15px);box-shadow: 0px 0px 20px 0px #0000007a;border-radius: 30px; text-align: center;">
+              <h1>Recent Transactions</h1>
+              <p>From Database Data</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
     <footer>
 
