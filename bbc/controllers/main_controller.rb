@@ -104,6 +104,16 @@ get "/user/thankyoupage" do
     erb :thankyoupage
 end
 
+get "/user/feedback-page" do
+  erb :feedbackpage
+end
+
+post "/user/feedback-page-submit" do
+  @feedback_feedback_text = params["text_field"]
+  @suggestion_feedback_text = params["text_field"]
+  erb :feedback_page_submission
+end
+
 
 #------------------------------------- ADMIN ROUTES ---------------------------------
 
