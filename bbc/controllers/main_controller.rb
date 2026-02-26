@@ -8,10 +8,27 @@ require 'json'
 set :public_folder, File.expand_path('../public', __dir__)
 set :views, File.expand_path('../views', __dir__)
 
-get "/" do
+#------------------------------ OPEN / CLOSE SESSION -------------------------------
+
+get "/landingpage" do 
+  session.clear
   erb :landingpage
 end
 
+get "/" do
+  redirect "/landingpage" unless session["logged_in"]
+  if @username == "manager" && @password == "manager"
+    session["logged_in"] = true
+    redirect "/manager"
+
+  elsif @username == "staff" && @password == "staff"
+    session["logged_in"] = true
+    redirect "/staffhomepage"
+  else
+    session["logged_in"] = true
+    redirect "/user/KennyBrewster"
+    end
+end
 
 #------------------------------ LOGIN AND REGISTER -------------------------------
 
@@ -24,11 +41,14 @@ post "/login" do
     @password = params[:pword]
 
     if @username == "manager" && @password == "manager"
+      session["logged_in"] = true
       redirect "/manager"
 
     elsif @username == "staff" && @password == "staff"
+      session["logged_in"] = true
       redirect "/staffhomepage"
     else
+      session["logged_in"] = true
       redirect "/user/KennyBrewster"
     end
 end
@@ -62,6 +82,10 @@ post "/register" do
   #if params[:pword] == params[:confirmpword]
    # erb :userhomepage
   #end
+end
+
+get "/logout" do
+  redirect "/landingpage"
 end
 
 #----------------------------------- USER ROUTES ---------------------------------
