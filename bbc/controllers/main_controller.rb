@@ -11,29 +11,18 @@ set :views, File.expand_path('../views', __dir__)
 #------------------------------ OPEN / CLOSE SESSION -------------------------------
 
 get "/landingpage" do 
-  session.clear
-  erb :landingpage
+    session.clear
+    erb :landingpage
 end
 
 get "/" do
-  redirect "/landingpage" unless session["logged_in"]
-  if @username == "manager" && @password == "manager"
-    session["logged_in"] = true
-    redirect "/manager"
-
-  elsif @username == "staff" && @password == "staff"
-    session["logged_in"] = true
-    redirect "/staffhomepage"
-  else
-    session["logged_in"] = true
-    redirect "/user/KennyBrewster"
-    end
+    redirect "/landingpage" unless session["logged_in"]
 end
 
 #------------------------------ LOGIN AND REGISTER -------------------------------
 
 get "/login" do
-  erb :loginpage
+    erb :loginpage
 end
 
 post "/login" do
@@ -53,8 +42,12 @@ post "/login" do
     end
 end
 
+get "/forgotpassword" do
+    erb :forgotpassword
+end
+
 get "/register" do
-  erb :registerpage
+    erb :registerpage
 end
 
 post "/register" do
@@ -96,19 +89,19 @@ get "/user/:name" do
 end
 
 get "/user/settings" do
-  erb :settingspage
+    erb :settingspage
 end
 
-get "/user/selectproducts" do
-  erb :selectproducts
+get "/user/shop" do
+    erb :selectproducts
 end
 
-get "/user/orderhistory" do
-  erb :orderhistory
+get "/user/orders" do
+    erb :orderhistory
 end
 
 get "/user/thankyoupage" do
-  erb :thankyoupage
+    erb :thankyoupage
 end
 
 
