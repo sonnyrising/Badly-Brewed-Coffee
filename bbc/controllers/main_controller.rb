@@ -65,7 +65,7 @@ post "/register" do
     end 
 
     if @submission_error.nil?
-      redirect "/user/#{@uname}"
+      redirect "/user/:name"
     end 
   end 
 
