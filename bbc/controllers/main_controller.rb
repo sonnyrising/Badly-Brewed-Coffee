@@ -82,6 +82,9 @@ get "/logout" do
 end
 
 #----------------------------------- USER ROUTES ---------------------------------
+get "/userhomepage" do
+    erb :userhomepage
+end
 
 get "/user/:name" do
     @name = params[:name]
@@ -136,3 +139,4 @@ end
 get "/staff" do
     erb :staffhomepage
 end
+
