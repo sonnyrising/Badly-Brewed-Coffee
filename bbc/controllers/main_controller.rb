@@ -112,8 +112,12 @@ get "/user/feedback-page" do
 end
 
 post "/user/feedback-page-submit" do
-  @feedback_feedback_text = params["text_field"]
-  @suggestion_feedback_text = params["text_field"]
+  raw_feedback = params["text_field"]
+  raw_suggestion = params["text_field"]
+
+  @feedback_text = h(raw_feedback) unless raw_feedback.nil?
+  @suggestion_feedback_text = h(raw_suggestion) unless raw_suggestion.nil? 
+
   erb :feedback_page_submission
 end
 
