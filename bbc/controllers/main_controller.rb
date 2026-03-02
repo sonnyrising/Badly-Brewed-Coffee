@@ -87,7 +87,7 @@ get "/userhomepage" do
 end
 
 get "/user/settings" do
-    erb :settingspage
+    erb :settings
 end
 
 get "/user/shop" do
