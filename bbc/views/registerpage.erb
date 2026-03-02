@@ -21,8 +21,8 @@
                       <p style="width: 25vw;height: 5vh;position: relative;left: 50%;top: 20vh;transform: translateX(-50%);"> <%= @uname_error %></p>
                     <% end %>
                     <input type="text" name="email" placeholder="Email Address" value="<%= h @email %>"  style="width: 25vw;height: 5vh;border: 2px solid #69312b;border-radius: 15px;position: relative;left: 50%;top: 20vh;transform: translateX(-50%);">
-                    <% if !@email_address_error.nil? %>
-                      <p style="width: 25vw;height: 5vh;position: relative;left: 50%;top: 20vh;transform: translateX(-50%);"> <&= @email_address_error %></p>
+                    <% if !@email_error.nil? %>
+                      <p style="width: 25vw;height: 5vh;position: relative;left: 50%;top: 20vh;transform: translateX(-50%);"> <%= @email_error %></p>
                     <% end %>
                     <input type="password" id="password" name="pword" placeholder="Password" required style="width: 25vw;height: 5vh;border: 2px solid #69312b;border-radius: 15px;position: relative;left: 50%;top: 21vh;transform: translateX(-50%);">
                     <br>

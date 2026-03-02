@@ -73,9 +73,7 @@ post "/register" do
   @username = params[:uname]
   @password = params[:pword]
 
-  #if params[:pword] == params[:confirmpword]
-   # erb :userhomepage
-  #end
+  erb :registerpage
 end
 
 get "/logout" do
@@ -141,4 +139,3 @@ end
 get "/staffhomepage" do
     erb :staffhomepage
 end
-
