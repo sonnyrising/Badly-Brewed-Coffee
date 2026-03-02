@@ -11,34 +11,35 @@ set :views, File.expand_path('../views', __dir__)
 #------------------------------ OPEN / CLOSE SESSION -------------------------------
 
 get "/landingpage" do 
-    erb :landingpage
+  erb :landingpage
 end
 
 get "/" do
-    redirect "/landingpage"
+  $LOGIN_COUNT += 1
+  redirect "/landingpage"
 end
 
 #------------------------------ LOGIN AND REGISTER -------------------------------
 
 get "/login" do
-    erb :loginpage
+  erb :loginpage
 end
 
 post "/login" do
-    @uname = params[:uname]
-    @password = params[:pword]
+  @uname = params[:uname]
+  @password = params[:pword]
 
-    if @uname == "manager" && @password == "manager"
-      session[:uname] = @uname
-      redirect "/managerhomepage"
+  if @uname == "manager" && @password == "manager"
+    session[:uname] = @uname
+    redirect "/managerhomepage"
 
-    elsif @uname == "staff" && @password == "staff"
-      session[:uname] = @uname
-      redirect "/staffhomepage"
-    else
-      session[:uname] = @uname
-      redirect "/userhomepage"
-    end
+  elsif @uname == "staff" && @password == "staff"
+    session[:uname] = @uname
+    redirect "/staffhomepage"
+  else
+    session[:uname] = params[:uname]
+    redirect "/userhomepage"
+  end
 end
 
 get "/forgotpassword" do
@@ -118,9 +119,11 @@ end
 
 
 #------------------------------------- ADMIN ROUTES ---------------------------------
+$LOGIN_COUNT = 0
 
 get "/admin" do
-    erb :adminhomepage
+  @currentVisitCount = $LOGIN_COUNT
+  erb :adminhomepage
 end
 
 get "/admin/login" do
