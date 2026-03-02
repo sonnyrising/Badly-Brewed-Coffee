@@ -24,10 +24,18 @@
                     <% if !@email_error.nil? %>
                       <p style="width: 25vw;height: 5vh;position: relative;left: 50%;top: 20vh;transform: translateX(-50%);"> <%= @email_error %></p>
                     <% end %>
-                    <input type="password" id="password" name="pword" placeholder="Password" required style="width: 25vw;height: 5vh;border: 2px solid #69312b;border-radius: 15px;position: relative;left: 50%;top: 21vh;transform: translateX(-50%);">
-                    <br>
-                    <input type="password" id="confirmpassword" name="confirmpword" placeholder="Confirm Password" required style="width: 25vw;height: 5vh;border: 2px solid #69312b;border-radius: 15px;position: relative;left: 50%;top: 21vh;transform: translateX(-50%);">
-                    <br>
+                    <input type="password" id="password" name="pword" placeholder="Password" style="width: 25vw;height: 5vh;border: 2px solid #69312b;border-radius: 15px;position: relative;left: 50%;top: 21vh;transform: translateX(-50%);">
+                    <% if !@password_error.nil? %>
+                        <p style="width: 25vw;height: 5vh;position: relative;left: 50%;top: 20vh;transform: translateX(-50%);"> <%= @password_error %></p>
+                    <% end %>
+                    <input type="password" id="confirmpassword" name="confirmpword" placeholder="Confirm Password" style="width: 25vw;height: 5vh;border: 2px solid #69312b;border-radius: 15px;position: relative;left: 50%;top: 21vh;transform: translateX(-50%);">
+                    <% if !@confirmpassword_error.nil? %>
+                        <p style="width: 25vw;height: 5vh;position: relative;left: 50%;top: 20vh;transform: translateX(-50%);"> <%= @confirmpassword_error %></p>
+                    <% elsif @password_error.nil? && !@invalid_pword.nil? %>
+                      <p style="width: 25vw;height: 5vh;position: relative;left: 50%;top: 20vh;transform: translateX(-50%);"> <%= @invalid_pword %> </p>
+                    <% elsif @password_error.nil? && !@pword_match_error.nil? %>
+                        <p style="width: 25vw;height: 5vh;position: relative;left: 50%;top: 20vh;transform: translateX(-50%);"> <%= @pword_match_error %> </p>
+                    <% end %>
                     <button type="submit" style="position: relative;top: 23vh;left: 50%;transform: translateX(-50%);width: 7vw;height: 5vh;border: 2px solid #69312b;border-radius: 7px;">Sign Up</button>
                   </form>
                 <% end %>
