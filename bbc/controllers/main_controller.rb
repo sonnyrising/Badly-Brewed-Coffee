@@ -11,12 +11,11 @@ set :views, File.expand_path('../views', __dir__)
 #------------------------------ OPEN / CLOSE SESSION -------------------------------
 
 get "/landingpage" do 
-    session.clear
     erb :landingpage
 end
 
 get "/" do
-    redirect "/landingpage" unless session["logged_in"]
+    redirect "/landingpage"
 end
 
 #------------------------------ LOGIN AND REGISTER -------------------------------
@@ -26,19 +25,19 @@ get "/login" do
 end
 
 post "/login" do
-    @username = params[:uname]
+    @uname = params[:uname]
     @password = params[:pword]
 
-    if @username == "manager" && @password == "manager"
-      session["logged_in"] = true
-      redirect "/manager"
+    if @uname == "manager" && @password == "manager"
+      session[:uname] = @uname
+      redirect "/managerhomepage"
 
-    elsif @username == "staff" && @password == "staff"
-      session["logged_in"] = true
+    elsif @uname == "staff" && @password == "staff"
+      session[:uname] = @uname
       redirect "/staffhomepage"
     else
-      session["logged_in"] = true
-      redirect "/user/KennyBrewster"
+      session[:uname] = @uname
+      redirect "/userhomepage"
     end
 end
 
@@ -65,12 +64,13 @@ post "/register" do
     end 
 
     if @submission_error.nil?
-      redirect "/user/:name"
+      session[:uname] = @uname
+      redirect "/userhomepage"
     end 
   end 
 
-  #@username = params[:uname]
-  #@password = params[:pword]
+  @username = params[:uname]
+  @password = params[:pword]
 
   #if params[:pword] == params[:confirmpword]
    # erb :userhomepage
@@ -83,11 +83,6 @@ end
 
 #----------------------------------- USER ROUTES ---------------------------------
 get "/userhomepage" do
-    erb :userhomepage
-end
-
-get "/user/:name" do
-    @name = params[:name]
     erb :userhomepage
 end
 
@@ -134,13 +129,13 @@ end
 
 #------------------------------------- MANAGER ROUTES -------------------------------
 
-get "/manager" do
+get "/managerhomepage" do
     erb :managerhomepage
 end
 
 #------------------------------------- STAFF ROUTES ---------------------------------
 
-get "/staff" do
+get "/staffhomepage" do
     erb :staffhomepage
 end
 
