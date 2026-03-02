@@ -3,7 +3,22 @@
     <link href="/css/GenericTheme.css" rel="stylesheet">
     <title>Basket</title>
     <style>
-    button {
+
+      body, html {
+        margin: 0;
+        padding: 0;
+        height: 100v;
+        overflow: hidden;
+      }
+
+      header {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 999;
+      }
+
+      button {
       background-color: rgb(130 72 24);
       border: none;
       color: white;
@@ -13,15 +28,68 @@
       text-decoration: none;
       display: inline-block;
       font: 16pt Helvetica, bold;
-    }
+      }
 
-    column-buttons {
-      display: flex;              
-      flex-direction: column;     
-      align-items: center;        
-      gap: 50px;                  
-      margin-top: 50px;           
-    }
+      column-buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 50px;
+      margin-top: 50px;
+      }
+
+      .layout-grid {
+      display: grid;
+      grid-template-columns: 20vw 80vw;
+      height: 100vh;
+      }
+
+      .sidebar {
+      background-color: rgb(130 72 24);
+      height: 100vh;
+      padding: 15px;
+      box-shadow: 11px 5px 15px rgba(0, 0, 0, 0.3);
+      z-index: 100;
+      color: white;
+      }
+
+      .display-area {
+      background-image: url('/imgs/CoffeeBeansSplash.png');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      height: 100vh;
+      }
+
+      .product-box {
+      color: black;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(15px);
+      box-shadow: 0px 0px 20px 0px #0000007a;
+      border-radius: 30px;
+      text-align: center;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.3s ease;
+      }
+
+      .product-box:hover {
+      transform: scale(1.02);
+      }
+
+      .product-inner-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 30px;
+      width: 90%;
+      height: 80%;
+      margin: 5% auto;
+      }
+
     </style>
 </head>
 <body>
@@ -38,26 +106,71 @@
     </header>
 
     <main>
-      @numproducts = 0 
-      session[:numproducts] = @numproducts
-        <div style="display: grid; grid-template-columns: 1fr 1fr;">
-            <div style="background-color: rgb(130 72 24); height: 100vh; box-shadow: 11px 5px 15px rgba(0, 0, 0, 0.3); z-index: 100;">
-                <h1 style="text-align: center;position: relative;top: 5vh;">Shop</h1>
-                <h2 style="text-align: center;position: relative;top: 5vh;">Basket (<%= session[:numproducts] %>)</h2>
-                <div style="position: relative; top: 100px; left: 80px;" class="column-buttons">
+        <% @numproducts = 0 %> 
+        <% session[:numproducts] = @numproducts %>
+
+        <div class="layout-grid">
+            <div class="sidebar">
+                <a href="/userhomepage">
+                  <img src="/imgs/home.png" alt="Home" style="width:30px; height:30px;">
+                </a>
+                
+                <h1 style="text-align: center; position: relative; top: 5vh;">Shop</h1>
+                <h2 style="text-align: center; position: relative; top: 5vh;">
+                  Basket (<%= session[:numproducts] %>)
+                </h2>
+                
+                <div style="position: relative; top: 100px; text-align: center;">
                   <form action="/basketpayment" method="post">
-                    <button class="button">Payment</button>
+                    <button type="submit">Payment</button>
                   </form>
                 </div>
-              
             </div>
-            <div style="background-color: rgb(255, 255, 255); height: 100vh;">
-                <img src="/imgs/CoffeeBeansSplash.png" alt="Whoops, we slipped up!" style="width:100%; height:100%; object-fit: cover;">
+
+            <div class="display-area">
+                <div class="product-inner-grid">
+                    <div class="product-box">
+                        <h3>Bean 1</h3>
+                        <p>Bean 1 description</p>
+                        <b>Bean 1 price</b>
+                        <button>Add to basket</button>
+                    </div>
+                    <div class="product-box">
+                        <h3>Bean 2</h3>
+                        <p>Bean 2 description</p>
+                        <b>Bean 2 price</b>
+                        <button>Add to basket</button>
+                    </div>
+                    <div class="product-box">
+                        <h3>Bean 3</h3>
+                        <p>Bean 3 description</p>
+                        <b>Bean 3 price</b>
+                        <button>Add to basket</button>
+                    </div>
+
+                    <div class="product-box">
+                        <h3>Coffee 1</h3>
+                        <p>Coffee 1 description</p>
+                        <b>Coffee 1 price</b>
+                        <button>Add to basket</button>
+                    </div>
+                    <div class="product-box">
+                        <h3>Coffee 2</h3>
+                        <p>Coffee 2 description</p>
+                        <b>Coffee 2 price</b>
+                        <button>Add to basket</button>
+                    </div>
+                    <div class="product-box">
+                        <h3>Coffee 3</h3>
+                        <p>Coffee 3 description</p>
+                        <b>Coffee 3 price</b>
+                        <button>Add to basket</button>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
 
-    <footer>
-        
-    </footer>
+    <footer></footer>
 </body>
+</html>
