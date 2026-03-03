@@ -38,6 +38,43 @@
           box-sizing: border-box;
           overflow-y: auto;
       }
+
+      .product-box {
+          color: black;
+          background: rgba(255, 255, 255, 0.2);
+          backdrop-filter: blur(15px);
+          box-shadow: 0px 0px 20px 0px #0000007a;
+          border-radius: 30px;
+          text-align: center;
+          padding: 20px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          transition: transform 0.3s ease;
+      }
+
+      .product-box:hover {
+          transform: scale(1.02);
+      }
+
+      .product-inner-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          grid-template-rows: repeat(2, 1fr);
+          gap: 30px;
+          width: 90%;
+          height: 80%;
+          margin: 5% auto;
+      }
+
+      .product-image {
+          width: 100px;
+          height: 100px;
+          object-fit: cover;
+          border-radius: 15px;
+          margin-bottom: 15px;
+      }
   </style>
 </head>
 
@@ -74,6 +111,78 @@
       <div class="container">
         <div class="glass-card" style="top: 3%; left: 3%; width: 93%; height: 93%;">
           <h1>Manage Stock</h1>
+          <% @numproducts = 0 %>
+          <% session[:numproducts] = @numproducts %>
+
+          <div class="layout-grid">
+            <div class="sidebar">
+
+              <h1 style="text-align: center; position: relative; top: 5vh;">Shop</h1>
+              <h2 style="text-align: center; position: relative; top: 5vh;">
+                Basket (<%= session[:numproducts] %>)
+              </h2>
+
+              <div style="position: relative; top: 100px; text-align: center;">
+                <form action="/basketpayment" method="post">
+                  <button type="submit">Payment</button>
+                </form>
+              </div>
+            </div>
+
+            <div class="display-area">
+              <div class="product-inner-grid">
+                <div class="product-box">
+                  <img src="/imgs/jorge%20bean.jpeg" alt="Coffee" class="product-image">
+                  <h3>Bean 1</h3>
+                  <p>Bean 1 Stock: </p>
+                  <b>Bean 1 Price: </b>
+                  <b>Bean 1 Description: </b>
+                  <button>Save Changes</button>
+                </div>
+                <div class="product-box">
+                  <img src="/imgs/jorge%20bean.jpeg" alt="Coffee" class="product-image">
+                  <h3>Bean 2</h3>
+                  <p>Bean 2 Stock: </p>
+                  <p>Bean 2 Price: </p>
+                  <p>Bean 2 Description: </p>
+                  <button>Save Changes</button>
+                </div>
+                <div class="product-box">
+                  <img src="/imgs/jorge%20bean.jpeg" alt="Coffee" class="product-image">
+                  <h3>Bean 3</h3>
+                  <p>Bean 3 Stock: </p>
+                  <p>Bean 3 Price: </p>
+                  <p>Bean 3 Description: </p>
+                  <button>Save Changes</button>
+                </div>
+
+                <div class="product-box">
+                  <img src="/imgs/jorge%20bean.jpeg" alt="Coffee" class="product-image">
+                  <h3>Coffee 1</h3>
+                  <p>Coffee 1 Stock: </p>
+                  <p>Coffee 1 Price: </p>
+                  <p>Coffee 1 Description: </p>
+                  <button>Save Changes</button>
+                </div>
+                <div class="product-box">
+                  <img src="/imgs/jorge%20bean.jpeg" alt="Coffee" class="product-image">
+                  <h3>Coffee 2</h3>
+                  <p>Coffee 2 Stock: </p>
+                  <p>Coffee 2 Price: </p>
+                  <p>Coffee 2 Description: </p>
+                  <button>Save Changes</button>
+                </div>
+                <div class="product-box">
+                  <img src="/imgs/jorge%20bean.jpeg" alt="Coffee" class="product-image">
+                  <h3>Coffee 3</h3>
+                  <p>Coffee 3 Stock: </p>
+                  <p>Coffee 3  Price: </p>
+                  <p>Coffee 3  Description: </p>
+                  <button>Save Changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
