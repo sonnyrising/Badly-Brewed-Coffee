@@ -108,6 +108,10 @@ get "/user/feedback-page" do
   erb :feedbackpage
 end
 
+get "/user/contact-us" do
+  erb :contact_us_page
+end
+
 post "/user/feedback-page-submit" do
   raw_feedback = params["text_field"]
   raw_suggestion = params["text_field"]
