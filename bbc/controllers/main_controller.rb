@@ -137,6 +137,10 @@ get "/managerhomepage" do
     erb :managerhomepage
 end
 
+get "/manager_managestock" do
+  erb :manager_managestock
+end
+
 #------------------------------------- STAFF ROUTES ---------------------------------
 
 get "/staffhomepage" do
