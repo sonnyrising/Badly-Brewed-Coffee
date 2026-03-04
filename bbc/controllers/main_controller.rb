@@ -31,7 +31,7 @@ post "/login" do
 
   if @uname == "manager" && @password == "manager"
     session[:uname] = @uname
-    redirect "/managerhomepage"
+    redirect "/manager/homepage"
 
   elsif @uname == "staff" && @password == "staff"
     session[:uname] = @uname
@@ -85,27 +85,27 @@ end
 
 #----------------------------------- USER ROUTES ---------------------------------
 get "/userhomepage" do
-    erb :userhomepage
+    erb :'user/homepage'
 end
 
 get "/user/settings" do
-    erb :settings
+    erb :'user/settings'
 end
 
 get "/user/shop" do
-    erb :selectproducts
+  erb :'user/selectproducts'
 end
 
 get "/user/orders" do
-    erb :orderhistory
+    erb :'user/orderhistory'
 end
 
 get "/user/thankyoupage" do
-    erb :thankyoupage
+    erb :'user/thankyoupage'
 end
 
 get "/user/feedback-page" do
-  erb :feedbackpage
+  erb :'user/feedbackpage'
 end
 
 post "/user/feedback-page-submit" do
@@ -133,16 +133,16 @@ end
 
 #------------------------------------- MANAGER ROUTES -------------------------------
 
-get "/managerhomepage" do
-    erb :managerhomepage
+get "/manager/homepage" do
+  erb :'manager/homepage'
 end
 
-get "/manager_managestock" do
-  erb :manager_managestock
+get "/manager/managestock" do
+  erb :'manager/managestock'
 end
 
 #------------------------------------- STAFF ROUTES ---------------------------------
 
 get "/staffhomepage" do
-    erb :staffhomepage
+    erb :'staff/homepage'
 end
