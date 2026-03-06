@@ -1,3 +1,5 @@
+PRAGMA foreign_keys = ON;
+
 CREATE TABLE Users(
   UserId INTEGER PRIMARY KEY,
   Username TEXT,
