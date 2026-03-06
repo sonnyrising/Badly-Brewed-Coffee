@@ -26,20 +26,34 @@ get "/login" do
 end
 
 post "/login" do
-  @uname = params[:uname]
-  @password = params[:pword]
+  @form_was_submitted = !params.empty?
 
-  if @uname == "manager" && @password == "manager"
-    session[:uname] = @uname
-    redirect "/managerhomepage"
+  @uname = params.fetch("uname", "").strip
+  @password = params.fetch("pword", "").strip
 
-  elsif @uname == "staff" && @password == "staff"
-    session[:uname] = @uname
-    redirect "/staffhomepage"
-  else
-    session[:uname] = params[:uname]
-    redirect "/userhomepage"
+  if @form_was_submitted
+    @uname_error = "Please enter a username" if @uname.empty?
+    @pword_error = "Please enter a password" if @password.empty?
+
+    unless @uname_error.nil? && @pword_error.nil?
+      @submission_error = "Please fill in the form"
+    end
+
+    if @submission_error.nil?
+      if @uname == "manager" && @password == "manager"
+        session[:uname] = @uname
+        redirect "/managerhomepage"
+      elsif @uname == "staff" && @password == "staff"
+        session[:uname] = @uname
+        redirect "/staffhomepage"
+      else
+        session[:uname] = params[:uname]
+        redirect "/userhomepage"
+      end
+    end
   end
+ 
+  erb :loginpage
 end
 
 get "/forgotpassword" do

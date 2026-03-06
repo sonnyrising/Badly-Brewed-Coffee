@@ -13,18 +13,22 @@
             <div style="background-color: rgb(130 72 24); height: 100vh; padding: 15px;box-shadow: 11px 5px 15px rgba(0, 0, 0, 0.3); z-index: 100;">
               <a href="/"><img src="/imgs/home.png" alt="Home" style="width:30px; height:30px;"></a>
               <a href="/userhomepage"><img src="/imgs/ShoppingCart.png" alt="Home" style="width:30px; height:30px;"></a>
-                <h1 style="text-align: center;position: relative;top: 5vh;">Login</h1>
-                <form action="/login" method="post">
-                    <input type="text" id="username" name="uname" placeholder="Username" required style="width: 25vw;height: 5vh;border: 2px solid #69312b;border-radius: 15px;position: relative;left: 50%;top: 20vh;transform: translateX(-50%);">
-                    <br>
-                    <input type="password" id="password" name="pword" placeholder="Password" required style="width: 25vw;height: 5vh;border: 2px solid #69312b;border-radius: 15px;position: relative;left: 50%;top: 21vh;transform: translateX(-50%);">
-                    <br>
-                    <button type="submit" style="position: relative;top: 23vh;left: 50%;transform: translateX(-50%);width: 7vw;height: 5vh;border: 2px solid #69312b;border-radius: 7px;">Log in</button>
-                </form>
-
-                <a href="/forgotpassword" style="position: relative;top: 25vh;left: 37.5%;transform: translateX(-50%);width: 7vw;height: 5vh;border: 2px solid #69312b">Forgot Password</a>
-            
-                <p style="position: absolute;top: 90vh;left: 16%;transform: translateX(-50%);">Don't have an account? Sign up <a href="/register" style="color:white;">here</a>.</p>
+                <h1 style="text-align: center; margin-top:20vh;">Login</h1>
+                <% if !@form_was_submitted || @submission_error %>
+                  <form action="/login" method="post" style="display: flex;flex-direction: column;gap: 2vh;align-items: center;margin-top: 5vh;">
+                      <input type="text" id="username" name="uname" placeholder="Username" style="width: 25vw;height: 5vh;border: 2px solid #69312b;border-radius: 15px;padding-left:10px;">
+                      <% if !@uname_error.nil? %>
+                        <p style="width: 25vw;height: 1vh;"> <%= @uname_error %></p>
+                      <% end %>
+                      <input type="password" id="password" name="pword" placeholder="Password" style="width: 25vw;height: 5vh;border: 2px solid #69312b;border-radius: 15px;padding-left:10px">
+                      <% if !@pword_error.nil? %>
+                        <p style="width:25vw;"> <%= @pword_error %> </p>
+                      <% end %>
+                      <button type="submit" style="width: 7vw;height: 5vh;border: 2px solid #69312b;border-radius: 7px;margin: 0vh 8vw 0vh 8vw;border-radius:12px;">Log in</button>
+                      <a href="/forgotpassword" style="width: 7vw;height: 5vh; color:white; text-align:center;">Forgot Password</a>
+                      <p style="margin:100px;">Don't have an account? Sign up <a href="/register" style="color:white;">here</a>.</p>
+                  </form>
+                <% end %>
             </div>
             <div style="background-color: rgb(255, 255, 255); height: 100vh;">
                 <img src="/imgs/CoffeeBeansSplash.png" alt="Whoops, we slipped up!" style="width:100%; height:100%; object-fit: cover;">
