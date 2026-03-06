@@ -1,0 +1,1 @@
+INSERT INTO Users VALUE (1, 'UsernameHere', 'PasswordHere', 'EmailHere', 5);

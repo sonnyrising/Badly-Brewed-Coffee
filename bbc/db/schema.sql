@@ -8,15 +8,18 @@ CREATE TABLE Users(
 
 CREATE TABLE Transactions(
   TransactionId INTEGER PRIMARY KEY,
-  UserId INTEGER FOREIGN KEY,
-  ProductId INTEGER FOREIGN KEY,
-  OrderId INTEGER
+  UserId INTEGER,
+  ProductId INTEGER,
+  OrderId INTEGER,
+  FOREIGN KEY (UserId) REFERENCES Users(UserId),
+  FOREIGN KEY (ProductId) REFERENCES Products(ProductId)
 );
 
 CREATE TABLE Feedbacks(
   FeedbackId INTEGER PRIMARY KEY,
-  UserId INTEGER FOREIGN KEY,
-  Content TEXT
+  UserId INTEGER,
+  Content TEXT,
+  FOREIGN KEY (UserId) REFERENCES Users(UserId)
 );
 
 CREATE TABLE Products(
