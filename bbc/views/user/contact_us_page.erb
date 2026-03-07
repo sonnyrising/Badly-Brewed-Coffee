@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Contact Us</title>
-  <h1 style="background-color: rgb(130 72 24); color:white; text-align: center">Contact Us<b></b></h1>
-  <link rel="stylesheet" href="style/style.css">
+<title>BBC Help Page</title>
+<h1 style="text-align:center; color:white">BBC Help Page</h1>
 </head>
+
 <body style="background-color: rgb(130 72 24)">
+  <form method="post" action="/user/feedback-page-submit">
+    <p style="color:white">Having a problem?</p>
+      <input type="text" maxlength="500" size="90" placeholder="Type your message here...">
+    
+    <p style="color:white">Are you requesting a refund?</p>
+      <input type="checkbox" id="yes" name="yes" value="Yes">
+      <label style="color:white" for="yes">Yes</label><br>
 
+      <input type="checkbox" id="no" name="no" value="No">
+      <label style="color:white" for="no">No</label><br>
 
+    <p style="color:white">State your reason for the refund</p>
+      <input type="text" maxlength="500" size="90" placeholder="Type your message here...">
 
-
-
+    <p><input type="submit" value="Submit"></p>
+  </form>
 </body>
-</head>
 </html>

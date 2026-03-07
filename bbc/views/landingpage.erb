@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <head>
-    <link href="/css/GenericTheme.css" rel="stylesheet">
+    <!--<link href="/css/GenericTheme.css" rel="stylesheet">-->
+    <link href="/css/ModularElements.css" rel="stylesheet">
+    <link href="/css/LandingPageTheme.css" rel="stylesheet">
     <title>Badly brewed coffee</title>
 </head>
 <body>
@@ -8,20 +10,19 @@
         <section class="header-bar">
             <nav>
                 <ul>
-                    <li><a class="smooth-link" href="/">Home</a></li>
-                    <li><a class="smooth-link" href="#contactus">Contact us</a></li>
-                    <li><a class="smooth-link" href="/login">Log in</a></li>
-                    <li><a class="smooth-link" href="/register">Register</a></li>
+                    #<li><a href="/">Home</a></li>
+                    #<li><a href="#contactus">Contact us</a></li>
+                    <li><a href="/login">Log in</a></li>
                 </ul>
             </nav>
         </section>
     </header>
 
     <main>
-        <div style="display: grid; grid-template-columns: 1fr 1fr;">
-            <div style="background-color: rgb(130 72 24); height: 100vh; box-shadow: 11px 5px 15px rgba(0, 0, 0, 0.3); z-index: 100;">
+        <div class="half-grid">
+            <div style="background-color: rgb(136, 73, 44); height: 100vh; box-shadow: 11px 5px 15px rgba(0, 0, 0, 0.3); z-index: 100;">
                 <img src="/imgs/BBClogo.png" alt="Our logo seems to be searching for beans..." style="width:70%; height:30%; position:relative; left:50%; top:10vh; transform:translate(-50%, 0%);">
-                <a href="/login" style="color: white; border: 3px solid white; background-color: rgb(255, 255, 255, 0); position:absolute; top:80vh; left:25%; transform:translate(-50%, 0%); width:15vw; height:7vh; text-decoration: none; text-align: center; line-height: 7vh;">Explore</a>
+                <a href="/login" class="swinging" style="color: white; border: 3px solid white; background-color: rgb(255, 255, 255, 0); position:absolute; top:80vh; left:25%; transform:translate(-50%, 0%); width:15vw; height:7vh; text-decoration: none; text-align: center; line-height: 7vh;">Explore</a>
             </div>
             <div style="background-color: rgb(255, 255, 255); height: 100vh;">
                 <img src="/imgs/CoffeeBeansSplash.png" alt="Whoops, we slipped up!" style="width:100%; height:100%; object-fit: cover;">

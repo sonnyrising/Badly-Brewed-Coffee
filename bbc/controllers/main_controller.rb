@@ -123,11 +123,17 @@ get "/user/contact-us" do
 end
 
 post "/user/feedback-page-submit" do
+  @feedback_submitted = !params.empty?
+
   raw_feedback = params["text_field"]
-  raw_suggestion = params["text_field"]
+  refund_text = params["text_field"]
 
   @feedback_text = h(raw_feedback) unless raw_feedback.nil?
-  @suggestion_feedback_text = h(raw_suggestion) unless raw_suggestion.nil? 
+  @refund_reason = h(raw_suggestion) unless raw_suggestion.nil? 
+
+  if @form_was_submitted
+    @feedback_text_error = "Please provide us with the issue" if @feedback_text.empty?
+    @refund_reason_error = "IF you picked 'No' then write "No" but if you picked "Yes" then please provide a valid reason for your refund request" if @refund_reason.empty?
 
   erb :feedback_page_submission
 end
