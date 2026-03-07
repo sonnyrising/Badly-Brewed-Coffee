@@ -103,23 +103,23 @@ get "/userhomepage" do
 end
 
 get "/user/settings" do
-    erb :settings
+    erb :"user/settings"
 end
 
 get "/user/shop" do
-    erb :selectproducts
+    erb :"user/selectproducts"
 end
 
 get "/user/orders" do
-    erb :orderhistory
+    erb :"user/orderhistory"
 end
 
 get "/user/thankyoupage" do
-    erb :thankyoupage
+    erb :"user/thankyoupage"
 end
 
 get "/user/contact-us" do
-  erb :contact_us_page
+  erb :"user/contact_us_page"
 end
 
 post "/user/feedback-page-submit" do
@@ -135,7 +135,7 @@ post "/user/feedback-page-submit" do
     @feedback_text_error = "Please provide us with the issue" if @feedback_text.empty?
     @refund_reason_error = "IF you picked 'No' then write "No" but if you picked "Yes" then please provide a valid reason for your refund request" if @refund_reason.empty?
 
-  erb :feedback_page_submission
+  erb :"user/feedback_page_submission"
 end
 
 
@@ -144,7 +144,7 @@ $LOGIN_COUNT = 0
 
 get "/admin" do
   @currentVisitCount = $LOGIN_COUNT
-  erb :adminhomepage
+  erb :"admin/homepage"
 end
 
 get "/admin/login" do
@@ -154,15 +154,15 @@ end
 #------------------------------------- MANAGER ROUTES -------------------------------
 
 get "/managerhomepage" do
-    erb :managerhomepage
+    erb :"manager/homepage"
 end
 
 get "/manager_managestock" do
-  erb :manager_managestock
+  erb :"manager/managestock"
 end
 
 #------------------------------------- STAFF ROUTES ---------------------------------
 
 get "/staffhomepage" do
-    erb :staffhomepage
+    erb :"staff/homepage"
 end
