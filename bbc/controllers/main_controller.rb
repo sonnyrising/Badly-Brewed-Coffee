@@ -133,7 +133,7 @@ post "/user/feedback-page-submit" do
 
   if @form_was_submitted
     @feedback_text_error = "Please provide us with the issue" if @feedback_text.empty?
-    @refund_reason_error = "IF you picked 'No' then write "No" but if you picked "Yes" then please provide a valid reason for your refund request" if @refund_reason.empty?
+    @refund_reason_error = "IF you picked 'No' then write \"No\" but if you picked \"Yes\" then please provide a valid reason for your refund request" if @refund_reason.empty?
 
     erb :"user/feedback_page_submission"
   end
