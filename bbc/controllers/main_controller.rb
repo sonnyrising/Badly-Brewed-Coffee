@@ -43,6 +43,9 @@ post "/login" do
       elsif @uname == "staff" && @password == "staff"
         session[:uname] = @uname
         redirect "/staffhomepage"
+      elsif @uname == "admin" && @password == "admin"
+        session[:uname] = @uname
+        redirect "/admin"
       else
         session[:uname] = params[:uname]
         redirect "/userhomepage"
@@ -145,8 +148,16 @@ get "/admin" do
   erb :"admin/homepage"
 end
 
-get "/admin/login" do
-    'Admin login!'
+get "/admin/accounts" do
+  erb :"admin/accounts"
+end
+
+get "/admin/account" do
+  erb :"admin/account"
+end
+
+get "/admin/feedback" do
+  erb :"admin/feedback"
 end
 
 #------------------------------------- MANAGER ROUTES -------------------------------
