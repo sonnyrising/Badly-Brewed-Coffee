@@ -4,53 +4,57 @@
     <title>My account</title>
     <style>
       * body{
-        overflow:hidden;
-      }
-
-      .menu-button {
-        color: white;
+        overflow:visible;
       }
     </style>
 
 </head>
 <body>
     <header>
-        <nav>
-
-        </nav>
+      <nav>
+        <h1 style="color:black;float: left;margin-left: 1vw;;">Overview</h1>
+        <ul style="position:absolute; top:1vh;">
+          <li><a href="#" class="smooth-link">Accounts</a></li>
+          <li><a href="#" class="smooth-link">Feedback</a></li>
+          <li><a href="#" class="smooth-link">Settings</a></li>
+          <li><a href="#" class="smooth-link">Log out</a></li>
+        </ul>
+      </nav>
     </header>
     <main>
-      <div style="display: grid;grid-template-columns: 20vw 80vw;">
-        <div style="background-color: rgb(130 72 24); height: 100vh; box-shadow: 11px 5px 15px rgba(0, 0, 0, 0.3); z-index: 100;">
-          <a href="/logout"><img src="/imgs/home.png" alt="Home" style="width:30px; height:30px;padding:15px;"></a>
-          <h1 style="text-align: center;padding: 40px 0px;">Admin</h1>
+      <div style="background-color: rgb(211, 112, 0); height: 100vh;">
+        <img src="/imgs/dashboard.png" alt="Dashboard" style="width: 100%;height: 100%;object-fit: fill;">
 
-          <div style="display: flex;flex-direction:column;align-items: center;font-style: italic;font-size: x-large;gap: 20px;">
-            <a href="#" class="smooth-link menu-button">Accounts</a>
-            <a href="#" class="smooth-link menu-button">Settings</a>
-            <a href="#" class="smooth-link menu-button">Feedback</a>
+        <div style="display: flex;flex-direction: row;flex-wrap: wrap;justify-content: center;gap: 32px;height: 85vh;position: absolute;top: 10vh;">
+          <div style="color: black;background: transparent;backdrop-filter: blur(15px);box-shadow: 0px 0px 20px 0px #0000007a;border-radius: 30px; text-align: center;width:22vw;">
+            <h1>Website traffic</h1>
+            <p>Current login count:</p>
+            <%= @currentVisitCount %>
           </div>
-        </div>
-        
-        <div style="background-color: rgb(255, 255, 255); height: 100vh;">
-          <img src="/imgs/dashboard.png" alt="Dashboard" style="width: 100%;height: 100%;object-fit: fill;"></a>
 
-          <div style="display: flex;flex-direction: row;flex-wrap: wrap;justify-content: center;gap: 32px;height: 85vh;position: absolute;top: 5vh;">
-            <div style="color: black;background: transparent;backdrop-filter: blur(15px);box-shadow: 0px 0px 20px 0px #0000007a;border-radius: 30px; text-align: center;max-width:35vw;">
-              <h1>Website traffic</h1>
-              <p>Current login count:</p>
-              <%= @currentVisitCount %>
-            </div>
+          <div style="color: black;background: transparent;backdrop-filter: blur(15px);box-shadow: 0px 0px 20px 0px #0000007a;border-radius: 30px; text-align: center;width:22vw;">
+            <h1>Staff logins</h1>
+            <p>This is where the total number of staff logins should go.</p>
+          </div>
 
-            <div style="color: black;background: transparent;backdrop-filter: blur(15px);box-shadow: 0px 0px 20px 0px #0000007a;border-radius: 30px; text-align: center;max-width:35vw;">
-              <h1>Staff logins</h1>
-              <p>Write some waffle about how we collect jorge beans from the wild side and then how we process and crack the beans to get to the raw coffee inside.</p>
-            </div>
+          <div style="color: black;background: transparent;backdrop-filter: blur(15px);box-shadow: 0px 0px 20px 0px #0000007a;border-radius: 30px; text-align: center;width:22vw;">
+            <h1>Feedback quantity</h1>
+            <p>From Database Data</p>
+          </div>
 
-            <div style="color: black;background: transparent;backdrop-filter: blur(15px);box-shadow: 0px 0px 20px 0px #0000007a;border-radius: 30px; text-align: center;">
-              <h1>Recent Transactions</h1>
-              <p>From Database Data</p>
-            </div>
+          <div style="color: black;background: transparent;backdrop-filter: blur(15px);box-shadow: 0px 0px 20px 0px #0000007a;border-radius: 30px; text-align: center;width:22vw;">
+            <h1>Unresolved orders</h1>
+            <p>From Database Data</p>
+          </div>
+
+          <div style="color: black;background: transparent;backdrop-filter: blur(15px);box-shadow: 0px 0px 20px 0px #0000007a;border-radius: 30px; text-align: center;width:46vw;">
+            <h1>Transaction log</h1>
+            <p>From Database Data</p>
+          </div>
+
+          <div style="color: black;background: transparent;backdrop-filter: blur(15px);box-shadow: 0px 0px 20px 0px #0000007a;border-radius: 30px; text-align: center;width:46vw;">
+            <h1>Another data frame</h1>
+            <p>From Database Data</p>
           </div>
         </div>
       </div>
