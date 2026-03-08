@@ -1,7 +1,7 @@
 class Users < Sequel::Model
 
-    def GetUserId(Username)
-        userId = Users.where(Username: "#{Username}").get(:id)
+    def GetUserId(username)
+        userId = Users.where(Username: "#{username}").get(:id)
         return userId
     end
 
