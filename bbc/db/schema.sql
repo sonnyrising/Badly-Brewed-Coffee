@@ -5,7 +5,8 @@ CREATE TABLE Users(
   Username TEXT,
   Pass TEXT,
   Email TEXT,
-  LoyaltyPoints INTEGER
+  LoyaltyPoints INTEGER,
+  DaysSinceLastUse INTEGER
 );
 
 CREATE TABLE Transactions(
@@ -13,8 +14,12 @@ CREATE TABLE Transactions(
   UserId INTEGER,
   ProductId INTEGER,
   OrderId INTEGER,
+  Quantity INTEGER,
+  ItemPrice FLOAT,
+  PaymentStatus TEXT,
   FOREIGN KEY (UserId) REFERENCES Users(UserId),
   FOREIGN KEY (ProductId) REFERENCES Products(ProductId)
+  FOREIGN KEY (OrderId) REFERENCES Basket(OrderId)
 );
 
 CREATE TABLE Feedbacks(
@@ -29,4 +34,13 @@ CREATE TABLE Products(
   ProductName TEXT,
   Price FLOAT,
   StockQuantity INTEGER
+);
+
+CREATE TABLE Basket(
+  OrderId INTEGER, 
+  UserId INTEGER,
+  ProductName TEXT,
+  Price FLOAT, 
+  Quantity INTEGER,
+  OrderStatus TEXT, 
 );
