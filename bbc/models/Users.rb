@@ -18,4 +18,15 @@ class Users < Sequel::Model
         return false
     end
 
+    def GetDaysSinceLastUse(userId)
+      daysSinceLastUse = Users.where(UserId: userId).get(:DaysSinceLastUse)
+      return daysSinceLastUse
+    end
+
+   def SetDaysSinceLastUse(userId)
+      Users.where(UserId: userId).update(DaysSinceLastUse: 0)
+   end 
+
+   
+
 end
