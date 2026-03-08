@@ -1,10 +1,19 @@
 class Users < Sequel::Model
 
     def GetUserId(username)
-        userId = Users.where(Username: "#{username}").get(:id)
+        userId = Users.where(Username: "#{username}").get(:UserId)
         return userId
     end
 
+    def ComparePassword(userId, password)
+      database_password = Users.where(UserID: "#{userId}").get(:PassHash)
+      if password == database_password
+        return true
+      else
+        return false
+      end
+    end
+    
     def GetLoyaltyPoints(userId)
         numberOfPoints = Users.where(UserId: userId).get(:LoyaltyPoints)
         return numberOfPoints
@@ -27,6 +36,6 @@ class Users < Sequel::Model
       Users.where(UserId: userId).update(DaysSinceLastUse: 0)
    end 
 
-   
+
 
 end

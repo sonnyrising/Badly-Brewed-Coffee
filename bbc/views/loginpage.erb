@@ -2,6 +2,7 @@
 <head>
     <link href="/css/GenericTheme.css" rel="stylesheet">
     <link href="/css/LoginPageTheme.css" rel="stylesheet">
+    <% require_relative 'Users' %>
     <title>Login</title>
 </head>
 <body>
@@ -24,6 +25,14 @@
                       <% if !@pword_error.nil? %>
                         <p style="width:25vw;"> <%= @pword_error %> </p>
                       <% end %>
+
+                      <% users = Users.new %>
+                      UserID = Users.GetUserId(@uname)
+                      if UserID.nil?
+                        password_validated = Users.ComparePassword(UserID, @pword)
+                        if password_validated == false
+                          <p style="width:25vw;"> <%= @pword_error %> </p>
+
                       <button type="submit" style="width: 7vw;height: 5vh;border: 2px solid #69312b;border-radius: 7px;margin: 0vh 8vw 0vh 8vw;border-radius:12px;">Log in</button>
                       <a href="/forgotpassword" style="width: 7vw;height: 5vh; color:white; text-align:center;">Forgot Password</a>
                       <p style="margin:100px;">Don't have an account? Sign up <a href="/register" style="color:white;">here</a>.</p>

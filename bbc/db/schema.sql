@@ -3,7 +3,7 @@ PRAGMA foreign_keys = ON;
 CREATE TABLE Users(
   UserId INTEGER PRIMARY KEY,
   Username TEXT,
-  Pass TEXT,
+  PassHash TEXT,
   Email TEXT,
   LoyaltyPoints INTEGER,
   DaysSinceLastUse INTEGER
