@@ -140,10 +140,8 @@ end
 
 
 #------------------------------------- ADMIN ROUTES ---------------------------------
-$LOGIN_COUNT = 0
 
 get "/admin" do
-  @currentVisitCount = $LOGIN_COUNT
   erb :"admin/homepage"
 end
 
@@ -151,12 +149,20 @@ get "/admin/accounts" do
   erb :"admin/accounts"
 end
 
-get "/admin/account" do
+get "/admin/feedback" do
+  erb :"admin/feedback"
+end
+
+post "/admin/accounts/view"
   erb :"admin/account"
 end
 
-get "/admin/feedback" do
-  erb :"admin/feedback"
+post "/admin/accounts/edit"
+  erb :"admin/accountinfo"
+end
+
+post "/admin/accounts/delete"
+  redirect "/admin"
 end
 
 #------------------------------------- MANAGER ROUTES -------------------------------
