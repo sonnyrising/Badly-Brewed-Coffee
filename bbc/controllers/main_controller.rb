@@ -93,7 +93,7 @@ post "/register" do
 end
 
 get "/logout" do
-  redirect "/landingpage"
+  redirect "/login"
 end
 
 #----------------------------------- USER ROUTES ---------------------------------
