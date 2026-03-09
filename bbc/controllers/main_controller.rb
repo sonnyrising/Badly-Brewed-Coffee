@@ -30,10 +30,10 @@ post "/login" do
 
   if @uname == "manager" && @password == "manager"
     session[:uname] = @uname
-    redirect "/managerhomepage"
+    redirect "/manager/homepage"
   elsif @uname == "staff" && @password == "staff"
     session[:uname] = @uname
-    redirect "/staffhomepage"
+    redirect "/staff/homepage"
   elsif @uname == "admin" && @password == "admin"
     session[:uname] = @uname
     redirect "/admin"
@@ -44,7 +44,7 @@ post "/login" do
       if @password_validated
         session[:userId] = userId
         session[:uname] = @uname
-        redirect "/userhomepage"
+        redirect "/user/homepage"
       end
     end
   end
@@ -82,7 +82,7 @@ post "/register" do
 
     if @submission_error.nil?
       session[:uname] = @uname
-      redirect "/userhomepage"
+      redirect "/user/homepage"
     end 
   end 
 
@@ -94,8 +94,8 @@ get "/logout" do
 end
 
 #----------------------------------- USER ROUTES ---------------------------------
-get "/userhomepage" do
-    erb :userhomepage
+get "/user/homepage" do
+    erb :"user/homepage"
 end
 
 get "/user/settings" do
@@ -158,16 +158,16 @@ end
 
 #------------------------------------- MANAGER ROUTES -------------------------------
 
-get "/managerhomepage" do
+get "/manager/homepage" do
     erb :"manager/homepage"
 end
 
-get "/manager_managestock" do
+get "/manager/managestock" do
   erb :"manager/managestock"
 end
 
 #------------------------------------- STAFF ROUTES ---------------------------------
 
-get "/staffhomepage" do
+get "/staff/homepage" do
     erb :"staff/homepage"
 end
