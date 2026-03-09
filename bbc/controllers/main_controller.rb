@@ -22,40 +22,29 @@ get "/login" do
 end
 
 post "/login" do
-  @form_was_submitted = !params.empty?
-
   @uname = params.fetch("uname", "").strip
   @password = params.fetch("pword", "").strip
 
-  if @form_was_submitted
-    @uname_error = "Please enter a username" if @uname.empty?
-    @pword_error = "Please enter a password" if @password.empty?
+  @uname_error = @uname.empty? ? "Please enter a username" : true
+  @pword_error = @password.empty? ? "Please enter a password" : true
 
-    unless @uname_error.nil? && @pword_error.nil? && @password_validated
-      @submission_error = "Please fill in the form"
-    end
-
-    if @submission_error.nil?
-      puts "Checking for user in database!"
-      if @uname == "manager" && @password == "manager"
+  if @uname == "manager" && @password == "manager"
+    session[:uname] = @uname
+    redirect "/managerhomepage"
+  elsif @uname == "staff" && @password == "staff"
+    session[:uname] = @uname
+    redirect "/staffhomepage"
+  elsif @uname == "admin" && @password == "admin"
+    session[:uname] = @uname
+    redirect "/admin"
+  else
+    userId = Users.GetUserId(@uname)
+    if !userId.nil?
+      @password_validated = Users.ComparePassword(userId, @password)
+      if @password_validated
+        session[:userId] = userId
         session[:uname] = @uname
-        redirect "/managerhomepage"
-      elsif @uname == "staff" && @password == "staff"
-        session[:uname] = @uname
-        redirect "/staffhomepage"
-      elsif @uname == "admin" && @password == "admin"
-        session[:uname] = @uname
-        redirect "/admin"
-      else
-        userId = Users.GetUserId(@uname)
-        if !userId.nil?
-          @password_validated = Users.ComparePassword(userId, @password)
-          if @password_validated
-            session[:userId] = userId
-            session[:uname] = @uname
-            redirect "/userhomepage"
-          end
-        end
+        redirect "/userhomepage"
       end
     end
   end
