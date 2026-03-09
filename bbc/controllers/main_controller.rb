@@ -12,7 +12,6 @@ get "/landingpage" do
 end
 
 get "/" do
-  $LOGIN_COUNT += 1
   redirect "/landingpage"
 end
 
@@ -32,11 +31,12 @@ post "/login" do
     @uname_error = "Please enter a username" if @uname.empty?
     @pword_error = "Please enter a password" if @password.empty?
 
-    unless @uname_error.nil? && @pword_error.nil?
+    unless @uname_error.nil? && @pword_error.nil? && @password_validated
       @submission_error = "Please fill in the form"
     end
 
     if @submission_error.nil?
+      puts "Checking for user in database!"
       if @uname == "manager" && @password == "manager"
         session[:uname] = @uname
         redirect "/managerhomepage"
@@ -47,8 +47,15 @@ post "/login" do
         session[:uname] = @uname
         redirect "/admin"
       else
-        session[:uname] = params[:uname]
-        redirect "/userhomepage"
+        userId = Users.GetUserId(@uname)
+        if !userId.nil?
+          @password_validated = Users.ComparePassword(userId, @password)
+          if @password_validated
+            session[:userId] = userId
+            session[:uname] = @uname
+            redirect "/userhomepage"
+          end
+        end
       end
     end
   end

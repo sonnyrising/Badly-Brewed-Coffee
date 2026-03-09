@@ -1,12 +1,12 @@
 class Users < Sequel::Model
 
-    def GetUserId(username)
+    def self.GetUserId(username)
         userId = Users.where(Username: "#{username}").get(:UserId)
         return userId
     end
 
-    def ComparePassword(userId, password)
-      database_password = Users.where(UserID: "#{userId}").get(:PassHash)
+    def self.ComparePassword(userId, password)
+      database_password = Users.where(UserID: userId).get(:PassHash)
       if password == database_password
         return true
       else

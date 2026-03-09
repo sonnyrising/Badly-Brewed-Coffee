@@ -42,5 +42,5 @@ CREATE TABLE Basket(
   ProductName TEXT,
   Price FLOAT, 
   Quantity INTEGER,
-  OrderStatus TEXT, 
+  OrderStatus TEXT
 );
