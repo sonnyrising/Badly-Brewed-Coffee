@@ -18,7 +18,7 @@ CREATE TABLE Transactions(
   ItemPrice FLOAT,
   PaymentStatus TEXT,
   FOREIGN KEY (UserId) REFERENCES Users(UserId),
-  FOREIGN KEY (ProductId) REFERENCES Products(ProductId)
+  FOREIGN KEY (ProductId) REFERENCES Products(ProductId),
   FOREIGN KEY (OrderId) REFERENCES Basket(OrderId)
 );
 

@@ -19,6 +19,7 @@
     <orderEntry type="library" scope="PROVIDED" name="rack-protection (v4.2.1, ruby-3.4.7-p58) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack-session (v2.1.1, ruby-3.4.7-p58) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sinatra (v4.2.1, ruby-3.4.7-p58) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="sqlite3 (v2.9.0, ruby-3.4.7-p58) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tilt (v2.7.0, ruby-3.4.7-p58) [gem]" level="application" />
   </component>
 </module>
