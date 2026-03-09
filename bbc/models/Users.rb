@@ -36,4 +36,14 @@ class Users < Sequel::Model
       Users.where(UserId: userId).update(DaysSinceLastUse: 0)
    end 
 
+   def load(params)
+    self.Username = params.fetch("uname","").strip
+    self.Email = params.fetch("email","").strip
+    self.PassHash = params.fetch("pword","").strip
+    self.LoyaltyPoints = 0
+    self.DaysSinceLastUse = 0
+
+   end
+
+
 end

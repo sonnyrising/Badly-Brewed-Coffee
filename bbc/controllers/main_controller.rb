@@ -66,6 +66,9 @@ end
 post "/register" do
   @form_was_submitted = !params.empty?
 
+  @user = Users.new
+  @user.load(params)
+
   @uname = params.fetch("uname","").strip
   @email = params.fetch("email","").strip
   @pword = params.fetch("pword","").strip
@@ -85,6 +88,7 @@ post "/register" do
 
     if @submission_error.nil?
       session[:uname] = @uname
+      @user.save_changes
       redirect "/user/homepage"
     end 
   end 
