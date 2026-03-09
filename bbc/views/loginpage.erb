@@ -16,11 +16,11 @@
               <h1 style="text-align: center; margin-top:20vh;">Login</h1>
               <form action="/login" method="post" style="display: flex;flex-direction: column;gap: 2vh;align-items: center;margin-top: 5vh;">
                   <input type="text" id="username" name="uname" placeholder="Username" style="width: 25vw;height: 5vh;border: 2px solid #69312b;border-radius: 15px;padding-left:10px;">
-                  <% if @uname_error %>
+                  <% if !@uname_error.nil? %>
                     <p style="width: 25vw;height: 1vh;"> <%= @uname_error %></p>
                   <% end %>
                   <input type="password" id="password" name="pword" placeholder="Password" style="width: 25vw;height: 5vh;border: 2px solid #69312b;border-radius: 15px;padding-left:10px">
-                  <% if @pword_error %>
+                  <% if !@pword_error.nil? %>
                     <p style="width:25vw;"> <%= @pword_error %> </p>
                   <% end %>
 

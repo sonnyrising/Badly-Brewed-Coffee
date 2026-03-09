@@ -26,6 +26,7 @@ CREATE TABLE Feedbacks(
   FeedbackId INTEGER PRIMARY KEY,
   UserId INTEGER,
   Content TEXT,
+  TicketNumber INTEGER,
   FOREIGN KEY (UserId) REFERENCES Users(UserId)
 );
 

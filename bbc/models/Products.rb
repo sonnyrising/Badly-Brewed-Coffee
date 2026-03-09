@@ -1,10 +1,10 @@
 class Products < Sequel::Model
 
-    def GetProductName(productId)
+    def self.GetProductName(productId)
         return Products.where(ProductId: productId).get(:ProductName)
     end
 
-    def GetProductPrice(productId)
+    def self.GetProductPrice(productId)
         return Products.where(ProductId: productId).get(:Price)
     end
 
