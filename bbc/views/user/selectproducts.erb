@@ -105,10 +105,10 @@
         <section class="header-bar">
             <nav>
                 <ul>
-                    <li><a class="smooth-link" href="/userhomepage">Dashboard</a></li>
+                    <li><a class="smooth-link" href="/user/homepage">Dashboard</a></li>
                     <li><a class="smooth-link" href="/">Basket</a></li>
-                    <li><a class="smooth-link" href="#contactus">Contact us</a></li>
-                    <li><a class="smooth-link" href="/">Log Out</a></li>
+                    <li><a class="smooth-link" href="/feedback">Contact us</a></li>
+                    <li><a class="smooth-link" href="/logout">Log Out</a></li>
                 </ul>
             </nav>
         </section>
@@ -125,9 +125,7 @@
                 </a>
                 
                 <h1 style="text-align: center; position: relative; top: 5vh;">Shop</h1>
-                <h2 style="text-align: center; position: relative; top: 5vh;">
-                  Basket (<%= session[:numproducts] %>)
-                </h2>
+                <h2 style="text-align: center; position: relative; top: 5vh;">Basket (<%= session[:numproducts] %>)</h2>
                 
                 <div style="position: relative; top: 100px; text-align: center;">
                   <form action="/basketpayment" method="post">
