@@ -14,28 +14,26 @@ class Users < Sequel::Model
       end
     end
     
-    def GetLoyaltyPoints(userId)
+    def self.GetLoyaltyPoints(userId)
         numberOfPoints = Users.where(UserId: userId).get(:LoyaltyPoints)
         return numberOfPoints
     end
 
-    def SetLoyaltyPoints(userId, offset)
+    def self.SetLoyaltyPoints(userId, offset)
         Users.where(UserId: userId).update(LoyaltyPoints: Sequel[:LoyaltyPoints] + offset)
     end
 
-    def GetTransactionHistory(userId)
+    def self.GetTransactionHistory(userId)
         return false
     end
 
-    def GetDaysSinceLastUse(userId)
+    def self.GetDaysSinceLastUse(userId)
       daysSinceLastUse = Users.where(UserId: userId).get(:DaysSinceLastUse)
       return daysSinceLastUse
     end
 
-   def SetDaysSinceLastUse(userId)
+   def self.SetDaysSinceLastUse(userId)
       Users.where(UserId: userId).update(DaysSinceLastUse: 0)
    end 
-
-
 
 end

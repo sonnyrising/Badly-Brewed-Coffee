@@ -25,8 +25,8 @@ post "/login" do
   @uname = params.fetch("uname", "").strip
   @password = params.fetch("pword", "").strip
 
-  @uname_error = @uname.empty? ? "Please enter a username" : true
-  @pword_error = @password.empty? ? "Please enter a password" : true
+  @uname_error = @uname.empty? ? "Please enter a username" : nil
+  @pword_error = @password.empty? ? "Please enter a password" : nil
 
   if @uname == "manager" && @password == "manager"
     session[:uname] = @uname
