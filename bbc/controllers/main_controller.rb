@@ -2,6 +2,9 @@ require 'sinatra'
 require 'sqlite3'
 require 'json'
 
+require_relative "../models/ManageStock"
+require_relative "../models/Users"
+
 set :public_folder, File.expand_path('../public', __dir__)
 set :views, File.expand_path('../views', __dir__)
 
@@ -163,7 +166,25 @@ get "/manager/homepage" do
 end
 
 get "/manager/managestock" do
+  bean = Products.where(ProductId: 1).first
+  if bean
+    @product_id = bean[:ProductId]
+    @product_name = bean[:ProductName]
+    @stock = bean[:StockQuantity]
+    @price = bean[:Price]
+  end
+
   erb :"manager/managestock"
+end
+
+post "/manager/managestock" do
+  Managestock.update_product(
+    params[:product_id],
+    params[:product_name],
+    params[:price],
+    params[:stock]
+  )
+  redirect "/manager/managestock"
 end
 
 #------------------------------------- STAFF ROUTES ---------------------------------
