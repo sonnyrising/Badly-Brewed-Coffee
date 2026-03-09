@@ -42,7 +42,14 @@ class Users < Sequel::Model
     self.PassHash = params.fetch("pword","").strip
     self.LoyaltyPoints = 0
     self.DaysSinceLastUse = 0
-
+   end
+   
+   def compareUsername(username)
+    users = Users.all
+    users.each do |user|
+      return true if username == user.Username
+    end
+    return false
    end
 
 

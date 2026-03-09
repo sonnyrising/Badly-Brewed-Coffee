@@ -81,8 +81,9 @@ post "/register" do
     @email_error = "Please enter a valid email" unless str_email_address?(@email)
     @pword_match_error = "Passwords dont match" if @pword != @confirmpword
     @invalid_pword = "Password must contain contain lower and upper case letters, a digit, a special character and be at least 8 characters long" if !@pword.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[[:^alnum:]]).{8,}$/)
+    @taken_username = "That username is already taken, try a different one" if @user.compareUsername(@uname)
 
-    unless @uname_error.nil? && @email_error.nil? && @password_error.nil? && @confirmpassword_error.nil? && @pword_match_error.nil? && @invalid_pword.nil?
+    unless @uname_error.nil? && @email_error.nil? && @password_error.nil? && @confirmpassword_error.nil? && @pword_match_error.nil? && @invalid_pword.nil? && @taken_username.nil?
       @submission_error = "Please correct the errors below"
     end 
 
@@ -157,15 +158,15 @@ get "/admin/feedback" do
   erb :"admin/feedback"
 end
 
-post "/admin/accounts/view"
+post "/admin/accounts/view" do
   erb :"admin/account"
 end
 
-post "/admin/accounts/edit"
+post "/admin/accounts/edit" do
   erb :"admin/accountinfo"
 end
 
-post "/admin/accounts/delete"
+post "/admin/accounts/delete" do
   redirect "/admin"
 end
 

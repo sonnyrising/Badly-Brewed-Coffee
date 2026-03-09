@@ -19,6 +19,8 @@
                     <input type="text" name="uname" placeholder="Username" value="<%= h @uname %>" style="width: 25vw;height: 5vh;border: 2px solid #69312b;border-radius: 15px;padding-left:10px;">
                     <% if !@uname_error.nil? %>
                       <p style="width: 25vw;height: 1vh;"> <%= @uname_error %></p>
+                    <% elsif !@taken_username.nil? %>
+                      <p style="width: 25vw;height;1vh;"><%= @taken_username %></p>
                     <% end %>
                     <input type="text" name="email" placeholder="Email Address" value="<%= h @email %>"  style="width: 25vw;height: 5vh;border: 2px solid #69312b;border-radius: 15px;padding-left:10px;">
                     <% if !@email_error.nil? %>
