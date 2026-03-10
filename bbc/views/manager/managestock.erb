@@ -76,11 +76,6 @@
           margin-bottom: 15px;
       }
 
-      .inline-form {
-          display: inline;
-          font: 16pt Helvetica;
-      }
-
       .inline-input {
           border: none;
           background: transparent;
@@ -90,8 +85,19 @@
           color: inherit;
           border-bottom: 1px dashed #999;
           cursor: text;
-          width: 60px;
+          width: 100px;
           text-align: center;
+      }
+
+      .description-input {
+          border: none;
+          background: transparent;
+          padding: 0 2px;
+          margin: 0 2px;
+          font: inherit;
+          color: inherit;
+          border-bottom: 1px dashed #999;
+          overflow-y: auto
       }
   </style>
 </head>
@@ -138,7 +144,7 @@
               <div class="product-inner-grid">
                 <div class="product-box">
                   <img src="/imgs/jorge%20bean.jpeg" alt="Coffee" class="product-image">
-                  <form action = "/ManageStock" method = "POST">
+                  <form action = "/manager/updatestock" method = "POST">
                     <h3>
                       <input
                         type="text"
@@ -158,7 +164,8 @@
                         class="inline-input"
                       >
                     </p>
-                    <b>
+
+                    <p>
                       Price: £
                       <input
                         type="number"
@@ -167,8 +174,9 @@
                         value="<%= @product_price %>"
                         class="inline-input"
                       >
-                    </b>
-                    <b>
+                    </p>
+
+                    <p>
                       Description:
                       <input
                         type="text"
@@ -177,52 +185,249 @@
                         class="inline-input"
                         autocomplete="off"
                       >
-                    </b>
+                    </p>
                     <button type = "submit">Save Changes</button>
                   </form>
                 </div>
                 <div class="product-box">
                   <img src="/imgs/jorge%20bean.jpeg" alt="Coffee" class="product-image">
-                  <h3>Bean 2</h3>
-                  <p>Bean 2 Stock: </p>
-                  <p>Bean 2 Price: </p>
-                  <p>Bean 2 Description: </p>
-                  <button>Save Changes</button>
+                  <form action = "/manager/updatestock" method = "POST">
+                    <h3>
+                      <input
+                        type="text"
+                        name="product_name"
+                        value="<%= @product_name %>"
+                        class="inline-input"
+                        autocomplete="off"
+                      >
+                    </h3>
+
+                    <p>
+                      Stock
+                      <input
+                        type="number"
+                        name="product_stock"
+                        value="<%= @product_stock %>"
+                        class="inline-input"
+                      >
+                    </p>
+
+                    <p>
+                      Price: £
+                      <input
+                        type="number"
+                        step="0.01"
+                        name="product_price"
+                        value="<%= @product_price %>"
+                        class="inline-input"
+                      >
+                      </p>
+
+                    <p>
+                      Description:
+                      <input
+                        type="text"
+                        name="product_description"
+                        value="<%= @product_description %>"
+                        class="inline-input"
+                        autocomplete="off"
+                      >
+                    </p>
+                    <button type = "submit">Save Changes</button>
+                  </form>
                 </div>
                 <div class="product-box">
                   <img src="/imgs/jorge%20bean.jpeg" alt="Coffee" class="product-image">
-                  <h3>Bean 3</h3>
-                  <p>Bean 3 Stock: </p>
-                  <p>Bean 3 Price: </p>
-                  <p>Bean 3 Description: </p>
-                  <button>Save Changes</button>
+                  <form action = "/manager/updatestock" method = "POST">
+                    <h3>
+                      <input
+                        type="text"
+                        name="product_name"
+                        value="<%= @product_name %>"
+                        class="inline-input"
+                        autocomplete="off"
+                      >
+                    </h3>
+
+                    <p>
+                      Stock
+                      <input
+                        type="number"
+                        name="product_stock"
+                        value="<%= @product_stock %>"
+                        class="inline-input"
+                      >
+                    </p>
+
+                    <p>
+                      Price: £
+                      <input
+                        type="number"
+                        step="0.01"
+                        name="product_price"
+                        value="<%= @product_price %>"
+                        class="inline-input"
+                      >
+                      </p>
+
+                    <p>
+                      Description:
+                      <input
+                        type="text"
+                        name="product_description"
+                        value="<%= @product_description %>"
+                        class="inline-input"
+                        autocomplete="off"
+                      >
+                    </p>
+                    <button type = "submit">Save Changes</button>
+                  </form>
+              </div>
+
+                <div class="product-box">
+                  <img src="/imgs/jorge%20bean.jpeg" alt="Coffee" class="product-image">
+                  <form action = "/manager/updatestock" method = "POST">
+                    <h3>
+                      <input
+                        type="text"
+                        name="product_name"
+                        value="<%= @product_name %>"
+                        class="inline-input"
+                        autocomplete="off"
+                      >
+                    </h3>
+
+                    <p>
+                      Stock
+                      <input
+                        type="number"
+                        name="product_stock"
+                        value="<%= @product_stock %>"
+                        class="inline-input"
+                      >
+                    </p>
+
+                    <p>
+                      Price: £
+                      <input
+                        type="number"
+                        step="0.01"
+                        name="product_price"
+                        value="<%= @product_price %>"
+                        class="inline-input"
+                      >
+                    </p>
+
+                    <p>
+                      Description:
+                      <input
+                        type="text"
+                        name="product_description"
+                        value="<%= @product_description %>"
+                        class="inline-input"
+                        autocomplete="off"
+                      >
+                    </p>
+                    <button type = "submit">Save Changes</button>
+                  </form>
                 </div>
 
                 <div class="product-box">
                   <img src="/imgs/jorge%20bean.jpeg" alt="Coffee" class="product-image">
-                  <h3>Coffee 1</h3>
-                  <p>Coffee 1 Stock: </p>
-                  <p>Coffee 1 Price: </p>
-                  <p>Coffee 1 Description: </p>
-                  <button>Save Changes</button>
+                  <form action = "/manager/updatestock" method = "POST">
+                    <h3>
+                      <input
+                        type="text"
+                        name="product_name"
+                        value="<%= @product_name %>"
+                        class="inline-input"
+                        autocomplete="off"
+                      >
+                    </h3>
+
+                    <p>
+                      Stock
+                      <input
+                        type="number"
+                        name="product_stock"
+                        value="<%= @product_stock %>"
+                        class="inline-input"
+                      >
+                    </p>
+
+                    <p>
+                      Price: £
+                      <input
+                        type="number"
+                        step="0.01"
+                        name="product_price"
+                        value="<%= @product_price %>"
+                        class="inline-input"
+                      >
+                    </p>
+
+                    <p>
+                      Description:
+                      <input
+                        type="text"
+                        name="product_description"
+                        value="<%= @product_description %>"
+                        class="inline-input"
+                        autocomplete="off"
+                      >
+                    </p>
+                    <button type = "submit">Save Changes</button>
+                  </form>
                 </div>
+
                 <div class="product-box">
                   <img src="/imgs/jorge%20bean.jpeg" alt="Coffee" class="product-image">
-                  <h3>Coffee 2</h3>
-                  <p>Coffee 2 Stock: </p>
-                  <p>Coffee 2 Price: </p>
-                  <p>Coffee 2 Description: </p>
-                  <button>Save Changes</button>
+                  <form action = "/manager/updatestock" method = "POST">
+                    <h3>
+                      <input
+                        type="text"
+                        name="product_name"
+                        value="<%= @product_name %>"
+                        class="inline-input"
+                        autocomplete="off"
+                      >
+                    </h3>
+
+                    <p>
+                      Stock
+                      <input
+                        type="number"
+                        name="product_stock"
+                        value="<%= @product_stock %>"
+                        class="inline-input"
+                      >
+                    </p>
+
+                    <p>
+                      Price: £
+                      <input
+                        type="number"
+                        step="0.01"
+                        name="product_price"
+                        value="<%= @product_price %>"
+                        class="inline-input"
+                      >
+                    </p>
+
+                    <p>
+                      Description:
+                      <input
+                        type="text"
+                        name="product_description"
+                        value="<%= @product_description %>"
+                        class="inline-input"
+                        autocomplete="off"
+                      >
+                    </p>
+                    <button type = "submit">Save Changes</button>
+                  </form>
                 </div>
-                <div class="product-box">
-                  <img src="/imgs/jorge%20bean.jpeg" alt="Coffee" class="product-image">
-                  <h3>Coffee 3</h3>
-                  <p>Coffee 3 Stock: </p>
-                  <p>Coffee 3  Price: </p>
-                  <p>Coffee 3  Description: </p>
-                  <button>Save Changes</button>
-                </div>
-              </div>
+
             </div>
           </div>
         </div>
@@ -230,6 +435,7 @@
 
     </div>
   </div>
+</div>
 </main>
 </body>
 </html>

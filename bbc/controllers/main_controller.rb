@@ -188,8 +188,8 @@ get "/manager/managestock" do
   erb :"manager/managestock"
 end
 
-post "/manager/managestock" do
-  Managestock.update_product(
+post "/manager/updatestock" do
+  Products.update_product(
     params[:product_id],
     params[:product_name],
     params[:price],
