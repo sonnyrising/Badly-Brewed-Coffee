@@ -136,8 +136,8 @@ post "/user/feedback-page-submit" do
   @refund_reason = h(refund_text) unless refund_text.nil? 
 
   if @feedback_submitted
-    @feedback_text_error = "Please provide us with the issue" if @feedback_text.empty?
-    @refund_reason_error = "IF you picked 'No' then write \"No\" but if you picked \"Yes\" then please provide a valid reason for your refund request" if @refund_reason.empty?
+    @feedback_text_error = "Please provide us with the issue" if @feedback_text.nil?
+    @refund_reason_error = "IF you picked 'No' then write \"No\" but if you picked \"Yes\" then please provide a valid reason for your refund request" if @refund_reason.nil?
 
     erb :"user/feedback_page_submission"
   end
