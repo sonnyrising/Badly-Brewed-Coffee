@@ -1,9 +1,11 @@
 require 'sequel'
 require 'sqlite3'
-require_relative '../db/db'
+
+DB_PATH = File.expand_path('../../db/db.sqlite3', __FILE__)
+DB = Sequel.sqlite(DB_PATH)
 
 class Products < Sequel::Model(:Products)
-  ##Product Name
+  # Product Name
   def self.GetProductName(productId)
     return Products.where(ProductId: productId).get(:ProductName)
   end
@@ -12,7 +14,7 @@ class Products < Sequel::Model(:Products)
     Products.where(ProductId: productId).update(ProductName: productName)
   end
 
-  ##Product Price
+  # Product Price
   def self.GetPrice(productId)
     return Products.where(ProductId: productId).get(:Price)
   end
@@ -21,7 +23,7 @@ class Products < Sequel::Model(:Products)
     Products.where(ProductId: productId).update(Price: productPrice)
   end
 
-  ##Product Quantity
+  # Product Quantity
   def self.GetStockQuantity(productId)
     return Products.where(ProductId: productId).get(:StockQuantity)
   end
@@ -30,4 +32,13 @@ class Products < Sequel::Model(:Products)
     Products.where(ProductId: productId).update(StockQuantity: stockQuantity)
   end
 
+
+  # Update All
+  def self.update_product(productId, productName, price, stockQuantity)
+    Products.where(ProductId: productId).update(
+      ProductName: productName,
+      Price: price,
+      StockQuantity: stockQuantity
+    )
+  end
 end
