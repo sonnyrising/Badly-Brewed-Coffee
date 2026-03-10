@@ -129,13 +129,13 @@ end
 post "/user/feedback-page-submit" do
   @feedback_submitted = !params.empty?
 
-  raw_feedback = params["text_field"]
-  refund_text = params["text_field"]
+  raw_issue = params["issue"]
+  refund_text = params["reason"]
 
-  @feedback_text = h(raw_feedback) unless raw_feedback.nil?
-  @refund_reason = h(raw_suggestion) unless raw_suggestion.nil? 
+  @feedback_text = h(raw_issue) unless raw_issue.nil?
+  @refund_reason = h(refund_text) unless refund_text.nil? 
 
-  if @form_was_submitted
+  if @feedback_submitted
     @feedback_text_error = "Please provide us with the issue" if @feedback_text.empty?
     @refund_reason_error = "IF you picked 'No' then write \"No\" but if you picked \"Yes\" then please provide a valid reason for your refund request" if @refund_reason.empty?
 
