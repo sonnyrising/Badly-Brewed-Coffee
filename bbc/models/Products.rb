@@ -38,6 +38,7 @@ class Products < Sequel::Model(:Products)
     Products.where(ProductId: productId).update(
       ProductName: productName,
       Price: price,
-      StockQuantity: stockQuantity)
+      StockQuantity: stockQuantity
+    )
   end
 end
