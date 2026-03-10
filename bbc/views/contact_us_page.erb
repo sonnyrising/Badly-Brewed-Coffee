@@ -10,7 +10,7 @@
   <form method="post" action="/user/feedback-page-submit">
     <p style="color:white">Having a problem?</p>
       <input type="text" maxlength="500" size="90" placeholder="Type your message here...">
-      <% if !@feedback_text_error.nil? %>
+      <% if @feedback_text_error.nil? %>
         <p style="width: 25vw;height: 1vh;"> <%= @feedback_text_error %></p>
       <% end %>
     
@@ -23,7 +23,7 @@
 
     <p style="color:white">State your reason for the refund</p>
       <input type="text" maxlength="500" size="90" placeholder="Type your message here...">
-      <% if !@refund_reason_error.nil? %>
+      <% if @refund_reason_error.nil? %>
         <p style="width: 25vw;height: 1vh;"> <%= @refund_reason_error %></p>
       <% end %>
 
