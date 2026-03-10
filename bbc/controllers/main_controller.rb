@@ -66,6 +66,9 @@ end
 post "/register" do
   @form_was_submitted = !params.empty?
 
+  @user = Users.new
+  @user.load(params)
+
   @uname = params.fetch("uname","").strip
   @email = params.fetch("email","").strip
   @pword = params.fetch("pword","").strip
@@ -78,13 +81,15 @@ post "/register" do
     @email_error = "Please enter a valid email" unless str_email_address?(@email)
     @pword_match_error = "Passwords dont match" if @pword != @confirmpword
     @invalid_pword = "Password must contain contain lower and upper case letters, a digit, a special character and be at least 8 characters long" if !@pword.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[[:^alnum:]]).{8,}$/)
+    @taken_username = "That username is already taken, try a different one" if @user.compareUsername(@uname)
 
-    unless @uname_error.nil? && @email_error.nil? && @password_error.nil? && @confirmpassword_error.nil? && @pword_match_error.nil? && @invalid_pword.nil?
+    unless @uname_error.nil? && @email_error.nil? && @password_error.nil? && @confirmpassword_error.nil? && @pword_match_error.nil? && @invalid_pword.nil? && @taken_username.nil?
       @submission_error = "Please correct the errors below"
     end 
 
     if @submission_error.nil?
       session[:uname] = @uname
+      @user.save_changes
       redirect "/user/homepage"
     end 
   end 
@@ -124,13 +129,13 @@ end
 post "/user/feedback-page-submit" do
   @feedback_submitted = !params.empty?
 
-  raw_feedback = params["text_field"]
-  refund_text = params["text_field"]
+  raw_issue = params["issue"]
+  refund_text = params["reason"]
 
-  @feedback_text = h(raw_feedback) unless raw_feedback.nil?
-  @refund_reason = h(raw_suggestion) unless raw_suggestion.nil? 
+  @feedback_text = h(raw_issue) unless raw_issue.nil?
+  @refund_reason = h(refund_text) unless refund_text.nil? 
 
-  if @form_was_submitted
+  if @feedback_submitted
     @feedback_text_error = "Please provide us with the issue" if @feedback_text.empty?
     @refund_reason_error = "IF you picked 'No' then write \"No\" but if you picked \"Yes\" then please provide a valid reason for your refund request" if @refund_reason.empty?
 
@@ -140,10 +145,8 @@ end
 
 
 #------------------------------------- ADMIN ROUTES ---------------------------------
-$LOGIN_COUNT = 0
 
 get "/admin" do
-  @currentVisitCount = $LOGIN_COUNT
   erb :"admin/homepage"
 end
 
@@ -151,12 +154,20 @@ get "/admin/accounts" do
   erb :"admin/accounts"
 end
 
-get "/admin/account" do
+get "/admin/feedback" do
+  erb :"admin/feedback"
+end
+
+post "/admin/accounts/view" do
   erb :"admin/account"
 end
 
-get "/admin/feedback" do
-  erb :"admin/feedback"
+post "/admin/accounts/edit" do
+  erb :"admin/accountinfo"
+end
+
+post "/admin/accounts/delete" do
+  redirect "/admin"
 end
 
 #------------------------------------- MANAGER ROUTES -------------------------------

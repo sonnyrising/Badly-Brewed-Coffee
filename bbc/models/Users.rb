@@ -5,6 +5,10 @@ class Users < Sequel::Model
         return userId
     end
 
+    def self.GetUsername(userId)
+      return Users.where(UserId: userId).get(:Username)
+    end
+
     def self.ComparePassword(userId, password)
       database_password = Users.where(UserID: userId).get(:PassHash)
       if password == database_password
@@ -35,5 +39,22 @@ class Users < Sequel::Model
    def self.SetDaysSinceLastUse(userId)
       Users.where(UserId: userId).update(DaysSinceLastUse: 0)
    end 
+
+   def load(params)
+    self.Username = params.fetch("uname","").strip
+    self.Email = params.fetch("email","").strip
+    self.PassHash = params.fetch("pword","").strip
+    self.LoyaltyPoints = 0
+    self.DaysSinceLastUse = 0
+   end
+   
+   def compareUsername(username)
+    users = Users.all
+    users.each do |user|
+      return true if username == user.Username
+    end
+    return false
+   end
+
 
 end
