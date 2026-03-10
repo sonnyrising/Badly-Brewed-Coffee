@@ -2,7 +2,7 @@ require 'sinatra'
 require 'sqlite3'
 require 'json'
 
-require_relative "../models/ManageStock"
+require_relative "../models/Products"
 require_relative "../models/Users"
 
 set :public_folder, File.expand_path('../public', __dir__)
