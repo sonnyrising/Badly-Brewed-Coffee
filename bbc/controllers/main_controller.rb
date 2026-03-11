@@ -159,14 +159,17 @@ get "/admin/feedback" do
 end
 
 post "/admin/accounts/view" do
+  @userId = params[:userId]
   erb :"admin/account"
 end
 
 post "/admin/accounts/edit" do
+  @userId = params[:userId]
   erb :"admin/accountinfo"
 end
 
 post "/admin/accounts/delete" do
+  @userId = params[:userId]
   redirect "/admin"
 end
 
