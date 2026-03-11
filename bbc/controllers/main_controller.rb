@@ -49,6 +49,8 @@ post "/login" do
         session[:userId] = userId
         session[:uname] = @uname
         redirect "/user/homepage"
+      else
+        @matching_error = "Username or password are incorrect"
       end
     else  
       @matching_error = "Username or password are incorrect"

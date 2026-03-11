@@ -33,6 +33,8 @@ CREATE TABLE Feedbacks(
 CREATE TABLE Products(
   ProductId INTEGER PRIMARY KEY,
   ProductName TEXT,
+  ProductImage TEXT,
+  ProductDescription TEXT,
   Price FLOAT,
   StockQuantity INTEGER
 );
