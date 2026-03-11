@@ -30,6 +30,7 @@ post "/login" do
 
   @uname_error = @uname.empty? ? "Please enter a username" : nil
   @pword_error = @password.empty? ? "Please enter a password" : nil
+  @matching_error = nil
 
   if @uname == "manager" && @password == "manager"
     session[:uname] = @uname
@@ -49,6 +50,8 @@ post "/login" do
         session[:uname] = @uname
         redirect "/user/homepage"
       end
+    else  
+      @matching_error = "Username or password are incorrect"
     end
   end
  
@@ -159,17 +162,14 @@ get "/admin/feedback" do
 end
 
 post "/admin/accounts/view" do
-  @userId = params[:userId]
   erb :"admin/account"
 end
 
 post "/admin/accounts/edit" do
-  @userId = params[:userId]
   erb :"admin/accountinfo"
 end
 
 post "/admin/accounts/delete" do
-  @userId = params[:userId]
   redirect "/admin"
 end
 
