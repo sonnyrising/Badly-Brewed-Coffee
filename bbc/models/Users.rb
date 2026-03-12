@@ -9,6 +9,14 @@ class Users < Sequel::Model
       return Users.where(UserId: userId).get(:Username)
     end
 
+    def self.GetEmail(userId)
+      return Users.where(UserId: userId).get(:Email)
+    end
+
+    def self.GetInactivity(userId)
+      return Users.where(UserId: userId).get(:DaysSinceLastUse)
+    end
+
     def self.ComparePassword(userId, password)
       database_password = Users.where(UserID: userId).get(:PassHash)
       if password == database_password
@@ -56,6 +64,4 @@ class Users < Sequel::Model
     end
     return false
    end
-
-
 end

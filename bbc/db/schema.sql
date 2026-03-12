@@ -25,7 +25,9 @@ CREATE TABLE Transactions(
 CREATE TABLE Feedbacks(
   FeedbackId INTEGER PRIMARY KEY,
   UserId INTEGER,
-  Content TEXT,
+  IssueContent TEXT,
+  RefundRequest TEXT,
+  RefundReason TEXT,
   TicketNumber INTEGER,
   FOREIGN KEY (UserId) REFERENCES Users(UserId)
 );
