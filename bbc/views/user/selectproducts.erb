@@ -133,52 +133,17 @@
                   </form>
                 </div>
             </div>
-
             <div class="display-area">
                 <div class="product-inner-grid">
+                <% @products.each do |product| %>
                     <div class="product-box">
-                        <img src="/imgs/jorge%20bean.jpeg" alt="Coffee" class="product-image">
-                        <h3>Bean 1</h3>
-                        <p>Bean 1 description</p>
-                        <b>Bean 1 price</b>
+                        <img src="/imgs/<%= product.ProductImage %>" alt="Coffee" class="product-image">
+                        <h3><%= product.ProductName %></h3>
+                        <p><%= product.ProductDescription %></p>
+                        <b><%= product.Price %></b>
                         <button>Add to basket</button>
                     </div>
-                    <div class="product-box">
-                        <img src="/imgs/jorge%20bean.jpeg" alt="Coffee" class="product-image">
-                        <h3>Bean 2</h3>
-                        <p>Bean 2 description</p>
-                        <b>Bean 2 price</b>
-                        <button>Add to basket</button>
-                    </div>
-                    <div class="product-box">
-                        <img src="/imgs/jorge%20bean.jpeg" alt="Coffee" class="product-image">
-                        <h3>Bean 3</h3>
-                        <p>Bean 3 description</p>
-                        <b>Bean 3 price</b>
-                        <button>Add to basket</button>
-                    </div>
-
-                    <div class="product-box">
-                        <img src="/imgs/jorge%20bean.jpeg" alt="Coffee" class="product-image">
-                        <h3>Coffee 1</h3>
-                        <p>Coffee 1 description</p>
-                        <b>Coffee 1 price</b>
-                        <button>Add to basket</button>
-                    </div>
-                    <div class="product-box">
-                        <img src="/imgs/jorge%20bean.jpeg" alt="Coffee" class="product-image">
-                        <h3>Coffee 2</h3>
-                        <p>Coffee 2 description</p>
-                        <b>Coffee 2 price</b>
-                        <button>Add to basket</button>
-                    </div>
-                    <div class="product-box">
-                        <img src="/imgs/jorge%20bean.jpeg" alt="Coffee" class="product-image">
-                        <h3>Coffee 3</h3>
-                        <p>Coffee 3 description</p>
-                        <b>Coffee 3 price</b>
-                        <button>Add to basket</button>
-                    </div>
+                <% end %>
                 </div>
             </div>
         </div>

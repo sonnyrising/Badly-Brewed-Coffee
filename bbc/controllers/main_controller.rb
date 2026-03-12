@@ -1,7 +1,6 @@
 require 'sinatra'
 require 'sqlite3'
 require 'json'
-require 'digest'
 
 require_relative "../models/Products"
 require_relative "../models/Users"
@@ -45,8 +44,7 @@ post "/login" do
   else
     userId = Users.GetUserId(@uname)
     if !userId.nil?
-      @password_hash = Digest::SHA256.hexdigest(@password)
-      @password_validated = Users.ComparePassword(userId, @password_hash)
+      @password_validated = Users.ComparePassword(userId, @password)
       if @password_validated
         session[:userId] = userId
         session[:uname] = @uname
@@ -80,7 +78,6 @@ post "/register" do
   @email = params.fetch("email","").strip
   @pword = params.fetch("pword","").strip
   @confirmpword = params.fetch("confirmpword","").strip
-  @password_hash = Digest::SHA256.hexdigest(@password)
 
   if @form_was_submitted
     @uname_error = "Please enter a username" if @uname.empty?
@@ -119,6 +116,8 @@ get "/user/settings" do
 end
 
 get "/user/shop" do
+  @products = Products.all
+
     erb :"user/selectproducts"
 end
 
