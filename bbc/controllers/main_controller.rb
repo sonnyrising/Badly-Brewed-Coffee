@@ -216,6 +216,6 @@ get "/staff/register" do
   erb :"staff/employeeregisterpage"
 end
 
-get "/staffaccountview" do
+post "/staffaccountview" do
   erb :"staff/staffaccountview"
 end

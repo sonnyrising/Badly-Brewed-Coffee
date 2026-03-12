@@ -32,7 +32,7 @@
             <h1>Account listing:</h1>
             <div style="position:relative;top:3vh;">
               <% Users.map(:UserId).each do |userId| %>
-                <%= erb :"admin/accountwidget" , locals:{userId: userId} %>
+                <%= erb :"staff/accountwidget" , locals:{userId: userId} %>
                 <br>
               <% end %>
             </div>
