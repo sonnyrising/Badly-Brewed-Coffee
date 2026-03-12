@@ -47,3 +47,11 @@ CREATE TABLE Basket(
   Quantity INTEGER,
   OrderStatus TEXT
 );
+
+CREATE TABLE Staff(
+  StaffId INTEGER,
+  StaffUsername TEXT,
+  StaffPasswordHash TEXT,
+  EmployeeLevel TEXT,
+  EmploymentStatus TEXT
+)
