@@ -154,11 +154,22 @@ get "/admin" do
 end
 
 get "/admin/accounts" do
+  @shown_accounts = Users.map(:UserId)
   erb :"admin/accounts"
 end
 
 get "/admin/feedback" do
   erb :"admin/feedback"
+end
+
+post "/admin/accounts/filter" do
+  if !params[:'search-filter'].empty?
+    @shown_accounts = []
+    @shown_accounts << Users.where(Username: "#{params[:'search-filter']}").get(:UserId)
+    erb :"admin/accounts"
+  else
+    redirect "/admin/accounts"
+  end
 end
 
 post "/admin/accounts/view" do
