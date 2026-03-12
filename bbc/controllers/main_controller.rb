@@ -184,6 +184,26 @@ get "/manager/homepage" do
     erb :"manager/homepage"
 end
 
+get "/manager/coffeessold" do
+  erb :"manager/coffeessold"
+end
+
+get "/manager/beanssold" do
+  erb :"manager/beanssold"
+end
+
+get "/manager/freecoffeesredeemed" do
+  erb :"manager/freecoffeesredeemed"
+end
+
+get "/manager/topproducts" do
+  erb :"manager/topproducts"
+end
+
+get "/manager/topcustomers" do
+  erb :"manager/topcustomers"
+end
+
 get "/manager/managestock" do
   bean = Products.where(ProductId: 1).first
   if bean
@@ -191,11 +211,11 @@ get "/manager/managestock" do
     @product_name = bean[:ProductName]
     @stock = bean[:StockQuantity]
     @price = bean[:Price]
-  end
-
   erb :"manager/managestock"
+  end
 end
 
+#Updating Stock
 post "/manager/updatestock" do
   Products.update_product(
     params[:product_id],
@@ -205,6 +225,7 @@ post "/manager/updatestock" do
   )
   redirect "/manager/managestock"
 end
+
 
 #------------------------------------- STAFF ROUTES ---------------------------------
 
