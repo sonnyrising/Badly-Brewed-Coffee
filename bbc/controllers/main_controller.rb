@@ -137,18 +137,13 @@ end
 post "/user/feedback-page-submit" do
   @feedback_submitted = !params.empty?
 
-  raw_issue = params["issue"]
-  refund_text = params["reason"]
+  @feedback = Feedbacks.new
+  @feedback.load(params)
 
-  @feedback_text = h(raw_issue) unless raw_issue.nil?
-  @refund_reason = h(refund_text) unless refund_text.nil? 
+  @feedback_text = h(@feedback.IssueContent) 
+  @refund_reason = h(@feedback.RefundReason) 
 
-  if @feedback_submitted
-    @feedback_text_error = "Please provide us with the issue" if @feedback_text.nil?
-    @refund_reason_error = "IF you picked 'No' then write \"No\" but if you picked \"Yes\" then please provide a valid reason for your refund request" if @refund_reason.nil?
-
-    erb :"user/feedback_page_submission"
-  end
+  erb :"user/feedback_page_submission"
 end
 
 
