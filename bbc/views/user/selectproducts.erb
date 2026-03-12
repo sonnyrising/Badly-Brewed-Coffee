@@ -106,8 +106,8 @@
             <nav>
                 <ul>
                     <li><a class="smooth-link" href="/user/homepage">Dashboard</a></li>
-                    <li><a class="smooth-link" href="/">Basket</a></li>
-                    <li><a class="smooth-link" href="/feedback">Contact us</a></li>
+                    <li><a class="smooth-link" href="/user/basketpayment">Basket</a></li>
+                    <li><a class="smooth-link" href="/user/contact_us_page">Contact us</a></li>
                     <li><a class="smooth-link" href="/logout">Log Out</a></li>
                 </ul>
             </nav>
@@ -128,7 +128,7 @@
                 <h2 style="text-align: center; position: relative; top: 5vh;">Basket (<%= session[:numproducts] %>)</h2>
                 
                 <div style="position: relative; top: 100px; text-align: center;">
-                  <form action="/basketpayment" method="post">
+                  <form action="/user/basketpayment" method="post">
                     <button type="submit">Payment</button>
                   </form>
                 </div>

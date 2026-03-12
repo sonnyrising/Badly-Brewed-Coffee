@@ -130,25 +130,29 @@ get "/user/thankyoupage" do
     erb :"user/thankyoupage"
 end
 
-get "/user/contact-us" do
+get "/user/contact_us_page" do
   erb :"user/contact_us_page"
 end
+
+get "/user/feedback_page_submission" do
+  erb :"user/feedback_page_submission"
+end
+
+get "/user/basketpayment" do
+  erb :"user/basketpayment"
+end 
+
 
 post "/user/feedback-page-submit" do
   @feedback_submitted = !params.empty?
 
-  raw_issue = params["issue"]
-  refund_text = params["reason"]
+  @feedback = Feedbacks.new
+  @feedback.load(params)
 
-  @feedback_text = h(raw_issue) unless raw_issue.nil?
-  @refund_reason = h(refund_text) unless refund_text.nil? 
+  @feedback_text = h(@feedback.IssueContent) 
+  @refund_reason = h(@feedback.RefundReason) 
 
-  if @feedback_submitted
-    @feedback_text_error = "Please provide us with the issue" if @feedback_text.nil?
-    @refund_reason_error = "IF you picked 'No' then write \"No\" but if you picked \"Yes\" then please provide a valid reason for your refund request" if @refund_reason.nil?
-
-    erb :"user/feedback_page_submission"
-  end
+  erb :"user/feedback_page_submission"
 end
 
 
@@ -159,11 +163,22 @@ get "/admin" do
 end
 
 get "/admin/accounts" do
+  @shown_accounts = Users.map(:UserId)
   erb :"admin/accounts"
 end
 
 get "/admin/feedback" do
   erb :"admin/feedback"
+end
+
+post "/admin/accounts/filter" do
+  if !params[:'search-filter'].empty?
+    @shown_accounts = []
+    @shown_accounts << Users.where(Username: "#{params[:'search-filter']}").get(:UserId)
+    erb :"admin/accounts"
+  else
+    redirect "/admin/accounts"
+  end
 end
 
 post "/admin/accounts/view" do
