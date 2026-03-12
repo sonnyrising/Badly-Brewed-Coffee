@@ -136,13 +136,7 @@
             <div class="display-area">
                 <div class="product-inner-grid">
                 <% @products.each do |product| %>
-                    <div class="product-box">
-                        <img src="/imgs/<%= product.ProductImage %>" alt="Coffee" class="product-image">
-                        <h3><%= product.ProductName %></h3>
-                        <p><%= product.ProductDescription %></p>
-                        <b><%= product.Price %></b>
-                        <button>Add to basket</button>
-                    </div>
+                    <%= erb :"user/product", locals: { p: product } %>
                 <% end %>
                 </div>
             </div>
