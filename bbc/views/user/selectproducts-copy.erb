@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<head>
+    <link href="/css/GenericTheme.css" rel="stylesheet">
+    <title>Basket</title>
+    <style>
+
+      body, html {
+        margin: 0;
+        padding: 0;
+        height: 100v;
+        overflow:visible;
+      }
+
+      header {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 999;
+      }
+
+      button {
+      background-color: rgb(130 72 24);
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      margin: 40px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font: 16pt Helvetica, bold;
+      }
+
+      column-buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 50px;
+      margin-top: 50px;
+      }
+
+      .layout-grid {
+      display: grid;
+      grid-template-columns: 20vw 80vw;
+      height: 100vh;
+      }
+
+      .sidebar {
+      background-color: rgb(130 72 24);
+      height: 100vh;
+      padding: 15px;
+      box-shadow: 11px 5px 15px rgba(0, 0, 0, 0.3);
+      z-index: 100;
+      color: white;
+      }
+
+      .display-area {
+      background-image: url('/imgs/CoffeeBeansSplash.png');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      height: 100vh;
+      }
+
+      .product-box {
+      color: black;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(15px);
+      box-shadow: 0px 0px 20px 0px #0000007a;
+      border-radius: 30px;
+      text-align: center;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.3s ease;
+      }
+
+      .product-box:hover {
+      transform: scale(1.02);
+      }
+
+      .product-inner-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 30px;
+      width: 90%;
+      height: 80%;
+      margin: 5% auto;
+      }
+     
+      .product-image {
+      width: 100px;
+      height: 100px;
+      object-fit: cover; /* This crops the image to a perfect square */
+      border-radius: 15px; /* Matches the rounded look of your boxes */
+      margin-bottom: 15px;
+      }
+
+    </style>
+</head>
+<body>
+    <header>
+        <section class="header-bar">
+            <nav>
+                <ul>
+                    <li><a class="smooth-link" href="/user/homepage">Dashboard</a></li>
+                    <li><a class="smooth-link" href="/">Basket</a></li>
+                    <li><a class="smooth-link" href="/feedback">Contact us</a></li>
+                    <li><a class="smooth-link" href="/logout">Log Out</a></li>
+                </ul>
+            </nav>
+        </section>
+    </header>
+
+    <main>
+        <% @numproducts = 0 %> 
+        <% session[:numproducts] = @numproducts %>
+
+        <div class="layout-grid">
+            <div class="sidebar">
+                <a href="/user/homepage">
+                  <img src="/imgs/home.png" alt="Home" style="width:30px; height:30px;">
+                </a>
+                
+                <h1 style="text-align: center; position: relative; top: 5vh;">Shop</h1>
+                <h2 style="text-align: center; position: relative; top: 5vh;">Basket (<%= session[:numproducts] %>)</h2>
+                
+                <div style="position: relative; top: 100px; text-align: center;">
+                  <form action="/basketpayment" method="post">
+                    <button type="submit">Payment</button>
+                  </form>
+                </div>
+            </div>
+
+            <div class="display-area">
+                <div class="product-inner-grid">
+                    <div class="product-box">
+                        <img src="/imgs/jorge%20bean.jpeg" alt="Coffee" class="product-image">
+                        <h3>Bean 1</h3>
+                        <p>Bean 1 description</p>
+                        <b>Bean 1 price</b>
+                        <button>Add to basket</button>
+                    </div>
+                    <div class="product-box">
+                        <img src="/imgs/jorge%20bean.jpeg" alt="Coffee" class="product-image">
+                        <h3>Bean 2</h3>
+                        <p>Bean 2 description</p>
+                        <b>Bean 2 price</b>
+                        <button>Add to basket</button>
+                    </div>
+                    <div class="product-box">
+                        <img src="/imgs/jorge%20bean.jpeg" alt="Coffee" class="product-image">
+                        <h3>Bean 3</h3>
+                        <p>Bean 3 description</p>
+                        <b>Bean 3 price</b>
+                        <button>Add to basket</button>
+                    </div>
+
+                    <div class="product-box">
+                        <img src="/imgs/jorge%20bean.jpeg" alt="Coffee" class="product-image">
+                        <h3>Coffee 1</h3>
+                        <p>Coffee 1 description</p>
+                        <b>Coffee 1 price</b>
+                        <button>Add to basket</button>
+                    </div>
+                    <div class="product-box">
+                        <img src="/imgs/jorge%20bean.jpeg" alt="Coffee" class="product-image">
+                        <h3>Coffee 2</h3>
+                        <p>Coffee 2 description</p>
+                        <b>Coffee 2 price</b>
+                        <button>Add to basket</button>
+                    </div>
+                    <div class="product-box">
+                        <img src="/imgs/jorge%20bean.jpeg" alt="Coffee" class="product-image">
+                        <h3>Coffee 3</h3>
+                        <p>Coffee 3 description</p>
+                        <b>Coffee 3 price</b>
+                        <button>Add to basket</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer></footer>
+</body>
+</html>
