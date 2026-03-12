@@ -130,9 +130,18 @@ get "/user/thankyoupage" do
     erb :"user/thankyoupage"
 end
 
-get "/user/contact-us" do
+get "/user/contact_us_page" do
   erb :"user/contact_us_page"
 end
+
+get "/user/feedback_page_submission" do
+  erb :"user/feedback_page_submission"
+end
+
+get "/user/basketpayment" do
+  erb :"user/basketpayment"
+end 
+
 
 post "/user/feedback-page-submit" do
   @feedback_submitted = !params.empty?
