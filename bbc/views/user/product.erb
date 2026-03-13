@@ -5,10 +5,16 @@
   <h3><%= p.ProductName %></h3>
   <p><%= p.ProductDescription %></p>
   <b><%= p.Price %></b>
-  <select name="quantity">
-    <% (1..10).each do |q|%>
-      <option value="<%= q %>"><%= q %></option>
-    <% end %>
-  </select>
-  <button >Add to basket</button>
+  <form action="/user/shop" method="post">
+    <input type="hidden" name="productId" value="<%= p.ProductId %>">
+    <input type="hidden" name="userId" value="<%= session[:userId]%>">
+    <p><%= session[:userId] %>!</p>
+    <label for="quantity">Select a quantity</label>
+      <select name="quantity">
+        <% (1..10).each do |q|%>
+          <option value="<%= q %>"><%= q %></option>
+        <% end %>
+      </select>
+    <button type="submit">Add to basket</button>
+  </form>
 </div>

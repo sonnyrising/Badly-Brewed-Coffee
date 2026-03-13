@@ -13,13 +13,11 @@ CREATE TABLE Transactions(
   TransactionId INTEGER PRIMARY KEY,
   UserId INTEGER,
   ProductId INTEGER,
-  OrderId INTEGER,
   Quantity INTEGER,
   ItemPrice FLOAT,
   PaymentStatus TEXT,
   FOREIGN KEY (UserId) REFERENCES Users(UserId),
-  FOREIGN KEY (ProductId) REFERENCES Products(ProductId),
-  FOREIGN KEY (OrderId) REFERENCES Basket(OrderId)
+  FOREIGN KEY (ProductId) REFERENCES Products(ProductId)
 );
 
 CREATE TABLE Feedbacks(
@@ -44,8 +42,6 @@ CREATE TABLE Products(
 CREATE TABLE Basket(
   ProductId INTEGER, 
   UserId INTEGER,
-  ProductName TEXT,
-  Price FLOAT, 
   Quantity INTEGER,
   OrderStatus TEXT,
   FOREIGN KEY (UserId) REFERENCES Users(UserId),

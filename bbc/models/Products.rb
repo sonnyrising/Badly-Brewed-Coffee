@@ -1,8 +1,6 @@
 require 'sequel'
 require 'sqlite3'
-
-DB_PATH = File.expand_path('../../db/db.sqlite3', __FILE__)
-DB = Sequel.sqlite(DB_PATH)
+require_relative '../db/db'
 
 class Products < Sequel::Model(:Products)
   # Product Name
