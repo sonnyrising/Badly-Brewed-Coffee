@@ -7,7 +7,7 @@
         </style>
         <h3 style="margin-left: 10%;"><%= Users.GetUsername(userId) %></h3>
         <div style="display: grid; grid-template-columns: 5vw 5vw 5vw;position:absolute; right:5%">
-            <form method="post" action="/staff/staffaccountview/view">
+            <form method="post" action="/staff/account">
                 <button type="submit">View</button>
                 <input type="hidden" name="userId" value="<%= userId %>">
             </form>
