@@ -226,6 +226,12 @@ get "/staff/homepage" do
     erb :"staff/homepage"
 end
 
+post "/staff/selectproducts" do
+  @products = Products.all
+
+  erb :"staff/selectproducts"
+end
+
 get "/staff/register" do 
   erb :"staff/employeeregisterpage"
 end
@@ -257,5 +263,5 @@ post "/staff/staffaccountview/filter" do
 end
 
 post "/staff/view" do
-  erb :"staff/view"
+  erb :"staff/account"
 end

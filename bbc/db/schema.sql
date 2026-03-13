@@ -17,6 +17,7 @@ CREATE TABLE Transactions(
   Quantity INTEGER,
   ItemPrice FLOAT,
   PaymentStatus TEXT,
+  TransactionDate INTEGER,
   FOREIGN KEY (UserId) REFERENCES Users(UserId),
   FOREIGN KEY (ProductId) REFERENCES Products(ProductId),
   FOREIGN KEY (OrderId) REFERENCES Basket(OrderId)

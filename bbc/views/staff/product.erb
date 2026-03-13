@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+
+<div class="product-box">
+  <img src="/imgs/<%= p.ProductImage %>" alt="Coffee" class="product-image">
+  <h3><%= p.ProductName %></h3>
+  <p><%= p.ProductDescription %></p>
+  <b><%= p.Price %></b>
+  <select name="quantity">
+    <% (1..10).each do |q|%>
+      <option value="<%= q %>"><%= q %></option>
+    <% end %>
+  </select>
+  <button >Add to basket</button>
+</div>
