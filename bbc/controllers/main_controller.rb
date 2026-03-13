@@ -181,14 +181,39 @@ post "/admin/accounts/filter" do
 end
 
 post "/admin/accounts/view" do
+  @userId = params[:userId]
   erb :"admin/account"
 end
 
 post "/admin/accounts/edit" do
-  erb :"admin/accountinfo"
+  @userId = params[:userId]
+  erb :"admin/accountedit"
+end
+
+post "/admin/accounts/edit/update" do
+  userId = params[:'id-data']
+
+  if !params[:'username-data'].empty?
+    Users.where(UserId: userId).update(Username: "#{params[:'username-data']}")
+  end
+  if !params[:'email-data'].empty?
+    Users.where(UserId: userId).update(Email: "#{params[:'email-data']}")
+  end
+  if !params[:'loyaltypoint-data'].empty?
+    Users.where(UserId: userId).update(LoyaltyPoints: params[:'loyaltypoint-data'])
+  end
+  #if !params[:'address-data'].empty?
+  #  Users.where(UserId: userId).update(LoyaltyPoints: "#{params[:'username-data']}")
+  #end
+  if !params[:'inactivity-data'].empty?
+    Users.where(UserId: userId).update(DaysSinceLastUse: params[:'inactivity-data'])
+  end
+
+  redirect "/admin/accounts"
 end
 
 post "/admin/accounts/delete" do
+  @userId = params[:userId]
   redirect "/admin"
 end
 
