@@ -262,6 +262,10 @@ post "/staff/settings" do
   erb :"staff/settings"
 end
 
+get "/staff/settings" do
+  erb :"staff/settings"
+end
+
 post "/staff/staffaccountview/filter" do
   if !params[:'search-filter'].empty?
     @shown_accounts = []
