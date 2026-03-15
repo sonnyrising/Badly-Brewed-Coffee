@@ -7,6 +7,31 @@ class Basket < Sequel::Model(:Basket)
     self.OrderStatus = "null"
   end
 
+  def productExists(params)
+    user = params.fetch("userId", "")
+    product = params.fetch("productId", "")
+
+    return Basket.where(UserId: user, ProductId: product).first
+  end
+
+  def userCheck(params)
+    user = params.fetch("userId", "")
+    return Basket.where(UserId: user).first
+  end
+
+  def productCheck(params)
+    product = params.fetch("productId", "")
+    return Basket.where(ProductId: product).first
+  end
+
+  def updateQuantity(params)
+    user = params.fetch("userId", "")
+    product = params.fetch("productId", "")
+
+    quantity_p = Basket.where(UserId: user, ProductId: product).first
+    Basket.where(UserId: user, ProductId: product).update(Quantity: quantity_p.Quantity + (params.fetch("quantity", "")).to_i )
+  end
+
   def self.numOfProductsInBasket(userId)
     count = 0
     Basket.each do |product|
@@ -21,18 +46,9 @@ class Basket < Sequel::Model(:Basket)
     Basket.each do |b_product|
       if b_product.UserId == userId
         Products.each do |product|
-          if b_product.ProductId == product.ProductId 
-            if names.empty?
-              names << product.ProductName
-            else
-              names.each do |n|
-                if n == product.ProductName
-                  break
-                else
-                  names << product.ProductName
-                end
-              end
-            end
+          if product.ProductId == b_product.ProductId
+            names << product
+            break
           end
         end
       end
@@ -41,6 +57,18 @@ class Basket < Sequel::Model(:Basket)
     return names
   end
 
+  def self.getQuantityForUser(userId)
+    quantities = Array.new
+    Basket.each do |b_product|
+      if b_product.UserId == userId
+        quantities << b_product
+      end
+    end
+    return quantities
+  end
 
+  def clearBasket(userId)
+    Basket.where(UserId: userId).delete
+  end
   
 end

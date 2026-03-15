@@ -125,8 +125,16 @@ post "/user/shop" do
   @products = Products.all
   @basket = Basket.new
 
-  @basket.addToBasket(params)
-  @basket.save_changes
+  exists = @basket.productExists(params)
+  user_exists = @basket.userCheck(params)
+  product_exists = @basket.productCheck(params)
+
+  if exists.nil? || user_exists.nil? || product_exists.nil?
+    @basket.addToBasket(params)
+    @basket.save_changes
+  else
+    @basket.updateQuantity(params)
+  end
 
   erb :"user/selectproducts"
 end
