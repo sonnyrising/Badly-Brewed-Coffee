@@ -26,7 +26,7 @@ class Feedbacks < Sequel::Model
 
     def load(params)
       self.IssueContent = params.fetch("issue","").strip
-      self.RefundRequest = params.fetch("request","").strip
+      self.RefundRequest = (params.fetch("request","") == "Yes")
       self.RefundReason = params.fetch("reason","").strip
       self.TicketNumber = rand(1000..9999)
    end
