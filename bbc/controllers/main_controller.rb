@@ -208,7 +208,7 @@ post "/admin/feedback/delete" do
   feedbackId = params[:feedbackId]
   Feedbacks.where(FeedbackId: feedbackId).delete
 
-  redirect "/admin/feedbacks"
+  redirect "/admin/feedback"
 end
 
 post "/admin/accounts/create" do
