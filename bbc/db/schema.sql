@@ -17,8 +17,8 @@ CREATE TABLE Transactions(
   ItemPrice FLOAT,
   PaymentStatus TEXT,
   TransactionDate INTEGER,
-  FOREIGN KEY (UserId) REFERENCES Users(UserId),
-  FOREIGN KEY (ProductId) REFERENCES Products(ProductId)
+  FOREIGN KEY (UserId) REFERENCES Users(UserId) ON DELETE CASCADE,
+  FOREIGN KEY (ProductId) REFERENCES Products(ProductId) ON DELETE CASCADE
 );
 
 CREATE TABLE Feedbacks(
@@ -28,7 +28,7 @@ CREATE TABLE Feedbacks(
   RefundRequest TEXT,
   RefundReason TEXT,
   TicketNumber INTEGER,
-  FOREIGN KEY (UserId) REFERENCES Users(UserId)
+  FOREIGN KEY (UserId) REFERENCES Users(UserId) ON DELETE CASCADE
 );
 
 CREATE TABLE Products(
@@ -45,8 +45,8 @@ CREATE TABLE Basket(
   UserId INTEGER,
   Quantity INTEGER,
   OrderStatus TEXT,
-  FOREIGN KEY (UserId) REFERENCES Users(UserId),
-  FOREIGN KEY (ProductId) REFERENCES Products(ProductId)
+  FOREIGN KEY (UserId) REFERENCES Users(UserId) ON DELETE CASCADE,
+  FOREIGN KEY (ProductId) REFERENCES Products(ProductId) ON DELETE CASCADE
 );
 
 CREATE TABLE Staff(

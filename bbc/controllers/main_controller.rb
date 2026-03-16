@@ -231,8 +231,11 @@ post "/admin/accounts/edit/update" do
 end
 
 post "/admin/accounts/delete" do
-  @userId = params[:userId]
-  redirect "/admin"
+  userId = params[:userId]
+  Users.where(UserId: userId).delete
+  Transactions.where(UserId: userId).delete
+  Feedbacks.where(UserId: userId).delete
+  Basket.where(UserId: userId).delete
 end
 
 #------------------------------------- MANAGER ROUTES -------------------------------
