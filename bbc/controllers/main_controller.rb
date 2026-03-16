@@ -192,6 +192,29 @@ get "/admin/feedback" do
   erb :"admin/feedback"
 end
 
+post "/admin/accounts/create" do
+  erb :"admin/accountcreation"
+end
+
+post "/admin/accounts/create/submit" do
+  @userId = rand(100)
+  @password = BCrypt::Password.create("password")
+  if(params[:'type-data'] == "Staff")
+    Staff.insert(StaffId: @userId,StaffUsername: "#{params[:'username-data']}", StaffEmail: "#{params[:'email-data']}", StaffPasswordHash: @password, EmployeeLevel: 'Barista', EmploymentStatus: 1)
+  else
+    redirect "/admin/accounts"
+  end
+  redirect "/admin/accounts"
+end
+
+def validate_staff_id(userId)
+  return
+end
+
+def validate_user_id(userId)
+  return
+end
+
 post "/admin/accounts/filter" do
   if !params[:'search-filter'].empty?
     @shown_accounts = []

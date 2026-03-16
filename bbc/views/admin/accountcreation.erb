@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<head>
+    <link href="/css/GenericTheme.css" rel="stylesheet">
+    <title>Create account</title>
+    <style>
+      * body{
+        overflow:visible;
+      }
+    </style>
+
+</head>
+<body>
+    <header>
+      <nav>
+        <h1 style="color:black;float: left;margin-left: 1vw;;">Accounts</h1>
+        <ul style="position:absolute; top:1vh;">
+            <li><a href="/admin" class="smooth-link">Dashboard</a></li>
+            <li><a href="/admin" class="smooth-link">Orders</a></li>
+            <li><a href="/admin/accounts" class="smooth-link">Accounts</a></li>
+            <li><a href="/admin/feedback" class="smooth-link">Feedback</a></li>
+            <li><a href="/user/settings" class="smooth-link">Settings</a></li>
+            <li><a href="/" class="smooth-link">Log out</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div style="background-color: rgb(130 72 24); height: 100vh;">
+        <img src="/imgs/dashboard.png" alt="Dashboard" style="width: 100%;height: 100%;object-fit: fill;">
+
+        <div style="display: flex;flex-direction: row;flex-wrap:nowrap;justify-content: center;gap: 32px;height: 96vh;position: absolute;top: 10vh;left:50vw;transform:translateX(-50%);">
+          <div style="color: black;background: transparent;backdrop-filter: blur(15px);box-shadow: 0px 0px 20px 0px #0000007a;border-radius: 30px; text-align: center;width:94vw;align-items: center;">
+            <h1>Create new account</h1>
+            <form method="post" action="/admin/accounts/create/submit">
+                <div style="display: grid;grid-template-columns: 100%;gap: 1vh;text-align: left;" >
+                    <div style="display: grid; grid-template-columns: 2fr 1fr;">
+                        <b style="position:relative; padding-left: 10vw;">Account type:</b>
+                        <div>
+                            <input type="radio" id="staffoption" name="type-data" value=Staff>
+                            <label for="staffoption">Staff</label>
+                            <input type="radio" id="useroption" name="type-data" value=User>
+                            <label for="useroption">User</label>
+                        </div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 2fr 1fr;">
+                        <b style="position:relative; padding-left: 10vw;">Account username:</b>
+                        <input type="text" name="username-data">
+                    </div>
+                    <div style="display: grid; grid-template-columns: 2fr 1fr;">
+                        <b style="position:relative; padding-left: 10vw;">Account email:</b>
+                        <input type="text" name="email-data">
+                    </div>
+                    <div style="display: grid; grid-template-columns: 2fr 1fr;">
+                        <b style="position:relative; padding-left: 10vw;">Loyalty points:</b>
+                        <input type="text" name="loyaltypoint-data">
+                    </div>
+
+                    <button type="submit">Save</button>
+                </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+
+    </footer>
+</body>
