@@ -198,24 +198,35 @@ post "/admin/accounts/create" do
 end
 
 post "/admin/accounts/create/submit" do
-  @userId = rand(100)
+  @userId = 1
   @password = BCrypt::Password.create("password")
+  puts params[:'type-data']
   if(params[:'type-data'] == "Staff")
     puts "Creating a staff account!"
-    Staff.insert(StaffId: @userId,StaffUsername: "#{params[:'username-data']}", StaffEmail: "#{params[:'email-data']}", StaffPasswordHash: @password, EmployeeLevel: 'Barista', EmploymentStatus: 1)
+    @userId = validate_staff_id(@userId)
+    Staff.insert(StaffId: @userId, StaffUsername: "#{params[:'username-data']}", StaffEmail: "#{params[:'email-data']}", StaffPasswordHash: @password, EmployeeLevel: 'Barista', EmploymentStatus: 1)
   else
     puts "Creating a user account!"
+    @userId = validate_user_id(@userId)
     Users.insert(UserId: @userId, Username: "#{params[:'username-data']}", PassHash: @password, Email: "#{params[:'email-data']}", LoyaltyPoints: 0, DaysSinceLastUse: 0, Suspended: 0)
   end
   redirect "/admin/accounts"
 end
 
 def validate_staff_id(userId)
-  return
+  if Staff.where(StaffId: userId).empty?
+    return userId
+  else
+    validate_staff_id(userId += 1)
+  end
 end
 
 def validate_user_id(userId)
-  return
+  if Users.where(UserId: userId).empty?
+    return userId
+  else
+    validate_user_id(userId + 1)
+  end
 end
 
 post "/admin/accounts/filter" do
