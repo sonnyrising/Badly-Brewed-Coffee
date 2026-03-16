@@ -190,7 +190,25 @@ get "/admin/accounts" do
 end
 
 get "/admin/feedback" do
+  @shown_feedback = Feedbacks.map(:FeedbackId)
   erb :"admin/feedback"
+end
+
+post "/admin/feedback/filter" do
+  if !params[:'search-filter'].empty?
+    @shown_feedback = []
+    @shown_feedback << Feedbacks.where(FeedbackId: params[:'search-filter'].to_i).get(:FeedbackId)
+    erb :"admin/feedback"
+  else
+    redirect "/admin/feedback"
+  end
+end
+
+post "/admin/feedback/delete" do
+  feedbackId = params[:feedbackId]
+  Feedbacks.where(FeedbackId: feedbackId).delete
+
+  redirect "/admin/feedbacks"
 end
 
 post "/admin/accounts/create" do

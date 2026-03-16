@@ -13,3 +13,6 @@ INSERT INTO Products VALUES (5, 'Kenyan AA','Kenyan_AA.jpg', 'Strong start to yo
 INSERT INTO Products VALUES (6, 'Amazonian Blend','Amazonian_blend.jpeg', 'Feel the river flow',6.59, 398);
 
 INSERT INTO Transactions VALUES (1, 1, 1, 10, 12.99, "Complete", 16032026);
+
+INSERT INTO Feedbacks VALUES (1, 1, "I dislike the fact that BBC coffee has not released more BBC into the world.", "N", "", 1);
+INSERT INTO Feedbacks VALUES (2, 4, "I am scrumming right now. For no particular reason.", "N", "", 2);
