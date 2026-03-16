@@ -44,10 +44,17 @@ class Users < Sequel::Model
       return daysSinceLastUse
     end
 
-   def self.SetDaysSinceLastUse(userId)
+    def self.SetDaysSinceLastUse(userId)
       Users.where(UserId: userId).update(DaysSinceLastUse: 0)
-   end 
+    end
 
+    def self.isSuspended?(userId)
+      if Users.where(UserId: userId).get(:Suspended) == 1
+        return true
+      else
+        return false
+      end
+    end
 
    def load(params)
     self.Username = params.fetch("uname","").strip

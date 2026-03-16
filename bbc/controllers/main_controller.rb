@@ -232,6 +232,12 @@ end
 
 post "/admin/accounts/suspend" do
   @userId = params[:userId]
+  if !Users.isSuspended?(@userId)
+    Users.where(UserId: @userId).update(Suspended: 1)
+  else
+    Users.where(UserId: @userId).update(Suspended: 0)
+  end
+
   redirect "/admin/accounts"
 end
 
