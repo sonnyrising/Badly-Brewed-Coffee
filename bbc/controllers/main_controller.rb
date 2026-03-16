@@ -271,6 +271,15 @@ post "/admin/accounts/edit/update" do
   redirect "/admin/accounts"
 end
 
+post "/admin/accounts/edit/recover" do
+  userId = params[:'id-data']
+  @password = BCrypt::Password.create("password")
+
+  Users.where(UserId: userId).update(PassHash: @password)
+
+  redirect "/admin/accounts"
+end
+
 post "/admin/accounts/suspend" do
   @userId = params[:userId]
   if !Users.isSuspended?(@userId)
