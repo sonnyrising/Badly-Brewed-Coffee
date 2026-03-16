@@ -202,7 +202,7 @@ post "/admin/accounts/create/submit" do
   if(params[:'type-data'] == "Staff")
     Staff.insert(StaffId: @userId,StaffUsername: "#{params[:'username-data']}", StaffEmail: "#{params[:'email-data']}", StaffPasswordHash: @password, EmployeeLevel: 'Barista', EmploymentStatus: 1)
   else
-    redirect "/admin/accounts"
+    Users.insert(UserId: @userId, Username: "#{params[:'username-data']}", PassHash: @password, Email: "#{params[:'email-data']}", LoyaltyPoints: 0, DaysSinceLastUse: 0, Suspended: 0)
   end
   redirect "/admin/accounts"
 end
