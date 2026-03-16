@@ -11,3 +11,5 @@ INSERT INTO Products VALUES (3, 'Colombian Supremo', 'Colombian_Supremo.webp','A
 INSERT INTO Products VALUES (4, 'Guatemalan Antigua', 'Guatemalan_Antigua.webp','Makes you taste nostalgia',7.99, 112);
 INSERT INTO Products VALUES (5, 'Kenyan AA','Kenyan_AA.jpg', 'Strong start to your morning',10.99, 400);
 INSERT INTO Products VALUES (6, 'Amazonian Blend','Amazonian_blend.jpeg', 'Feel the river flow',6.59, 398);
+
+INSERT INTO Transactions VALUES (1, 1, 1, 10, 12.99, "Complete", 16032026);
