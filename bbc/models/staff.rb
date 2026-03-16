@@ -8,7 +8,14 @@ class Staff < Sequel::Model
     return Staff.where(StaffId: staffId).get(:StaffUsername)
   end
 
+<<<<<<< HEAD
   def self.GetEmail(staffId)
     return Staff.where(StaffId: staffId).get(:StaffEmail)
   end
 end    
+=======
+    def self.GetEmail(staffId)
+      return Staff.where(StaffId: staffId).get(:StaffEmail)
+    end
+end
+>>>>>>> ebf24c0 (fixed staff database issue)

@@ -24,13 +24,3 @@ slice-2 {
 background-color: blue;
 transform: rotate(90deg) rotate(45deg);
 }
-
-slice-3 {
-background-color: green;
-transform: rotate(135deg) rotate(90deg);
-}
-
-slice-4 {
-background-color: red;
-transform: rotate(225deg) rotate(135deg);
-}

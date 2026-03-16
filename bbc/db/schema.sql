@@ -50,7 +50,7 @@ CREATE TABLE Basket(
   FOREIGN KEY (ProductId) REFERENCES Products(ProductId) ON DELETE CASCADE
 );
 
-CREATE TABLE Staff(
+CREATE TABLE Staffs(
   StaffId INTEGER,
   StaffUsername TEXT,
   StaffEmail TEXT,
