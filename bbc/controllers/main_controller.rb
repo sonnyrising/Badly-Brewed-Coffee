@@ -236,6 +236,8 @@ post "/admin/accounts/delete" do
   Transactions.where(UserId: userId).delete
   Feedbacks.where(UserId: userId).delete
   Basket.where(UserId: userId).delete
+
+  redirect "/admin/accounts"
 end
 
 #------------------------------------- MANAGER ROUTES -------------------------------
