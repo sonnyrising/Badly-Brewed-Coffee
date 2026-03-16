@@ -230,6 +230,11 @@ post "/admin/accounts/edit/update" do
   redirect "/admin/accounts"
 end
 
+post "/admin/accounts/suspend" do
+  @userId = params[:userId]
+  redirect "/admin/accounts"
+end
+
 post "/admin/accounts/delete" do
   userId = params[:userId]
   Users.where(UserId: userId).delete

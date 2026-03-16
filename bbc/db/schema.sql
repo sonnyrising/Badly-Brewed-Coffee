@@ -6,7 +6,8 @@ CREATE TABLE Users(
   PassHash TEXT,
   Email TEXT,
   LoyaltyPoints INTEGER,
-  DaysSinceLastUse INTEGER
+  DaysSinceLastUse INTEGER,
+  Suspended INTEGER
 );
 
 CREATE TABLE Transactions(

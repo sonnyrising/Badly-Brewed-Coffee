@@ -12,13 +12,17 @@
             }
         </style>
         <h3 style="margin-left: 10%;"><%= Users.GetUsername(userId) %></h3>
-        <div style="display: grid; grid-template-columns: 3vw 3vw 3vw;position:absolute; right:5%">
+        <div style="display: grid; grid-template-columns: 3vw 3vw 5vw 3vw;position:absolute; right:5%">
             <form method="post" action="/admin/accounts/view">
                 <button type="submit" class="view-button">View</button>
                 <input type="hidden" name="userId" value="<%= userId %>">
             </form>
             <form method="post" action="/admin/accounts/edit">
                 <button type="submit" class="edit-button">Edit</button>
+                <input type="hidden" name="userId" value="<%= userId %>">
+            </form>
+            <form method="post" action="/admin/accounts/suspend">
+                <button type="submit" class="delete-button">Suspend</button>
                 <input type="hidden" name="userId" value="<%= userId %>">
             </form>
             <form method="post" action="/admin/accounts/delete">
