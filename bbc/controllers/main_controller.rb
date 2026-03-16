@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'sqlite3'
 require 'json'
+require 'bcrypt'
 
 require_relative "../models/Products"
 require_relative "../models/Users"
@@ -200,8 +201,10 @@ post "/admin/accounts/create/submit" do
   @userId = rand(100)
   @password = BCrypt::Password.create("password")
   if(params[:'type-data'] == "Staff")
+    puts "Creating a staff account!"
     Staff.insert(StaffId: @userId,StaffUsername: "#{params[:'username-data']}", StaffEmail: "#{params[:'email-data']}", StaffPasswordHash: @password, EmployeeLevel: 'Barista', EmploymentStatus: 1)
   else
+    puts "Creating a user account!"
     Users.insert(UserId: @userId, Username: "#{params[:'username-data']}", PassHash: @password, Email: "#{params[:'email-data']}", LoyaltyPoints: 0, DaysSinceLastUse: 0, Suspended: 0)
   end
   redirect "/admin/accounts"
