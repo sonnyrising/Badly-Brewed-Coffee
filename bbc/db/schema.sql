@@ -53,7 +53,8 @@ CREATE TABLE Basket(
 CREATE TABLE Staff(
   StaffId INTEGER,
   StaffUsername TEXT,
+  StaffEmail TEXT,
   StaffPasswordHash TEXT,
   EmployeeLevel TEXT,
-  EmploymentStatus TEXT
+  EmploymentStatus INTEGER
 )
