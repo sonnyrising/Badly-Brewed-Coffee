@@ -159,6 +159,10 @@ get "/user/basketpayment" do
   erb :"user/basketpayment"
 end 
 
+post "/user/basketpayment" do
+  erb :"user/basketpayment"
+end 
+
 
 post "/user/feedback-page-submit" do
   @feedback_submitted = !params.empty?
