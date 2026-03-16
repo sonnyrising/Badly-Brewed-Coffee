@@ -105,8 +105,9 @@
         <section class="header-bar">
             <nav>
                 <ul>
-                    <li><a class="smooth-link" href="/staff/homepage">Dashboard</a></li>
-                    <li><a class="smooth-link" href="/staff/basketpayment">Basket</a></li>
+                    <li><a class="smooth-link" href="/user/homepage">Dashboard</a></li>
+                    <li><a class="smooth-link" href="/user/basketpayment">Basket</a></li>
+                    <li><a class="smooth-link" href="/user/contact_us_page">Contact us</a></li>
                     <li><a class="smooth-link" href="/logout">Log Out</a></li>
                 </ul>
             </nav>
@@ -114,9 +115,6 @@
     </header>
 
     <main>
-        <% @numproducts = 0 %> 
-        <% session[:numproducts] = @numproducts %>
-
         <div class="layout-grid">
             <div class="sidebar">
                 <a href="/user/homepage">
@@ -124,9 +122,18 @@
                 </a>
                 
                 <h1 style="text-align: center; position: relative; top: 5vh;">Shop</h1>
-                <h2 style="text-align: center; position: relative; top: 5vh;">Basket (<%= session[:numproducts] %>)</h2>
+                <h2 style="text-align: center; position: relative; top: 5vh;">Basket (<%= Basket.numOfProductsInBasket(session[:userId]) %>)</h2>
                 
                 <div style="position: relative; top: 100px; text-align: center;">
+                  <% (Basket.getProductNamesForUser(session[:userId])).each do |p| %>
+                    <p><%= p.ProductName %></p>
+                    <% (Basket.getQuantityForUser(session[:userId])).each do |q| %>
+                      <% if q.ProductId == p.ProductId %>
+                        <p>( <%= q.Quantity %> )</p>
+                      <% end %>
+                    <% end %>
+                    </br>
+                  <% end %>
                   <form action="/user/basketpayment" method="post">
                     <button type="submit">Payment</button>
                   </form>

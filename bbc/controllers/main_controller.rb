@@ -315,6 +315,14 @@ get "/staff/settings" do
   erb :"staff/settings"
 end
 
+post "/staff/basketpayment" do
+  erb :"staff/basketpayment"
+end
+
+post "/staff/thankyoupage" do
+  erb :"staff/thankyoupage"
+end
+
 post "/staff/staffaccountview/filter" do
   if !params[:'search-filter'].empty?
     @shown_accounts = []
