@@ -174,6 +174,9 @@ post "/user/basketpayment" do
   erb :"user/basketpayment"
 end
 
+post "/thankyoupage" do
+  erb :"user/thankyoupage"
+end
 
 post "/user/feedback-page-submit" do
   @feedback_submitted = !params.empty?
