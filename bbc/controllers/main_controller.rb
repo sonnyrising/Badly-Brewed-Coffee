@@ -190,6 +190,22 @@ get "/admin/accounts" do
   erb :"admin/accounts"
 end
 
+get "/admin/views" do
+  erb :'admin/viewselection'
+end
+
+post "/admin/views/manager" do
+  erb :'manager/homepage'
+end
+
+post "/admin/views/barista" do
+  erb :'staff/homepage'
+end
+
+post "/admin/views/user" do
+  erb :'user/homepage'
+end
+
 get "/admin/feedback" do
   @shown_feedback = Feedbacks.map(:FeedbackId)
   erb :"admin/feedback"

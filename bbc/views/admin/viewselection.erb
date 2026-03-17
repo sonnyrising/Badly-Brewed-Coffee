@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<head>
+    <link href="/css/GenericTheme.css" rel="stylesheet">
+    <title>Views</title>
+    <style>
+      * body{
+        overflow:visible;
+      }
+    </style>
+
+</head>
+<body>
+    <header>
+        <nav>
+        <h1 style="color:black;float: left;margin-left: 1vw;;">Feedback</h1>
+        <ul style="position:absolute; top:1vh;">
+            <li><a href="/admin" class="smooth-link">Dashboard</a></li>
+            <li><a href="/admin/views" class="smooth-link">Views</a></li>
+            <li><a href="/admin" class="smooth-link">Orders</a></li>
+            <li><a href="/admin/accounts" class="smooth-link">Accounts</a></li>
+            <li><a href="/admin/feedback" class="smooth-link">Feedback</a></li>
+            <li><a href="/user/settings" class="smooth-link">Settings</a></li>
+            <li><a href="/" class="smooth-link">Log out</a></li>
+        </ul>
+        </nav>
+    </header>
+    <main>
+      <div style="background-color: rgb(130 72 24); height: 100vh;">
+        <img src="/imgs/dashboard.png" alt="Dashboard" style="width: 100%;height: 100%;object-fit: fill;">
+
+        <div style="display: flex;flex-direction: row;flex-wrap:nowrap;justify-content: center;gap: 32px;height: 85vh;position: absolute;top: 10vh;left:50vw;transform:translateX(-50%);">
+          <div style="color: black;background: transparent;backdrop-filter: blur(15px);box-shadow: 0px 0px 20px 0px #0000007a;border-radius: 30px; text-align: center;width:94vw;">
+            <h1>Views:</h1>
+            <div style="position:relative;top:3vh;">
+                <style>
+                    .view-button:hover{
+                        background-color: rgb(116, 255, 94);
+                    }
+                </style>
+                <div style="display: flex;flex-direction: row;background: transparent;backdrop-filter: blur(15px);box-shadow: 0px 0px 20px 0px #0000007a;border-radius:30px;width:94vw;height:5vh;overflow-y:auto;">
+                  <h3 style="margin-left: 10%;">Manager</h3>
+                  <div style="display: grid; grid-template-columns: 3vw 3vw 5vw 3vw;position:absolute; right:5%">
+                    <form method="post" action="/admin/views/manager">
+                      <button type="submit" class="view-button">View</button>
+                    </form>
+                  </div>
+                </div>
+                <br>
+                <div style="display: flex;flex-direction: row;background: transparent;backdrop-filter: blur(15px);box-shadow: 0px 0px 20px 0px #0000007a;border-radius:30px;width:94vw;height:5vh;overflow-y:auto;">
+                  <h3 style="margin-left: 10%;">Barista</h3>
+                  <div style="display: grid; grid-template-columns: 3vw 3vw 5vw 3vw;position:absolute; right:5%">
+                    <form method="post" action="/admin/views/barista">
+                      <button type="submit" class="view-button">View</button>
+                    </form>
+                  </div>
+                </div>
+                <br>
+                <div style="display: flex;flex-direction: row;background: transparent;backdrop-filter: blur(15px);box-shadow: 0px 0px 20px 0px #0000007a;border-radius:30px;width:94vw;height:5vh;overflow-y:auto;">
+                  <h3 style="margin-left: 10%;">User</h3>
+                  <div style="display: grid; grid-template-columns: 3vw 3vw 5vw 3vw;position:absolute; right:5%">
+                    <form method="post" action="/admin/views/user">
+                      <button type="submit" class="view-button">View</button>
+                    </form>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+
+    </footer>
+</body>
