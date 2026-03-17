@@ -22,6 +22,7 @@ end
 #------------------------------ LOGIN AND REGISTER -------------------------------
 
 get "/login" do
+  session.clear
   erb :loginpage
 end
 
@@ -49,7 +50,7 @@ post "/login" do
       if @password_validated
         session[:userId] = userId
         session[:uname] = @uname
-        redirect "/user/homepage"
+        redirect "/user/homepage" unless !session[:userId]
       else
         @matching_error = "Username or password are incorrect"
       end
