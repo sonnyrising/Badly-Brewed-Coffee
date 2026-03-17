@@ -17,9 +17,17 @@ class Users < Sequel::Model
       return Users.where(UserId: userId).get(:DaysSinceLastUse)
     end
 
+    def self.validate_password(hashed_password, plain_password)
+      begin
+        bcrypt_password = BCrypt::Password.new(hashed_password) == plain_password
+      rescue BCrypt::Errors::InvalidHash
+        false
+      end
+    end
+
     def self.ComparePassword(userId, password)
       database_password = Users.where(UserID: userId).get(:PassHash)
-      if password == database_password
+      if validate_password(database_password, password)
         return true
       else
         return false
