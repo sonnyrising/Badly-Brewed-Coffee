@@ -39,6 +39,15 @@ class Products < Sequel::Model(:Products)
     Products.where(ProductId: productId).update(ProductImage: productImage)
   end
 
+  # Product Description
+  def self.GetProductDescription(productId)
+    return Products.where(ProductId: productId).get(:ProductDescription)
+  end
+
+  def self.SetProductDescription(productId, productDescription)
+    Products.where(ProductId: productId).update(ProductDescription: productDescription)
+  end
+
 
   # Update All
   def self.update_product(productId, productName, price, stockQuantity)

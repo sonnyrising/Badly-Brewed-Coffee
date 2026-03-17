@@ -378,18 +378,31 @@ get "/manager/managestock" do
   erb :"manager/managestock"
 end
 
+
+
+
 post '/manager/updatestock' do
   product = Products[params['product_id']]
+  # Sanitise the input before updating the database
+  name = sanitise_string(params['product_name'])
+  stock = sanitise_int(params['product_stock'])
+  price = sanitise_price(params['product_price'])
+  image = sanitise_string(params['product_image'])
+  description = sanitise_string(params['product_description'])
 
-  if product
-    product.update(
-      ProductName: params['product_name'],
-      StockQuantity: params['product_stock'],
-      Price: params['product_price'],
-      ProductImage: params['product_image'],
-      ProductsDescription: params['product_description']
-    )
+  # Check all inputs are valid
+  if name && stock && price && image && description
+    if product
+      product.update(
+        ProductName: params['product_name'],
+        StockQuantity: params['product_stock'],
+        Price: params['product_price'],
+        ProductImage: params['product_image'],
+        ProductDescription: params['product_description']
+      )
+    end
   end
+
 
   redirect '/manager/managestock'
 end
@@ -413,6 +426,8 @@ end
 get "/manager/topproducts" do
   erb :"manager/topproducts"
 end
+
+
 
 #------------------------------------- STAFF ROUTES ---------------------------------
 
