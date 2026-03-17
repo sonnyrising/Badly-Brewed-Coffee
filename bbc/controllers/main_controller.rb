@@ -348,6 +348,26 @@ post "/manager/updatestock" do
   redirect "/manager/managestock"
 end
 
+get "/manager/beanssold" do
+  erb :"manager/beanssold"
+end
+
+get "/manager/coffeessold" do
+  erb :"manager/coffeessold"
+end
+
+get "/manager/freecoffeesredeemed" do
+  erb :"manager/freecoffeesredeemed"
+end
+
+get "/manager/topcustomers" do
+  erb :"manager/topcustomers"
+end
+
+get "/manager/topproducts" do
+  erb :"manager/topproducts"
+end
+
 #------------------------------------- STAFF ROUTES ---------------------------------
 
 get "/staff/homepage" do
