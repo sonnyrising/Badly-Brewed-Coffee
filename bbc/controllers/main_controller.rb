@@ -11,7 +11,7 @@ set :views, File.expand_path('../views', __dir__)
 
 #------------------------------ OPEN / CLOSE SESSION -------------------------------
 
-get "/landingpage" do 
+get "/landingpage" do
   erb :landingpage
 end
 
@@ -54,11 +54,11 @@ post "/login" do
       else
         @matching_error = "Username or password are incorrect"
       end
-    else  
+    else
       @matching_error = "Username or password are incorrect"
     end
   end
- 
+
   erb :loginpage
 end
 
@@ -92,14 +92,14 @@ post "/register" do
 
     unless @uname_error.nil? && @email_error.nil? && @password_error.nil? && @confirmpassword_error.nil? && @pword_match_error.nil? && @invalid_pword.nil? && @taken_username.nil?
       @submission_error = "Please correct the errors below"
-    end 
+    end
 
     if @submission_error.nil?
       session[:uname] = @uname
       @user.save_changes
       redirect "/user/homepage"
-    end 
-  end 
+    end
+  end
 
   erb :registerpage
 end
@@ -159,11 +159,11 @@ end
 
 get "/user/basketpayment" do
   erb :"user/basketpayment"
-end 
+end
 
 post "/user/basketpayment" do
   erb :"user/basketpayment"
-end 
+end
 
 
 post "/user/feedback-page-submit" do
@@ -172,8 +172,8 @@ post "/user/feedback-page-submit" do
   @feedback = Feedbacks.new
   @feedback.load(params)
 
-  @feedback_text = h(@feedback.IssueContent) 
-  @refund_reason = h(@feedback.RefundReason) 
+  @feedback_text = h(@feedback.IssueContent)
+  @refund_reason = h(@feedback.RefundReason)
 
   erb :"user/feedback_page_submission"
 end
@@ -327,25 +327,25 @@ get "/manager/homepage" do
 end
 
 get "/manager/managestock" do
-  bean = Products.where(ProductId: 1).first
-  if bean
-    @product_id = bean[:ProductId]
-    @product_name = bean[:ProductName]
-    @stock = bean[:StockQuantity]
-    @price = bean[:Price]
-  end
+  @products = Products.all
 
   erb :"manager/managestock"
 end
 
-post "/manager/updatestock" do
-  Products.update_product(
-    params[:product_id],
-    params[:product_name],
-    params[:price],
-    params[:stock]
-  )
-  redirect "/manager/managestock"
+post '/manager/updatestock' do
+  product = Products[params['product_id']]
+
+  if product
+    product.update(
+      ProductName: params['product_name'],
+      StockQuantity: params['product_stock'],
+      Price: params['product_price'],
+      ProductImage: params['product_image'],
+      ProductsDescription: params['product_description']
+    )
+  end
+
+  redirect '/manager/managestock'
 end
 
 get "/manager/beanssold" do
@@ -380,7 +380,7 @@ post "/staff/selectproducts" do
   erb :"staff/selectproducts"
 end
 
-get "/staff/register" do 
+get "/staff/register" do
   erb :"staff/employeeregisterpage"
 end
 
