@@ -57,6 +57,13 @@ class Basket < Sequel::Model(:Basket)
     return names
   end
 
+  def self.RemoveItem(params)
+    user = params.fetch("userId", "")
+    product = params.fetch("productId", "")
+    basket_item = Basket.where(UserId: user, ProductId: product)
+    basket_item.destroy
+  end
+  
   def self.getQuantityForUser(userId)
     quantities = Array.new
     Basket.each do |b_product|

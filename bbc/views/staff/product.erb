@@ -1,19 +1,26 @@
 <!DOCTYPE html>
-
-<div class="product-box">
-  <img src="/imgs/<%= p.ProductImage %>" alt="Coffee" class="product-image">
-  <h3><%= p.ProductName %></h3>
-  <p><%= p.ProductDescription %></p>
-  <b><%= p.Price %></b>
-  <form action="/staff/selectproducts" method="post">
-    <input type="hidden" name="productId" value="<%= p.ProductId %>">
-    <input type="hidden" name="userId" value="<%= session[:userId]%>">
-    <label for="quantity">Select a quantity</label>
-      <select name="quantity">
-        <% (1..10).each do |q|%>
-          <option value="<%= q %>"><%= q %></option>
-        <% end %>
-      </select>
-    <button type="submit">Add to basket</button>
-  </form>
-</div>
+<% if p.GetStockQuantity(p.ProductId) > 0 %>
+  <div class="product-box">
+    <img src="/imgs/<%= p.ProductImage %>" alt="Coffee" class="product-image">
+    <h3><%= p.ProductName %></h3>
+    <p><%= p.ProductDescription %></p>
+    <b><%= p.Price %></b>
+    <form action="/staff/selectproducts" method="post">
+      <input type="hidden" name="productId" value="<%= p.ProductId %>">
+      <input type="hidden" name="userId" value="<%= session[:userId]%>">
+      <label for="quantity">Select a quantity</label>
+        <select name="quantity">
+          <% if p.GetStockQuantity(p.ProductId) < 10 %>
+            <% (1..p.GetStockQuantity(p.ProductId)).each do |q|%>
+              <option value="<%= q %>"><%= q %></option>
+            <% end %>
+          <% else %>
+            <% (1..10).each do |q|%>
+              <option value="<%= q %>"><%= q %></option>
+            <% end %>
+          <% end %>
+        </select>
+      <button type="submit">Add to basket</button>
+    </form>
+  </div>
+<% end %>

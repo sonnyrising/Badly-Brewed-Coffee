@@ -128,12 +128,15 @@
                   <% (Basket.getProductNamesForUser(session[:userId])).each do |p| %>
                     <p><%= p.ProductName %></p>
                     <% (Basket.getQuantityForUser(session[:userId])).each do |q| %>
-                      <% if q.ProductId == p.ProductId %>
+                      <% if q.ProductId == p.ProductId%>
                         <p>( <%= q.Quantity %> )</p>
                       <% end %>
                     <% end %>
                     </br>
-                  <% end %>
+                  <a href="/staff/removefrombasket">
+                    <img src="/imgs/bin.jpeg" alt="Bin" style="width:30px; height:30px;">
+                  </a>
+                <% end %>
                   <form action="/user/basketpayment" method="post">
                     <button type="submit">Payment</button>
                   </form>

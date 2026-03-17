@@ -20,10 +20,12 @@ end
 #------------------------------ OPEN / CLOSE SESSION -------------------------------
 
 get "/landingpage" do
+  session.clear
   erb :landingpage
 end
 
 get "/" do
+  session.clear
   redirect "/landingpage"
 end
 
@@ -515,4 +517,9 @@ end
 
 post "/staff/view" do
   erb :"staff/account"
+end
+
+get "/staff/removefrombasket" do
+  Basket.RemoveItem(session[:userId], @productId)
+  erb :"/staff/selectproducts"
 end
