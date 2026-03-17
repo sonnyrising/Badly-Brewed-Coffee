@@ -427,7 +427,33 @@ get "/manager/topproducts" do
   erb :"manager/topproducts"
 end
 
+# Helper Methods to sanitise the database entries
+def sanitise_price(input)
+  # Ensure the input is a number
+  if (input.to_f.to_s == input) || (input.to_i.to_s == input)
+    return '%.2f' % input.to_f
+  else
+    return false
+  end
+end
 
+def sanitise_int(input)
+  # Ensure the input is an integer
+  if (input.to_i.to_s == input)
+    return input.to_i
+  else
+    return false
+  end
+end
+
+def sanitise_string(input)
+  # Check for any SQL injection attempts
+  if (input.include?("'") || input.include?('"') || input.include?(";") || input.include?("="))
+    return false
+  else
+    return input
+  end
+end
 
 #------------------------------------- STAFF ROUTES ---------------------------------
 
