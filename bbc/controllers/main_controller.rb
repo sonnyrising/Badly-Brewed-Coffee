@@ -122,6 +122,10 @@ get "/user/homepage" do
     erb :"user/homepage"
 end
 
+post "/user/homepage" do
+    erb :"user/homepage"
+end
+
 get "/user/settings" do
     erb :"user/settings"
 end
