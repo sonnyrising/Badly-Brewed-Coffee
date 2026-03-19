@@ -130,6 +130,8 @@
                     <% (Basket.getQuantityForUser(session[:userId])).each do |q| %>
                       <% if q.ProductId == p.ProductId %>
                         <p>( <%= q.Quantity %> )</p>
+                        <button type="button">+</button>
+                        <button type="button">-</button>
                       <% end %>
                     <% end %>
                     </br>
