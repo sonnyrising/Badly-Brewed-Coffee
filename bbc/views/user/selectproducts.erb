@@ -124,9 +124,10 @@
     }
 
     .sidebar-item {
-      display: flex;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: 1fr auto auto;
       align-items: center;
+      gap: 10px;
       padding: 10px;
       margin-bottom: 8px;
       background: rgba(255, 255, 255, 0.15);
@@ -141,6 +142,21 @@
       border-radius: 10px;
       font-weight: bold;
       font-size: 0.8em;
+    }
+    .qty-btn{
+      padding: 4px 8px;
+      margin: 0;
+      font-size: 12px;
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      background-color: rbg(130 72 24);
+      color: white;
+      cursor: pointer;
+    }
+    .buttons{
+      display: flex;
+      gap: 5px;
     }
     </style>
 </head>
@@ -180,6 +196,18 @@
                 <% (Basket.getProductNamesForUser(session[:userId])).each do |p| %>
                   <div class="sidebar-item">
                     <span style="font-size: 0.9em; font-weight: bold;"><%= p.ProductName %></span>
+                    <div class="buttons">
+                      <form action="/user/shop/add" method="post">
+                        <input type="hidden" name="userId" value="<%= session[:userId] %>">
+                        <input type="hidden" name="productId" value="<%= p.ProductId %>">
+                        <button type="submit" class="qty-btn">+</button>
+                      </form>
+                      <form action="/user/shop/subtract" method="post">
+                        <input type="hidden" name="userId" value="<%= session[:userId] %>">
+                        <input type="hidden" name="productId" value="<%= p.ProductId %>">
+                        <button type="submit" class="qty-btn">-</button>
+                      </form>
+                    </div>
                     <span class="qty-tag">x<%= Basket.where(UserId: session[:userId], ProductId: p.ProductId).first.Quantity %></span>
                   </div>
                 <% end %>

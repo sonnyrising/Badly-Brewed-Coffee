@@ -156,6 +156,20 @@ post "/user/shop" do
   erb :"user/selectproducts"
 end
 
+post "/user/shop/add" do
+  @products = Products.all
+  Basket.add(params)
+
+  erb :"user/selectproducts"
+end
+
+post "/user/shop/subtract" do
+  @products = Products.all
+  Basket.subtract(params)
+
+  erb :"user/selectproducts" 
+end
+
 get "/user/orders" do
     erb :"user/orderhistory"
 end

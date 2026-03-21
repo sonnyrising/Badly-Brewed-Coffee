@@ -77,5 +77,26 @@ class Basket < Sequel::Model(:Basket)
   def clearBasket(userId)
     Basket.where(UserId: userId).delete
   end
-  
+
+  def self.add(params)
+    user = params.fetch("userId", "")
+    product = params.fetch("productId", "")
+    
+    quantity_p = Basket.where(UserId: user, ProductId: product).first
+
+    if quantity_p.Quantity < 10
+      Basket.where(UserId: user, ProductId: product).update(Quantity: quantity_p.Quantity + 1)  
+    end
+  end
+
+  def self.subtract(params)
+    user = params.fetch("userId", "")
+    product = params.fetch("productId", "")
+    
+    quantity_p = Basket.where(UserId: user, ProductId: product).first
+
+    if quantity_p.Quantity >= 1
+      Basket.where(UserId: user, ProductId: product).update(Quantity: quantity_p.Quantity - 1)
+    end
+  end
 end
