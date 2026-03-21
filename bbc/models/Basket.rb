@@ -95,8 +95,10 @@ class Basket < Sequel::Model(:Basket)
     
     quantity_p = Basket.where(UserId: user, ProductId: product).first
 
-    if quantity_p.Quantity >= 1
+    if quantity_p.Quantity > 1
       Basket.where(UserId: user, ProductId: product).update(Quantity: quantity_p.Quantity - 1)
+    else
+      quantity_p.destroy
     end
   end
 end

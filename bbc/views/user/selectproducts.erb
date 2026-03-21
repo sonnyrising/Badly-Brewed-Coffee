@@ -157,6 +157,23 @@
     .buttons{
       display: flex;
       gap: 5px;
+      align-items: center;
+    }
+    .bin{
+      background: none;
+      border: none;
+      padding: 0px;
+      margin: 0px;
+      cursor: pointer;
+      display: flex;
+      align-items:center;
+      justify-content: center;
+    }
+    
+    .bin img{
+      width: 25px;
+      height: 25px;
+      object-fit: contain;
     }
     </style>
 </head>
@@ -206,6 +223,11 @@
                         <input type="hidden" name="userId" value="<%= session[:userId] %>">
                         <input type="hidden" name="productId" value="<%= p.ProductId %>">
                         <button type="submit" class="qty-btn">-</button>
+                      </form>
+                      <form action="/user/shop/delete" method="post">
+                        <input type="hidden" name="userId" value="<%= session[:userId] %>">
+                        <input type="hidden" name="productId" value="<%= p.ProductId %>">
+                        <button type="submit" class="bin"><img src="/imgs/bin.png" alt="Delete"></button>
                       </form>
                     </div>
                     <span class="qty-tag">x<%= Basket.where(UserId: session[:userId], ProductId: p.ProductId).first.Quantity %></span>

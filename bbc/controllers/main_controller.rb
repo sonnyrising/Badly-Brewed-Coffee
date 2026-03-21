@@ -170,6 +170,13 @@ post "/user/shop/subtract" do
   erb :"user/selectproducts" 
 end
 
+post "/user/shop/delete" do 
+  @products = Products.all
+  Basket.RemoveItem(params)
+
+  erb :"user/selectproducts"
+end
+
 get "/user/orders" do
     erb :"user/orderhistory"
 end

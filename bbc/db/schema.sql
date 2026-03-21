@@ -48,13 +48,13 @@ CREATE TABLE Basket(
   OrderStatus TEXT,
   FOREIGN KEY (UserId) REFERENCES Users(UserId) ON DELETE CASCADE,
   FOREIGN KEY (ProductId) REFERENCES Products(ProductId) ON DELETE CASCADE
+  PRIMARY KEY (ProductId, UserId)
 );
 
-CREATE TABLE Staffs(
+CREATE TABLE Staff(
   StaffId INTEGER,
   StaffUsername TEXT,
-  StaffEmail TEXT,
   StaffPasswordHash TEXT,
   EmployeeLevel TEXT,
-  EmploymentStatus INTEGER
+  EmploymentStatus TEXT
 )

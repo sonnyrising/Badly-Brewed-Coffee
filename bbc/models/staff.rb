@@ -1,4 +1,4 @@
-class Staff < Sequel::Model  
+class Staff < Sequel::Model (:Staff)
   def self.GetStaffID(username)
       staffId = Staff.where(Username: "#{username}").get(:StaffId)
       return staffId
