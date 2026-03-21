@@ -51,9 +51,17 @@
 
                   <h2 style="color: white;">Order Summary</h2>
 
-                  <div style="display: flex; justify-content: space-between; margin-top: 20px;">
-                      <span>Items in Basket:</span>
-                      <span>0</span>
+                  <% (Basket.getProductNamesForUser(session[:userId])).each do |p| %>
+                     <div style="display: flex; justify-content: space-between; margin-top: 10px; font-size: 1.1rem;">
+                        <% qty_item = Basket.where(UserId: session[:userId], ProductId: p.ProductId).first %>
+                        <span><%= p.ProductName %></span>
+                        <span>x<%= qty_item.Quantity %></span>
+                     </div>
+                  <% end %>
+
+                  <div style="display: flex; justify-content: space-between; margin-top: 20px; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 10px;">
+                      <span>Total Items:</span>
+                      <span><%= Basket.numOfProductsInBasket(session[:userId]) %></span>
                   </div>
                   
                   <div style="display: flex; justify-content: space-between; margin-top: 10px; font-size: 1.5rem; font-weight: bold; border-top: 2px solid white; padding-top: 10px;">
