@@ -29,7 +29,13 @@ class Basket < Sequel::Model(:Basket)
     product = params.fetch("productId", "")
 
     quantity_p = Basket.where(UserId: user, ProductId: product).first
-    Basket.where(UserId: user, ProductId: product).update(Quantity: quantity_p.Quantity + (params.fetch("quantity", "")).to_i )
+    additional_q = params.fetch("quantity","").to_i
+    
+    if (quantity_p.Quantity + additional_q) >= 10
+      Basket.where(UserId: user, ProductId: product).update(Quantity: 10)
+    else
+      Basket.where(UserId: user, ProductId: product).update(Quantity: quantity_p.Quantity + additional_q )
+    end
   end
 
   def self.numOfProductsInBasket(userId)
