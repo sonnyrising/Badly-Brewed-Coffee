@@ -13,13 +13,9 @@ CREATE TABLE Users(
 CREATE TABLE Transactions(
   TransactionId INTEGER PRIMARY KEY,
   UserId INTEGER,
-  ProductId INTEGER,
-  Quantity INTEGER,
-  ItemPrice FLOAT,
-  PaymentStatus TEXT,
+  Quantity FLOAT,
   TransactionDate INTEGER,
-  FOREIGN KEY (UserId) REFERENCES Users(UserId) ON DELETE CASCADE,
-  FOREIGN KEY (ProductId) REFERENCES Products(ProductId) ON DELETE CASCADE
+  FOREIGN KEY (UserId) REFERENCES Users(UserId) ON DELETE CASCADE
 );
 
 CREATE TABLE Feedbacks(
@@ -42,13 +38,15 @@ CREATE TABLE Products(
 );
 
 CREATE TABLE Basket(
+  BasketId INTEGER PRIMARY KEY,
+  TransactionId INTEGER,
   ProductId INTEGER, 
   UserId INTEGER,
   Quantity INTEGER,
   OrderStatus TEXT,
   FOREIGN KEY (UserId) REFERENCES Users(UserId) ON DELETE CASCADE,
-  FOREIGN KEY (ProductId) REFERENCES Products(ProductId) ON DELETE CASCADE
-  PRIMARY KEY (ProductId, UserId)
+  FOREIGN KEY (ProductId) REFERENCES Products(ProductId) ON DELETE CASCADE,
+  FOREIGN KEY (TransactionId) REFERENCES Transactions(TransactionId) ON DELETE CASCADE
 );
 
 CREATE TABLE Staff(
