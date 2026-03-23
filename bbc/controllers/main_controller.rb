@@ -494,6 +494,12 @@ post "/staff/selectproducts" do
   erb :"staff/selectproducts"
 end
 
+get "/staff/selectproducts" do
+  @products = Products.all
+
+  erb :"staff/selectproducts"
+end
+
 get "/staff/register" do
   erb :"staff/employeeregisterpage"
 end
@@ -530,7 +536,7 @@ post "/staff/staffaccountview/filter" do
   if !params[:'search-filter'].empty?
     @shown_accounts = []
     @shown_accounts << Users.where(Username: "#{params[:'search-filter']}").get(:UserId)
-    erb :"staff/staffaccountview"
+    redirect "/staff/staffaccountview"
   else
     redirect "/staff/staffaccountview"
   end
@@ -540,7 +546,23 @@ post "/staff/view" do
   erb :"staff/account"
 end
 
-get "/staff/removefrombasket" do
-  Basket.RemoveItem(session[:userId], @productId)
-  erb :"/staff/selectproducts"
+post "/staff/shop/add" do
+  @products = Products.all
+  Basket.add(params)
+
+  redirect "/staff/selectproducts"
+end
+
+post "/staff/shop/subtract" do
+  @products = Products.all
+  Basket.subtract(params)
+
+  redirect "/staff/selectproducts"
+end
+
+post "/staff/shop/delete" do 
+  @products = Products.all
+  Basket.RemoveItem(params)
+
+  redirect "/staff/selectproducts"
 end
