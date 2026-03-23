@@ -45,7 +45,7 @@
               <span style="font-size: 20pt;">←</span> Back to Shop
               </a>
               
-              <h1 style="text-align: center;position: relative;top: 5vh;">Payment</h1>
+              <h1 style="text-align: center;position: relative;top: 5vh;">Checkout</h1>
 
               <div style="margin-top: 50px; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 20px; font-family: Helvetica;">
 
@@ -76,8 +76,17 @@
                     </div>
               </div>
 
-              <div style="text-align: center; margin-top: 100px;">
+              <div style="text-align: center; margin-top: 20px;">
                   <form action="/thankyoupage" method="post">
+                      <h2 style="padding: 15px 40px; font-size: 18pt; font-weight: bold; border-radius: 50px; cursor: pointer;">Payment details</h2>
+                      <input type="text" name="card_number" placeholder="Card Number" required style="width: 25vw;height: 5vh;border: 2px solid #69312b;border-radius: 15px;padding-left:10px;">
+                      <input type="text" name="cvv" placeholder="CVV" required style="width: 10vw;height: 5vh;border: 2px solid #69312b;border-radius: 15px;padding-left:10px;">
+                      <input type="date" name="expiry_date" placeholder="Expiry Date" equired style="widthr: 25vw;height: 5vh;border: 2px solid #69312b;border-radius: 15px;padding-left:10px;">
+                      <h2 style="padding: 15px 40px; font-size: 18pt; font-weight: bold; border-radius: 50px; cursor: pointer;">Delivery</h2>
+                      <input type="text" name="address" placeholder="Address" required style="width: 25vw;height: 5vh;border: 2px solid #69312b;border-radius: 15px;padding-left:10px;">
+                      <input type="text" name="city" placeholder="City" required style="width: 25vw;height: 5vh;border: 2px solid #69312b;border-radius: 15px;padding-left:10px;">
+                      <input type="text" name="postcode" placeholder="Postcode" required style="width: 25vw;height: 5vh;border: 2px solid #69312b;border-radius: 15px;padding-left:10px;">
+                      </br>
                       <button type="submit" style="background-color: white; color: rgb(130 72 24); border: 2px solid white; padding: 15px 40px; font-size: 18pt; font-weight: bold; border-radius: 50px; cursor: pointer;">
                           Buy Now
                       </button>
