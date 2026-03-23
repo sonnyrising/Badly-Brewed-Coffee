@@ -43,7 +43,6 @@ CREATE TABLE Basket(
   ProductId INTEGER, 
   UserId INTEGER,
   Quantity INTEGER,
-  OrderStatus TEXT,
   FOREIGN KEY (UserId) REFERENCES Users(UserId) ON DELETE CASCADE,
   FOREIGN KEY (ProductId) REFERENCES Products(ProductId) ON DELETE CASCADE,
   FOREIGN KEY (TransactionId) REFERENCES Transactions(TransactionId) ON DELETE CASCADE
