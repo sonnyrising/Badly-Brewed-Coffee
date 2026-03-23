@@ -202,6 +202,13 @@ post "/user/basketpayment" do
 end
 
 post "/thankyoupage" do
+  transaction = Transactions.new
+  transaction.load(params)
+
+  transaction.save_changes
+
+  Basket.orderPlaced(transaction.UserId, transaction.TransactionId)
+
   erb :"user/thankyoupage"
 end
 

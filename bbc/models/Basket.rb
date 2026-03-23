@@ -5,7 +5,7 @@ class Basket < Sequel::Model(:Basket)
     self.ProductId = params.fetch("productId","").strip
     self.TransactionId = nil
     self.Quantity = params.fetch("quantity","").strip
-    self.OrderStatus = "null"
+    self.OrderStatus = nil
   end
 
   def productExists(params)
@@ -42,7 +42,9 @@ class Basket < Sequel::Model(:Basket)
   def self.numOfProductsInBasket(userId)
     count = 0
     Basket.each do |product|
-      count += product.Quantity if product.UserId == userId
+      if (product.OrderStatus).nil?
+        count += product.Quantity if product.UserId == userId
+      end
     end
 
     return count
@@ -81,10 +83,6 @@ class Basket < Sequel::Model(:Basket)
     return quantities
   end
 
-  def clearBasket(userId)
-    Basket.where(UserId: userId).delete
-  end
-
   def self.add(params)
     user = params.fetch("userId", "")
     product = params.fetch("productId", "")
@@ -107,5 +105,19 @@ class Basket < Sequel::Model(:Basket)
     else
       quantity_p.destroy
     end
+  end
+
+  def self.finishedTransaction(productId, userId)
+    product = Basket.where(UserId: userId, ProductId: productId).first
+    
+    if product.OrderStatus.nil?
+      return true
+    else
+      return false
+    end
+  end
+
+  def self.orderPlaced(userId, transactionId)
+    Basket.where(UserId: userId, OrderStatus: nil).update(TransactionId: transactionId, OrderStatus: "Ordered")
   end
 end
