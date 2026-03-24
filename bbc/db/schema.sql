@@ -15,6 +15,8 @@ CREATE TABLE Transactions(
   UserId INTEGER,
   Quantity FLOAT,
   TransactionDate INTEGER,
+  Status TEXT,
+  Shipped BOOLEAN,
   FOREIGN KEY (UserId) REFERENCES Users(UserId) ON DELETE CASCADE
 );
 
@@ -54,4 +56,4 @@ CREATE TABLE Staff(
   StaffPasswordHash TEXT,
   EmployeeLevel TEXT,
   EmploymentStatus TEXT
-)
+);
