@@ -415,7 +415,6 @@ get "/manager/managestock" do
                    when "invalid_price" then "Please enter a valid price."
                    when "invalid_image" then "Please enter a valid image URL."
                    when "invalid_description" then "Please enter a valid description."
-                   else
                    end
 
 
