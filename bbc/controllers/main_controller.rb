@@ -5,6 +5,7 @@ require 'bcrypt'
 
 require_relative "../models/Products"
 require_relative "../models/Users"
+require_relative "../models/Transactions"
 
 set :public_folder, File.expand_path('../public', __dir__)
 set :views, File.expand_path('../views', __dir__)
@@ -461,9 +462,6 @@ post '/manager/updatestock' do
     puts session[:alert_message]
   end
 
-
-
-
   redirect '/manager/managestock'
 end
 
@@ -485,6 +483,11 @@ end
 
 get "/manager/topproducts" do
   erb :"manager/topproducts"
+end
+
+get "/manager/orders" do
+  @orders = Transactions.all
+  erb :"manager/orders"
 end
 
 # Helper Methods to sanitise the database entries
@@ -515,6 +518,13 @@ def sanitise_string(input)
   end
 end
 
+# Helper method to format an integer as a date
+def format_date(date_int)
+  # Converts to a string and pads with zeros to ensure 8 characters
+  date_str = date_int.to_s.rjust(8, '0')
+  # Adds a slash to format as dd/mm/yyyy
+  "#{date_str[0..1]}/#{date_str[2..3]}/#{date_str[4..7]}"
+end
 #------------------------------------- STAFF ROUTES ---------------------------------
 
 get "/staff/homepage" do

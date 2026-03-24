@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourcePerFileMappings">
-    <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/799d53f3-5d38-4d90-b013-8941e1c8191f/console.sql" value="799d53f3-5d38-4d90-b013-8941e1c8191f" />
+    <file url="file://$PROJECT_DIR$/bbc/db/data.sql" value="799d53f3-5d38-4d90-b013-8941e1c8191f" />
     <file url="file://$PROJECT_DIR$/bbc/db/schema.sql" value="799d53f3-5d38-4d90-b013-8941e1c8191f" />
   </component>
 </project>
