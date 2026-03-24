@@ -581,6 +581,79 @@ post "/staff/orders" do
   erb :"staff/orders"
 end
 
+get "/staff/managestock" do
+  @products = Products.all
+
+  @alert_message = case params[:error]
+                   when "invalid_name"  then "Please enter a valid product name."
+                   when "invalid_stock" then "Please enter a valid stock quantity."
+                   when "invalid_price" then "Please enter a valid price."
+                   when "invalid_image" then "Please enter a valid image URL."
+                   when "invalid_description" then "Please enter a valid description."
+                   end
+
+
+  erb :"staff/managestock"
+end
+
+post "/staff/managestock" do
+  @products = Products.all
+
+  @alert_message = case params[:error]
+                   when "invalid_name"  then "Please enter a valid product name."
+                   when "invalid_stock" then "Please enter a valid stock quantity."
+                   when "invalid_price" then "Please enter a valid price."
+                   when "invalid_image" then "Please enter a valid image URL."
+                   when "invalid_description" then "Please enter a valid description."
+                   end
+
+
+  erb :"staff/managestock"
+end
+
+
+
+#  Updates the product table based on user inputs
+post '/staff/updatestock' do
+  product = Products[params['product_id']]
+  # Sanitise the input before updating the database
+  name = sanitise_string(params['product_name'])
+  stock = sanitise_int(params['product_stock'])
+  price = sanitise_price(params['product_price'])
+  image = sanitise_string(params['product_image'])
+  description = sanitise_string(params['product_description'])
+
+  # Check all inputs are valid
+  if name && stock && price && image && description
+    if product
+      product.update(
+        ProductName: params['product_name'],
+        StockQuantity: params['product_stock'],
+        Price: params['product_price'],
+        ProductImage: params['product_image'],
+        ProductDescription: params['product_description']
+      )
+    end
+  else
+    # Display an error message if any input is invalid
+    if !name
+      redirect "/staff/managestock?error=invalid_name"
+    elsif !stock
+      redirect "/staff/managestock?error=invalid_stock"
+    elsif !price
+      redirect "/staff/managestock?error=invalid_price"
+    elsif !image
+      redirect "/staff/managestock?error=invalid_image"
+    elsif !description
+      redirect "/staff/managestock?error=invalid_description"
+    end
+
+    puts session[:alert_message]
+  end
+
+  redirect '/staff/managestock'
+end
+
 post "/staff/basketpayment" do
   erb :"staff/basketpayment"
 end
