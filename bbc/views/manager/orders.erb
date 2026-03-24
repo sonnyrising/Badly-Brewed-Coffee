@@ -93,6 +93,15 @@
                 <td>£<%= order.Quantity %></td>
                 <td><%= format_date(order.TransactionDate) %></td>
                 <td>
+                  <form action="/manager/orders/updatestatus" method="POST">
+                    <input type="hidden" name="transaction_id" value="<%= order.TransactionId %>">
+                    <select name="status" onchange="this.form.submit()">
+                      <option value="Pending"    <%= 'selected' if order.Status == 'Pending'    %>>Pending</option>
+                      <option value="Processing" <%= 'selected' if order.Status == 'Processing' %>>Processing</option>
+                      <option value="Completed"  <%= 'selected' if order.Status == 'Completed'  %>>Completed</option>
+                      <option value="Cancelled"  <%= 'selected' if order.Status == 'Cancelled'  %>>Cancelled</option>
+                    </select>
+                  </form>
                 </td>
               </tr>
             <% end %>
