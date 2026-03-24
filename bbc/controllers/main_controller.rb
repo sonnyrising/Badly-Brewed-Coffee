@@ -409,12 +409,22 @@ end
 get "/manager/managestock" do
   @products = Products.all
 
+  @alert_message = case params[:error]
+                   when "invalid_name"  then "Please enter a valid product name."
+                   when "invalid_stock" then "Please enter a valid stock quantity."
+                   when "invalid_price" then "Please enter a valid price."
+                   when "invalid_image" then "Please enter a valid image URL."
+                   when "invalid_description" then "Please enter a valid description."
+                   else
+                   end
+
+
   erb :"manager/managestock"
 end
 
 
 
-
+#  Updates the product table based on user inputs
 post '/manager/updatestock' do
   product = Products[params['product_id']]
   # Sanitise the input before updating the database
@@ -435,7 +445,24 @@ post '/manager/updatestock' do
         ProductDescription: params['product_description']
       )
     end
+  else
+    # Display an error message if any input is invalid
+    if !name
+      redirect "/manager/managestock?error=invalid_name"
+    elsif !stock
+      redirect "/manager/managestock?error=invalid_stock"
+    elsif !price
+      redirect "/manager/managestock?error=invalid_price"
+    elsif !image
+      redirect "/manager/managestock?error=invalid_image"
+    elsif !description
+      redirect "/manager/managestock?error=invalid_description"
+    end
+
+    puts session[:alert_message]
   end
+
+
 
 
   redirect '/manager/managestock'
@@ -463,8 +490,8 @@ end
 
 # Helper Methods to sanitise the database entries
 def sanitise_price(input)
-  # Ensure the input is a number
-  if (input.to_f.to_s == input) || (input.to_i.to_s == input)
+  # Ensure the input is a number greater than 0
+  if ((input.to_f.to_s == input) || (input.to_i.to_s == input)) && (input.to_f > 0)
     return '%.2f' % input.to_f
   else
     return false
@@ -472,8 +499,8 @@ def sanitise_price(input)
 end
 
 def sanitise_int(input)
-  # Ensure the input is an integer
-  if (input.to_i.to_s == input)
+  # Ensure the input is an integer greater than 0
+  if (input.to_i.to_s == input) && (input.to_i > 0)
     return input.to_i
   else
     return false

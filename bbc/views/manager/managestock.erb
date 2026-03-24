@@ -216,6 +216,13 @@
 
     </div>
   </div>
+
+  <% if @alert_message %>
+    <script>
+        alert("<%= @alert_message %>");
+    </script>
+  <% end %>
+
 </main>
 </body>
 </html>
