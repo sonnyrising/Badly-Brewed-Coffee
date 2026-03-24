@@ -490,6 +490,11 @@ get "/manager/orders" do
   erb :"manager/orders"
 end
 
+get "/manager/refunds" do
+  @products = Products.all
+  erb :"manager/refund"
+end
+
 post "/manager/orders/updatestatus" do
   transaction_id = params[:transaction_id]
   new_status = params[:status]
