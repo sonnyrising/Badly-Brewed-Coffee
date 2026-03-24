@@ -576,6 +576,11 @@ get "/staff/settings" do
   erb :"staff/settings"
 end
 
+post "/staff/orders" do
+  @orders = Transactions.all
+  erb :"staff/orders"
+end
+
 post "/staff/basketpayment" do
   erb :"staff/basketpayment"
 end
