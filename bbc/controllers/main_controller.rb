@@ -490,6 +490,15 @@ get "/manager/orders" do
   erb :"manager/orders"
 end
 
+post "/manager/orders/updatestatus" do
+  transaction_id = params[:transaction_id]
+  new_status = params[:status]
+
+  Transactions.where(TransactionId: transaction_id).update(Status: new_status)
+
+  redirect "/manager/orders"
+end
+
 # Helper Methods to sanitise the database entries
 def sanitise_price(input)
   # Ensure the input is a number greater than 0

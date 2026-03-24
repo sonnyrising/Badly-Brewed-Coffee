@@ -14,9 +14,9 @@ CREATE TABLE Transactions(
   TransactionId INTEGER PRIMARY KEY,
   UserId INTEGER,
   Quantity FLOAT,
+  TotalCost FLOAT,
   TransactionDate INTEGER,
   Status TEXT,
-  Shipped BOOLEAN,
   FOREIGN KEY (UserId) REFERENCES Users(UserId) ON DELETE CASCADE
 );
 
