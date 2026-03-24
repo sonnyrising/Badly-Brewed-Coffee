@@ -1,0 +1,31 @@
+24/3/26
+
+looked at requirements
+
+Staff to do:
+- integrate loyalty point system for instore and online payments
+- pie chart
+- monitoring online orders
+- refunds 
+
+Admin to do:
+-deactivate accounts after 6 months of use
+
+Manager to do:
+- sales metrics - filter by type
+-membership growth
+- coffees redeemed
+
+User to do:
+- block out items out of stock
+
+
+
+
+
+
+
+
+
+
+
