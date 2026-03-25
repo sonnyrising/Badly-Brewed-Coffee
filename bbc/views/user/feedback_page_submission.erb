@@ -7,10 +7,13 @@
 </head>
 <body style="text-align: center; background-color: rgb(130 72 24)">
 
-  #do refund ticketing system here
+  <% if @feedback.RefundRequest && @feedback.TicketNumber %>
+    <h3 style="background-color: rgb(130 72 24); color:white">Your refund request has been received</h3>
+    <p style="background-color: rgb(130 72 24); color:white">Your refund ticket number is : <strong><%= @feedback.TicketNumber %> </strong></p>
+  <% else %>
+    <h4 style="background-color: rgb(130 72 24); color:white">We appreciate you letting us know and helping us to increase the quality of our overall services</h4>
+  <% end %>
 
-  <h4 style="background-color: rgb(130 72 24); color:white">We appreciate you letting us know and helping us to increase the quality of our overall services</h4> 
-  
   <div style="text-align:center">
     <a href="/user/homepage" style="color:white; text-align: center">Back to menu</a>
   </div>
