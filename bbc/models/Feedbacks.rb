@@ -28,6 +28,7 @@ class Feedbacks < Sequel::Model
       self.IssueContent = params.fetch("issue","").strip
       self.RefundRequest = (params.fetch("request","") == "Yes")
       self.RefundReason = params.fetch("reason","").strip
+      
       #only generates a ticket number if RefundRequest == "Yes"
       if self.RefundRequest
         loop do

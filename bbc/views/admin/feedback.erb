@@ -6,6 +6,21 @@
       * body{
         overflow:visible;
       }
+      table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+
+      tr:nth-child(even) {
+        background-color: #dddddd;
+      } 
     </style>
 
 </head>
@@ -31,23 +46,33 @@
         <div style="display: flex;flex-direction: row;flex-wrap:nowrap;justify-content: center;gap: 32px;height: 85vh;position: absolute;top: 10vh;left:50vw;transform:translateX(-50%);">
           <div style="color: black;background: transparent;backdrop-filter: blur(15px);box-shadow: 0px 0px 20px 0px #0000007a;border-radius: 30px; text-align: center;width:94vw;">
             <h1>Feedback listing:</h1>
-            <form method="post" action="/admin/feedback/filter" style="display:inline-block;position:relative;top:-4%;left:30vw;">
-              <div style="display:grid; grid-template-columns: 10vw 5vw 5vw;" style="gap:1vw;">
-                <input type="text" name="search-filter">
-                <button type="submit" name="submit-button">Search</button>
-                <button type="submit" name="clear-button">Clear</button>
+            <form method="get" action="/admin/feedback" style="display:inline-block; position:relative; top:-4%; left:30vw;">
+              <div style="display: flex; flex-direction: row; align-items: center; gap: 1vw;">
+                <input type="radio" id="refund" name="filter" value="refund">
+                <label for="refund" style="white-space: nowrap;">Refunds Only</label>
+
+                <input type="radio" id="issues" name="filter" value="non-refunds">
+                <label for="issues" style="white-space: nowrap;">General Issues</label>
+
+                <input type="submit" value="Filter">
               </div>
             </form>
             <div style="position:relative;top:3vh;">
-              <% @shown_feedback.each do |feedbackId| %>
-                <div style="display: flex;flex-direction: row;background: transparent;backdrop-filter: blur(15px);box-shadow: 0px 0px 20px 0px #0000007a;border-radius:30px;width:94vw;height:5vh;overflow-y:auto;">
+              <% @shown_feedback.each do |feedback| %>
+                <div style="display: flex;flex-direction: row;flex-wrap: wrap;background: transparent;backdrop-filter: blur(15px);box-shadow: 0px 0px 20px 0px #0000007a;border-radius:30px;width:94vw;overflow-y:auto;">
                   <style>
                     .delete-button:hover{
                       background-color: rgb(255, 94, 94);
                     }
                   </style>
                   <h3 style="margin-left: 10%;"><%= feedbackId %></h3>
-                  <p style="padding-left: 3vw;"><%= Feedbacks.GetIssueContent(feedbackId) %></p>
+                  <% if feedback.RefundRequest %>
+                    <p style="padding-left: 2vw;color: #ffdb99;">Ticket: <%= Feedbacks.get_ticket_number(feedbackId) %></p>
+                    <p style="padding-left: 2vw;">Reason: <%= Feedbacks.get_refund_reason(feedbackId) %></p>
+                  <% else %>
+                    <p style="padding-left: 2vw;"><%= Feedbacks.get_issue_content(feedbackId) %></p>
+                  <% end %>
+                
                   <div style="display: grid; grid-template-columns: 3vw 3vw 5vw 3vw;position:absolute; right:5%">
                     <form method="post" action="/admin/feedback/delete">
                       <button type="submit" class="delete-button">Delete</button>

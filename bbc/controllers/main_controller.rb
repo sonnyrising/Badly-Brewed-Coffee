@@ -265,7 +265,14 @@ end
 
 get "/admin/feedback" do
   validate_session
-  @shown_feedback = Feedbacks.map(:FeedbackId)
+  #@shown_feedback = Feedbacks.map(:FeedbackId)
+
+  if params["filter"] == "Yes"
+    @shown_feedback = Feedbacks.where(RefundRequest: true).all
+  else
+    @shown_feedback = Feedbacks.where(RefundRequest: false).all
+  end
+  
   erb :"admin/feedback"
 end
 
