@@ -491,7 +491,7 @@ get "/manager/orders" do
 end
 
 get "/manager/refunds" do
-  @products = Products.all
+  @refunds = Products.where(refundRequested: true)
   erb :"manager/refund"
 end
 

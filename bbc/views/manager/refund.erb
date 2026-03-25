@@ -129,59 +129,54 @@
         <a href = "/manager/orders">
           <button class="button">View Orders</button>
         </a>
+        <a href = "/manager/refunds">
+          <button class="button">View Refunds</button>
+        </a>
       </div>
     </div>
 
     <div style="background-color: rgb(255, 255, 255); height: 100vh; position: relative; overflow: hidden; min-width: 800px;" class="squish";>
 
       <img src="/imgs/dashboard.png" alt="Dashboard" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1;">
-
       <div class="container">
-        <div class="glass-card" style="top: 3%; left: 3%; width: 93%; height: 93%;">
-          <h1>Choose Item To Refund</h1>
-          <% @numproducts = 0 %>
-          <% session[:numproducts] = @numproducts %>
-
-          <div class="layout-grid">
-
-            <div class="display-area">
-              <div class="product-inner-grid">
-
-                <% @products.each do |product| %>
-                  <div class="product-box">
-                    <img src="/imgs/<%= product.ProductImage %>" alt="Coffee" class="product-image">
-
-                    <form action="/manager/refund" method="POST">
-                      <input type="hidden" name="product_id" value="<%= product.ProductId %>">
-
-                      <h3>
-                        <%= product.ProductName %>
-                      </h3>
-
-                      <p>
-                        Stock: <%= product.StockQuantity %>"
-                      </p>
-
-                      <p>
-                        Price: £<%= product.Price %>
-                      </p>
-
-                      <p>
-                        Description: <%= product.ProductDescription %>
-                      </p>
-
-                      <input type="number" name="quantity" placeholder="Quantity" min="1" max="<%= product.StockQuantity %>" required>
-
-                      <button type="submit">Refund</button>
-                    </form>
-                  </div>
-                <% end %>
-              </div>
-            </div>
-          </div>
+        <div class="glass-card" style="top: 3%; left: 5%; width: 44%; height: 93%;">
+          <h1>Pending Online Refunds</h1>
+          <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+            <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Total Price</th>
+              <th>Date Ordered</th>
+              <th>Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @orders.each do |order| %>
+              <tr>
+                <td><%= order.TransactionId %></td>
+                <td>£<%= order.Quantity %></td>
+                <td><%= format_date(order.TransactionDate) %></td>
+                <td><%= order.Status %></td>
+                <td>
+                  <form action="/manager/refunds/acceptRefund<%= order.TransactionId %>" method="post">
+                    <button type="submit" class="button">Accept Refund</button>
+                  </form>
+                  <form action="/manager/refunds/declineRefund<%= order.TransactionId %>" method="post">
+                    <button type="submit" class="button">Decline Refund</button>
+                  </form>
+                </td>
+              </tr>
+            <% end %>
+            </tbody>/
+          </table>
         </div>
       </div>
 
+
+      <div class="glass-card" style="top: 3%; left: 53%; width: 44%; height: 93%; text-align: left;">
+        <h1>In-Store Refunds</h1>
+        <p>Enter UserID</p>
+      </div>
     </div>
   </div>
 

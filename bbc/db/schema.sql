@@ -17,6 +17,7 @@ CREATE TABLE Transactions(
   TotalCost FLOAT,
   TransactionDate INTEGER,
   Status TEXT,
+  RefundRequested BOOLEAN,
   FOREIGN KEY (UserId) REFERENCES Users(UserId) ON DELETE CASCADE
 );
 

@@ -103,6 +103,7 @@
                       <option value="Processing" <%= 'selected' if order.Status == 'Processing' %>>Processing</option>
                       <option value="Completed"  <%= 'selected' if order.Status == 'Completed'  %>>Completed</option>
                       <option value="Cancelled"  <%= 'selected' if order.Status == 'Cancelled'  %>>Cancelled</option>
+                      <option value="Refunded"   <%= 'selected' if order.Status == 'Refunded'   %>>Refunded</option>>
                     </select>
                   </form>
                 </td>
