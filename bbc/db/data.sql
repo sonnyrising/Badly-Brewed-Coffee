@@ -13,8 +13,8 @@ INSERT INTO Products VALUES (5, 'Kenyan AA','Kenyan_AA.jpg', 'Strong start to yo
 INSERT INTO Products VALUES (6, 'Amazonian Blend','Amazonian_blend.jpeg', 'Feel the river flow',6.59, 398);
 
 INSERT INTO Transactions VALUES (1,1, 10, 12.99, 24032026, 'Pending', false);
-INSERT INTO Transactions VALUES (1,1, 12, 24.54, 24032026, 'Pending', true);
-INSERT INTO Transactions VALUES (1,1, 3, 3.99, 24032026, 'Pending', true);
+INSERT INTO Transactions VALUES (2,2, 12, 24.54, 24032026, 'Pending', true);
+INSERT INTO Transactions VALUES (3,3, 3, 3.99, 24032026, 'Pending', true);
 
 INSERT INTO Feedbacks VALUES (1, 1, 'I dislike the fact that BBC coffee has not released more BBC into the world.', 'N', '', 1);
 INSERT INTO Feedbacks VALUES (2, 4, 'I am scrumming right now. For no particular reason.', 'N', '', 2);
