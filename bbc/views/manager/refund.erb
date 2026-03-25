@@ -39,57 +39,6 @@
           overflow-y: auto;
       }
 
-      .product-box {
-          color: black;
-          background: rgba(255, 255, 255, 0.2);
-          backdrop-filter: blur(15px);
-          box-shadow: 0px 0px 20px 0px #0000007a;
-          border-radius: 20px;
-          text-align: center;
-          padding: 10px;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          transition: transform 0.3s ease;
-      }
-
-      .product-box:hover {
-          transform: scale(1.02);
-      }
-
-      .product-inner-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          grid-template-rows: repeat(2, 1fr);
-          gap: 20px;
-          width: 90%;
-          height: 90%;
-          margin: 5% auto;
-      }
-
-      .product-image {
-          width: 100px;
-          height: 100px;
-          object-fit: cover;
-          border-radius: 15px;
-          margin-bottom: 15px;
-      }
-
-      .inline-input {
-          border: none;
-          background: transparent;
-          padding: 0 2px;
-          margin: 0 2px;
-          font: inherit;
-          color: inherit;
-          border-bottom: 1px dashed #999;
-          cursor: text;
-          width: 90%;
-          max-width: 180px;
-          text-align: center;
-      }
-
       .product-box p, .product-box h3 {
           margin: 2px 0;
           font-size: 0.9em;
@@ -97,6 +46,28 @@
 
       .product-box form {
           width: 100%;
+      }
+
+      .refund-button-accept{
+          background: rgba(50, 180, 80, 0.4);
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(50, 200, 80, 0.6);
+          color: white;
+          padding: 6px 14px;
+          border-radius: 10px;
+          width: 80%;
+          height: 90%
+      }
+
+      .refund-button-decline{
+        background: rgba(200, 50, 50, 0.4);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(220, 50, 50, 0.6);
+        color: white;
+        padding: 6px 14px;
+        border-radius: 10px;
+        width: 80%;
+        height: 90%
       }
 
 
@@ -141,33 +112,43 @@
       <div class="container">
         <div class="glass-card" style="top: 3%; left: 5%; width: 44%; height: 93%;">
           <h1>Pending Online Refunds</h1>
-          <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+          <table style="width: 100%; border-collapse: collapse; margin-top: 20px; gap: 10px;">
             <thead>
             <tr>
               <th>Order ID</th>
-              <th>Total Price</th>
+              <th>Cost</th>
               <th>Date Ordered</th>
               <th>Status</th>
             </tr>
             </thead>
             <tbody>
-            <% @orders.each do |order| %>
+            <% unless @refunds.empty? %>
+            <%  @refunds.each do |order|  %>
               <tr>
-                <td><%= order.TransactionId %></td>
-                <td>£<%= order.Quantity %></td>
-                <td><%= format_date(order.TransactionDate) %></td>
+                <td><%=  order.TransactionId  %></td>
+                <td>£<%= order.TotalCost %></td>
+                <td><%=  format_date(order.TransactionDate)  %></td>
                 <td><%= order.Status %></td>
                 <td>
-                  <form action="/manager/refunds/acceptRefund<%= order.TransactionId %>" method="post">
-                    <button type="submit" class="button">Accept Refund</button>
-                  </form>
-                  <form action="/manager/refunds/declineRefund<%= order.TransactionId %>" method="post">
-                    <button type="submit" class="button">Decline Refund</button>
-                  </form>
+                <td>
+                  <div style="display: flex; gap: 3px; justify-content: center;">
+                    <form action="/manager/refunds/acceptRefund<%= order.TransactionId %>" method="post">
+                      <button type="submit" class="refund-button-accept">
+                        ✓ Accept
+                      </button>
+                    </form>
+                    <form action="/manager/refunds/declineRefund<%= order.TransactionId %>" method="post">
+                      <button type="submit" class="refund-button-decline">
+                        ✕ Decline
+                      </button>
+                    </form>
+                  </div>
                 </td>
-              </tr>
-            <% end %>
-            </tbody>/
+                </td>
+                <%  end  %>
+                <%  end %>
+            </tr>
+            </tbody>
           </table>
         </div>
       </div>

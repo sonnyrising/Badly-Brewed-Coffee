@@ -502,7 +502,7 @@ get "/manager/orders" do
 end
 
 get "/manager/refunds" do
-  @refunds = Products.where(refundRequested: true)
+  @refunds = Transactions.where(refundRequested: true)
   erb :"manager/refund"
 end
 
