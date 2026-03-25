@@ -219,10 +219,14 @@ post "/user/feedback-page-submit" do
   @feedback = Feedbacks.new
   @feedback.load(params)
 
-  @feedback_text = h(@feedback.IssueContent)
-  @refund_reason = h(@feedback.RefundReason)
-
-  erb :"user/feedback_page_submission"
+  if @feedback.save_changes 
+    @feedback_text = h(@feedback.IssueContent)
+    @refund_reason = h(@feedback.RefundReason)
+    erb :"user/feedback_page_submission"
+  else
+    @error = "Something went wrong. Please try again!"
+    erb :"user/contact_us_page"
+  end
 end
 
 
@@ -261,7 +265,14 @@ end
 
 get "/admin/feedback" do
   validate_session
-  @shown_feedback = Feedbacks.map(:FeedbackId)
+  #@shown_feedback = Feedbacks.map(:FeedbackId)
+
+  if params["filter"] == "Yes"
+    @shown_feedback = Feedbacks.where(RefundRequest: true).all
+  else
+    @shown_feedback = Feedbacks.where(RefundRequest: false).all
+  end
+  
   erb :"admin/feedback"
 end
 
