@@ -65,10 +65,10 @@
                       background-color: rgb(255, 94, 94);
                     }
                   </style>
-                  <h3 style="margin-left: 10%;"><%= feedbackId %></h3>
+                  <h3 style="margin-left: 10%;"><%= feedback.FeedbackId %></h3>
                   <% if feedback.RefundRequest %>
-                    <p style="padding-left: 2vw;color: #ffdb99;">Ticket: <%= Feedbacks.get_ticket_number(feedbackId) %></p>
-                    <p style="padding-left: 2vw;">Reason: <%= Feedbacks.get_refund_reason(feedbackId) %></p>
+                    <p style="padding-left: 2vw;color: #ffdb99;">Ticket: <%= feedback.TicketNumber %></p>
+                    <p style="padding-left: 2vw;">Reason: <%= feedback.RefundReason %></p>
                   <% else %>
                     <p style="padding-left: 2vw;"><%= Feedbacks.get_issue_content(feedbackId) %></p>
                   <% end %>
