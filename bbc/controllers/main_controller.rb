@@ -501,9 +501,19 @@ get "/manager/orders" do
   erb :"manager/orders"
 end
 
+
 get "/manager/refunds" do
   @refunds = Transactions.where(refundRequested: true)
-  erb :"manager/refund"
+
+  if params[:message] == "accept"
+    @alert_message = "Refund has been accepted."
+    Transactions.where(TransactionId: params[:refund_id]).update(refundRequested: false)
+  elsif params[:message] == "decline"
+    @alert_message = "Refund has been declined."
+    Transactions.where(TransactionId: params[:refund_id]).update(refundRequested: false)
+  end
+
+  erb :"manager/refunds"
 end
 
 post "/manager/orders/updatestatus" do
