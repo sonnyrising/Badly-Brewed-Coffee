@@ -18,12 +18,14 @@ CREATE TABLE Transactions(
   TransactionDate INTEGER,
   Status TEXT,
   RefundRequested BOOLEAN,
+  Refunded BOOLEAN,
   FOREIGN KEY (UserId) REFERENCES Users(UserId) ON DELETE CASCADE
 );
 
 CREATE TABLE Feedbacks(
   FeedbackId INTEGER PRIMARY KEY,
   UserId INTEGER,
+  TransactionId TEXT,
   IssueContent TEXT,
   RefundRequest TEXT,
   RefundReason TEXT,
