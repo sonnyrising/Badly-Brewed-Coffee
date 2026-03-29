@@ -6,6 +6,7 @@ require 'bcrypt'
 require_relative "../models/Products"
 require_relative "../models/Users"
 require_relative "../models/Transactions"
+require_relative "../models/Feedbacks"
 
 set :public_folder, File.expand_path('../public', __dir__)
 set :views, File.expand_path('../views', __dir__)
@@ -514,6 +515,23 @@ get "/manager/refunds" do
   end
 
   erb :"manager/refunds"
+end
+
+get "/manager/refunddetails" do
+  transaction_id = params[:transaction_id]
+  user_id = Transactions.where(TransactionId: transaction_id).get(:UserId)
+  total_cost = Transactions.where(TransactionId: transaction_id).get(:TotalCost)
+  transaction_date = format_date(Transactions.where(TransactionId: transaction_id).get(:TransactionDate))
+  status = Transactions.where(TransactionId: transaction_id).get(:Status)
+  refund_reason = Feedbacks.where(TransactionId: transaction_id).get(:RefundReason)
+  @refund_info = {
+    transaction_id: transaction_id,
+    user_id: user_id,
+    total_cost: total_cost,
+    transaction_date: transaction_date,
+    status: status,
+    refund_reason: refund_reason
+  }
 end
 
 post "/manager/orders/updatestatus" do

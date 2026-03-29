@@ -167,7 +167,6 @@
               <th>Cost</th>
               <th>Date Ordered</th>
               <th>Status</th>
-              <th>Actions</th>
             </tr>
             </thead>
             <tbody>
@@ -183,16 +182,10 @@
                   <td><%= format_date(order.TransactionDate) %></td>
                   <td><%= order.Status %></td>
                   <td>
-                    <div style="display: flex; gap: 3px; justify-content: center;">
-                      <button class="btn btn-green" onclick="showConfirm('/manager/refunds?message=accept&refund_id=<%= order.TransactionId %>', 'accept')">
-                        Accept
-                      </button>
-                      <button class="btn btn-red" onclick="showConfirm('/manager/refunds?message=decline&refund_id=<%= order.TransactionId %>', 'decline')">
-                        Decline
-                      </button>
-                    </div>
+                    <a href="/manager/refunddetails?transaction_id=<%= order.TransactionId %>">
+                      View
+                    </a>
                   </td>
-                </tr>
               <% end %>
             <% end %>
             </tbody>
@@ -207,53 +200,6 @@
 
     </div>
   </div>
-
-  <script>
-      const confirmConfig = {
-          accept:  { message: 'Are you sure you want to accept this refund?',  label: 'Yes, Accept',  colour: 'btn-green' },
-          decline: { message: 'Are you sure you want to decline this refund?', label: 'Yes, Decline', colour: 'btn-red'   }
-      };
-
-      function showConfirm(url, type) {
-          const config = confirmConfig[type];
-          const confirmYes = document.getElementById('confirm-yes');
-          confirmYes.href = url;
-          confirmYes.textContent = config.label;
-          confirmYes.className = 'btn ' + config.colour;
-          document.getElementById('confirm-message').textContent = config.message;
-          document.getElementById('confirm-dialogue').style.display = 'flex';
-      }
-
-      function closeConfirm() {
-          document.getElementById('confirm-dialogue').style.display = 'none';
-      }
-  </script>
-
-  <% if @alert_message %>
-    <%
-      is_success = @alert_message.downcase.include?('accepted')
-      alert_class = is_success ? 'btn-green' : 'btn-red'
-      if is_success
-        @payment_message = "The Payment Provider has been notified of the refund."
-        @email_message = "The user has been emailed a receipt for the refund."
-      end
-    %>
-
-    <div id="alert-banner" class="alert-banner <%= alert_class %>">
-      <span><%= @alert_message %></span>
-      <span><%=  @payment_message %></span>
-      <span><%=  @email_message %></span>
-      <span class="alert-close" onclick="document.getElementById('alert-banner').remove()">✕</span>
-    </div>
-
-    <script>
-        setTimeout(() => {
-            const banner = document.getElementById('alert-banner');
-            if (banner) banner.remove();
-        }, 10000);
-    </script>
-  <% end %>
-
 </main>
 </body>
 </html>
