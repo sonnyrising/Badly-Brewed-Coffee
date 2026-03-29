@@ -182,8 +182,8 @@
                   <td><%= format_date(order.TransactionDate) %></td>
                   <td><%= order.Status %></td>
                   <td>
-                    <a href="/manager/refunddetails?transaction_id=<%= order.TransactionId %>">
-                      View
+                    <a href="/manager/refunddetails?transaction_id=<%= order.TransactionId %>" class="btn btn-green">
+                    View
                     </a>
                   </td>
               <% end %>
