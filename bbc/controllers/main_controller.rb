@@ -11,6 +11,12 @@ require_relative "../models/Feedbacks"
 set :public_folder, File.expand_path('../public', __dir__)
 set :views, File.expand_path('../views', __dir__)
 
+helpers do
+  def h(text)
+    Rack::Utils.escape_html(text)
+  end
+end
+
 def validate_session
   if !session[:userId]
     redirect "/login"
@@ -532,6 +538,8 @@ get "/manager/refunddetails" do
     status: status,
     refund_reason: refund_reason
   }
+
+  erb :"manager/refunddetails"
 end
 
 post "/manager/orders/updatestatus" do

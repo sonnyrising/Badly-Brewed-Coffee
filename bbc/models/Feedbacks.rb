@@ -34,7 +34,7 @@ class Feedbacks < Sequel::Model
       if self.RefundRequest
         loop do
           new_ticket_num = rand(1000..9999)
-          break self.TicketNumber = new_ticket_num unless Feedbacks.where(TicketNumber: new_ticket_num).exists?
+          break self.TicketNumber = new_ticket_num if Feedbacks.where(TicketNumber: new_ticket_num).empty?
         end 
       else
         self.TicketNumber = nil
