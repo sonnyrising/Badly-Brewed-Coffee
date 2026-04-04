@@ -128,6 +128,11 @@ get "/logout" do
 end
 
 #----------------------------------- USER ROUTES ---------------------------------
+
+before "/user/*" do
+  protected!
+end
+
 get "/user/homepage" do
     erb :"user/homepage"
 end
@@ -239,39 +244,36 @@ end
 
 #------------------------------------- ADMIN ROUTES ---------------------------------
 
+before "/admin/*" do
+  admin_protected!
+end
+
 get "/admin" do
-  validate_session
   erb :"admin/homepage"
 end
 
 get "/admin/accounts" do
-  validate_session
   @shown_accounts = Users.map(:UserId)
   erb :"admin/accounts"
 end
 
 get "/admin/views" do
-  validate_session
   erb :'admin/viewselection'
 end
 
 post "/admin/views/manager" do
-  validate_session
   erb :'manager/homepage'
 end
 
 post "/admin/views/barista" do
-  validate_session
   erb :'staff/homepage'
 end
 
 post "/admin/views/user" do
-  validate_session
   erb :'user/homepage'
 end
 
 get "/admin/feedback" do
-  validate_session
   #@shown_feedback = Feedbacks.map(:FeedbackId)
 
   if params["filter"] == "Yes"
@@ -284,7 +286,6 @@ get "/admin/feedback" do
 end
 
 post "/admin/feedback/filter" do
-  validate_session
   if !params[:'search-filter'].empty?
     @shown_feedback = []
     @shown_feedback << Feedbacks.where(FeedbackId: params[:'search-filter'].to_i).get(:FeedbackId)
@@ -295,7 +296,6 @@ post "/admin/feedback/filter" do
 end
 
 post "/admin/feedback/delete" do
-  validate_session
   feedbackId = params[:feedbackId]
   Feedbacks.where(FeedbackId: feedbackId).delete
 
@@ -303,12 +303,10 @@ post "/admin/feedback/delete" do
 end
 
 post "/admin/accounts/create" do
-  validate_session
   erb :"admin/accountcreation"
 end
 
 post "/admin/accounts/create/submit" do
-  validate_session
   @userId = 1
   @password = BCrypt::Password.create("password")
   puts params[:'type-data']
@@ -341,7 +339,6 @@ def validate_user_id(userId)
 end
 
 post "/admin/accounts/filter" do
-  validate_session
   if !params[:'search-filter'].empty?
     @shown_accounts = []
     @shown_accounts << Users.where(Username: "#{params[:'search-filter']}").get(:UserId)
@@ -352,19 +349,16 @@ post "/admin/accounts/filter" do
 end
 
 post "/admin/accounts/view" do
-  validate_session
   @userId = params[:userId]
   erb :"admin/account"
 end
 
 post "/admin/accounts/edit" do
-  validate_session
   @userId = params[:userId]
   erb :"admin/accountedit"
 end
 
 post "/admin/accounts/edit/update" do
-  validate_session
   userId = params[:'id-data']
 
   if !params[:'username-data'].empty?
@@ -387,7 +381,6 @@ post "/admin/accounts/edit/update" do
 end
 
 post "/admin/accounts/edit/recover" do
-  validate_session
   userId = params[:'id-data']
   @password = BCrypt::Password.create("password")
 
@@ -397,7 +390,6 @@ post "/admin/accounts/edit/recover" do
 end
 
 post "/admin/accounts/suspend" do
-  validate_session
   @userId = params[:userId]
   if !Users.isSuspended?(@userId)
     Users.where(UserId: @userId).update(Suspended: 1)
@@ -409,7 +401,6 @@ post "/admin/accounts/suspend" do
 end
 
 post "/admin/accounts/delete" do
-  validate_session
   userId = params[:userId]
   Users.where(UserId: userId).delete
   Transactions.where(UserId: userId).delete

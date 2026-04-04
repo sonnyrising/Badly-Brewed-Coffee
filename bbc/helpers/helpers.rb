@@ -10,4 +10,24 @@ helpers do
   include Validation
 
   # ... Add your own helper modules here ...
+
+  def current_user
+    @current_user ||= Users.where(UserId: session[:userId])
+  end
+
+  def logged_in?
+    !!@current_user
+  end
+
+  def admin?
+    logged_in? #Add check for admin.
+  end
+
+  def protected!
+    halt 401, "Not authorized" unless logged_in?
+  end
+
+  def admin_protected!
+    halt 403, "Admins only" unless admin?
+  end
 end
