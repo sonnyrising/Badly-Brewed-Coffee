@@ -193,6 +193,31 @@
         </div>
       </div>
 
+      <% if @alert_message %>
+        <%
+          is_success = @alert_message.downcase.include?('accepted')
+          alert_class = is_success ? 'btn-green' : 'btn-red'
+          if is_success
+            @payment_message = "The Payment Provider has been notified of the refund."
+            @email_message = "The user has been emailed a receipt for the refund."
+          end
+        %>
+
+        <div id="alert-banner" class="alert-banner <%= alert_class %>">
+          <span><%= @alert_message %></span>
+          <span><%=  @payment_message %></span>
+          <span><%=  @email_message %></span>
+          <span class="alert-close" onclick="document.getElementById('alert-banner').remove()">✕</span>
+        </div>
+
+        <script>
+            setTimeout(() => {
+                const banner = document.getElementById('alert-banner');
+                if (banner) banner.remove();
+            }, 10000);
+        </script>
+      <% end %>
+
       <div class="glass-card" style="top: 3%; left: 53%; width: 44%; height: 93%; text-align: left;">
         <h1>In-Store Refunds</h1>
         <p>Enter UserID</p>
