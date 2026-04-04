@@ -493,19 +493,19 @@ get "/manager/addproduct" do
   erb :"manager/addproduct"
 end
 
-# post "/manager/addproduct" do
-#   highest_id = Products.max(:ProductId)
-#   @products = Products.all
-#   Products.insert(
-#     ProductId: highest_id + 1,
-#     ProductName: params[:product_name],
-#     StockQuantity: params[:product_stock],
-#     Price: params[:product_price],
-#     ProductImage: params[:product_image],
-#     ProductDescription: params[:product_description]
-#   )
-#   redirect "/manager/managestock"
-# end
+post "/manager/addproduct" do
+  highest_id = Products.max(:ProductId)
+  @products = Products.all
+  Products.insert(
+    ProductId: highest_id + 1,
+    ProductName: params[:product_name],
+    StockQuantity: params[:product_stock],
+    Price: params[:product_price],
+    ProductImage: params[:product_image],
+    ProductDescription: params[:product_description]
+  )
+  redirect "/manager/managestock"
+end
 
 get "/manager/beanssold" do
   erb :"manager/beanssold"
