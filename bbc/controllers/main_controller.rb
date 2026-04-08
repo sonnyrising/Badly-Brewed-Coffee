@@ -65,16 +65,22 @@ post "/login" do
   else
     userId = Users.GetUserId(@uname)
     if !userId.nil?
-      @password_validated = Users.ComparePassword(userId, @password)
-      if @password_validated
-        session[:userId] = userId
-        session[:uname] = @uname
-        redirect "/user/homepage" unless !session[:userId]
+      if Users.isSuspended?(userId)
+        @matching_error = "Account suspended due to inactivity for more than 6 months. Please contact support."
+        return erb :loginpage
       else
-        @matching_error = "Username or password are incorrect"
+        @password_validated = Users.ComparePassword(userId, @password)
+        if @password_validated
+          Users.SetDaysSinceLastUse(userId)
+          session[:userId] = userId
+          session[:uname] = @uname
+          redirect "/user/homepage" unless !session[:userId]
+        else
+          @matching_error = "Username or password are incorrect"
+        end
       end
     else
-      @matching_error = "Username or password are incorrect"
+        @matching_error = "Username or password are incorrect"
     end
   end
 
@@ -283,6 +289,11 @@ get "/admin/feedback" do
   end
   
   erb :"admin/feedback"
+end
+
+get "/admin/run-inactivity-check" do
+  validate_session
+  Users.daily_inactivity_check
 end
 
 post "/admin/feedback/filter" do

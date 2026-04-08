@@ -64,12 +64,17 @@ class Users < Sequel::Model
       end
     end
 
-   def load(params)
-    self.Username = params.fetch("uname","").strip
-    self.Email = params.fetch("email","").strip
-    self.PassHash = params.fetch("pword","").strip
-    self.LoyaltyPoints = 0
-    self.DaysSinceLastUse = 0
+    def self.daily_inactivity_check
+      Users.where(Suspended: 0).update("DaysSinceLastUse = DaysSinceLastUse + 1")
+      Users.where{DaysSinceLastUse >= 180}.update(Suspended: 1)
+    end
+
+    def load(params)
+      self.Username = params.fetch("uname","").strip
+      self.Email = params.fetch("email","").strip
+      self.PassHash = params.fetch("pword","").strip
+      self.LoyaltyPoints = 0
+      self.DaysSinceLastUse = 0
    end
    
    def compareUsername(username)
