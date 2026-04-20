@@ -11,9 +11,9 @@ This software will cater to the admins, staff and customers of the company.
 *This section will contain information on how to setup the software when installing for the first time.*
 
 To set up the application, please clone the remote repository to your local machine using the HTTPS link:
-https://git.shefcompsci.org.uk/com1001-2025-26/team22/project.git <br/>
+[https://git.shefcompsci.org.uk/com1001-2025-26/team22/project.git](https://git.shefcompsci.org.uk/com1001-2025-26/team22/project.git) <br/>
 Or with SSH:<br/>
-git@git.shefcompsci.org.uk:com1001-2025-26/team22/project.git
+[git@git.shefcompsci.org.uk:com1001-2025-26/team22/project.git](git@git.shefcompsci.org.uk:com1001-2025-26/team22/project.git)
 
 Once the repository is on your local system, please navigate to: "project/bbc/".<br/>
 
