@@ -29,3 +29,15 @@ This will install all required dependencies for the application.
 
 To start the application, please make sure that you are in the "project/bbc/" directory and enter command:<br/>
 > sinatra
+
+### Accessing different accounts
+
+All accounts can be accessed via the login page on application start.
+
+To view the website as a user, either create a new user account or use the test account with username >user and password >user .
+
+To view the website as a barista, log in using the username >staff and password >staff.
+
+To view the website as a manager, log in using the username >manager and password >manager.
+
+To view the website as an admin, log in using the username >admin and password >admin.
