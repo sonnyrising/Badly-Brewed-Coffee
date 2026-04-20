@@ -1,0 +1,29 @@
+source 'https://rubygems.org'
+
+# Use sinatra as the backend tech stack development framework.
+gem 'sinatra'
+
+# Rack is used to interface sinatra and the running web server.
+gem 'rack'
+gem 'rackup'
+
+# Puma is the web server that the application is hosted upon.
+gem 'puma'
+
+# Sequel ORM is used to connect and interact with the database.
+gem 'sequel'
+
+# Sqlite3 is the chosen database.
+gem 'sqlite3'
+
+# Capybara is used to run tests on website forms and check for edge cases.
+gem 'capybara'
+
+# Ruby sintax policing gem.
+gem 'rubocop'
+
+# BCrypt (blowfish-crypt) is the gem that provides hashing capabilities.
+gem 'bcrypt'
+
+# Utility for loading multiple files very quickly.
+gem 'require_all'
