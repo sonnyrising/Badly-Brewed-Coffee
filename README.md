@@ -6,14 +6,14 @@
 This project aims to create a working software interface for the company "Badly Brewed Coffee".
 This software will cater to the admins, staff and customers of the company.
 
-###Explanation
-
-This application uses Sinatra to run. Sinatra is a web-framework.\
-There are three main concepts to how the framework runs. Routes, controllers and views. A route is simply
-an URL (Uniform Resource Locator) that the user visits to request some type of data. The application detects this 
-visit and hands it over to a controller that then manages what data to return. A view is simply html that gets 
-passed back to the end user to be rendered.
-
 ### Setup
 
 *This section will contain information on how to setup the software when installing for the first time.*
+
+To set up the application, please clone the remote repository to your local machine using the HTTPS link:
+https://git.shefcompsci.org.uk/com1001-2025-26/team22/project.git
+Or with SSH:
+git@git.shefcompsci.org.uk:com1001-2025-26/team22/project.git
+
+Once the repository is on your local system, please navigate to: "project/bbc/".
+Once in the bbc/ directory, run the command "bundle install". This will install all required dependencies for the application.
