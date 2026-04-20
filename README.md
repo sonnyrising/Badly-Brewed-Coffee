@@ -15,7 +15,8 @@ To set up the application, please clone the remote repository to your local mach
 Or with SSH:<br/>
 [git@git.shefcompsci.org.uk:com1001-2025-26/team22/project.git](git@git.shefcompsci.org.uk:com1001-2025-26/team22/project.git)
 
-Once the repository is on your local system, please navigate to: "project/bbc/".<br/>
+Once the repository is on your local system, use the following command to navigate to the "bbc/" folder:<br/>
+> cd project/bbc/
 
 Once in the bbc/ directory, run the following command:<br/>
 > bundle install
