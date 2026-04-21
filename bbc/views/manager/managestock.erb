@@ -188,7 +188,6 @@
     </div>
   </div>
 
-  // Listener for alert from server for invalid input into the forms
   <% if @alert_message %>
     <div id="alert-banner" style="
     position: fixed;
@@ -207,7 +206,7 @@
       max-width: 600px;
       text-align: center;
     ">
-      ⚠️ <%= @alert_message %>
+      <%= @alert_message %>
       <span onclick="document.getElementById('alert-banner').remove()" style="
       position: absolute;
         top: 8px;
@@ -226,7 +225,6 @@
     </script>
   <% end %>
 
-  // Listener for submit button for confirmation of updating
   <script>
       const updateForms = document.querySelectorAll('.manage-stock-form');
       updateForms.forEach(function(form) {
@@ -239,7 +237,6 @@
       });
   </script>
 
-  //Listener for delete button for confirmation of deleting
   <script>
       const deleteForms = document.querySelectorAll('.delete-stock-form');
       deleteForms.forEach(function(form) {

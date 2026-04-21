@@ -437,50 +437,21 @@ get "/manager/managestock" do
                    when "invalid_image" then "Please enter a valid image URL."
                    when "invalid_description" then "Please enter a valid description."
                    end
-
-
   erb :"manager/managestock"
 end
 
-
-
-#  Updates the product table based on user inputs
+# Updates the product table based on user inputs
 post '/manager/updatestock' do
-  product = Products[params['product_id']]
-  # Sanitise the input before updating the database
-  name = sanitise_string(params['product_name'])
-  stock = sanitise_int(params['product_stock'])
-  price = sanitise_price(params['product_price'])
-  image = sanitise_string(params['product_image'])
-  description = sanitise_string(params['product_description'])
-
-  # Check all inputs are valid
-  if name && stock && price && image && description
-    if product
-      product.update(
-        ProductName: params['product_name'],
-        StockQuantity: params['product_stock'],
-        Price: params['product_price'],
-        ProductImage: params['product_image'],
-        ProductDescription: params['product_description']
-      )
-    end
-  else
-    # Display an error message if any input is invalid
-    if !name
-      redirect "/manager/managestock?error=invalid_name"
-    elsif !stock
-      redirect "/manager/managestock?error=invalid_stock"
-    elsif !price
-      redirect "/manager/managestock?error=invalid_price"
-    elsif !image
-      redirect "/manager/managestock?error=invalid_image"
-    elsif !description
-      redirect "/manager/managestock?error=invalid_description"
-    end
-
-    puts session[:alert_message]
-  end
+  values_hash = {
+    product: Products[params['product_id']],
+    # Sanitise the input before updating the database
+    name: sanitise_string(params['product_name']),
+    stock: sanitise_int(params['product_stock']),
+    price: sanitise_price(params['product_price']),
+    image: sanitise_string(params['product_image']),
+    description: sanitise_string(params['product_description'])
+  }
+  check_inputs(values_hash)
 
   redirect '/manager/managestock'
 end
@@ -575,6 +546,42 @@ post "/manager/orders/updatestatus" do
   Transactions.where(TransactionId: transaction_id).update(Status: new_status)
 
   redirect "/manager/orders"
+end
+
+# Helper method to update the values of the product table
+def update_product_values(params)
+  # Check all inputs are valid
+  if params[:name] && params[:stock] && params[:price] && params[:image] && params[:description]
+    # Update the product
+    if params[:product]
+      params[:product].update(
+        ProductName: params[:name],
+        StockQuantity: params[:stock],
+        Price: params[:price],
+        ProductImage: params[:image],
+        ProductDescription: params[:description]
+      )
+    else
+      redirect "/manager/managestock?error=invalid_name"
+    end
+  else
+    product_error_message(params)
+  end
+end
+
+# Return an appropriate error message if any input user input is invalid
+def product_error_message(params)
+  if params[:name]
+    redirect "/manager/managestock?error=invalid_name"
+  elsif params[:stock]
+    redirect "/manager/managestock?error=invalid_stock"
+  elsif params[:price]
+    redirect "/manager/managestock?error=invalid_price"
+  elsif params[:image]
+    redirect "/manager/managestock?error=invalid_image"
+  elsif params[:description]
+    redirect "/manager/managestock?error=invalid_description"
+  end
 end
 
 # Helper Methods to sanitise the database entries
