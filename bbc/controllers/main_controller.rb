@@ -451,7 +451,7 @@ post '/manager/updatestock' do
     image: sanitise_string(params['product_image']),
     description: sanitise_string(params['product_description'])
   }
-  check_inputs(values_hash)
+  update_product_values(values_hash)
 
   redirect '/manager/managestock'
 end
