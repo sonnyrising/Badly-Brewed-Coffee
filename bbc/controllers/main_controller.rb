@@ -87,6 +87,8 @@ post "/login" do
   erb :loginpage
 end
 
+
+
 get "/forgotpassword" do
     erb :forgotpassword
 end
@@ -136,7 +138,9 @@ end
 #----------------------------------- USER ROUTES ---------------------------------
 
 before "/user/*" do
-  protected!
+  if session[:uname] != "test"
+    redirect "/"
+  end
 end
 
 get "/user/homepage" do
@@ -251,7 +255,9 @@ end
 #------------------------------------- ADMIN ROUTES ---------------------------------
 
 before "/admin/*" do
-  admin_protected!
+  if session[:uname] != "admin"
+    redirect "/"
+  end
 end
 
 get "/admin" do
@@ -422,6 +428,12 @@ post "/admin/accounts/delete" do
 end
 
 #------------------------------------- MANAGER ROUTES -------------------------------
+
+before "/manager/*" do
+  if session[:uname] != "manager"
+    redirect "/"
+  end
+end
 
 get "/manager/homepage" do
     erb :"manager/homepage"
@@ -620,6 +632,12 @@ def format_date(date_int)
   "#{date_str[0..1]}/#{date_str[2..3]}/#{date_str[4..7]}"
 end
 #------------------------------------- STAFF ROUTES ---------------------------------
+
+before "/staff/*" do
+  if session[:uname] != "staff"
+    redirect "/"
+  end
+end
 
 get "/staff/homepage" do
     erb :"staff/homepage"
