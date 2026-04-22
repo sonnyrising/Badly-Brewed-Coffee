@@ -8,6 +8,8 @@ require_relative "../models/Users"
 require_relative "../models/Transactions"
 require_relative "../models/Feedbacks"
 
+enable :sessions
+
 set :public_folder, File.expand_path('../public', __dir__)
 set :views, File.expand_path('../views', __dir__)
 
@@ -54,7 +56,9 @@ post "/login" do
 
   if @uname == "manager" && @password == "manager"
     session[:uname] = @uname
+    puts "Login. Session username: " + session[:uname]
     redirect "/manager/homepage"
+    puts "Redirecting"
   elsif @uname == "staff" && @password == "staff"
     session[:uname] = @uname
     redirect "/staff/homepage"
@@ -138,9 +142,7 @@ end
 #----------------------------------- USER ROUTES ---------------------------------
 
 before "/user/*" do
-  if session[:uname] != "test"
-    redirect "/"
-  end
+  protected!
 end
 
 get "/user/homepage" do
@@ -431,7 +433,7 @@ end
 
 before "/manager/*" do
   if session[:uname] != "manager"
-    redirect "/"
+    erb :"/"
   end
 end
 
