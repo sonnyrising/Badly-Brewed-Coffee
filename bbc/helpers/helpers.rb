@@ -72,6 +72,8 @@ helpers do
 
   # Helper Methods to sanitise the database entries
   def sanitise_price(input)
+    return false if input.nil?
+
     # Ensure the input is a valid positive number
     # Uses a regex to allow for decimal values
     if input.match?(/^\d+(\.\d+)?$/) && input.to_f > 0
@@ -82,6 +84,8 @@ helpers do
   end
 
   def sanitise_int(input)
+    return false if input.nil?
+
     # Ensure the input is an integer greater than 0
     if (input.to_i.to_s == input) && (input.to_i > 0)
       return input.to_i
@@ -91,6 +95,8 @@ helpers do
   end
 
   def sanitise_string(input)
+    return false if input.nil?
+
     # Check for any SQL injection attempts
     if (input.include?("'") || input.include?('"') || input.include?(";") || input.include?("="))
       return false
@@ -101,6 +107,8 @@ helpers do
 
   # Helper method to format an integer as a date
   def format_date(date_int)
+    return false if date_int.nil?
+
     # Converts to a string and pads with zeros to ensure 8 characters
     date_str = date_int.to_s.rjust(8, '0')
     # Adds a slash to format as dd/mm/yyyy

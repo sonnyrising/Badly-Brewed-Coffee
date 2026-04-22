@@ -139,3 +139,88 @@ RSpec.describe "Update Stock Test" do
     end
   end
 end
+
+RSpec.describe "Update Stock Error Tests" do
+  let(:manager_session) { { 'rack.session' => { user_id: 1, uname: 'manager' } } }
+  test_cases = [
+    {
+      description: "Invalid Product Name",
+      params: {
+        'product_id' => "1",
+        'product_name' => nil,
+        'product_stock' => "100",
+        'product_price' => "15.00",
+        'product_image' => "image.png",
+        'product_description' => "Description"
+      }
+    },
+    {
+      description: "Invalid Stock",
+      params: {
+        'product_id' => "1",
+        'product_name' => "Name",
+        'product_stock' => "a",
+        'product_price' => "15.00",
+        'product_image' => "image.png",
+        'product_description' => "Description"
+      }
+    },
+    {
+      description: "Invalid Price",
+      params: {
+        'product_id' => "1",
+        'product_name' => "Name",
+        'product_stock' => "100",
+        'product_price' => "b",
+        'product_image' => "image.png",
+        'product_description' => "Description"
+      }
+    },
+    {
+      description: "Invalid Image",
+      params: {
+        'product_id' => "1",
+        'product_name' => "name",
+        'product_stock' => "100",
+        'product_price' => "15.00",
+        'product_image' => "image\".png",
+        'product_description' => "Description"
+      }
+    },
+    {
+      description: "Invalid Description",
+      params: {
+        'product_id' => "1",
+        'product_name' => "name",
+        'product_stock' => "100",
+        'product_price' => "15.00",
+        'product_image' => "image.png",
+        'product_description' => nil
+      }
+    }
+  ]
+
+  test_cases.each do |test_case|
+    context "When #{test_case[:description]}" do
+      if test_case[:description].include?("Invalid")
+        it "returns the appropriate error message" do
+          post "/manager/updatestock", test_case[:params], manager_session
+          follow_redirect!
+          desc = test_case[:description].downcase
+
+          if desc.include?("name")
+            expect(last_response.body).to include("Please enter a valid product name.")
+          elsif desc.include?("stock")
+            expect(last_response.body).to include("Please enter a valid stock quantity.")
+          elsif desc.include?("price")
+            expect(last_response.body).to include("Please enter a valid price.")
+          elsif desc.include?("image")
+            expect(last_response.body).to include("Please enter a valid image URL.")
+          elsif desc.include?("html injection")
+            expect(last_response.body).to include("Please enter a valid description.")
+          end
+        end
+      end
+    end
+  end
+end
