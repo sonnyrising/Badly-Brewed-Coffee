@@ -57,23 +57,24 @@ helpers do
 
   # Return an appropriate error message if any input user input is invalid
   def product_error_message(params)
-    if params[:name]
+    if !params[:name]
       redirect "/manager/managestock?error=invalid_name"
-    elsif params[:stock]
+    elsif !params[:stock]
       redirect "/manager/managestock?error=invalid_stock"
-    elsif params[:price]
+    elsif !params[:price]
       redirect "/manager/managestock?error=invalid_price"
-    elsif params[:image]
+    elsif !params[:image]
       redirect "/manager/managestock?error=invalid_image"
-    elsif params[:description]
+    elsif !params[:description]
       redirect "/manager/managestock?error=invalid_description"
     end
   end
 
   # Helper Methods to sanitise the database entries
   def sanitise_price(input)
-    # Ensure the input is a number greater than 0
-    if ((input.to_f.to_s == input) || (input.to_i.to_s == input)) && (input.to_f > 0)
+    # Ensure the input is a valid positive number
+    # Uses a regex to allow for decimal values
+    if input.match?(/^\d+(\.\d+)?$/) && input.to_f > 0
       return '%.2f' % input.to_f
     else
       return false
