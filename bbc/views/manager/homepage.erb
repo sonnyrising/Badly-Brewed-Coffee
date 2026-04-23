@@ -88,7 +88,49 @@
         <div class="container">
           <div class="glass-card" style="top: 15%; left: 5%; width: 42%; height: 35%;">
             <h1>Profits Pie Chart</h1>
-            <p>Make PIE CHART w database data</p>
+            <div>
+              <script
+                src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0">
+              </script>
+
+              <canvas>
+                id="main_pie_chart" style="width:100%;max-width:700px"
+              </canvas>
+              <script>
+                  const xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
+                  const yValues = [55, 49, 44, 24, 15];
+                  const barColors = [
+                      "#b91d47",
+                      "#00aba9",
+                      "#2b5797",
+                      "#e8c3b9",
+                      "#1e7145"
+                  ];
+
+                  const ctx = document.getElementById('main_pie_chart');
+
+                  new Chart(ctx, {
+                      type: "pie",
+                      data: {
+                          labels: xValues,
+                          datasets: [{
+                              backgroundColor: barColors,
+                              data: yValues
+                          }]
+                      },
+                      options: {
+                          plugins: {
+                              legend: {display:true},
+                              title: {
+                                  display: true,
+                                  text: "World Wine Production 2018",
+                                  font: {size:16}
+                              }
+                          }
+                      }
+                  });
+              </script>
+            </div>
           </div>
         </div>
 

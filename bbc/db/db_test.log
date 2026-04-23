@@ -2376,3 +2376,184 @@ I, [2026-04-22T16:23:53.999035 #18396]  INFO -- : (0.007519s) DELETE FROM `Produ
 I, [2026-04-22T16:23:54.006655 #18396]  INFO -- : (0.007162s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
 I, [2026-04-22T16:23:54.019143 #18396]  INFO -- : (0.006744s) DELETE FROM `Products` WHERE (1 = 1)
 I, [2026-04-22T16:23:54.026948 #18396]  INFO -- : (0.007324s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:56:41.845565 #1472]  INFO -- : Database file found and loaded ('C:/Users/sonny/RubymineProjects/project/bbc/db/db_test.sqlite3')
+I, [2026-04-23T14:56:43.217143 #1472]  INFO -- : (0.000615s) PRAGMA foreign_keys = 1
+I, [2026-04-23T14:56:43.218003 #1472]  INFO -- : (0.000238s) PRAGMA case_sensitive_like = 1
+I, [2026-04-23T14:56:43.238205 #1472]  INFO -- : (0.002745s) SELECT sqlite_version()
+I, [2026-04-23T14:56:43.239948 #1472]  INFO -- : (0.000890s) PRAGMA table_xinfo('Basket')
+I, [2026-04-23T14:56:43.252060 #1472]  INFO -- : (0.001114s) PRAGMA table_xinfo('feedbacks')
+I, [2026-04-23T14:56:43.262552 #1472]  INFO -- : (0.000828s) PRAGMA table_xinfo('Products')
+I, [2026-04-23T14:56:43.273199 #1472]  INFO -- : (0.000830s) PRAGMA table_xinfo('Staff')
+I, [2026-04-23T14:56:43.282694 #1472]  INFO -- : (0.000942s) PRAGMA table_xinfo('transactions')
+I, [2026-04-23T14:56:43.294277 #1472]  INFO -- : (0.000909s) PRAGMA table_xinfo('users')
+I, [2026-04-23T14:56:56.859720 #1472]  INFO -- : (0.000816s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:56:56.870963 #1472]  INFO -- : (0.010349s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:56:57.511207 #1472]  INFO -- : (0.010778s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:56:57.522691 #1472]  INFO -- : (0.010533s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:56:57.548398 #1472]  INFO -- : (0.010257s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:56:57.561814 #1472]  INFO -- : (0.012046s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:56:57.589117 #1472]  INFO -- : (0.012919s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:56:57.602385 #1472]  INFO -- : (0.012408s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:56:57.605755 #1472]  INFO -- : (0.000638s) SELECT * FROM `Products`
+I, [2026-04-23T14:56:57.636829 #1472]  INFO -- : (0.009914s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:56:57.648937 #1472]  INFO -- : (0.011436s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:56:57.671010 #1472]  INFO -- : (0.010301s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:56:57.682180 #1472]  INFO -- : (0.010505s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:56:57.707957 #1472]  INFO -- : (0.010742s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:56:57.720402 #1472]  INFO -- : (0.010835s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:56:57.748763 #1472]  INFO -- : (0.010470s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:56:57.760247 #1472]  INFO -- : (0.010869s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:56:57.784138 #1472]  INFO -- : (0.011597s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:56:57.796980 #1472]  INFO -- : (0.010762s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:56:57.825002 #1472]  INFO -- : (0.011496s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:56:57.836306 #1472]  INFO -- : (0.010626s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:56:57.865662 #1472]  INFO -- : (0.010461s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:56:57.878929 #1472]  INFO -- : (0.011208s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:56:57.900708 #1472]  INFO -- : (0.008637s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:56:57.909101 #1472]  INFO -- : (0.007812s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:56:57.928912 #1472]  INFO -- : (0.007975s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:56:57.937057 #1472]  INFO -- : (0.007661s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:56:57.963560 #1472]  INFO -- : (0.008464s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:56:57.975253 #1472]  INFO -- : (0.011197s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:56:57.994500 #1472]  INFO -- : (0.009451s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:56:58.003737 #1472]  INFO -- : (0.008753s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:56:58.023701 #1472]  INFO -- : (0.008535s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:56:58.034709 #1472]  INFO -- : (0.009507s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:56:58.060903 #1472]  INFO -- : (0.010498s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:56:58.078726 #1472]  INFO -- : (0.017322s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:56:58.097134 #1472]  INFO -- : (0.008696s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:56:58.108268 #1472]  INFO -- : (0.010545s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:56:58.129790 #1472]  INFO -- : (0.011671s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:56:58.141411 #1472]  INFO -- : (0.011081s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:56:58.163572 #1472]  INFO -- : (0.008597s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:56:58.172414 #1472]  INFO -- : (0.008269s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:56:58.190382 #1472]  INFO -- : (0.009448s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:56:58.199975 #1472]  INFO -- : (0.008883s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:56:58.221831 #1472]  INFO -- : (0.009041s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:56:58.231365 #1472]  INFO -- : (0.009005s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:56:58.257423 #1472]  INFO -- : (0.010296s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:56:58.270670 #1472]  INFO -- : (0.012564s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:56:58.295235 #1472]  INFO -- : (0.011195s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:56:58.309823 #1472]  INFO -- : (0.013847s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:56:58.342810 #1472]  INFO -- : (0.011699s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:56:58.353997 #1472]  INFO -- : (0.010607s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:56:58.357320 #1472]  INFO -- : (0.000564s) SELECT * FROM `transactions`
+I, [2026-04-23T14:56:58.389928 #1472]  INFO -- : (0.010858s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:56:58.401198 #1472]  INFO -- : (0.010598s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:56:58.426520 #1472]  INFO -- : (0.012159s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:56:58.437637 #1472]  INFO -- : (0.010520s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:56:58.464780 #1472]  INFO -- : (0.010195s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:56:58.487234 #1472]  INFO -- : (0.020708s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:56:58.500504 #1472]  INFO -- : (0.000626s) SELECT 1 AS 'one' FROM `transactions` WHERE (`refundRequested` = 1) LIMIT 1
+I, [2026-04-23T14:56:58.525240 #1472]  INFO -- : (0.013764s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:56:58.539892 #1472]  INFO -- : (0.013974s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:56:58.564262 #1472]  INFO -- : (0.011274s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:56:58.575736 #1472]  INFO -- : (0.010576s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:56:58.609151 #1472]  INFO -- : (0.016719s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:56:58.620520 #1472]  INFO -- : (0.010615s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:56:58.624345 #1472]  INFO -- : (0.000514s) SELECT `UserId` FROM `transactions` WHERE (`TransactionId` IS NULL) LIMIT 1
+I, [2026-04-23T14:56:58.625454 #1472]  INFO -- : (0.000401s) SELECT `TotalCost` FROM `transactions` WHERE (`TransactionId` IS NULL) LIMIT 1
+I, [2026-04-23T14:56:58.626580 #1472]  INFO -- : (0.000509s) SELECT `TransactionDate` FROM `transactions` WHERE (`TransactionId` IS NULL) LIMIT 1
+I, [2026-04-23T14:56:58.627726 #1472]  INFO -- : (0.000521s) SELECT `Status` FROM `transactions` WHERE (`TransactionId` IS NULL) LIMIT 1
+I, [2026-04-23T14:56:58.628983 #1472]  INFO -- : (0.000532s) SELECT `RefundReason` FROM `feedbacks` WHERE (`TransactionId` IS NULL) LIMIT 1
+I, [2026-04-23T14:56:58.657764 #1472]  INFO -- : (0.010512s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:56:58.669779 #1472]  INFO -- : (0.011216s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:56:58.692387 #1472]  INFO -- : (0.011132s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:56:58.704780 #1472]  INFO -- : (0.011487s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:56:58.738162 #1472]  INFO -- : (0.011590s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:56:58.749246 #1472]  INFO -- : (0.010326s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:56:58.928490 #1472]  INFO -- : (0.000988s) SELECT * FROM `Products` WHERE `ProductId` = '1'
+I, [2026-04-23T14:56:58.930633 #1472]  INFO -- : (0.000119s) BEGIN
+I, [2026-04-23T14:56:58.935871 #1472]  INFO -- : (0.003932s) UPDATE `Products` SET `ProductName` = 'Premium Roast', `ProductImage` = 'premium_roast.jpg', `ProductDescription` = 'A rich and bold coffee.', `Price` = 12.99, `StockQuantity` = 50 WHERE (`ProductId` = 1)
+I, [2026-04-23T14:56:58.948812 #1472]  INFO -- : (0.012250s) COMMIT
+I, [2026-04-23T14:56:59.097133 #1472]  INFO -- : (0.016691s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:56:59.112543 #1472]  INFO -- : (0.014161s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:56:59.118128 #1472]  INFO -- : (0.000968s) SELECT * FROM `Products` WHERE `ProductId` = '1'
+I, [2026-04-23T14:56:59.119345 #1472]  INFO -- : (0.000099s) BEGIN
+I, [2026-04-23T14:56:59.123856 #1472]  INFO -- : (0.003454s) UPDATE `Products` SET `ProductName` = 'Premium Roast', `ProductImage` = 'premium_roast.jpg', `ProductDescription` = 'A rich and bold coffee.', `Price` = 12.99, `StockQuantity` = 50 WHERE (`ProductId` = 1)
+I, [2026-04-23T14:56:59.136818 #1472]  INFO -- : (0.012196s) COMMIT
+I, [2026-04-23T14:56:59.140174 #1472]  INFO -- : (0.000851s) SELECT * FROM `Products` WHERE `ProductId` = 1
+I, [2026-04-23T14:56:59.173746 #1472]  INFO -- : (0.015178s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:56:59.189695 #1472]  INFO -- : (0.015083s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:56:59.194539 #1472]  INFO -- : (0.000923s) SELECT * FROM `Products` WHERE `ProductId` = '1'
+I, [2026-04-23T14:56:59.221343 #1472]  INFO -- : (0.014479s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:56:59.237694 #1472]  INFO -- : (0.015359s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:56:59.239335 #1472]  INFO -- : (0.000853s) SELECT * FROM `Products` WHERE `ProductId` = 1
+I, [2026-04-23T14:56:59.243779 #1472]  INFO -- : (0.000824s) SELECT * FROM `Products` WHERE `ProductId` = '1'
+I, [2026-04-23T14:56:59.247609 #1472]  INFO -- : (0.001117s) SELECT * FROM `Products` WHERE `ProductId` = 1
+I, [2026-04-23T14:56:59.254141 #1472]  INFO -- : (0.000853s) SELECT * FROM `Products`
+I, [2026-04-23T14:56:59.287368 #1472]  INFO -- : (0.014888s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:56:59.302866 #1472]  INFO -- : (0.014106s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:56:59.307918 #1472]  INFO -- : (0.000988s) SELECT * FROM `Products` WHERE `ProductId` = '1'
+I, [2026-04-23T14:56:59.336964 #1472]  INFO -- : (0.016042s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:56:59.353496 #1472]  INFO -- : (0.015510s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:56:59.355255 #1472]  INFO -- : (0.000885s) SELECT * FROM `Products` WHERE `ProductId` = 1
+I, [2026-04-23T14:56:59.360537 #1472]  INFO -- : (0.001019s) SELECT * FROM `Products` WHERE `ProductId` = '1'
+I, [2026-04-23T14:56:59.363938 #1472]  INFO -- : (0.000964s) SELECT * FROM `Products` WHERE `ProductId` = 1
+I, [2026-04-23T14:56:59.369984 #1472]  INFO -- : (0.001004s) SELECT * FROM `Products`
+I, [2026-04-23T14:56:59.406733 #1472]  INFO -- : (0.018016s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:56:59.422155 #1472]  INFO -- : (0.014293s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:56:59.427002 #1472]  INFO -- : (0.000737s) SELECT * FROM `Products` WHERE `ProductId` = '1'
+I, [2026-04-23T14:56:59.448797 #1472]  INFO -- : (0.012597s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:56:59.461991 #1472]  INFO -- : (0.012262s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:56:59.463246 #1472]  INFO -- : (0.000677s) SELECT * FROM `Products` WHERE `ProductId` = 1
+I, [2026-04-23T14:56:59.466871 #1472]  INFO -- : (0.000530s) SELECT * FROM `Products` WHERE `ProductId` = '1'
+I, [2026-04-23T14:56:59.471132 #1472]  INFO -- : (0.000846s) SELECT * FROM `Products` WHERE `ProductId` = 1
+I, [2026-04-23T14:56:59.475591 #1472]  INFO -- : (0.000676s) SELECT * FROM `Products`
+I, [2026-04-23T14:56:59.500948 #1472]  INFO -- : (0.012338s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:56:59.513818 #1472]  INFO -- : (0.011831s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:56:59.536279 #1472]  INFO -- : (0.000707s) SELECT * FROM `Products` WHERE `ProductId` = '1'
+I, [2026-04-23T14:56:59.556216 #1472]  INFO -- : (0.011565s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:56:59.568137 #1472]  INFO -- : (0.011065s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:56:59.569495 #1472]  INFO -- : (0.000719s) SELECT * FROM `Products` WHERE `ProductId` = 1
+I, [2026-04-23T14:56:59.573147 #1472]  INFO -- : (0.000664s) SELECT * FROM `Products` WHERE `ProductId` = '1'
+I, [2026-04-23T14:56:59.575461 #1472]  INFO -- : (0.000660s) SELECT * FROM `Products` WHERE `ProductId` = 1
+I, [2026-04-23T14:56:59.579877 #1472]  INFO -- : (0.000545s) SELECT * FROM `Products`
+I, [2026-04-23T14:56:59.608239 #1472]  INFO -- : (0.011158s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:56:59.620335 #1472]  INFO -- : (0.011440s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:56:59.623655 #1472]  INFO -- : (0.000629s) SELECT * FROM `Products` WHERE `ProductId` = '1'
+I, [2026-04-23T14:56:59.628602 #1472]  INFO -- : (0.000627s) SELECT * FROM `Products`
+I, [2026-04-23T14:56:59.654939 #1472]  INFO -- : (0.012694s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:56:59.671347 #1472]  INFO -- : (0.015391s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:56:59.676490 #1472]  INFO -- : (0.001111s) SELECT * FROM `Products` WHERE `ProductId` = '1'
+I, [2026-04-23T14:56:59.683171 #1472]  INFO -- : (0.000841s) SELECT * FROM `Products`
+I, [2026-04-23T14:56:59.715159 #1472]  INFO -- : (0.015305s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:56:59.731424 #1472]  INFO -- : (0.015095s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:56:59.735895 #1472]  INFO -- : (0.001007s) SELECT * FROM `Products` WHERE `ProductId` = '1'
+I, [2026-04-23T14:56:59.745092 #1472]  INFO -- : (0.000805s) SELECT * FROM `Products`
+I, [2026-04-23T14:56:59.777265 #1472]  INFO -- : (0.016255s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:56:59.792640 #1472]  INFO -- : (0.014302s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:56:59.797192 #1472]  INFO -- : (0.000884s) SELECT * FROM `Products` WHERE `ProductId` = '1'
+I, [2026-04-23T14:56:59.804743 #1472]  INFO -- : (0.001143s) SELECT * FROM `Products`
+I, [2026-04-23T14:56:59.838071 #1472]  INFO -- : (0.015218s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:56:59.854491 #1472]  INFO -- : (0.015569s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:56:59.859311 #1472]  INFO -- : (0.000935s) SELECT * FROM `Products` WHERE `ProductId` = '1'
+I, [2026-04-23T14:56:59.867209 #1472]  INFO -- : (0.000921s) SELECT * FROM `Products`
+I, [2026-04-23T14:56:59.907106 #1472]  INFO -- : (0.015945s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:56:59.925500 #1472]  INFO -- : (0.017522s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:57:00.004909 #1472]  INFO -- : (0.013775s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:57:00.020996 #1472]  INFO -- : (0.015084s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:57:00.060740 #1472]  INFO -- : (0.018736s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:57:00.076740 #1472]  INFO -- : (0.014798s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:57:00.106352 #1472]  INFO -- : (0.016404s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:57:00.122653 #1472]  INFO -- : (0.014996s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:57:00.158726 #1472]  INFO -- : (0.014452s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:57:00.174617 #1472]  INFO -- : (0.015021s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:57:00.205698 #1472]  INFO -- : (0.015459s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:57:00.221604 #1472]  INFO -- : (0.014677s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:57:00.255575 #1472]  INFO -- : (0.015931s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:57:00.271559 #1472]  INFO -- : (0.015237s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:57:00.301857 #1472]  INFO -- : (0.016668s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:57:00.320402 #1472]  INFO -- : (0.017577s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:57:00.361779 #1472]  INFO -- : (0.023297s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:57:00.378407 #1472]  INFO -- : (0.015501s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:57:00.409391 #1472]  INFO -- : (0.016939s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:57:00.424573 #1472]  INFO -- : (0.013844s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:57:00.466315 #1472]  INFO -- : (0.015636s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:57:00.482756 #1472]  INFO -- : (0.015355s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:57:00.512004 #1472]  INFO -- : (0.014693s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:57:00.526351 #1472]  INFO -- : (0.013372s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:57:00.566644 #1472]  INFO -- : (0.014300s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:57:00.582466 #1472]  INFO -- : (0.014582s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
+I, [2026-04-23T14:57:00.614596 #1472]  INFO -- : (0.014944s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-04-23T14:57:00.629144 #1472]  INFO -- : (0.013656s) INSERT INTO `Products` (`productId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc')
