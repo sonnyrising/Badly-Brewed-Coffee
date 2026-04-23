@@ -1,4 +1,4 @@
-INSERT INTO Users VALUES (1, 'John', 'PasswordHere', 'johnpork@gmail.com', 5, 1, 0);
+INSERT INTO Users VALUES (1, 'Guest', null,null, null,null, null);
 INSERT INTO Users VALUES (2, 'Bill', 'PasswordHere', 'billboy@yahoo.com', 2, 1, 0);
 INSERT INTO Users VALUES (3, 'Bob', 'PasswordHere', 'bobby@hotmail.co.uk', 7, 1, 0);
 INSERT INTO Users VALUES (4, 'Ross', 'PasswordHere', 'rossbob@outlook.com', 6, 1, 0);
