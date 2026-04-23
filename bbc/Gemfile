@@ -6,6 +6,7 @@ gem 'sinatra'
 # Rack is used to interface sinatra and the running web server.
 gem 'rack'
 gem 'rackup'
+gem 'rack-test'
 
 # Puma is the web server that the application is hosted upon.
 gem 'puma'
@@ -27,3 +28,5 @@ gem 'bcrypt'
 
 # Utility for loading multiple files very quickly.
 gem 'require_all'
+
+gem 'simplecov'

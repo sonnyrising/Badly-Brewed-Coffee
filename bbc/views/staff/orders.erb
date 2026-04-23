@@ -48,22 +48,27 @@
     <div class="squish" style="; background-color: rgb(130 72 24); height: 100vh; box-shadow: 11px 5px 15px rgba(0, 0, 0, 0.3); z-index: 100; min-width: 220px;">
 
       <div style="width: 100%; text-align: left;">
-        <a href="/logout"><img src="/imgs/home.png" alt="Home" style="width:30px; height:30px;"></a>
+        <a href="/logout" style="font-size: 24px; color: white; text-decoration: none">Logout</a>
       </div>
-
-      <div style="width: 100%; text-align: center;" class="column-buttons">
-        <a href = "/staff/selectproducts">
+      <div style="position: relative; top: 25px; left: 80px;" class="column-buttons">
+        <form action="/staff/homepage" method="get">
+          <button class="button">Home</button>
+        </form>
+        <form action="/staff/selectproducts" method="post">
           <button class="button">Shop</button>
-        </a>
-        <a href = "/staff/settings">
+        </form>
+        <form action="/staff/settings" method="post">
           <button class="button">Settings</button>
-        </a>
-        <a href = "/staff/staffaccountview">
+        </form>
+        <form action="/staff/staffaccountview" method="post">
           <button class="button">Accounts</button>
-        </a>
-        <a href = "/manager/orders">
-          <button class="button">Orders</button>
-        </a>
+        </form>
+        <form action="/staff/managestock" method="post">
+          <button class="button">Stock</button>
+        </form>
+        <form action="/" method="post">
+          <button class="button">Log Out</button>
+        </form>
       </div>
     </div>
 
