@@ -7,7 +7,8 @@ CREATE TABLE Users(
   Email TEXT,
   LoyaltyPoints INTEGER,
   DaysSinceLastUse INTEGER,
-  Suspended INTEGER
+  Suspended INTEGER,
+  FreeCoffeesRedeemed INTEGER
 );
 
 CREATE TABLE Transactions(
