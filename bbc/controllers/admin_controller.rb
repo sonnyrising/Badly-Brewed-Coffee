@@ -30,9 +30,9 @@ post "/admin/views/user" do
 end
 
 get "/admin/feedback" do
-  #@shown_feedback = Feedbacks.map(:FeedbackId)
+  @shown_feedback = Feedbacks.map(:FeedbackId)
 
-  if params["filter"] == "Yes"
+  if params["filter"] == "refund"
     @shown_feedback = Feedbacks.where(RefundRequest: true).all
   else
     @shown_feedback = Feedbacks.where(RefundRequest: false).all
