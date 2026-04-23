@@ -51,7 +51,7 @@
                 <input type="radio" id="refund" name="filter" value="refund">
                 <label for="refund" style="white-space: nowrap;">Refunds Only</label>
 
-                <input type="radio" id="issues" name="filter" value="non-refunds">
+                <input type="radio" id="issues" name="filter" value="general_issue">
                 <label for="issues" style="white-space: nowrap;">General Issues</label>
 
                 <input type="submit" value="Filter">
@@ -66,10 +66,10 @@
                     }
                   </style>
                   <h3 style="margin-left: 10%;"><%= feedback.FeedbackId %></h3>
-                  <% if feedback.RefundRequest %>
+                  <% if feedback.RefundRequest == "Yes" %>
                     <p style="padding-left: 2vw;color: #ffdb99;">Ticket: <%= feedback.TicketNumber %></p>
                     <p style="padding-left: 2vw;">Reason: <%= feedback.RefundReason %></p>
-                  <% else %>
+                  <% else  %>
                     <p style="padding-left: 2vw;">Issue: <%= feedback.IssueContent %></p>
                   <% end %>
                 

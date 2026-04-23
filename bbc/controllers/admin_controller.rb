@@ -30,12 +30,11 @@ post "/admin/views/user" do
 end
 
 get "/admin/feedback" do
-  @shown_feedback = Feedbacks.map(:FeedbackId)
 
   if params["filter"] == "refund"
     @shown_feedback = Feedbacks.where(RefundRequest: true).all
-  elsif params["filter"] == "non-refunds"
-    @shown_feedback = Feedbacks.where(RefundRequest: false).all
+  else
+    @shown_feedback = Feedbacks.all
   end
 
   erb :"admin/feedback"
