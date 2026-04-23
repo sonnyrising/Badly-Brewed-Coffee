@@ -4,40 +4,40 @@ class Feedbacks < Sequel::Model
       return Feedbacks.count
     end
 
-    def self.get_issue_content(feedbackId)
-      issue_content = Feedbacks.where(FeedbackId: feedbackId).get(:IssueContent)
+    def self.get_issue_content(feedback_id)
+      issue_content = Feedbacks.where(FeedbackId: feedback_id).get(:IssueContent)
       return issue_content
     end
 
     def self.get_refund_request(feedbackId)
-      refund_req = Feedbacks.where(FeedbackId: feedbackId).get(:RefundRequest)
+      refund_req = Feedbacks.where(FeedbackId: feedback_id).get(:RefundRequest)
       return refund_req
     end
 
     def self.get_refund_reason(feedbackId)
-      refund_reason = Feedbacks.where(FeedbackId: feedbackId).get(:RefundReason)
+      refund_reason = Feedbacks.where(FeedbackId: feedback_id).get(:RefundReason)
       return refund_reason
     end
 
     def self.get_ticket_number(feedbackId)
-      ticket_num = Feedbacks.where(FeedbackId: feedbackId).get(:TicketNumber)
+      ticket_num = Feedbacks.where(FeedbackId: feedback_id).get(:TicketNumber)
       return ticket_num
     end
 
     def load(params)
-      self.IssueContent = params.fetch("issue","").strip
-      self.RefundRequest = params.fetch("request","")
-      self.RefundReason = params.fetch("reason","").strip
-      self.TransactionId = params.fetch("transaction_id","").strip
+      self.issue_content = params.fetch("issue","").strip
+      self.refund_request = params.fetch("request","")
+      self.refund_reason = params.fetch("reason","").strip
+      self.transaction_id = params.fetch("transaction_id","").strip
       
       #only generates a ticket number if RefundRequest == "Yes"
-      if self.RefundRequest == "Yes"
+      if self.refund_request == "Yes"
         loop do
           new_ticket_num = rand(1000..9999)
-          break self.TicketNumber = new_ticket_num if Feedbacks.where(TicketNumber: new_ticket_num).empty?
+          break self.ticket_number = new_ticket_num if Feedbacks.where(TicketNumber: new_ticket_num).empty?
         end 
       else
-        self.TicketNumber = nil
+        self.ticket_number = nil
       end
    end
 
