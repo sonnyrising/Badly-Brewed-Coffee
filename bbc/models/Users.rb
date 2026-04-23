@@ -65,7 +65,9 @@ class Users < Sequel::Model
     end
 
     def self.daily_inactivity_check
-      Users.where(Suspended: 0).update("DaysSinceLastUse = DaysSinceLastUse + 1")
+      current_inactivity_count = self.DaysSinceLastUse + 1
+
+      Users.where(Suspended: 0).update(DaysSinceLastUse: current_inactivity_count)
       Users.where{DaysSinceLastUse >= 180}.update(Suspended: 1)
     end
 
