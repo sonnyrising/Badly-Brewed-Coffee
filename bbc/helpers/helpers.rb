@@ -115,4 +115,19 @@ helpers do
     "#{date_str[0..1]}/#{date_str[2..3]}/#{date_str[4..7]}"
   end
 
+  # Helper method to return the data needed for the main pie chart
+  def get_pie_chart_data
+    product_names = Products.all.map { |product| product.ProductName }
+
+  end
+
+  # Helper method to count the number of free coffees redeemed
+  users = Users.all
+  free_coffees = 0
+  users.each do |user|
+    free_coffees += user.FreeCoffeesRedeemed
+  end
+
 end
+
+
