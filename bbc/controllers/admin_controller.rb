@@ -34,7 +34,7 @@ get "/admin/feedback" do
 
   if params["filter"] == "refund"
     @shown_feedback = Feedbacks.where(RefundRequest: true).all
-  else
+  elsif params["filter"] == "non-refunds"
     @shown_feedback = Feedbacks.where(RefundRequest: false).all
   end
 

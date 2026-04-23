@@ -70,7 +70,7 @@
                     <p style="padding-left: 2vw;color: #ffdb99;">Ticket: <%= feedback.TicketNumber %></p>
                     <p style="padding-left: 2vw;">Reason: <%= feedback.RefundReason %></p>
                   <% else %>
-                    <p style="padding-left: 2vw;"><%= Feedbacks.get_issue_content(feedback.FeedbackId) %></p>
+                    <p style="padding-left: 2vw;">Issue: <%= feedback.IssueContent %></p>
                   <% end %>
                 
                   <div style="display: grid; grid-template-columns: 3vw 3vw 5vw 3vw;position:absolute; right:5%">
