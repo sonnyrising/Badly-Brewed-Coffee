@@ -60,3 +60,14 @@ CREATE TABLE Staff(
   EmployeeLevel TEXT,
   EmploymentStatus TEXT
 );
+
+CREATE TABLE Coffees (
+  Price FLOAT,
+  CoffeeSize TEXT, 
+  MilkType TEXT,
+  FOREIGN KEY (ProductId) REFERENCES Products(ProductId) ON DELETE CASCADE,
+  FOREIGN KEY (ProductName) REFERENCES Products(ProductName) ON DELETE CASCADE,
+  FOREIGN KEY (ProductImage) REFERENCES Products(ProductImage) ON DELETE CASCADE,
+  FOREIGN KEY (ProductDescription) REFERENCES Products(ProductDescription) ON DELETE CASCADE,
+
+)
