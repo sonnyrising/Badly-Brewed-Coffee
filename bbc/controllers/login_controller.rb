@@ -48,10 +48,21 @@ post "/login" do
   erb :loginpage
 end
 
+post "/guestlogin" do
+  session[:userId] = 1
+  session[:uname] = "Guest"
+  redirect "/user/homepage"
+
+  erb :loginpage
+end
+
 get "/forgotpassword" do
   erb :forgotpassword
 end
 
 get "/logout" do
+  session.clear
+  Users.clearGuestBasket
+
   redirect "/login"
 end
