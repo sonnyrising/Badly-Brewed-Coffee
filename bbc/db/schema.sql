@@ -63,12 +63,12 @@ CREATE TABLE Staff(
 );
 
 CREATE TABLE Coffees (
+  CoffeeidId INTEGER,
+  Name TEXT,
+  Image TEXT,
+  Description TEXT,
   Price FLOAT,
   CoffeeSize TEXT, 
-  MilkType TEXT,
-  FOREIGN KEY (ProductId) REFERENCES Products(ProductId) ON DELETE CASCADE,
-  FOREIGN KEY (ProductName) REFERENCES Products(ProductName) ON DELETE CASCADE,
-  FOREIGN KEY (ProductImage) REFERENCES Products(ProductImage) ON DELETE CASCADE,
-  FOREIGN KEY (ProductDescription) REFERENCES Products(ProductDescription) ON DELETE CASCADE,
+  MilkType TEXT
 
 )

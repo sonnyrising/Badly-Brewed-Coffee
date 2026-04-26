@@ -125,7 +125,9 @@ helpers do
   users = Users.all
   free_coffees = 0
   users.each do |user|
-    free_coffees += user.FreeCoffeesRedeemed
+    if !user.FreeCoffeesRedeemed.nil?
+     free_coffees += user.FreeCoffeesRedeemed
+    end
   end
 
 end
