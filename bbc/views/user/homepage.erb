@@ -17,17 +17,18 @@
 <body>
 <header>
   <section class="header-bar">
-    <nav>
+      <nav>
       <ul>
-        <li><a href="/user/shop" class="smooth-link">Shop</a></li>
-        <% if session[:userId] != 1 %>
+          <li><a href="/user/homepage" class="smooth-link">Dashboard</a></li>
+          <li><a href="/user/shop" class="smooth-link">Shop</a></li>
+          <% if session[:userId] != 1 %>
           <li><a href="/user/orders" class="smooth-link">Orders</a></li>
           <li><a href="/user/settings" class="smooth-link">Settings</a></li>
-        <% end %>
-        <li><a href="/user/contact_us_page" class="smooth-link">Contact Us</a></li>
-        <li><a href="/logout" class="smooth-link">Logout<a/></li>
+          <% end %>
+          <li><a href="/user/contact_us_page" class="smooth-link">Contact Us</a></li>
+          <li><a href="/logout" class="smooth-link">Logout<a/></li>
       </ul>
-    </nav>
+      </nav>
   </section>
 </header>
 <main>
