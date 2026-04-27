@@ -56,8 +56,8 @@ post "/admin/feedback/filter" do
 end
 
 post "/admin/feedback/delete" do
-  feedbackId = params[:feedbackId]
-  Feedbacks.where(FeedbackId: feedbackId).delete
+  feedback_id = params[:feedbackId]
+  Feedbacks.where(FeedbackId: feedback_id).delete
 
   redirect "/admin/feedback"
 end
@@ -67,34 +67,34 @@ post "/admin/accounts/create" do
 end
 
 post "/admin/accounts/create/submit" do
-  @userId = 1
+  @user_id = 1
   @password = BCrypt::Password.create("password")
   puts params[:'type-data']
   if(params[:'type-data'] == "Staff")
     puts "Creating a staff account!"
-    @userId = validate_staff_id(@userId)
-    Staff.insert(StaffId: @userId, StaffUsername: "#{params[:'username-data']}", StaffEmail: "#{params[:'email-data']}", StaffPasswordHash: @password, EmployeeLevel: 'Barista', EmploymentStatus: 1)
+    @user_id = validate_staff_id(@user_id)
+    Staff.insert(StaffId: @user_id, StaffUsername: "#{params[:'username-data']}", StaffEmail: "#{params[:'email-data']}", StaffPasswordHash: @password, EmployeeLevel: 'Barista', EmploymentStatus: 1)
   else
     puts "Creating a user account!"
-    @userId = validate_user_id(@userId)
-    Users.insert(UserId: @userId, Username: "#{params[:'username-data']}", PassHash: @password, Email: "#{params[:'email-data']}", LoyaltyPoints: 0, DaysSinceLastUse: 0, Suspended: 0)
+    @user_id = validate_user_id(@user_id)
+    Users.insert(UserId: @user_id, Username: "#{params[:'username-data']}", PassHash: @password, Email: "#{params[:'email-data']}", LoyaltyPoints: 0, DaysSinceLastUse: 0, Suspended: 0)
   end
   redirect "/admin/accounts"
 end
 
-def validate_staff_id(userId)
-  if Staff.where(StaffId: userId).empty?
-    return userId
+def validate_staff_id(user_id)
+  if Staff.where(StaffId: user_id).empty?
+    return user_id
   else
-    validate_staff_id(userId += 1)
+    validate_staff_id(user_id += 1)
   end
 end
 
-def validate_user_id(userId)
-  if Users.where(UserId: userId).empty?
-    return userId
+def validate_user_id(user_id)
+  if Users.where(UserId: user_id).empty?
+    return user_id
   else
-    validate_user_id(userId + 1)
+    validate_user_id(user_id + 1)
   end
 end
 
@@ -109,63 +109,63 @@ post "/admin/accounts/filter" do
 end
 
 post "/admin/accounts/view" do
-  @userId = params[:userId]
+  @user_id= params[:userId]
   erb :"admin/account"
 end
 
 post "/admin/accounts/edit" do
-  @userId = params[:userId]
+  @user_id= params[:userId]
   erb :"admin/accountedit"
 end
 
 post "/admin/accounts/edit/update" do
-  userId = params[:'id-data']
+  user_id= params[:'id-data']
 
   if !params[:'username-data'].empty?
-    Users.where(UserId: userId).update(Username: "#{params[:'username-data']}")
+    Users.where(UserId: user_id).update(Username: "#{params[:'username-data']}")
   end
   if !params[:'email-data'].empty?
-    Users.where(UserId: userId).update(Email: "#{params[:'email-data']}")
+    Users.where(UserId: user_id).update(Email: "#{params[:'email-data']}")
   end
   if !params[:'loyaltypoint-data'].empty?
-    Users.where(UserId: userId).update(LoyaltyPoints: params[:'loyaltypoint-data'])
+    Users.where(UserId: user_id).update(LoyaltyPoints: params[:'loyaltypoint-data'])
   end
   #if !params[:'address-data'].empty?
-  #  Users.where(UserId: userId).update(LoyaltyPoints: "#{params[:'username-data']}")
+  #  Users.where(UserId: user_id).update(LoyaltyPoints: "#{params[:'username-data']}")
   #end
   if !params[:'inactivity-data'].empty?
-    Users.where(UserId: userId).update(DaysSinceLastUse: params[:'inactivity-data'])
+    Users.where(UserId: user_id).update(DaysSinceLastUse: params[:'inactivity-data'])
   end
 
   redirect "/admin/accounts"
 end
 
 post "/admin/accounts/edit/recover" do
-  userId = params[:'id-data']
+  user_id= params[:'id-data']
   @password = BCrypt::Password.create("password")
 
-  Users.where(UserId: userId).update(PassHash: @password)
+  Users.where(UserId: user_id).update(PassHash: @password)
 
   redirect "/admin/accounts"
 end
 
 post "/admin/accounts/suspend" do
-  @userId = params[:userId]
-  if !Users.isSuspended?(@userId)
-    Users.where(UserId: @userId).update(Suspended: 1)
+  @user_id= params[:userId]
+  if !Users.isSuspended?(@user_id)
+    Users.where(UserId: @user_id).update(Suspended: 1)
   else
-    Users.where(UserId: @userId).update(Suspended: 0)
+    Users.where(UserId: @user_id).update(Suspended: 0)
   end
 
   redirect "/admin/accounts"
 end
 
 post "/admin/accounts/delete" do
-  userId = params[:userId]
-  Users.where(UserId: userId).delete
-  Transactions.where(UserId: userId).delete
-  Feedbacks.where(UserId: userId).delete
-  Basket.where(UserId: userId).delete
+  user_id= params[:userId]
+  Users.where(UserId: user_id).delete
+  Transactions.where(UserId: user_id).delete
+  Feedbacks.where(UserId: user_id).delete
+  Basket.where(UserId: user_id).delete
 
   redirect "/admin/accounts"
 end
