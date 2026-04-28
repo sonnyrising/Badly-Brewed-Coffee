@@ -81,8 +81,16 @@
         <a href="/manager/topproducts" style="color: black; text-decoration: none; margin-left: 30px; font-family: Helvetica, sans-serif; font-weight: bold; font-size: 14pt;">Top Products</a>
         <a href="/manager/topcustomers" style="color: black; text-decoration: none; margin-left: 30px; font-family: Helvetica, sans-serif; font-weight: bold; font-size: 14pt;">Top Customers</a>
       </nav>
-
-
+      <div class="container">
+        <div class="glass-card">
+          <h1 style="text-align: center; margin-top: 2vh;">Free Coffees Redeemed</h1>
+          <% @free_coffees = get_free_coffees_redeemed %>
+          <div>
+            <%= @free_coffees %>
+            Coffees have been redeemed!
+          </div>
+        </div>
+      </div>
 
     </div>
   </div>
