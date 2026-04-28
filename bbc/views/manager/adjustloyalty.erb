@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="/css/GenericTheme.css" rel="stylesheet">
+  <title>Badly Brewed Coffee</title>
+  <style>
+      .button {
+          background-color: rgb(130 72 24);
+          border: none;
+          color: white;
+          padding: 10px 20px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font: 16pt Helvetica, bold;
+          white-space: nowrap;
+          cursor: pointer;
+      }
+
+      .column-buttons {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 50px;
+          margin-top: 50px;
+      }
+
+      .glass-card {
+          position: absolute;
+          background: transparent;
+          backdrop-filter: blur(15px);
+          box-shadow: 0px 0px 20px 0px #0000007a;
+          border-radius: 30px;
+          text-align: center;
+          color: black;
+          z-index: 10;
+          padding: 20px;
+          box-sizing: border-box;
+          overflow-y: auto;
+      }
+
+      .inline-input {
+          border: none;
+          background: transparent;
+          padding: 0 2px;
+          margin: 0 2px;
+          font: inherit;
+          color: inherit;
+          border-bottom: 1px dashed #999;
+          cursor: text;
+          width: 90%;
+          max-width: 180px;
+          text-align: center;
+      }
+  </style>
+</head>
+
+<body>
+<main>
+  <div style="display: grid; grid-template-columns: 20vw 80vw;" class="squish">
+
+    <div class="squish" style="; background-color: rgb(130 72 24); height: 100vh; box-shadow: 11px 5px 15px rgba(0, 0, 0, 0.3); z-index: 100; min-width: 220px;">
+
+      <div style="width: 100%; text-align: left;">
+        <a href="/logout" style="font-size: 24px; color: white; text-decoration: none">Logout</a>
+      </div>
+
+      <h1 style="text-align: center; margin-top: 2vh;">Welcome Back Kenny!</h1>
+      <h4 style="color: lightgray; margin-top: 10px; text-align: center;">What would you like to do today?</h4>
+
+      <div style="width: 100%; text-align: center;" class="column-buttons">
+        <a href = "/manager/homepage">
+          <button class="button">View Dashboard</button>
+        </a>
+        <a href = "/staff/homepage">
+          <button class="button">Step in as Barista</button>
+        </a>
+        <a href = "/manager/managestock">
+          <button class="button">Manage Stock</button>
+        </a>
+        <a href = "/manager/orders">
+          <button class="button">View Orders</button>
+        </a>
+        <a href = "/manager/refunds">
+          <button class="button">View Refunds</button>
+        </a>
+      </div>
+    </div>
+
+    <div style="background-color: rgb(255, 255, 255); height: 100vh; position: relative; overflow: hidden; min-width: 800px;" class="squish";>
+
+      <img src="/imgs/dashboard.png" alt="Dashboard" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1;">
+
+      <nav style="position: absolute; top: 0; left: 0; width: 100%; height: 70px; display: flex; align-items: center; justify-content: flex-end; padding: 0 40px; box-sizing: border-box; z-index: 20; background: transparent; backdrop-filter: blur(15px); box-shadow: 0px 5px 15px 0px #00000030;">
+        <a href="/manager/coffeessold" style="color: black; text-decoration: none; margin-left: 30px; font-family: Helvetica, sans-serif; font-weight: bold; font-size: 14pt;">Coffees Sold</a>
+        <a href="/manager/beanssold" style="color: black; text-decoration: none; margin-left: 30px; font-family: Helvetica, sans-serif; font-weight: bold; font-size: 14pt;">Beans Sold</a>
+        <a href="/manager/freecoffeesredeemed" style="color: black; text-decoration: none; margin-left: 30px; font-family: Helvetica, sans-serif; font-weight: bold; font-size: 14pt;">Free Coffees Redeemed</a>
+        <a href="/manager/topproducts" style="color: black; text-decoration: none; margin-left: 30px; font-family: Helvetica, sans-serif; font-weight: bold; font-size: 14pt;">Top Products</a>
+        <a href="/manager/topcustomers" style="color: black; text-decoration: none; margin-left: 30px; font-family: Helvetica, sans-serif; font-weight: bold; font-size: 14pt;">Top Customers</a>
+        <a href="/manager/adjustloyalty" style="color: black; text-decoration: none; margin-left: 30px; font-family: Helvetica, sans-serif; font-weight: bold; font-size: 14pt;">Adjust Loyalty</a>
+      </nav>
+
+      <div class="container">
+        <div class="glass-card" style="top: 15%; left: 5%; width: 42%; height: 35%;">
+          <h1> Adjust Loyalty Discount for Customers </h1>
+          <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+            <thead>
+            <tr>
+              <th>User ID</th>
+              <th>Username</th>
+              <th>Coffees Ordered</th>
+              <th>Loyalty Points</th>
+              <th>Loyalty Discount</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% if @users.empty? %>
+              <tr>
+                <td>No Users.</td>
+              </tr>
+            <% else %>
+              <% @users.each do |user| %>
+                <tr>
+                  <td><%= user.UserId %></td>
+                  <td>£<%= user.Username %></td>
+                  <td><%= get_coffees_ordered(user.UserId)%></td>
+                  <td>
+                    <input type="text" name="Loyalty Discount" value="<%= user.LoyaltyDiscount %>" class="inline-input" autocomplete="off">
+                </tr>
+              <% end %>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+</body>
+</html>

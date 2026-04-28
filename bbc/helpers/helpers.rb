@@ -134,6 +134,15 @@ helpers do
     return free_coffees
   end
 
+  def get_coffees_ordered(userID)
+    transactions = Transactions.where(UserId: userID)
+    count = 0
+    transactions.each do |transaction|
+      count += transaction.Quantity
+    end
+    return count
+  end
+
 end
 
 
