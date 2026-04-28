@@ -63,12 +63,21 @@ CREATE TABLE Staff(
 );
 
 CREATE TABLE Coffees (
-  CoffeeidId INTEGER,
+  CoffeeId INTEGER,
   Name TEXT,
   Image TEXT,
   Description TEXT,
   Price FLOAT,
-  CoffeeSize TEXT, 
-  MilkType TEXT
+)
 
+CREATE TABLE Sizes (
+  SizeID INTEGER,
+  CoffeeSize TEXT,
+  Multiplier FLOAT,
+)
+
+CREATE TABLE MilkTypes (
+  MilkID INTEGER,
+  MilkType TEXT,
+  MilkPrice INTEGER, 
 )

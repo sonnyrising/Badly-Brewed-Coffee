@@ -20,3 +20,24 @@ INSERT INTO Feedbacks (FeedbackId, UserId, TransactionId, IssueContent, RefundRe
 VALUES (1, 1, 1, 'I dislike the fact that BBC coffee has not released more BBC into the world.', '1', 'I want to', 1);
 
 INSERT INTO Feedbacks VALUES (2, 4, 2, 'I am scrumming right now. For no particular reason.', '1', '', 2);
+
+INSERT INTO Coffees VALUES (1, 'Roniccino', 'roniccino.jpg', '', 2.99);
+
+INSERT INTO Coffees VALUES(2, 'Azmocha', 'Azmocha.png', '', 2.99);
+
+INSERT INTO Coffees VALUES(3, 'Steffspresso', 'Steffspresso.png', '', 2.29);
+
+INSERT INTO Coffees VALUES(4, 'Sonnycaf', 'SonnyCaf.png', '', 1.99);
+
+INSERT INTO Coffees VALUES (5, 'Jortado', 'Jortado.png', '', 3.29);
+
+INSERT INTO Coffees VALUES (6, 'Samacchiato', 'Samacchiarto.png', '', 1.99);
+
+
+INSERT INTO Sizes VALUES(1, 'Small', 0.8);
+INSERT INTO Sizes VALUES(2, 'Medium', 1.4);
+INSERT INTO Sizes VALUES(3, 'Large', 2);
+
+INSERT INTO MilkTypes VALUES(1, 'Whole Milk', 0);
+INSERT INTO MilkTypes VALUES(2, 'Oat Milk', 1);
+INSERT INTO MilkTypes VALUES(3, 'Soy Milk', 2);
