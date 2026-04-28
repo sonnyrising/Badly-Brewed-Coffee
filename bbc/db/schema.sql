@@ -17,6 +17,7 @@ CREATE TABLE Transactions(
   UserId INTEGER,
   Quantity FLOAT,
   TotalCost FLOAT,
+  Address Text,
   TransactionDate INTEGER,
   Status TEXT,
   RefundRequested BOOLEAN,
@@ -68,17 +69,17 @@ CREATE TABLE Coffees (
   Name TEXT,
   Image TEXT,
   Description TEXT,
-  Price FLOAT,
-)
+  Price FLOAT
+);
 
 CREATE TABLE Sizes (
   SizeID INTEGER,
   CoffeeSize TEXT,
-  Multiplier FLOAT,
-)
+  Multiplier FLOAT
+);
 
 CREATE TABLE MilkTypes (
   MilkID INTEGER,
   MilkType TEXT,
-  MilkPrice INTEGER, 
-)
+  MilkPrice INTEGER 
+);
