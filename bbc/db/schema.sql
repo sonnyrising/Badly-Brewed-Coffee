@@ -8,7 +8,8 @@ CREATE TABLE Users(
   LoyaltyPoints INTEGER,
   DaysSinceLastUse INTEGER,
   Suspended INTEGER,
-  FreeCoffeesRedeemed INTEGER
+  FreeCoffeesRedeemed INTEGER,
+  LoyaltyDiscount
 );
 
 CREATE TABLE Transactions(
