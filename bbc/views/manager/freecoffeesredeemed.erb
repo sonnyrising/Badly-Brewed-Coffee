@@ -67,6 +67,9 @@
         <a href = "/manager/orders">
           <button class="button">View Orders</button>
         </a>
+        <a href = "/manager/refunds">
+          <button class="button">View Refunds</button>
+        </a>
       </div>
     </div>
 
@@ -81,8 +84,9 @@
         <a href="/manager/topproducts" style="color: black; text-decoration: none; margin-left: 30px; font-family: Helvetica, sans-serif; font-weight: bold; font-size: 14pt;">Top Products</a>
         <a href="/manager/topcustomers" style="color: black; text-decoration: none; margin-left: 30px; font-family: Helvetica, sans-serif; font-weight: bold; font-size: 14pt;">Top Customers</a>
       </nav>
+
       <div class="container">
-        <div class="glass-card">
+        <div class="glass-card" style="top: 15%; left: 5%; width: 42%; height: 35%;">
           <h1 style="text-align: center; margin-top: 2vh;">Free Coffees Redeemed</h1>
           <% @free_coffees = get_free_coffees_redeemed %>
           <div>
@@ -91,7 +95,6 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </main>
