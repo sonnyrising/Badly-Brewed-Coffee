@@ -15,7 +15,6 @@ CREATE TABLE Users(
 CREATE TABLE Transactions(
   TransactionId INTEGER PRIMARY KEY,
   UserId INTEGER,
-  Quantity FLOAT,
   TotalCost FLOAT,
   Address Text,
   TransactionDate INTEGER,

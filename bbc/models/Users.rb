@@ -90,4 +90,9 @@ class Users < Sequel::Model
    def self.clearGuestBasket
     Basket.where(UserId: 1).destroy
   end
+
+  def self.beanLoyaltyPointIncrease(userId)
+    points = Users.where(UserId: userId).get(:LoyaltyPoints)
+    Users.where(UserId: userId).update(LoyaltyPoints: points + 3)
+  end
 end

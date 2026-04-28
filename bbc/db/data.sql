@@ -12,9 +12,9 @@ INSERT INTO Products VALUES (4, 'Guatemalan Antigua', 'Guatemalan_Antigua.webp',
 INSERT INTO Products VALUES (5, 'Kenyan AA','Kenyan_AA.jpg', 'Strong start to your morning',10.99, 400);
 INSERT INTO Products VALUES (6, 'Amazonian Blend','Amazonian_blend.jpeg', 'Feel the river flow',6.59, 398);
 
-INSERT INTO Transactions VALUES (1,1, 10, 12.99, "SteffanRoad",24032026, 'Pending', false, 0);
-INSERT INTO Transactions VALUES (2,2, 12, 24.54,"Sam grove", 24032026, 'Pending', true, 0);
-INSERT INTO Transactions VALUES (3,3, 3, 3.99, "Sonny park avenue", 24032026, 'Pending', true, 0);
+INSERT INTO Transactions VALUES (1,1, 12.99, "SteffanRoad",24032026, 'Pending', false, null);
+INSERT INTO Transactions VALUES (2,2, 24.54,"Sam grove", 24032026, 'Pending', true, null);
+INSERT INTO Transactions VALUES (3,3, 3.99, "Sonny park avenue", 24032026, 'Pending', true, null);
 
 INSERT INTO Feedbacks (FeedbackId, UserId, TransactionId, IssueContent, RefundRequest, RefundReason, TicketNumber)
 VALUES (1, 1, 1, 'I dislike the fact that BBC coffee has not released more BBC into the world.', '1', 'I want to', 1);
