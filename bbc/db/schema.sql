@@ -61,3 +61,14 @@ CREATE TABLE Staff(
   EmployeeLevel TEXT,
   EmploymentStatus TEXT
 );
+
+CREATE TABLE Coffees (
+  CoffeeidId INTEGER,
+  Name TEXT,
+  Image TEXT,
+  Description TEXT,
+  Price FLOAT,
+  CoffeeSize TEXT, 
+  MilkType TEXT
+
+)

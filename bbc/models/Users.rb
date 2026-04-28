@@ -86,4 +86,8 @@ class Users < Sequel::Model
     end
     return false
    end
+
+   def self.clearGuestBasket
+    Basket.where(UserId: 1).destroy
+  end
 end

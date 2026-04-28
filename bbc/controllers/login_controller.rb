@@ -24,16 +24,16 @@ post "/login" do
     session[:userId] = 1
     redirect "/admin"
   else
-    userId = Users.GetUserId(@uname)
-    if !userId.nil?
-      if Users.isSuspended?(userId)
+    user_id = Users.GetUserId(@uname)
+    if !user_id.nil?
+      if Users.isSuspended?(user_id)
         @matching_error = "Account suspended due to inactivity for more than 6 months. Please contact support."
         return erb :loginpage
       else
-        @password_validated = Users.ComparePassword(userId, @password)
+        @password_validated = Users.ComparePassword(user_id, @password)
         if @password_validated
-          Users.SetDaysSinceLastUse(userId)
-          session[:userId] = userId
+          Users.SetDaysSinceLastUse(user_id)
+          session[:userId] = user_id
           session[:uname] = @uname
           redirect "/user/homepage" unless !session[:userId]
         else
@@ -48,10 +48,21 @@ post "/login" do
   erb :loginpage
 end
 
+post "/guestlogin" do
+  session[:userId] = 1
+  session[:uname] = "Guest"
+  redirect "/user/homepage"
+
+  erb :loginpage
+end
+
 get "/forgotpassword" do
   erb :forgotpassword
 end
 
 get "/logout" do
+  session.clear
+  Users.clearGuestBasket
+
   redirect "/login"
 end
