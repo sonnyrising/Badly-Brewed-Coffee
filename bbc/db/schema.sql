@@ -1,5 +1,5 @@
 PRAGMA foreign_keys = ON;
-
+d
 CREATE TABLE Users(
   UserId INTEGER PRIMARY KEY,
   Username TEXT,
