@@ -13,12 +13,15 @@
   <form action="/user/shop" method="post">
     <input type="hidden" name="productId" value="<%= p.ProductId %>">
     <input type="hidden" name="userId" value="<%= session[:userId]%>">
+    
     <label for="quantity">Select a quantity</label>
       <select name="quantity">
-        <% (1..10).each do |q|%>
+        <%max_available = [p.StockQuantity.to_i, 10].min %>
+        <% (1..max_available).each do |q| %>
           <option value="<%= q %>"><%= q %></option>
         <% end %>
       </select>
+
     <button type="submit">Add to basket</button>
   </form>
 </div>  
