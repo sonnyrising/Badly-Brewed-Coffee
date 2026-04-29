@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 
-<div class="product-box <%= 'out-of-stock' if p.StockQuantity.to_i <= 0 %>">  <img src="/imgs/<%= p.ProductImage %>" alt="Coffee" class="product-image">
+<div class="product-box <%= 'out-of-stock' if p.StockQuantity.to_i <= 0 %>">  
+
+  <% if p.StockQuantity.to_i <= 0 %>
+    <div class="sold-out-banner">OUT OF STOCK</div>
+  <% end %>
+  
+  <img src="/imgs/<%= p.ProductImage %>" alt="Coffee" class="product-image">
   <h3><%= p.ProductName %></h3>
   <p><%= p.ProductDescription %></p>
   <b><%= p.Price %></b>
