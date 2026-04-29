@@ -122,12 +122,25 @@ helpers do
   end
 
   # Helper method to count the number of free coffees redeemed
-  users = Users.all
-  free_coffees = 0
-  users.each do |user|
-    if !user.FreeCoffeesRedeemed.nil?
-     free_coffees += user.FreeCoffeesRedeemed
+  def get_free_coffees_redeemed
+    users = Users.all
+    free_coffees = 0
+    users.each do |user|
+      unless user.FreeCoffeesRedeemed.nil?
+        free_coffees += user.FreeCoffeesRedeemed
+      end
     end
+
+    return free_coffees
+  end
+
+  def get_coffees_ordered(userID)
+    transactions = Transactions.where(UserId: userID)
+    count = 0
+    transactions.each do |transaction|
+      count += transaction.Quantity
+    end
+    return count
   end
 
 end

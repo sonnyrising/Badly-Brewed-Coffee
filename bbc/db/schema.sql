@@ -8,14 +8,15 @@ CREATE TABLE Users(
   LoyaltyPoints INTEGER,
   DaysSinceLastUse INTEGER,
   Suspended INTEGER,
-  FreeCoffeesRedeemed INTEGER
+  FreeCoffeesRedeemed INTEGER,
+  LoyaltyDiscount
 );
 
 CREATE TABLE Transactions(
   TransactionId INTEGER PRIMARY KEY,
   UserId INTEGER,
-  Quantity FLOAT,
   TotalCost FLOAT,
+  Address Text,
   TransactionDate INTEGER,
   Status TEXT,
   RefundRequested BOOLEAN,
@@ -63,12 +64,21 @@ CREATE TABLE Staff(
 );
 
 CREATE TABLE Coffees (
-  CoffeeidId INTEGER,
+  CoffeeId INTEGER,
   Name TEXT,
   Image TEXT,
   Description TEXT,
-  Price FLOAT,
-  CoffeeSize TEXT, 
-  MilkType TEXT
+  Price FLOAT
+);
 
-)
+CREATE TABLE Sizes (
+  SizeID INTEGER,
+  CoffeeSize TEXT,
+  Multiplier FLOAT
+);
+
+CREATE TABLE MilkTypes (
+  MilkID INTEGER,
+  MilkType TEXT,
+  MilkPrice INTEGER 
+);

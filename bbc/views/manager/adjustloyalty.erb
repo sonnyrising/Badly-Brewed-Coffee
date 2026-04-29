@@ -38,6 +38,20 @@
           box-sizing: border-box;
           overflow-y: auto;
       }
+
+      .inline-input {
+          border: none;
+          background: transparent;
+          padding: 0 2px;
+          margin: 0 2px;
+          font: inherit;
+          color: inherit;
+          border-bottom: 1px dashed #999;
+          cursor: text;
+          width: 90%;
+          max-width: 180px;
+          text-align: center;
+      }
   </style>
 </head>
 
@@ -83,16 +97,40 @@
         <a href="/manager/freecoffeesredeemed" style="color: black; text-decoration: none; margin-left: 30px; font-family: Helvetica, sans-serif; font-weight: bold; font-size: 14pt;">Free Coffees Redeemed</a>
         <a href="/manager/topproducts" style="color: black; text-decoration: none; margin-left: 30px; font-family: Helvetica, sans-serif; font-weight: bold; font-size: 14pt;">Top Products</a>
         <a href="/manager/topcustomers" style="color: black; text-decoration: none; margin-left: 30px; font-family: Helvetica, sans-serif; font-weight: bold; font-size: 14pt;">Top Customers</a>
+        <a href="/manager/adjustloyalty" style="color: black; text-decoration: none; margin-left: 30px; font-family: Helvetica, sans-serif; font-weight: bold; font-size: 14pt;">Adjust Loyalty</a>
       </nav>
 
       <div class="container">
         <div class="glass-card" style="top: 15%; left: 5%; width: 42%; height: 35%;">
-          <h1 style="text-align: center; margin-top: 2vh;">Free Coffees Redeemed</h1>
-          <% @free_coffees = get_free_coffees_redeemed %>
-          <div>
-            <%= @free_coffees %>
-            Coffees have been redeemed!
-          </div>
+          <h1> Adjust Loyalty Discount for Customers </h1>
+          <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+            <thead>
+            <tr>
+              <th>User ID</th>
+              <th>Username</th>
+              <th>Coffees Ordered</th>
+              <th>Loyalty Points</th>
+              <th>Loyalty Discount</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% if @users.empty? %>
+              <tr>
+                <td>No Users.</td>
+              </tr>
+            <% else %>
+              <% @users.each do |user| %>
+                <tr>
+                  <td><%= user.UserId %></td>
+                  <td>£<%= user.Username %></td>
+                  <td><%= get_coffees_ordered(user.UserId)%></td>
+                  <td>
+                    <input type="text" name="Loyalty Discount" value="<%= user.LoyaltyDiscount %>" class="inline-input" autocomplete="off">
+                </tr>
+              <% end %>
+            <% end %>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

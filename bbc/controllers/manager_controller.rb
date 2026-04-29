@@ -144,4 +144,9 @@ post "/manager/orders/updatestatus" do
   redirect "/manager/orders"
 end
 
+get "/manager/adjustloyalty.erb" do
+  @users = Users.where(Suspended: 0)
+  erb :"manager/adjustloyalty"
+end
+
 
