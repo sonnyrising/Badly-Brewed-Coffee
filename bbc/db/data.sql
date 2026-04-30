@@ -5,12 +5,12 @@ INSERT INTO Users VALUES (4, 'Ross', 'PasswordHere', 'rossbob@outlook.com', 6, 1
 INSERT INTO Users VALUES (5, 'Steve', 'PasswordHere', 'steveneven@gmail.com', 4, 1, 0, 5, 20);
 INSERT INTO Users VALUES (6,'test', '$2a$12$DK0nnutcRQTkgVMfVSqX3uBQY7YLkG06Cxr1FULFcdPZxrs9ZOcP2', 'test@gmail.com', 0, 0, 0, 6, 10);
 
-INSERT INTO Products VALUES (1, 'JorgeBean','jorge_bean.jpeg', 'The rich mexican Jorge bean',12.99, 10);
-INSERT INTO Products VALUES (2, 'Ethiopian Yirgacheffe', 'Ethiopian_Yirgacheffe.webp','Filled with  joy and flavour',4.99, 256);
-INSERT INTO Products VALUES (3, 'Colombian Supremo', 'Colombian_Supremo.webp','Authentic colombian taste',3.99, 300);
-INSERT INTO Products VALUES (4, 'Guatemalan Antigua', 'Guatemalan_Antigua.webp','Makes you taste nostalgia',7.99, 112);
-INSERT INTO Products VALUES (5, 'Kenyan AA','Kenyan_AA.jpg', 'Strong start to your morning',10.99, 400);
-INSERT INTO Products VALUES (6, 'Amazonian Blend','Amazonian_blend.jpeg', 'Feel the river flow',6.59, 398);
+INSERT INTO Products VALUES (1, 'JorgeBean','jorge_bean.jpeg', 'The rich mexican Jorge bean', 'Extra Dark ;)', 'Mexico', 12.99, 10);
+INSERT INTO Products VALUES (2, 'Ethiopian Yirgacheffe', 'Ethiopian_Yirgacheffe.webp','Filled with  joy and flavour', 'Medium', 'Ethiopia', 4.99, 256);
+INSERT INTO Products VALUES (3, 'Colombian Supremo', 'Colombian_Supremo.webp','Authentic colombian taste', 'Light', 'Colombia', 3.99, 300);
+INSERT INTO Products VALUES (4, 'Guatemalan Antigua', 'Guatemalan_Antigua.webp','Makes you taste nostalgia', 'Light', 'Guatamala', 7.99, 112);
+INSERT INTO Products VALUES (5, 'Kenyan AA','Kenyan_AA.jpg', 'Strong start to your morning', 'Dark', 'Kenya', 10.99, 400);
+INSERT INTO Products VALUES (6, 'Amazonian Blend','Amazonian_blend.jpeg', 'Feel the river flow', 'Medium', 'Brazil', 6.59, 398);
 
 INSERT INTO Transactions VALUES (1,1, 12.99, "SteffanRoad",24032026, 'Pending', false, null);
 INSERT INTO Transactions VALUES (2,2, 24.54,"Sam grove", 24032026, 'Pending', true, null);

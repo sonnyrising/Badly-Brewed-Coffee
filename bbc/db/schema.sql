@@ -1,5 +1,4 @@
 PRAGMA foreign_keys = ON;
-d
 CREATE TABLE Users(
   UserId INTEGER PRIMARY KEY,
   Username TEXT,
@@ -40,6 +39,8 @@ CREATE TABLE Products(
   ProductName TEXT,
   ProductImage TEXT,
   ProductDescription TEXT,
+  Roast TEXT,
+  Origin TEXT,
   Price FLOAT,
   StockQuantity INTEGER
 );
