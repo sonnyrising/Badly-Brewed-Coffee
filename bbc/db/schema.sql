@@ -64,13 +64,6 @@ CREATE TABLE Staff(
   EmploymentStatus TEXT
 );
 
-CREATE TABLE Coffees (
-  CoffeeId INTEGER,
-  Name TEXT,
-  Image TEXT,
-  Description TEXT,
-  Price FLOAT
-);
 
 CREATE TABLE Sizes (
   SizeID INTEGER,
