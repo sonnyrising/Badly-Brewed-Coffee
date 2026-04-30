@@ -37,7 +37,7 @@ helpers do
   # Helper method to update the values of the product table
   def update_product_values(params)
     # Check all inputs are valid
-    if params[:name] && params[:stock] && params[:price] && params[:image] && params[:description] && params[:origin] && params[:roast]
+    if params[:name] && params[:stock] && params[:price] && params[:image] && params[:description]
       # Update the product
       if params[:product]
         params[:product].update(
@@ -45,9 +45,7 @@ helpers do
           StockQuantity: params[:stock],
           Price: params[:price],
           ProductImage: params[:image],
-          ProductDescription: params[:description],
-          Origin: params[:origin],
-          Roast: params[:roast]
+          ProductDescription: params[:description]
         )
       else
         redirect "/manager/managestock?error=invalid_name"
@@ -69,10 +67,6 @@ helpers do
       redirect "/manager/managestock?error=invalid_image"
     elsif !params[:description]
       redirect "/manager/managestock?error=invalid_description"
-    elsif !params[:origin]
-      redirect "/manager/managestock?error=invalid_origin"
-    elsif !params[:roast]
-      redirect "/manager/managestock?error=invalid_roast"
     end
   end
 
@@ -101,7 +95,7 @@ helpers do
   end
 
   def sanitise_string(input)
-    return false if input.nil? || input.to_s.strip.empty?
+    return false if input.nil?
 
     # Check for any SQL injection attempts
     if (input.include?("'") || input.include?('"') || input.include?(";") || input.include?("="))
@@ -143,21 +137,10 @@ helpers do
   def get_coffees_ordered(userID)
     transactions = Transactions.where(UserId: userID)
     count = 0
-
     transactions.each do |transaction|
-      basket_items = Basket.where(TransactionId: transaction.TransactionId)
-
-      basket_items.each do |item|
-        count += item.Quantity
-      end
+      count += transaction.Quantity
     end
-
     return count
-  end
-
-  def get_loyalty_discount(userID)
-    user = Users.where(UserId: userID)
-    return user.get(:LoyaltyDiscount)
   end
 
 end
