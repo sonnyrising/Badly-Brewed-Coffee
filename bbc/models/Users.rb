@@ -56,17 +56,26 @@ class Users < Sequel::Model
       Users.where(UserId: userId).update(DaysSinceLastUse: 0)
     end
 
+    def self.is_on_warning?(userId)
+      if Users.where(UserId: userId).get(:Warning) == 1
+        return true
+      else
+        false
+      end
+    end
+
     def self.isSuspended?(userId)
       if Users.where(UserId: userId).get(:Suspended) == 1
         return true
       else
-        return false
+        false
       end
     end
 
     def self.daily_inactivity_check
+      suspended = Users.where(Sequel[:DaysSinceLastUse] > 184).update(Suspended: 1) 
+      on_warning = Users.where(Sequel[:DaysSinceLastUse] >= 180).update(Warning: 1)
       Users.where(Suspended: 0).update(DaysSinceLastUse: Sequel[:DaysSinceLastUse] + 1)
-      Users.where(Sequel[:DaysSinceLastUse] >= 180).update(Suspended: 1)    
     end
 
     def load(params)

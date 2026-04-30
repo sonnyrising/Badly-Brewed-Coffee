@@ -152,10 +152,10 @@ end
 
 post "/admin/accounts/suspend" do
   @user_id= params[:userId]
-  if !Users.isSuspended?(@user_id)
-    Users.where(UserId: @user_id).update(Suspended: 1)
+  if !Users.is_on_warning?(@user_id)
+    Users.where(UserId: @user_id).update(Warning: 1)
   else
-    Users.where(UserId: @user_id).update(Suspended: 0)
+    Users.where(UserId: @user_id).update(Warning: 0)
   end
 
   redirect "/admin/accounts"

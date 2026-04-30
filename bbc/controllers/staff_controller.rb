@@ -44,6 +44,76 @@ get "/staff/settings" do
   erb :"staff/settings"
 end
 
+post "/staff/orders" do
+  @orders = Transactions.all
+  erb :"staff/orders"
+end
+
+get "/staff/managestock" do
+  @products = Products.all
+
+  @alert_message = case params[:error]
+    when "invalid_name"  then "Please enter a valid product name."
+    when "invalid_stock" then "Please enter a valid stock quantity."
+    when "invalid_price" then "Please enter a valid price."
+    when "invalid_image" then "Please enter a valid image URL."
+    when "invalid_description" then "Please enter a valid description."
+                   end
+
+  erb :"staff/managestock"
+end
+
+post "/staff/managestock" do
+  values_hash = {
+    product: Products[params['product_id']],
+    # Sanitise the input before updating the database
+    name: sanitise_string(params['product_name']),
+    stock: sanitise_int(params['product_stock']),
+    price: sanitise_price(params['product_price']),
+    image: sanitise_string(params['product_image']),
+    description: sanitise_string(params['product_description'])
+  }
+  update_product_values(values_hash)
+
+  redirect '/staff/managestock'
+end
+
+# Helper method to update the values of the product table
+def update_product_values(params)
+  # Check all inputs are valid
+  if params[:name] && params[:stock] && params[:price] && params[:image] && params[:description]
+    # Update the product
+    if params[:product]
+      params[:product].update(
+        ProductName: params[:name],
+        StockQuantity: params[:stock],
+        Price: params[:price],
+        ProductImage: params[:image],
+        ProductDescription: params[:description]
+      )
+    else
+      redirect "/staff/managestock?error=invalid_name"
+    end
+  else
+    product_error_message(params)
+  end
+end
+
+# Return an appropriate error message if any input user input is invalid
+def product_error_message(params)
+  if params[:name]
+    redirect "/staff/managestock?error=invalid_name"
+  elsif params[:stock]
+    redirect "/staff/managestock?error=invalid_stock"
+  elsif params[:price]
+    redirect "/staff/managestock?error=invalid_price"
+  elsif params[:image]
+    redirect "/staff/managestock?error=invalid_image"
+  elsif params[:description]
+    redirect "/staff/managestock?error=invalid_description"
+  end
+end
+
 post "/staff/basketpayment" do
   erb :"staff/basketpayment"
 end
