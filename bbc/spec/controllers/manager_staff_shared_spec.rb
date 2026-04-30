@@ -51,6 +51,8 @@ RSpec.describe "Update Stock Test: " do
         'product_id'=> 1,
         'product_name' => "Premium Roast",
         'product_stock' => "50",
+        'product_roast' => 'Dark',
+        'product_origin' => 'Ethiopia',
         'product_price' => "12.99",
         'product_image' => "premium_roast.jpg",
         'product_description' => "A rich and bold coffee."
@@ -62,6 +64,8 @@ RSpec.describe "Update Stock Test: " do
         'product_id' => "1",
         'product_name' => "Coffee",
         'product_stock' => "100",
+        'product_roast' => 'Dark',
+        'product_origin' => 'Ethiopia',
         'product_price' => "15.00",
         'product_image' => "image.png",
         'product_description' => "DROP TABLE products;--"
@@ -73,6 +77,8 @@ RSpec.describe "Update Stock Test: " do
         'product_id' => "1",
         'product_name' => "Coffee",
         'product_stock' => "100",
+        'product_roast' => 'Dark',
+        'product_origin' => 'Ethiopia',
         'product_price' => "15.00",
         'product_image' => "image.png",
         'product_description' => "Descrption: <script>alert('XSS')</script>"
@@ -83,6 +89,8 @@ RSpec.describe "Update Stock Test: " do
         'product_id' => "1",
         'product_name' => "Latte",
         'product_stock' => "abc",
+        'product_roast' => 'Dark',
+        'product_origin' => 'Ethiopia',
         'product_price' => "xyz",
         'product_image' => "latte.jpg",
         'product_description' => "Milky coffee"
@@ -94,6 +102,8 @@ RSpec.describe "Update Stock Test: " do
         'product_id' => "1",
         'product_name' => "",
         'product_stock' => "",
+        'product_roast' => '',
+        'product_origin' => '',
         'product_price' => "",
         'product_image' => "",
         'product_description' => ""
@@ -145,6 +155,8 @@ RSpec.describe "Update Stock Error Tests" do
         'product_name' => nil,
         'product_stock' => "100",
         'product_price' => "15.00",
+        'product_roast' => 'Dark',
+        'product_origin' => 'Ethiopia',
         'product_image' => "image.png",
         'product_description' => "Description"
       }
@@ -156,6 +168,34 @@ RSpec.describe "Update Stock Error Tests" do
         'product_name' => "Name",
         'product_stock' => "a",
         'product_price' => "15.00",
+        'product_roast' => 'Dark',
+        'product_origin' => 'Ethiopia',
+        'product_image' => "image.png",
+        'product_description' => "Description"
+      }
+    },
+    {
+      description: "Invalid Roast",
+      params: {
+        'product_id' => "1",
+        'product_name' => "Name",
+        'product_stock' => "10",
+        'product_roast' => nil,
+        'product_origin' => 'Ethiopian',
+        'product_price' => "15.00",
+        'product_image' => "image.png",
+        'product_description' => "Description"
+      }
+    },
+    {
+      description: "Invalid Origin",
+      params: {
+        'product_id' => "1",
+        'product_name' => "Name",
+        'product_stock' => "10",
+        'product_roast' => 'Dark',
+        'product_origin' => 'Ethiopia"/n',
+        'product_price' => "15.00",
         'product_image' => "image.png",
         'product_description' => "Description"
       }
@@ -166,6 +206,8 @@ RSpec.describe "Update Stock Error Tests" do
         'product_id' => "1",
         'product_name' => "Name",
         'product_stock' => "100",
+        'product_roast' => 'Dark',
+        'product_origin' => 'Ethiopia',
         'product_price' => "b",
         'product_image' => "image.png",
         'product_description' => "Description"
@@ -177,6 +219,8 @@ RSpec.describe "Update Stock Error Tests" do
         'product_id' => "1",
         'product_name' => "name",
         'product_stock' => "100",
+        'product_roast' => 'Dark',
+        'product_origin' => 'Ethiopia',
         'product_price' => "15.00",
         'product_image' => "image\".png",
         'product_description' => "Description"
@@ -189,6 +233,8 @@ RSpec.describe "Update Stock Error Tests" do
         'product_name' => "name",
         'product_stock' => "100",
         'product_price' => "15.00",
+        'product_roast' => 'Dark',
+        'product_origin' => 'Ethiopia',
         'product_image' => "image.png",
         'product_description' => nil
       }

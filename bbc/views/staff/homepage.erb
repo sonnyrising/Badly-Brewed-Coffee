@@ -80,12 +80,14 @@
     <main>
       <div style="display: grid;grid-template-columns: 20vw 80vw;" class="squish">
             <div style="background-color: rgb(130 72 24); height: 100vh; padding:15px; box-shadow: 11px 5px 15px rgba(0, 0, 0, 0.3); z-index: 100;">
+
+              <div style="width: 100%; text-align: left;">
+                <a href="/logout" style="font-size: 24px; color: white; text-decoration: none">Logout</a>
+              </div>
+
                 <h1 style="text-align: center;position: relative;top: 5vh;">Welcome <%= session[:uname] %>!</h1>
                 <div style="position: relative; top: 25px; left: 80px; column-gap: 5px" class="column-buttons">
                   <div style="width: 100%; text-align: center;" class="column-buttons">
-                    <a href = "/manager/homepage">
-                      <button class="button">View Dashboard</button>
-                    </a>
                     <a href = "/staff/selectproducts">
                       <button class="button">Shop</button>
                     </a>
@@ -115,13 +117,13 @@
 
             <div style="color: black;width: 25vw;height: 40vh;position: absolute;top: 10%;left: 30%;background: transparent;backdrop-filter: blur(15px);box-shadow: 0px 0px 20px 0px #0000007a;border-radius: 30px; text-align: center;">
 	            <h1>Daily Profit Analytics</h1>
-              
+
 
             </div>
 
             <div style="color: black;width: 25vw;height: 40vh;position: absolute;top: 10%;left: 60%;background: transparent;backdrop-filter: blur(15px);box-shadow: 0px 0px 20px 0px #0000007a;border-radius: 30px; text-align: center;">
 	            <h1>Deliveries In Progress</h1>
-              
+
 
             </div>
 

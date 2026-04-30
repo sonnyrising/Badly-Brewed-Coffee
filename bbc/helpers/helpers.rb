@@ -160,6 +160,10 @@ helpers do
     return user.get(:LoyaltyDiscount)
   end
 
+  def get_quantity(transactionID)
+    basket = Basket.where(TransactionId: transactionID)
+    return basket.get(:Quantity)
+  end
 end
 
 

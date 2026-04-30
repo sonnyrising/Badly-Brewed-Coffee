@@ -31,11 +31,46 @@ get "/" do
 end
 
 #------------------------------ Manager and Staff Shared Functionality -------------------------------
+before "/*" do
+  if session[:uname] == "manager" || session[:uname] == "staff"
+    @has_access = true
+  end
+end
+
+before "/managestock" do
+  unless @has_access
+    redirect "/"
+  end
+end
+
+before "/orders" do
+  unless @has_access
+    redirect "/"
+  end
+end
+
+before "/refunds" do
+  unless @has_access
+    redirect "/"
+  end
+end
+
+before "/refunddetails" do
+  unless @has_access
+    redirect "/"
+  end
+end
+
+before "/addproduct" do
+  unless @has_access
+    redirect "/"
+  end
+end
+
 get "/orders" do
   @orders = Transactions.all
   erb :"orders"
 end
-
 
 get "/refunds" do
   @refunds = Transactions.where(refundRequested: true)
