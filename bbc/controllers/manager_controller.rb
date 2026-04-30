@@ -144,9 +144,31 @@ post "/manager/orders/updatestatus" do
   redirect "/manager/orders"
 end
 
-get "/manager/adjustloyalty.erb" do
+get "/manager/adjustloyalty" do
   @users = Users.where(Suspended: 0)
   erb :"manager/adjustloyalty"
+end
+
+post "/manager/updatediscount" do
+  user_id = params[:user_id]
+  discount = params[:discount]
+  if discount.nil?
+    @alert_message = "Please enter a valid discount percentage (0-100)."
+    @users = Users.where(Suspended: 0)
+    return erb :"manager/adjustloyalty"
+  else
+    discount = discount.to_i
+  end
+
+  if discount.negative? || discount > 100
+    @alert_message = "Please enter a valid discount percentage (0-100)."
+    @users = Users.where(Suspended: 0)
+    return erb :"manager/adjustloyalty"
+  else
+    Users.where(UserId: user_id).update(LoyaltyDiscount: discount)
+  end
+
+  redirect "/manager/adjustloyalty"
 end
 
 

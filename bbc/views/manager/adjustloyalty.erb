@@ -52,6 +52,39 @@
           max-width: 180px;
           text-align: center;
       }
+
+      .alert-banner {
+          position: fixed;
+          top: 20px;
+          left: 50%;
+          transform: translateX(-50%);
+          background: rgba(200, 50, 50, 0.85);
+          backdrop-filter: blur(15px);
+          -webkit-backdrop-filter: blur(15px); /* Safari support */
+          color: white;
+          padding: 16px 40px 16px 20px;
+          border-radius: 12px;
+          box-shadow: 0px 4px 20px rgba(0,0,0,0.3);
+          font-family: Helvetica, sans-serif;
+          font-size: 13pt;
+          z-index: 9999;
+          max-width: 600px;
+          text-align: center;
+          transition: opacity 0.4s ease; /* Enables the smooth fade out */
+      }
+
+      .alert-close-btn {
+          position: absolute;
+          top: 8px;
+          right: 14px;
+          background: none;
+          border: none;
+          color: white;
+          cursor: pointer;
+          font-size: 16pt;
+          line-height: 1;
+          padding: 0;
+      }
   </style>
 </head>
 
@@ -101,8 +134,16 @@
       </nav>
 
       <div class="container">
-        <div class="glass-card" style="top: 15%; left: 5%; width: 42%; height: 35%;">
-          <h1> Adjust Loyalty Discount for Customers </h1>
+        <div class="glass-card" style="top: 15%; left: 5%; width: 85%; height: 80%;">
+          <h1> Adjust Loyalty Discount for Customers</h1>
+          <h2> Customers will have this discount applied to all orders</h2>
+
+          <% @users.each do |user| %>
+            <form id="update-form-<%= user.UserId %>" class="update-discount" action="/manager/updatediscount" method="POST">
+              <input type="hidden" name="user_id" value="<%= user.UserId %>">
+            </form>
+          <% end %>
+
           <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
             <thead>
             <tr>
@@ -111,21 +152,27 @@
               <th>Coffees Ordered</th>
               <th>Loyalty Points</th>
               <th>Loyalty Discount</th>
+              <th>Action</th>
             </tr>
             </thead>
             <tbody>
             <% if @users.empty? %>
               <tr>
-                <td>No Users.</td>
+                <td colspan="6">No Users.</td>
               </tr>
             <% else %>
               <% @users.each do |user| %>
                 <tr>
                   <td><%= user.UserId %></td>
-                  <td>£<%= user.Username %></td>
-                  <td><%= get_coffees_ordered(user.UserId)%></td>
+                  <td><%= user.Username %></td>
+                  <td><%= get_coffees_ordered(user.UserId).round %></td>
+                  <td><%= user.LoyaltyPoints.round %></td>
                   <td>
-                    <input type="text" name="Loyalty Discount" value="<%= user.LoyaltyDiscount %>" class="inline-input" autocomplete="off">
+                    <input type="number" form="update-form-<%= user.UserId %>" name="discount" value="<%= user.LoyaltyDiscount %>" class="inline-input" autocomplete="off">
+                  </td>
+                  <td>
+                    <button type="submit" form="update-form-<%= user.UserId %>">Update Loyalty Discount</button>
+                  </td>
                 </tr>
               <% end %>
             <% end %>
@@ -135,6 +182,21 @@
       </div>
     </div>
   </div>
+
+  <% if @alert_message %>
+    <div id="alert-banner" class="alert-banner">
+      <%= @alert_message %>
+      <span onclick="document.getElementById('alert-banner').remove()" class="alert-close-btn">✕</span>
+    </div>
+
+    <script>
+        setTimeout(() => {
+            const banner = document.getElementById('alert-banner');
+            if (banner) banner.remove();
+        }, 5000);
+    </script>
+  <% end %>
+
 </main>
 </body>
 </html>
