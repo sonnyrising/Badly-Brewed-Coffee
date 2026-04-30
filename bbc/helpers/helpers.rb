@@ -143,9 +143,15 @@ helpers do
   def get_coffees_ordered(userID)
     transactions = Transactions.where(UserId: userID)
     count = 0
+
     transactions.each do |transaction|
-      count += transaction.Quantity
+      basket_items = Basket.where(TransactionId: transaction.TransactionId)
+
+      basket_items.each do |item|
+        count += item.Quantity
+      end
     end
+
     return count
   end
 
