@@ -1,9 +1,9 @@
 INSERT INTO Users VALUES (1, 'Guest', null,null, null,null, null, null, null, null);
-INSERT INTO Users VALUES (2, 'Bill', 'PasswordHere', 'billboy@yahoo.com', 2, 1, 0, 0, 0, 0);
-INSERT INTO Users VALUES (3, 'Bob', 'PasswordHere', 'bobby@hotmail.co.uk', 7, 1, 0, 0, 2, 0);
-INSERT INTO Users VALUES (4, 'Ross', 'PasswordHere', 'rossbob@outlook.com', 6, 1, 0, 0, 4, 0);
-INSERT INTO Users VALUES (5, 'Steve', 'PasswordHere', 'steveneven@gmail.com', 4, 1, 0, 0, 5, 20);
-INSERT INTO Users VALUES (6,'test', '$2a$12$DK0nnutcRQTkgVMfVSqX3uBQY7YLkG06Cxr1FULFcdPZxrs9ZOcP2', 'test@gmail.com', 0, 0, 0, 0, 6, 10);
+INSERT INTO Users VALUES (2, 'Bill', 'PasswordHere', 'billboy@yahoo.com', 2, 1, 0, 0, 0, 0, 0);
+INSERT INTO Users VALUES (3, 'Bob', 'PasswordHere', 'bobby@hotmail.co.uk', 7, 1, 0, 0, 0, 2, 0);
+INSERT INTO Users VALUES (4, 'Ross', 'PasswordHere', 'rossbob@outlook.com', 6, 1, 0, 0, 0, 4, 0);
+INSERT INTO Users VALUES (5, 'Steve', 'PasswordHere', 'steveneven@gmail.com', 4, 1, 0, 0, 0, 5, 20);
+INSERT INTO Users VALUES (6,'test', '$2a$12$DK0nnutcRQTkgVMfVSqX3uBQY7YLkG06Cxr1FULFcdPZxrs9ZOcP2', 'test@gmail.com', 0, 0, 0, 0, 0, 6, 10);
 
 INSERT INTO Products VALUES (1, 'JorgeBean','jorge_bean.jpeg', 'The rich mexican Jorge bean', 'Extra Dark ;)', 'Mexico', 12.99, 10);
 INSERT INTO Products VALUES (2, 'Ethiopian Yirgacheffe', 'Ethiopian_Yirgacheffe.webp','Filled with  joy and flavour', 'Medium', 'Ethiopia', 4.99, 256);
