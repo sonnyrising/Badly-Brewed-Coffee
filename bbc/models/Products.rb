@@ -50,11 +50,15 @@ class Products < Sequel::Model(:Products)
 
 
   # Update All
-  def self.update_product(productId, productName, price, stockQuantity)
+  def self.update_product(productId, productName, price, stockQuantity, description, origin, roast, image)
     Products.where(ProductId: productId).update(
       ProductName: productName,
       Price: price,
-      StockQuantity: stockQuantity
+      StockQuantity: stockQuantity,
+      ProductDescription: description,
+      Origin: origin,
+      Roast: roast,
+      ProductImage: image
     )
   end
 end

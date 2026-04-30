@@ -194,7 +194,9 @@
                       </h3>
 
                       <p>Stock <input type="number" name="product_stock" value="<%= product.StockQuantity %>" class="inline-input"> Units</p>
-                      <p>Price: £ <input type="number" step="0.01" name="product_price" value="<%= product.Price %>" class="inline-input"> Per Unit</p>
+                      <p>Price: £ <input type="number" step="0.01" name="product_price" value="<%= product.Price %>" class="inline-input"> Per Bag</p>
+                      <p>Roast: <input type="text" name="product_roast" value="<%= product.Roast %>" class="inline-input"></p>
+                      <p>Origin: <input type="text" name="product_origin" value="<%= product.Origin %>" class="inline-input"></p>
                       <p>Description: <input type="text" name="product_description" value="<%= product.ProductDescription %>" class="inline-input" autocomplete="off"></p>
                       <p>Image: <input type="text" name="product_image" value="<%= product.ProductImage %>" class="inline-input" autocomplete="off"></p>
 

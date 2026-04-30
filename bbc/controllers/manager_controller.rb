@@ -36,6 +36,8 @@ get "/manager/managestock" do
                    when "invalid_price" then "Please enter a valid price."
                    when "invalid_image" then "Please enter a valid image URL."
                    when "invalid_description" then "Please enter a valid description."
+                   when "invalid_origin" then "Please enter a valid origin."
+                   when "invalid_roast" then "Please enter a valid roast."
                    end
   erb :"manager/managestock"
 end
@@ -49,7 +51,9 @@ post '/manager/updatestock' do
     stock: sanitise_int(params['product_stock']),
     price: sanitise_price(params['product_price']),
     image: sanitise_string(params['product_image']),
-    description: sanitise_string(params['product_description'])
+    description: sanitise_string(params['product_description']),
+    origin: sanitise_string(params['product_origin']),
+    roast: sanitise_string(params['product_roast'])
   }
   update_product_values(values_hash)
 
@@ -71,11 +75,13 @@ post "/manager/addproduct" do
   @products = Products.all
   Products.insert(
     ProductId: highest_id + 1,
-    ProductName: params[:product_name],
-    StockQuantity: params[:product_stock],
-    Price: params[:product_price],
-    ProductImage: params[:product_image],
-    ProductDescription: params[:product_description]
+    ProductName: sanitise_string(params['product_name']),
+    StockQuantity: sanitise_int(params['product_stock']),
+    Price: sanitise_price(params['product_price']),
+    ProductImage: sanitise_string(params['product_image']),
+    ProductDescription: sanitise_string(params['product_description']),
+    Origin: sanitise_string(params['product_origin']),
+    Roast: sanitise_string(params['product_roast'])
   )
   redirect "/manager/managestock"
 end
