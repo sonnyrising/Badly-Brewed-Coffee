@@ -153,9 +153,9 @@ end
 post "/admin/accounts/suspend" do
   @user_id= params[:userId]
   if !Users.is_on_warning?(@user_id)
-    Users.where(UserId: @user_id).update(Warning: 1)
+    Users.where(UserId: @user_id).update(Warning: 1, DaysSinceWarning: 0)
   else
-    Users.where(UserId: @user_id).update(Warning: 0)
+    Users.where(UserId: @user_id).update(Warning: 0, DaysSinceWarning: 0)
   end
 
   redirect "/admin/accounts"

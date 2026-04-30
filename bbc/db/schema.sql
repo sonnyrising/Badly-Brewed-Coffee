@@ -6,6 +6,7 @@ CREATE TABLE Users(
   Email TEXT,
   LoyaltyPoints INTEGER,
   DaysSinceLastUse INTEGER,
+  DaysSinceWarning INTEGER,
   Warning INTEGER,
   Suspended INTEGER,
   FreeCoffeesRedeemed INTEGER,
