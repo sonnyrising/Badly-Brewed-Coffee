@@ -43,6 +43,7 @@ end
 get "/admin/run-inactivity-check" do
   validate_session
   Users.daily_inactivity_check
+  redirect "/admin/accounts"
 end
 
 post "/admin/feedback/filter" do
@@ -168,4 +169,28 @@ post "/admin/accounts/delete" do
   Basket.where(UserId: user_id).delete
 
   redirect "/admin/accounts"
+end
+
+get "/admin/orders" do
+  @shown_orders = Transactions.all
+
+  erb :'admin/orders'
+end
+
+post "/admin/orders/filter" do
+  if !params[:'search-filter'].empty? && !Transactions[params[:'search-filter']].nil?
+    @shown_orders = []
+    @shown_orders << Transactions[params[:'search-filter']]
+    erb :'admin/orders'
+  else
+    redirect "/admin/orders"
+  end
+end
+
+post "/admin/orders/edit" do
+  erb :'admin/orderedit'
+end
+
+post "/admin/orders/delete" do
+
 end

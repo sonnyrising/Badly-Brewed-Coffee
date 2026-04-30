@@ -1,33 +1,18 @@
 <!DOCTYPE html>
 <head>
     <link href="/css/GenericTheme.css" rel="stylesheet">
-    <title>Feedback</title>
+    <title>Orders</title>
     <style>
       * body{
         overflow:visible;
       }
-      table {
-        font-family: arial, sans-serif;
-        border-collapse: collapse;
-        width: 100%;
-      }
-
-      td, th {
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 8px;
-      }
-
-      tr:nth-child(even) {
-        background-color: #dddddd;
-      } 
     </style>
 
 </head>
 <body>
     <header>
         <nav>
-        <h1 style="color:black;float: left;margin-left: 1vw;;">Feedback</h1>
+        <h1 style="color:black;float: left;margin-left: 1vw;;">Orders</h1>
         <ul style="position:absolute; top:1vh;">
             <li><a href="/admin" class="smooth-link">Dashboard</a></li>
             <li><a href="/admin/views" class="smooth-link">Views</a></li>
@@ -44,39 +29,35 @@
         <img src="/imgs/dashboard.png" alt="Dashboard" style="width: 100%;height: 100%;object-fit: fill;">
 
         <div style="display: flex;flex-direction: row;flex-wrap:nowrap;justify-content: center;gap: 32px;height: 85vh;position: absolute;top: 10vh;left:50vw;transform:translateX(-50%);">
-          <div style="color: black;background: transparent;backdrop-filter: blur(15px);box-shadow: 0px 0px 20px 0px #0000007a;border-radius: 30px; text-align: center;width:94vw;">
-            <h1>Feedback listing:</h1>
-            <form method="get" action="/admin/feedback" style="display:inline-block; position:relative; top:-4%; left:30vw;">
-              <div style="display: flex; flex-direction: row; align-items: center; gap: 1vw;">
-                <input type="radio" id="refund" name="filter" value="refund">
-                <label for="refund" style="white-space: nowrap;">Refunds Only</label>
-
-                <input type="radio" id="issues" name="filter" value="general_issue" checked>
-                <label for="issues" style="white-space: nowrap;">General Issues</label>
-
-                <input type="submit" value="Filter">
-              </div>
-            </form>
+          <div style="color: black;background: transparent;backdrop-filter: blur(15px);box-shadow: 0px 0px 20px 0px #0000007a;border-radius: 30px; text-align: center;width:94vw;align-items: center;">
+            <h1>Orders (<%= @shown_orders.count %>):</h1>
+            <div style="width:fit-content; margin:0 20px 0 auto;">
+              <form method="post" action="/admin/orders/filter" style="display:inline-block;position:relative;">
+                <div style="display:grid; grid-template-columns: 10vw 5vw 5vw; gap:1vw;">
+                  <input type="text" name="search-filter">
+                  <button type="submit" name="submit-button">Search</button>
+                  <button type="submit" name="clear-button">Clear</button>
+                </div>
+              </form>
+            </div>
             <div style="position:relative;top:3vh;">
-              <% @shown_feedback.each do |feedback| %>
+              <% @shown_orders.each do |order| %>
                 <div style="display: flex;flex-direction: row;flex-wrap: wrap;background: transparent;backdrop-filter: blur(15px);box-shadow: 0px 0px 20px 0px #0000007a;border-radius:30px;width:94vw;overflow-y:auto;">
                   <style>
                     .delete-button:hover{
                       background-color: rgb(255, 94, 94);
                     }
                   </style>
-                  <h3 style="margin-left: 10%;"><%= feedback.FeedbackId %></h3>
-                  <% if feedback.RefundRequest == "Yes" %>
-                    <p style="padding-left: 2vw;">Ticket : <%= feedback.TicketNumber %></p>
-                    <p style="padding-left: 2vw;">Reason : <%= feedback.RefundReason %></p>
-                  <% else  %>
-                    <p style="padding-left: 2vw;"><%= feedback.IssueContent %></p>
-                  <% end %>
-                
+                  <h3 style="margin-left: 10%;"><%= order.TransactionId %></h3>
+                  
                   <div style="display: grid; grid-template-columns: 3vw 3vw 5vw 3vw;position:absolute; right:5%">
-                    <form method="post" action="/admin/feedback/delete">
+                    <form method="post" action="/admin/orders/edit">
+                      <button type="submit" class="edit-button">Edit</button>
+                      <input type="hidden" name="transactionId" value="<%= order.TransactionId %>">
+                    </form>
+                    <form method="post" action="/admin/orders/delete">
                       <button type="submit" class="delete-button">Delete</button>
-                      <input type="hidden" name="feedbackId" value="<%= feedback.FeedbackId %>">
+                      <input type="hidden" name="transactionId" value="<%= order.TransactionId %>">
                     </form>
                   </div>
                 </div>

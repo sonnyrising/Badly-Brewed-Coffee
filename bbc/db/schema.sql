@@ -1,5 +1,5 @@
 PRAGMA foreign_keys = ON;
-
+d
 CREATE TABLE Users(
   UserId INTEGER PRIMARY KEY,
   Username TEXT,
@@ -15,8 +15,8 @@ CREATE TABLE Users(
 CREATE TABLE Transactions(
   TransactionId INTEGER PRIMARY KEY,
   UserId INTEGER,
-  Quantity FLOAT,
   TotalCost FLOAT,
+  Address Text,
   TransactionDate INTEGER,
   Status TEXT,
   RefundRequested BOOLEAN,
@@ -64,12 +64,21 @@ CREATE TABLE Staff(
 );
 
 CREATE TABLE Coffees (
-  CoffeeidId INTEGER,
+  CoffeeId INTEGER,
   Name TEXT,
   Image TEXT,
   Description TEXT,
-  Price FLOAT,
-  CoffeeSize TEXT, 
-  MilkType TEXT
+  Price FLOAT
+);
 
-)
+CREATE TABLE Sizes (
+  SizeID INTEGER,
+  CoffeeSize TEXT,
+  Multiplier FLOAT
+);
+
+CREATE TABLE MilkTypes (
+  MilkID INTEGER,
+  MilkType TEXT,
+  MilkPrice INTEGER 
+);

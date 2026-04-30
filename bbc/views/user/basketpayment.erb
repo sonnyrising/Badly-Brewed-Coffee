@@ -79,7 +79,7 @@
               <div style="text-align: center; margin-top: 20px;">
                   <form action="/thankyoupage" method="post">
                       <input type="hidden" name="userId" value="<%= session[:userId] %>">
-                      <input type="hidden" name="quantity" value="total_cost">
+                      <input type="hidden" name="totalcost" value="total_cost">
                       <h2 style="padding: 15px 40px; font-size: 18pt; font-weight: bold; border-radius: 50px; cursor: pointer;">Payment details</h2>
                       <input type="text" name="card_number" placeholder="Card Number" required style="width: 20vw;height: 5vh;border: 2px solid #69312b;border-radius: 15px;padding-left:10px;">
                       <input type="text" name="cvv" placeholder="CVV" required style="width: 10vw;height: 5vh;border: 2px solid #69312b;border-radius: 15px;padding-left:10px;">
