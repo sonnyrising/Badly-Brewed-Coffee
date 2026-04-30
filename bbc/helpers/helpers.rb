@@ -143,6 +143,11 @@ helpers do
     return count
   end
 
+  def get_loyalty_discount(userID)
+    user = Users.where(UserId: userID)
+    return user.get(:LoyaltyDiscount)
+  end
+
 end
 
 
