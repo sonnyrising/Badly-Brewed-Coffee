@@ -55,19 +55,23 @@
       <h4 style="color: lightgray; margin-top: 10px; text-align: center;">What would you like to do today?</h4>
 
       <div style="width: 100%; text-align: center;" class="column-buttons">
-        <a href = "/manager/homepage">
-          <button class="button">View Dashboard</button>
-        </a>
-        <a href = "/staff/homepage">
-          <button class="button">Step in as Barista</button>
-        </a>
-        <a href = "/manager/managestock">
+        <% if session[:uname] == "manager" %>
+          <a href = "/homepage">
+            <button class="button">View Dashboard</button>
+          </a>
+        <% end %>
+        <% if session[:uname] == "staff" %>
+          <a href = "/staff/homepage">
+            <button class="button">View Dashboard</button>
+          </a>
+        <% end %>
+        <a href = "/managestock">
           <button class="button">Manage Stock</button>
         </a>
-        <a href = "/manager/orders">
+        <a href = "/orders">
           <button class="button">View Orders</button>
         </a>
-        <a href = "/manager/refunds">
+        <a href = "/refunds">
           <button class="button">View Refunds</button>
         </a>
       </div>
@@ -80,7 +84,7 @@
       <div class="container">
         <div class="glass-card" style="top: 3%; left: 3%; width: 93%; height: 93%;">
           <h1>Product Details: </h1>
-          <form class="manage-stock-form" action="/manager/addproduct" method="POST">
+          <form class="manage-stock-form" action="/addproduct" method="POST">
             <h3>
               Name: <input type="text" name="product_name" class="inline-input" autocomplete="off">
             </h3>

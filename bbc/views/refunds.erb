@@ -143,14 +143,28 @@
       <div style="width: 100%; text-align: left;">
         <a href="/logout" style="font-size: 24px; color: white; text-decoration: none">Logout</a>
       </div>
-      <h1 style="text-align: center; margin-top: 2vh;">Welcome Back Kenny!</h1>
-      <h4 style="color: lightgray; margin-top: 10px; text-align: center;">What would you like to do today?</h4>
+
+      <h1> Refunds</h1>
       <div style="width: 100%; text-align: center;" class="column-buttons">
-        <a href="/manager/homepage"><button class="button">View Dashboard</button></a>
-        <a href="/staff/homepage"><button class="button">Step in as Barista</button></a>
-        <a href="/manager/managestock"><button class="button">Manage Stock</button></a>
-        <a href="/manager/orders"><button class="button">View Orders</button></a>
-        <a href="/manager/refunds"><button class="button">View Refunds</button></a>
+        <% if session[:uname] == "manager" %>
+          <a href = "/manager/homepage">
+            <button class="button">View Dashboard</button>
+          </a>
+        <% end %>
+        <% if session[:uname] == "staff" %>
+          <a href = "/staff/homepage">
+            <button class="button">View Dashboard</button>
+          </a>
+        <% end %>
+        <a href = "/managestock">
+          <button class="button">Manage Stock</button>
+        </a>
+        <a href = "/orders">
+          <button class="button">View Orders</button>
+        </a>
+        <a href = "/refunds">
+          <button class="button">View Refunds</button>
+        </a>
       </div>
     </div>
 
@@ -182,7 +196,7 @@
                   <td><%= format_date(order.TransactionDate) %></td>
                   <td><%= order.Status %></td>
                   <td>
-                    <a href="/manager/refunddetails?transaction_id=<%= order.TransactionId %>" class="btn btn-green">
+                    <a href="/refunddetails?transaction_id=<%= order.TransactionId %>" class="btn btn-green">
                     View
                     </a>
                   </td>

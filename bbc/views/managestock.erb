@@ -61,7 +61,7 @@
       .product-inner-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
-          grid-template-rows: repeat(2, 1fr);
+          grid-auto-rows: 1fr;
           gap: 20px;
           width: 90%;
           height: 90%;
@@ -99,6 +99,38 @@
           width: 100%;
       }
 
+      .alert-banner {
+          position: fixed;
+          top: 20px;
+          left: 50%;
+          transform: translateX(-50%);
+          background: rgba(200, 50, 50, 0.85);
+          backdrop-filter: blur(15px);
+          -webkit-backdrop-filter: blur(15px); /* Safari support */
+          color: white;
+          padding: 16px 40px 16px 20px;
+          border-radius: 12px;
+          box-shadow: 0px 4px 20px rgba(0,0,0,0.3);
+          font-family: Helvetica, sans-serif;
+          font-size: 13pt;
+          z-index: 9999;
+          max-width: 600px;
+          text-align: center;
+          transition: opacity 0.4s ease; /* Enables the smooth fade out */
+      }
+
+      .alert-close-btn {
+          position: absolute;
+          top: 8px;
+          right: 14px;
+          background: none;
+          border: none;
+          color: white;
+          cursor: pointer;
+          font-size: 16pt;
+          line-height: 1;
+          padding: 0;
+      }
 
   </style>
 </head>
@@ -113,15 +145,27 @@
         <a href="/logout" style="font-size: 24px; color: white; text-decoration: none">Logout</a>
       </div>
 
+      <h1 style="text-align: center; margin-top: 2vh;">Manage Stock</h1>
+
       <div style="width: 100%; text-align: center;" class="column-buttons">
-        <a href = "/staff/homepage">
-          <button class="button">View Dashboard</button>
-        </a>
-        <a href = "/staff/managestock">
+        <% if session[:uname] == "manager" %>
+          <a href = "/manager/homepage">
+            <button class="button">View Dashboard</button>
+          </a>
+        <% end %>
+        <% if session[:uname] == "staff" %>
+            <a href = "/staff/homepage">
+              <button class="button">View Dashboard</button>
+            </a>
+        <% end %>
+        <a href = "/managestock">
           <button class="button">Manage Stock</button>
         </a>
-        <a href = "/staff/orders">
+        <a href = "/orders">
           <button class="button">View Orders</button>
+        </a>
+        <a href = "/refunds">
+          <button class="button">View Refunds</button>
         </a>
       </div>
     </div>
@@ -145,66 +189,33 @@
                   <div class="product-box">
                     <img src="/imgs/<%= product.ProductImage %>" alt="Coffee" class="product-image">
 
-                    <form action="/staff/updatestock" method="POST">
+                    <form class="manage-stock-form" action="/updatestock" method="POST">
                       <input type="hidden" name="product_id" value="<%= product.ProductId %>">
 
                       <h3>
-                        <input
-                          type="text"
-                          name="product_name"
-                          value="<%= product.ProductName %>"
-                          class="inline-input"
-                          autocomplete="off"
-                        >
+                        <input type="text" name="product_name" value="<%= product.ProductName %>" class="inline-input" autocomplete="off">
                       </h3>
 
-                      <p>
-                        Stock
-                        <input
-                          type="number"
-                          name="product_stock"
-                          value="<%= product.StockQuantity %>"
-                          class="inline-input"
-                        >
-                      </p>
-
-                      <p>
-                        Price: £
-                        <input
-                          type="number"
-                          step="0.01"
-                          name="product_price"
-                          value="<%= product.Price %>"
-                          class="inline-input"
-                        >
-                      </p>
-
-                      <p>
-                        Description:
-                        <input
-                          type="text"
-                          name="product_description"
-                          value="<%= product.ProductDescription %>"
-                          class="inline-input"
-                          autocomplete="off"
-                        >
-                      </p>
-
-                      <p>
-                        Image:
-                        <input
-                          type="text"
-                          name="product_image"
-                          value="<%= product.ProductImage %>"
-                          class="inline-input"
-                          autocomplete="off"
-                        >
-                      </p>
+                      <p>Stock <input type="number" name="product_stock" value="<%= product.StockQuantity %>" class="inline-input"> Units</p>
+                      <p>Price: £ <input type="number" step="0.01" name="product_price" value="<%= product.Price %>" class="inline-input"> Per Bag</p>
+                      <p>Roast: <input type="text" name="product_roast" value="<%= product.Roast %>" class="inline-input"></p>
+                      <p>Origin: <input type="text" name="product_origin" value="<%= product.Origin %>" class="inline-input"></p>
+                      <p>Description: <input type="text" name="product_description" value="<%= product.ProductDescription %>" class="inline-input" autocomplete="off"></p>
+                      <p>Image: <input type="text" name="product_image" value="<%= product.ProductImage %>" class="inline-input" autocomplete="off"></p>
 
                       <button type="submit">Save Changes</button>
                     </form>
+
+                    <form class="delete-stock-form" action="/deleteproduct" method="POST" style="margin-top: 10px;">
+                      <input type="hidden" name="product_id" value="<%= product.ProductId %>">
+                      <button type="submit" style="background-color: darkred; color: white;">Delete Product</button>
+                    </form>
                   </div>
                 <% end %>
+
+                <a href="/addproduct" class="product-box" style="text-decoration: none; color: inherit;">
+                  <h1 style="font-size: 60px"> + </h1>
+                </a>
               </div>
             </div>
           </div>
@@ -215,32 +226,9 @@
   </div>
 
   <% if @alert_message %>
-    <div id="alert-banner" style="
-    position: fixed;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(200, 50, 50, 0.85);
-      backdrop-filter: blur(15px);
-      color: white;
-      padding: 16px 40px 16px 20px;
-      border-radius: 12px;
-      box-shadow: 0px 4px 20px rgba(0,0,0,0.3);
-      font-family: Helvetica, sans-serif;
-      font-size: 13pt;
-      z-index: 9999;
-      max-width: 600px;
-      text-align: center;
-    ">
-      ⚠️ <%= @alert_message %>
-      <span onclick="document.getElementById('alert-banner').remove()" style="
-      position: absolute;
-        top: 8px;
-        right: 14px;
-        cursor: pointer;
-        font-size: 16pt;
-        line-height: 1;
-      ">✕</span>
+    <div id="alert-banner" class="alert-banner">
+      <%= @alert_message %>
+      <span onclick="document.getElementById('alert-banner').remove()" class="alert-close-btn">✕</span>
     </div>
 
     <script>
@@ -250,6 +238,30 @@
         }, 5000);
     </script>
   <% end %>
+
+  <script>
+      const updateForms = document.querySelectorAll('.manage-stock-form');
+      updateForms.forEach(function(form) {
+          form.addEventListener('submit', function(event) {
+              const userConfirmed = confirm("Are you sure you want to save these changes?");
+              if (!userConfirmed) {
+                  event.preventDefault();
+              }
+          });
+      });
+  </script>
+
+  <script>
+      const deleteForms = document.querySelectorAll('.delete-stock-form');
+      deleteForms.forEach(function(form) {
+          form.addEventListener('submit', function(event) {
+              const userConfirmed = confirm("Are you sure you want to permanently delete this product?");
+              if (!userConfirmed) {
+                  event.preventDefault();
+              }
+          });
+      });
+  </script>
 
 </main>
 </body>
