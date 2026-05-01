@@ -3,7 +3,6 @@
     <link href="/css/GenericTheme.css" rel="stylesheet">
     <title>Basket</title>
     <style>
-
       body, html {
         margin: 0;
         padding: 0;
@@ -19,185 +18,185 @@
       }
 
       button {
-      background-color: rgb(130 72 24);
-      border: none;
-      color: white;
-      padding: 10px 20px;
-      margin: 40px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font: 16pt Helvetica, bold;
+        background-color: rgb(130 72 24);
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        margin: 40px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font: 16pt Helvetica, bold;
       }
 
-      column-buttons {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 50px;
-      margin-top: 50px;
+      .column-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 50px;
+        margin-top: 50px;
       }
 
       .layout-grid {
-      display: grid;
-      grid-template-columns: 20vw 80vw;
-      height: 100vh;
+        display: grid;
+        grid-template-columns: 20vw 80vw;
+        height: 100vh;
       }
 
       .sidebar {
-      background-color: rgb(130 72 24);
-      height: 100vh;
-      padding: 15px;
-      box-shadow: 11px 5px 15px rgba(0, 0, 0, 0.3);
-      z-index: 100;
-      color: white;
+        background-color: rgb(130 72 24);
+        padding: 15px;
+        box-shadow: 11px 5px 15px rgba(0, 0, 0, 0.3);
+        z-index: 100;
+        color: white;
       }
 
       .display-area {
-      background-image: url('/imgs/CoffeeBeansSplash.png');
-      background-size: cover;
-      background-position: center;
-      position: relative;
-      height: 100vh;
+        background-image: url('/imgs/CoffeeBeansSplash.png');
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        height: 100vh;
       }
 
       .product-box {
-      color: black;
-      background: rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(15px);
-      box-shadow: 0px 0px 20px 0px #0000007a;
-      border-radius: 30px;
-      text-align: center;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      transition: transform 0.3s ease;
+        color: black;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(15px);
+        box-shadow: 0px 0px 20px 0px #0000007a;
+        border-radius: 30px;
+        text-align: center;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: transform 0.3s ease;
       }
 
       .product-box:hover {
-      transform: scale(1.02);
+        transform: scale(1.02);
       }
 
       .product-inner-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(2, 1fr);
-      gap: 30px;
-      width: 90%;
-      height: 80%;
-      margin: 5% auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 30px;
+        width: 90%;
+        height: 90%;
+        margin: 5% auto;
+        overflow-y: scroll;
       }
      
       .product-image {
-      width: 100px;
-      height: 100px;
-      object-fit: cover; /* This crops the image to a perfect square */
-      border-radius: 15px; /* Matches the rounded look of your boxes */
-      margin-bottom: 15px;
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 15px;
+        margin-bottom: 15px;
       }
       
-    .basket-icon-wrapper {
-      position: relative;
-      display: inline-block;
-    }
+      .basket-icon-wrapper {
+        position: relative;
+        display: inline-block;
+      }
 
-    .basket-img {
-      width: 45px; 
-      height: 45px;
-      object-fit: contain;
-    }
+      .basket-img {
+        width: 45px; 
+        height: 45px;
+        object-fit: contain;
+      }
 
-    .basket-count-badge {
-      position: absolute;
-      top: -8px;
-      right: -8px;
-      background-color: #ff4444;
-      color: white;
-      border-radius: 50%;
-      padding: 2px 7px;
-      font-size: 11px;
-      font-weight: bold;
-      box-shadow: 0px 2px 4px rgba(0,0,0,0.5);
-      border: 1px solid white; 
-    }
+      .basket-count-badge {
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        background-color: #ff4444;
+        color: white;
+        border-radius: 50%;
+        padding: 2px 7px;
+        font-size: 11px;
+        font-weight: bold;
+        box-shadow: 0px 2px 4px rgba(0,0,0,0.5);
+        border: 1px solid white; 
+      }
 
-    .sidebar-item {
-      display: grid;
-      grid-template-columns: 1fr auto auto;
-      align-items: center;
-      gap: 10px;
-      padding: 10px;
-      margin-bottom: 8px;
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 8px;
-      color: white;
-    }
+      .sidebar-item {
+        display: grid;
+        grid-template-columns: 1fr auto auto;
+        align-items: center;
+        gap: 10px;
+        padding: 10px;
+        margin-bottom: 8px;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 8px;
+        color: white;
+      }
 
-    .qty-tag {
-      background: white;
-      color: rgb(130 72 24);
-      padding: 1px 6px;
-      border-radius: 10px;
-      font-weight: bold;
-      font-size: 0.8em;
-    }
-    .qty-btn{
-      padding: 4px 8px;
-      margin: 0;
-      font-size: 12px;
-      width: 28px;
-      height: 28px;
-      border-radius: 6px;
-      background-color: rgb(130 72 24);
-      color: white;
-      cursor: pointer;
-    }
-    .buttons{
-      display: flex;
-      gap: 5px;
-      align-items: center;
-    }
-    .bin{
-      background: none;
-      border: none;
-      padding: 0px;
-      margin: 0px;
-      cursor: pointer;
-      display: flex;
-      align-items:center;
-      justify-content: center;
-    }
+      .qty-tag {
+        background: white;
+        color: rgb(130 72 24);
+        padding: 1px 6px;
+        border-radius: 10px;
+        font-weight: bold;
+        font-size: 0.8em;
+      }
+      .qty-btn{
+        padding: 4px 8px;
+        margin: 0;
+        font-size: 12px;
+        width: 28px;
+        height: 28px;
+        border-radius: 6px;
+        background-color: rgb(130 72 24);
+        color: white;
+        cursor: pointer;
+      }
+      .buttons{
+        display: flex;
+        gap: 5px;
+        align-items: center;
+      }
+      .bin{
+        background: none;
+        border: none;
+        padding: 0px;
+        margin: 0px;
+        cursor: pointer;
+        display: flex;
+        align-items:center;
+        justify-content: center;
+      }
     
-    .bin img{
-      width: 25px;
-      height: 25px;
-      object-fit: contain;
-    }
+      .bin img{
+        width: 25px;
+        height: 25px;
+        object-fit: contain;
+      }
 
-    .out-of-stock {
-      opacity: 0.8;
-      pointer-events: none;
-      position: relative;
-    }
+      .out-of-stock {
+        opacity: 0.8;
+        pointer-events: none;
+        position: relative;
+      }
 
-    .out-of-stock .product-image {
-      filter: grayscale(100%);
-    }
+      .out-of-stock .product-image {
+        filter: grayscale(100%);
+      }
 
-    .sold-out-banner {
-      background-color: #ff0000; /* Pure Red */
-      color: white;
-      padding: 10px 0;
-      width: 100%;
-      font-weight: bold;
-      text-align: center;
-      position: absolute;
-      top: 40%;
-      z-index: 99; /* Ensures it sits on very top */
-      box-shadow: 0px 4px 8px rgba(0,0,0,0.4);
-    }
+      .sold-out-banner {
+        background-color: #ff0000;
+        color: white;
+        padding: 10px 0;
+        width: 100%;
+        font-weight: bold;
+        text-align: center;
+        position: absolute;
+        top: 40%;
+        z-index: 99;
+        box-shadow: 0px 4px 8px rgba(0,0,0,0.4);
+      }
       
     </style>
 </head>
@@ -261,7 +260,7 @@
                 <% end %>
 
                 <form action="/user/basketpayment" method="post" style="text-align: center;">
-                  <button type="submit" style="width: 100%; margin: 20px 0; border-radius: 10px;">Checkout</button>
+                  <button type="submit" style="width: 100%; margin: 20px 0; border-radius: 10px; cursor: pointer;">Checkout</button>
                 </form>
               </div>
           </div>

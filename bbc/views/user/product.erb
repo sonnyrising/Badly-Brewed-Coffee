@@ -11,7 +11,7 @@
   <p><%= p.ProductDescription %></p>
   <p>Roast: <%= p.Roast %></p>
   <p>Origin: <%= p.Origin %></p>
-  <b><%= p.Price %></b>
+  <b>£<%= p.Price %></b>
   <form action="/user/shop" method="post">
     <input type="hidden" name="productId" value="<%= p.ProductId %>">
     <input type="hidden" name="userId" value="<%= session[:userId]%>">
@@ -24,6 +24,6 @@
         <% end %>
       </select>
 
-    <button type="submit">Add to basket</button>
+    <button type="submit" style="cursor: pointer;">Add to basket</button>
   </form>
 </div>  

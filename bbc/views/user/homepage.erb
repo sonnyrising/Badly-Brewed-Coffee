@@ -41,7 +41,7 @@
     <div style="background-color: rgb(255, 255, 255); height: 100vh;">
       <img src="/imgs/dashboard.png" alt="Dashboard" style="width: 100%;height: 100%;object-fit: fill;"></a>
 
-      <div style="display: flex;flex-direction: row;flex-wrap: wrap;justify-content: center;gap: 32px;height: 85vh;position: absolute;top: 10vh;">
+      <div style="display: flex;flex-direction: row;flex-wrap: wrap;justify-content: center;gap: 32px;height: 85vh;position: absolute;top: 10vh; overflow-y: scroll;">
         <div style="color: black;background: transparent;backdrop-filter: blur(15px);box-shadow: 0px 0px 20px 0px #0000007a;border-radius: 30px; text-align: center;width:35vw;">
           <h1>Coffee counter</h1>
           <p style="position:relative;top:12vh;font-size: xx-large;"><%= Users.get_loyalty_points(session[:userId]) %></p>
