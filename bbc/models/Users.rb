@@ -34,7 +34,7 @@ class Users < Sequel::Model
       end
     end
     
-    def self.GetLoyaltyPoints(userId)
+    def self.get_loyalty_points(userId)
         numberOfPoints = Users.where(UserId: userId).get(:LoyaltyPoints)
         return numberOfPoints
     end
