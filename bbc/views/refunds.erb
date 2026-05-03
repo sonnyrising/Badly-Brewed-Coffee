@@ -173,7 +173,7 @@
 
       <div class="container">
         <div class="glass-card" style="top: 3%; left: 5%; width: 44%; height: 93%;">
-          <h1>Pending Online Refunds</h1>
+          <h1>Pending Refunds</h1>
           <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
             <thead>
             <tr>
@@ -234,7 +234,22 @@
 
       <div class="glass-card" style="top: 3%; left: 53%; width: 44%; height: 93%; text-align: left;">
         <h1>In-Store Refunds</h1>
-        <p>Enter UserID</p>
+        <h2>Enter the details of the refund here </h2>
+        <h2> and it will appear in pending refunds to be approved</h2>
+        <form method="post" action="/user/feedback-page-submit">
+          <input type="hidden" id="general_issue" name="issue" value="In-Store Refund">
+          <input type="hidden" id="yes" name="request" value="1" checked>
+
+          <p>Reason the customer is requesting a refund: </p>
+          <input type="text" id="refund_reasoning" name="reason" maxlength="250" placeholder="Type the reason here..." required>
+
+          <p>Transaction ID of the order</p>
+          <input type="number" id="transaction_id" name="transaction_id" placeholder="Transaction ID" required>
+
+          <p>
+            <input class="btn-green" type="submit" value="Submit">
+          </p>
+        </form>
       </div>
 
     </div>

@@ -78,6 +78,8 @@ get "/refunds" do
   if params[:message] == "accept"
     @alert_message = "Refund has been accepted."
     Transactions.where(TransactionId: params[:refund_id]).update(refundRequested: false)
+    Transactions.where(TransactionId: params[:refund_id]).update(Status: "Refunded")
+    Transactions.where(TransactionId: params[:refund_id]).update(Refunded: true)
   elsif params[:message] == "decline"
     @alert_message = "Refund has been declined."
     Transactions.where(TransactionId: params[:refund_id]).update(refundRequested: false)
