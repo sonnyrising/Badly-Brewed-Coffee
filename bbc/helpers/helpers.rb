@@ -50,7 +50,7 @@ helpers do
           Roast: params[:roast]
         )
       else
-        redirect "/manager/managestock?error=invalid_name"
+        redirect "/managestock?error=invalid_name"
       end
     else
       product_error_message(params)
@@ -60,19 +60,19 @@ helpers do
   # Return an appropriate error message if any input user input is invalid
   def product_error_message(params)
     if !params[:name]
-      redirect "/manager/managestock?error=invalid_name"
+      redirect "/managestock?error=invalid_name"
     elsif !params[:stock]
-      redirect "/manager/managestock?error=invalid_stock"
+      redirect "/managestock?error=invalid_stock"
     elsif !params[:price]
-      redirect "/manager/managestock?error=invalid_price"
+      redirect "/managestock?error=invalid_price"
     elsif !params[:image]
-      redirect "/manager/managestock?error=invalid_image"
+      redirect "/managestock?error=invalid_image"
     elsif !params[:description]
-      redirect "/manager/managestock?error=invalid_description"
+      redirect "/managestock?error=invalid_description"
     elsif !params[:origin]
-      redirect "/manager/managestock?error=invalid_origin"
+      redirect "/managestock?error=invalid_origin"
     elsif !params[:roast]
-      redirect "/manager/managestock?error=invalid_roast"
+      redirect "/managestock?error=invalid_roast"
     end
   end
 
