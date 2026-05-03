@@ -44,7 +44,8 @@ CREATE TABLE Products(
   Roast TEXT,
   Origin TEXT,
   Price FLOAT,
-  StockQuantity INTEGER
+  StockQuantity INTEGER,
+  Bean BOOLEAN
 );
 
 CREATE TABLE Basket(
