@@ -132,6 +132,22 @@
           padding: 0;
       }
 
+      .btn {
+          height: 80%;
+          color: white;
+          padding: 4px 8px;
+          border-radius: 8px;
+          border: none;
+          cursor: pointer;
+          font-size: 9pt;
+          font-weight: bold;
+          text-decoration: none;
+      }
+
+      .btn-green { background: rgba(50, 160, 80, 0.85); }
+      .btn-red   { background: rgba(200, 50, 50, 0.85); }
+      .btn-grey  { background: rgba(100, 100, 100, 0.7); }
+
   </style>
 </head>
 
@@ -203,12 +219,12 @@
                       <p>Description: <input type="text" name="product_description" value="<%= product.ProductDescription %>" class="inline-input" autocomplete="off"></p>
                       <p>Image: <input type="text" name="product_image" value="<%= product.ProductImage %>" class="inline-input" autocomplete="off"></p>
 
-                      <button type="submit">Save Changes</button>
+                      <button class="btn-green" type="submit">Save Changes</button>
                     </form>
 
                     <form class="delete-stock-form" action="/deleteproduct" method="POST" style="margin-top: 10px;">
                       <input type="hidden" name="product_id" value="<%= product.ProductId %>">
-                      <button type="submit" style="background-color: darkred; color: white;">Delete Product</button>
+                      <button class="btn-red" type="submit" style="background-color: darkred; color: white;">Delete Product</button>
                     </form>
                   </div>
                 <% end %>
