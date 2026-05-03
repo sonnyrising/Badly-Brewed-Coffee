@@ -37,8 +37,11 @@ helpers do
   # Helper method to update the values of the product table
   def update_product_values(params)
     # Check all inputs are valid
-    if params[:name] && params[:stock] && params[:price] && params[:image] && params[:description] && params[:origin] && params[:roast]
+    if params[:name] && params[:stock] && params[:price] && params[:image] && params[:description] &&
+       params[:origin] && params[:roast] && params[:type]
       # Update the product
+      is_bean = (params[:type] == "Bean")
+
       if params[:product]
         params[:product].update(
           ProductName: params[:name],
@@ -47,7 +50,8 @@ helpers do
           ProductImage: params[:image],
           ProductDescription: params[:description],
           Origin: params[:origin],
-          Roast: params[:roast]
+          Roast: params[:roast],
+          Bean: is_bean
         )
       else
         redirect "/managestock?error=invalid_name"
@@ -73,6 +77,8 @@ helpers do
       redirect "/managestock?error=invalid_origin"
     elsif !params[:roast]
       redirect "/managestock?error=invalid_roast"
+    elsif !params[:type]
+      redirect "/managestock?error=invalid_type"
     end
   end
 
@@ -109,6 +115,13 @@ helpers do
     else
       return input
     end
+  end
+
+  def check_type(input)
+    unless input == "Bean" || input == "Coffee"
+      return false
+    end
+    return input
   end
 
   # Helper method to format an integer as a date

@@ -121,6 +121,7 @@ get "/managestock" do
                    when "invalid_description" then "Please enter a valid description."
                    when "invalid_origin" then "Please enter a valid origin."
                    when "invalid_roast" then "Please enter a valid roast."
+                   when "invalid_type" then "Please enter a valid product type (Bean or Coffee)."
                    end
   erb :"managestock"
 end
@@ -136,7 +137,8 @@ post '/updatestock' do
     image: sanitise_string(params['product_image']),
     description: sanitise_string(params['product_description']),
     origin: sanitise_string(params['product_origin']),
-    roast: sanitise_string(params['product_roast'])
+    roast: sanitise_string(params['product_roast']),
+    type: check_type(params['product_type'])
   }
   update_product_values(values_hash)
 
@@ -156,6 +158,9 @@ end
 post "/addproduct" do
   highest_id = Products.max(:ProductId)
   @products = Products.all
+
+  is_bean = (check_type(params['product_type']) == "Bean")
+
   Products.insert(
     ProductId: highest_id + 1,
     ProductName: sanitise_string(params['product_name']),
@@ -164,7 +169,8 @@ post "/addproduct" do
     ProductImage: sanitise_string(params['product_image']),
     ProductDescription: sanitise_string(params['product_description']),
     Origin: sanitise_string(params['product_origin']),
-    Roast: sanitise_string(params['product_roast'])
+    Roast: sanitise_string(params['product_roast']),
+    Type: is_bean
   )
   redirect "/managestock"
 end
