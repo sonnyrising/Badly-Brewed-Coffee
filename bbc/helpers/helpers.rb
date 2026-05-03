@@ -186,6 +186,28 @@ helpers do
     top_products.sort_by! { |product| product.quantity_sold }.reverse!
     return top_products
   end
+
+  def find_top_coffees
+    top_coffees = []
+    products = Products.all
+    products.each do |product|
+      top_coffees << Product.new(product.ProductId, product.ProductName, product.Price)
+    end
+
+    top_coffees.sort_by! { |product| product.quantity_sold }.reverse!
+    return top_coffees
+  end
+
+  def find_top_beans
+    top_beans = []
+    products = Products.all
+    products.each do |product|
+      top_beans << Product.new(product.ProductId, product.ProductName, product.Price)
+    end
+
+    top_beans.sort_by! { |product| product.quantity_sold }.reverse!
+    return top_beans
+  end
 end
 
 # ---------| Helper Classes |---------
@@ -205,12 +227,14 @@ class User
 end
 
 class Product
-  attr_accessor :product_id, :product_name, :quantity_sold
+  attr_accessor :product_name, :quantity_sold, :price
 
-  def initialize(product_id, product_name)
+  def initialize(product_id, product_name, price)
     @product_id = product_id
     @product_name = product_name
+    @price = price
     @quantity_sold = 0
+
 
     baskets = Basket.where(ProductId: @product_id)
     baskets.each do |basket|

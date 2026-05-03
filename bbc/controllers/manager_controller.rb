@@ -21,24 +21,8 @@ get "/manager/homepage" do
   erb :"manager/homepage"
 end
 
-get "/manager/beanssold" do
-  erb :"manager/beanssold"
-end
-
-get "/manager/coffeessold" do
-  erb :"manager/coffeessold"
-end
-
-get "/manager/freecoffeesredeemed" do
-  erb :"manager/freecoffeesredeemed"
-end
-
-get "/manager/topcustomers" do
-  erb :"manager/topcustomers"
-end
-
-get "/manager/topproducts" do
-  erb :"manager/topproducts"
+get "/manager/salesmetrics" do
+  erb :"manager/salesmetrics"
 end
 
 get "/manager/adjustloyalty" do
