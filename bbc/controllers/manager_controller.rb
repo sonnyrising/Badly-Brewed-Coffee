@@ -46,6 +46,22 @@ get "/manager/adjustloyalty" do
   erb :"manager/adjustloyalty"
 end
 
+get "/manager/viewfeedback" do
+  options = params["filter"]
+  
+  if options == "refund"
+    @shown_feedback = Feedbacks.where(RefundRequest: 1).all
+  else
+    @shown_feedback = Feedbacks.all
+  end
+  
+  puts "=== DEBUG: I found #{@shown_feedback.count} records in the DB! ==="
+  
+  puts "=== DEBUG: Data: #{@shown_feedback.inspect} ==="
+
+  erb :"manager/viewfeedback"
+end
+
 post "/manager/updatediscount" do
   user_id = params[:user_id]
   discount = params[:discount]
