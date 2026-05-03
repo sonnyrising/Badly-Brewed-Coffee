@@ -8,6 +8,22 @@
     <form action="/staff/selectproducts" method="post">
       <input type="hidden" name="productId" value="<%= p.ProductId %>">
       <input type="hidden" name="userId" value="<%= session[:userId]%>">
+      <% if p.ProductID > 6 %>
+        <label for="size">Select a Size</label>
+          <select name="Size">
+              <option value="Small"></option>
+              <option value="Medium"></option>
+              <option value="Large"></option>
+          </select>
+
+        <label for="milkType">Select a Size</label>
+          <select name="milkType">
+              <option value="Whole Milk"></option>
+              <option value="Oat Milk"></option>
+              <option value="Soy Milk"></option>
+          </select>
+      <% end %>
+    
       <label for="quantity">Select a quantity</label>
         <select name="quantity">
           <% if p.GetStockQuantity(p.ProductId) < 10 %>
@@ -21,6 +37,8 @@
           <% end %>
         </select>
       <button type="submit">Add to basket</button>
+
+    
     </form>
   </div>
 <% end %>

@@ -182,32 +182,39 @@ helpers do
     products.each do |product|
       top_products << Product.new(product.ProductId, product.ProductName)
     end
-  end
-  class User
-    attr_accessor :user_id, :username, :total_spent
-    def initialize(userID, username)
-      @user_id = userID
-      @username = username
-      @total_spent = 0
 
-      transactions = Transactions.where(UserId: @user_id, RefundRequested: false)
-      transactions.each do |transaction|
-        @total_spent += transaction.TotalCost
-      end
+    top_products.sort_by! { |product| product.quantity_sold }.reverse!
+    return top_products
+  end
+end
+
+# ---------| Helper Classes |---------
+class User
+  attr_accessor :user_id, :username, :total_spent
+
+  def initialize(userID, username)
+    @user_id = userID
+    @username = username
+    @total_spent = 0
+
+    transactions = Transactions.where(UserId: @user_id, RefundRequested: false)
+    transactions.each do |transaction|
+      @total_spent += transaction.TotalCost
     end
   end
+end
 
-  class Product
-    attr_accessor :product_id, :product_name, :quantitySold
-    def initialize(product_id, product_name)
-      @product_id = product_id
-      @product_name = product_name
-      @quantity_sold = 0
+class Product
+  attr_accessor :product_id, :product_name, :quantity_sold
 
-      baskets = Basket.where(ProductId: @productID)
-      baskets.each do |basket|
-        @quantitySold += basket.Quantity
-      end
+  def initialize(product_id, product_name)
+    @product_id = product_id
+    @product_name = product_name
+    @quantity_sold = 0
+
+    baskets = Basket.where(ProductId: @product_id)
+    baskets.each do |basket|
+      @quantity_sold += basket.Quantity
     end
   end
 end

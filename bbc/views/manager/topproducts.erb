@@ -151,15 +151,15 @@
             <tbody>
             <% if @top_products.empty? %>
               <tr>
-                <td colspan="6">No Users.</td>
+                <td colspan="4">No Products.</td>
               </tr>
             <% else %>
               <% @top_products.each do |product| %>
                 <tr>
                   <td><%= @top_products.find_index(product) +1 %></td>
                   <td><%= product.product_id %></td>
-                  <td><%= product.name %></td>
-                  <td><%= product.total_sold %></td>
+                  <td><%= product.product_name %></td>
+                  <td><%= product.quantity_sold %></td>
                 </tr>
               <% end %>
             <% end %>

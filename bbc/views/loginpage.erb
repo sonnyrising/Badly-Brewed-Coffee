@@ -24,10 +24,10 @@
               <p style="width:25vw;"> <%= @matching_error %> </p>
             <% end %>
 
-            <button type="submit" style="width: 7vw;height: 5vh;border: 2px solid #69312b;border-radius: 7px;margin: 0vh 8vw 0vh 8vw;border-radius:12px;">Log in</button>
+            <button type="submit" style="width: 7vw;height:5vh; border: 2px solid #69312b;border-radius: 7px;margin: 0vh 8vw;border-radius:12px; cursor:pointer;">Log in</button>
           </form>
            <form action="/guestlogin" method="post" style="display: flex;flex-direction: column;gap: 2vh;align-items: center;margin-top: 5vh;">
-              <button type="submit" style="width: 7vw;height: 5vh;border: 2px solid #69312b;margin: 0vh 8vw 0vh 8vw;border-radius:12px;">Sign In As Guest</button>
+              <button type="submit" style="width: 7vw;height: fit-content;border: 2px solid #69312b;margin: 0vh 8vw 0vh 8vw;border-radius:12px; cursor:pointer;">Sign In As Guest</button>
               <a href="/forgotpassword" style="width: 10vw;height: 10vh; color:white; text-align:center;">Forgot Password</a>
               <p style="margin:5vw;">Don't have an account? Sign up <a href="/register" style="color:white;">here</a>.</p>
             </form>
