@@ -10,7 +10,8 @@ CREATE TABLE Users(
   Warning INTEGER,
   Suspended INTEGER,
   FreeCoffeesRedeemed INTEGER,
-  LoyaltyDiscount FLOAT
+  LoyaltyDiscount FLOAT,
+  DateJoined TEXT
 );
 
 CREATE TABLE Transactions(
