@@ -92,6 +92,7 @@ class Users < Sequel::Model
       self.PassHash = params.fetch("pword","").strip
       self.LoyaltyPoints = 0
       self.DaysSinceLastUse = 0
+      self.DateJoined = Date.today.to_s
    end
    
    def compareUsername(username)
