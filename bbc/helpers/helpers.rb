@@ -202,7 +202,7 @@ helpers do
 
   def find_top_coffees
     top_coffees = []
-    products = Products.all
+    products = Products.where(Bean: false)
     products.each do |product|
       top_coffees << Product.new(product.ProductId, product.ProductName, product.Price)
     end
@@ -213,7 +213,7 @@ helpers do
 
   def find_top_beans
     top_beans = []
-    products = Products.all
+    products = Products.where(Bean: true)
     products.each do |product|
       top_beans << Product.new(product.ProductId, product.ProductName, product.Price)
     end
