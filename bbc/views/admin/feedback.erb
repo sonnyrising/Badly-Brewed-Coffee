@@ -48,13 +48,15 @@
             <h1>Feedback listing:</h1>
             <form method="get" action="/admin/feedback" style="display:inline-block; position:relative; top:-4%; left:30vw;">
               <div style="display: flex; flex-direction: row; align-items: center; gap: 1vw;">
-                <input type="radio" id="refund" name="filter" value="refund">
-                <label for="refund" style="white-space: nowrap;">Refunds Only</label>
+                <form action="/manager/viewfeedback" method="get">
+                  <input type="radio" style="border-spacing: 10px" id="issues" name="filter" value="general_issue" <%= 'checked' if params['filter'] != 'refund' %>>
+                  <label for="issues" style="white-space: nowrap; font-size: 18px">General Issues</label>
 
-                <input type="radio" id="issues" name="filter" value="general_issue" checked>
-                <label for="issues" style="white-space: nowrap;">General Issues</label>
+                  <input type="radio" id="refund" name="filter" value="refund" <%= 'checked' if params['filter'] == 'refund' %>>
+                  <label for="refund" style="white-space: nowrap; font-size: 18px">Refunds Only</label>
 
-                <input type="submit" value="Filter">
+                  <input style="border-radius: 8px; font-size: 18px; border-spacing: 5px" type="submit" value="Filter">
+                </form>
               </div>
             </form>
             <div style="position:relative;top:3vh;">
