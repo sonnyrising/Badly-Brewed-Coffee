@@ -164,6 +164,52 @@ helpers do
     basket = Basket.where(TransactionId: transactionID)
     return basket.get(:Quantity)
   end
+
+  def find_top_customers
+    top_customers = []
+    customers = Users.all
+    customers.each do |customer|
+      top_customers << User.new(customer.UserId, customer.Username)
+    end
+
+    top_customers.sort_by! { |user| user.total_spent }.reverse!
+    return top_customers
+  end
+
+  def find_top_products
+    top_products = []
+    products = Products.all
+    products.each do |product|
+      top_products << Product.new(product.ProductId, product.ProductName)
+    end
+  end
+  class User
+    attr_accessor :user_id, :username, :total_spent
+    def initialize(userID, username)
+      @user_id = userID
+      @username = username
+      @total_spent = 0
+
+      transactions = Transactions.where(UserId: @user_id, RefundRequested: false)
+      transactions.each do |transaction|
+        @total_spent += transaction.TotalCost
+      end
+    end
+  end
+
+  class Product
+    attr_accessor :product_id, :product_name, :quantitySold
+    def initialize(product_id, product_name)
+      @product_id = product_id
+      @product_name = product_name
+      @quantity_sold = 0
+
+      baskets = Basket.where(ProductId: @productID)
+      baskets.each do |basket|
+        @quantitySold += basket.Quantity
+      end
+    end
+  end
 end
 
 
