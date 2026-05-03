@@ -85,7 +85,7 @@
       </nav>
 
       <div class="container">
-        <div class="glass-card" style="top: 15%; left: 5%; width: 42%; height: 35%;">
+        <div class="glass-card" style="top: 8%; left: 5%; width: 42%; height: 22%;">
           <h1>Top Coffees</h1>
           <% @top_coffees = find_top_coffees %>
           <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
@@ -117,7 +117,7 @@
         </div>
 
 
-        <div class="glass-card" style="top: 15%; left: 53%; width: 42%; height: 35%;">
+        <div class="glass-card" style="top: 8%; left: 53%; width: 42%; height: 22%;">
           <h1 style="text-align: center; margin-top: 2vh;">Free Coffees Redeemed</h1>
           <% @free_coffees = get_free_coffees_redeemed %>
           <div>
@@ -126,7 +126,7 @@
           </div>
         </div>
 
-        <div class="glass-card" style="top: 55%; left: 5%; width: 42%; height: 35%;">
+        <div class="glass-card" style="top: 32%; left: 5%; width: 42%; height: 22%;">
           <h1>Top Beans</h1>
           <% @top_beans = find_top_beans %>
           <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
@@ -158,7 +158,7 @@
         </div>
       </div>
 
-      <div class="glass-card" style="top: 55%; left: 53%; width: 42%; height: 35%;">
+      <div class="glass-card" style="top: 32%; left: 53%; width: 42%; height: 22%;">
         <h1>Top Customers</h1>
         <% @top_beans = find_top_beans %>
         <% @top_customers = find_top_customers %>
@@ -189,6 +189,29 @@
           </tbody>
         </table>
       </div>
+
+      <div class="glass-card" style="top: 56%; left: 5%; width: 90%; height: 36%;">
+        <h1>Membership</h1>
+        <p>There are <%= Users.count %> members in total</p>
+
+        <% this_month = Date.today.strftime("%m") %>
+        <% this_year  = Date.today.strftime("%Y") %>
+        <% members_this_month = get_members_this_month(this_month, this_year) %>
+
+        <% last_month_date = Date.today.prev_month %>
+        <% last_month = last_month_date.strftime("%m") %>
+        <% last_year  = last_month_date.strftime("%Y") %>
+        <% members_last_month = get_members_this_month(last_month, last_year) %>
+
+        <p>There have been <%= members_this_month %> new members this month</p>
+
+        <% if members_last_month > 0 %>
+          <p>That is <%= ((members_this_month.to_f / members_last_month) * 100).round(2) %>% of last month's growth</p>
+        <% else %>
+          <p>Last month had no new members to compare.</p>
+        <% end %>
+      </div>
+
     </div>
 
     </div>

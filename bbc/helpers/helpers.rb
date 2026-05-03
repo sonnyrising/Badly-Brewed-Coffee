@@ -178,6 +178,19 @@ helpers do
     return basket.get(:Quantity)
   end
 
+  def get_members_this_month(month, year)
+    # Ensure month is a 2-character string
+    formatted_month = month.to_s.rjust(2, '0')
+    formatted_year  = year.to_s
+
+    members_month = Users.where(
+      Sequel.function(:strftime, '%Y', :DateJoined) => formatted_year,
+      Sequel.function(:strftime, '%m', :DateJoined) => formatted_month
+    )
+
+    return members_month.count
+  end
+
   def find_top_customers
     top_customers = []
     customers = Users.all
