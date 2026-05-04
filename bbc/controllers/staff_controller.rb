@@ -2,6 +2,7 @@ before "/staff/*" do
   unless session[:uname] == "staff" || session[:uname] == "manager"
     redirect "/"
   end
+  session[:userId] = 7
 end
 
 get "/staff/homepage" do
@@ -12,6 +13,24 @@ post "/staff/selectproducts" do
   @products = Products.all
 
   erb :"staff/selectproducts"
+end
+
+post "/staff/shop" do
+  @products = Products.all
+  @basket = Basket.new
+
+  exists = @basket.productExists(params)
+  user_exists = @basket.userCheck(params)
+  product_exists = @basket.productCheck(params)
+
+  if exists.nil? || user_exists.nil? || product_exists.nil?
+    @basket.addToBasket(params)
+    @basket.save_changes
+  else
+    @basket.updateQuantity(params)
+  end
+
+  redirect "/staff/selectproducts"
 end
 
 get "/staff/selectproducts" do
