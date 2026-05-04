@@ -12,34 +12,34 @@
             }
         </style>
         <h3 style="margin-left: 10%;">
-          <%= Users.GetUsername(userId) %>
-          <% if Users.is_on_warning?(userId) && !isSuspended?(userId) %>
-            <span title="Grace Period: <%= Users.get_days_since_warning(userId) %> days" style="color: orange; margin-left: 10px;">!<b>
-            </span>
+          <%= account.Username %>
+          <% if Users.is_on_warning?(account.UserId) && !Users.isSuspended?(account.UserId) %>
+            <span title="Grace Period: <%= account.DaysSinceWarning %> days" style="color: orange; margin-left: 10px;">!<b></span>
           <% end %>
         </h3>
         <div style="display: grid; grid-template-columns: 3vw 3vw 5vw 3vw;position:absolute; right:5%">
             <form method="post" action="/admin/accounts/view">
                 <button type="submit" class="view-button">View</button>
-                <input type="hidden" name="userId" value="<%= userId %>">
+                <input type="hidden" name="account-data" value="<%= account.UserId %>">
             </form>
             <form method="post" action="/admin/accounts/edit">
                 <button type="submit" class="edit-button">Edit</button>
-                <input type="hidden" name="userId" value="<%= userId %>">
+                <input type="hidden" name="account-data" value="<%= account.UserId %>">
             </form>
             <form method="post" action="/admin/accounts/suspend">
-                <% if Users.isSuspended?(userId) %>
+                <% if Users.isSuspended?(account.UserId) %>
                     <button type="submit" class="view-button">Reinstate</button>
-                <% elsif Users.is_on_warning?(userId) %>
+                <% elsif Users.is_on_warning?(account.UserId) %>
+                    <input type="hidden" name="button-type-data" value="end-warning">
                     <button type="submit" class="edit-button">Cancel Warning</button>
                 <% else %>
                     <button type="submit" class="delete-button">Suspend</button>
                 <% end %>
-                <input type="hidden" name="userId" value="<%= userId %>">
+                <input type="hidden" name="account-data" value="<%= account.UserId %>">
             </form>
             <form method="post" action="/admin/accounts/delete">
                 <button type="submit" class="delete-button">Delete</button>
-                <input type="hidden" name="userId" value="<%= userId %>">
+                <input type="hidden" name="account-data" value="<%= account.UserId %>">
             </form>
         </div>
     </div>
