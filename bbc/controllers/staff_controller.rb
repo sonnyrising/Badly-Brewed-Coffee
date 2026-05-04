@@ -5,6 +5,7 @@ before "/staff/*" do
 end
 
 get "/staff/homepage" do
+  @userid = 1
   erb :"staff/homepage"
 end
 
@@ -32,6 +33,11 @@ get "/staff/staffaccountview" do
   erb :"staff/staffaccountview"
 end
 
+post "/staff/account" do
+  @account = Users[params[:'account-data'].to_i]
+  erb :"staff/account"
+end
+
 post "/staff/generatelabel" do
   erb :"staff/generatelabel"
 end
@@ -44,10 +50,12 @@ get "/staff/settings" do
   erb :"staff/settings"
 end
 
-post "/staff/orders" do
-  @orders = Transactions.all
-  erb :"staff/orders"
+get "/staff/orders" do
+  @shown_orders = Transactions.all
+
+  erb :'admin/orders'
 end
+
 
 get "/staff/managestock" do
   @products = Products.all
@@ -119,6 +127,14 @@ post "/staff/basketpayment" do
 end
 
 post "/staff/thankyoupage" do
+  transaction = Transactions.new
+  transaction.load(params)
+  transaction.save_changes
+
+  Basket.orderPlaced(transaction.UserId, transaction.TransactionId)
+
+  Users.coffeeLoyaltyPointIncrease(transaction.UserId)
+
   erb :"staff/thankyoupage"
 end
 

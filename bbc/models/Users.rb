@@ -111,4 +111,9 @@ class Users < Sequel::Model
     points = Users.where(UserId: userId).get(:LoyaltyPoints)
     Users.where(UserId: userId).update(LoyaltyPoints: points + 3)
   end
+
+  def self.coffeeLoyaltyPointsIncrease(userId)
+    points = Users.where(UserId: userId).get(:LoyaltyPoints)
+    Users.where(UserId: userId).update(LoyaltyPoints: points + 1)
+  end
 end

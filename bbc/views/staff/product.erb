@@ -1,44 +1,29 @@
 <!DOCTYPE html>
-<% if p.GetStockQuantity(p.ProductId) > 0 %>
-  <div class="product-box">
-    <img src="/imgs/<%= p.ProductImage %>" alt="Coffee" class="product-image">
-    <h3><%= p.ProductName %></h3>
-    <p><%= p.ProductDescription %></p>
-    <b><%= p.Price %></b>
-    <form action="/staff/selectproducts" method="post">
-      <input type="hidden" name="productId" value="<%= p.ProductId %>">
-      <input type="hidden" name="userId" value="<%= session[:userId]%>">
-      
-        <label for="size">Select a Size</label>
-          <select name="Size">
-              <option value="Small"></option>
-              <option value="Medium"></option>
-              <option value="Large"></option>
-          </select>
 
-        <label for="milkType">Select a Size</label>
-          <select name="milkType">
-              <option value="Whole Milk"></option>
-              <option value="Oat Milk"></option>
-              <option value="Soy Milk"></option>
-          </select>
-      <% end %>
-    
-      <label for="quantity">Select a quantity</label>
-        <select name="quantity">
-          <% if p.GetStockQuantity(p.ProductId) < 10 %>
-            <% (1..p.GetStockQuantity(p.ProductId)).each do |q|%>
-              <option value="<%= q %>"><%= q %></option>
-            <% end %>
-          <% else %>
-            <% (1..10).each do |q|%>
-              <option value="<%= q %>"><%= q %></option>
-            <% end %>
-          <% end %>
-        </select>
-      <button type="submit">Add to basket</button>
+<div class="product-box <%= 'out-of-stock' if p.StockQuantity.to_i <= 0 %>">  
 
+  <% if p.StockQuantity.to_i <= 0 %>
+    <div class="sold-out-banner">OUT OF STOCK</div>
+  <% end %>
+  
+  <img src="/imgs/<%= p.ProductImage %>" alt="Coffee" class="product-image">
+  <h3><%= p.ProductName %></h3>
+  <p><%= p.ProductDescription %></p>
+  <p>Roast: <%= p.Roast %></p>
+  <p>Origin: <%= p.Origin %></p>
+  <b>£<%= p.Price %></b>
+  <form action="/staff/shop" method="post">
+    <input type="hidden" name="productId" value="<%= p.ProductId %>">
+    <input type="hidden" name="userId" value="<%= session[:userId]%>">
     
-    </form>
-  </div>
-<% end %>
+    <label for="quantity">Select a quantity</label>
+      <select name="quantity">
+        <%max_available = [p.StockQuantity.to_i, 10].min %>
+        <% (1..max_available).each do |q| %>
+          <option value="<%= q %>"><%= q %></option>
+        <% end %>
+      </select>
+
+    <button type="submit" style="cursor: pointer;">Add to basket</button>
+  </form>
+</div>  
