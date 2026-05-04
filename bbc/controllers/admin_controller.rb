@@ -30,13 +30,7 @@ post "/admin/views/user" do
 end
 
 get "/admin/feedback" do
-  options = params["filter"]
-  if options == "refund"
-    @shown_feedback = Feedbacks.where(RefundRequest: "Yes").all
-  else
-    @shown_feedback = Feedbacks.all
-  end
-
+   @shown_feedback = Feedbacks.all
   erb :"admin/feedback"
 end
 
