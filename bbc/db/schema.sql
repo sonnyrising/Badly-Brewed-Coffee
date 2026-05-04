@@ -69,14 +69,16 @@ CREATE TABLE Staff(
 );
 
 
-CREATE TABLE Sizes (
-  SizeID INTEGER,
+CREATE TABLE CoffeeSize (
+  FOREIGN KEY (BasketId) REFERENCES Basket(BasketId) ON DELETE CASCADE,
+  FOREIGN KEY (ProductId) REFERENCES Basket(ProductId) ON DELETE CASCADE,
+  FOREIGN KEY (Quantity) REFERENCES Basket(Quantity) ON DELETE CASCADE,
   CoffeeSize TEXT,
-  Multiplier FLOAT
 );
 
 CREATE TABLE MilkTypes (
-  MilkID INTEGER,
+  FOREIGN KEY (BasketId) REFERENCES Basket(BasketId) ON DELETE CASCADE,
+  FOREIGN KEY (ProductId) REFERENCES Basket(ProductId) ON DELETE CASCADE,
+  FOREIGN KEY (Quantity) REFERENCES Basket(Quantity) ON DELETE CASCADE,
   MilkType TEXT,
-  MilkPrice INTEGER 
 );

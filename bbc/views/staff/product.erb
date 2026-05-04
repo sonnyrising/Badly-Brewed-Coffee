@@ -8,7 +8,7 @@
     <form action="/staff/selectproducts" method="post">
       <input type="hidden" name="productId" value="<%= p.ProductId %>">
       <input type="hidden" name="userId" value="<%= session[:userId]%>">
-      <% if p.ProductID > 6 %>
+      
         <label for="size">Select a Size</label>
           <select name="Size">
               <option value="Small"></option>

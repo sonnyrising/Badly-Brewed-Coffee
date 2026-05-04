@@ -119,4 +119,17 @@ class Basket < Sequel::Model(:Basket)
   def self.orderPlaced(userId, transactionId)
     Basket.where(UserId: userId, TransactionId: nil).update(TransactionId: transactionId)
   end
+
+  def self.addCoffees(params)
+    user = params.fetch("userId", "")
+    product = params.fetch("productId", "")
+    milkType = params.fetch("milkType", "")
+    coffeeSize = params.fetch("coffeeSize", "")
+    
+    quantity_p = Basket.where(UserId: user, ProductId: product).first
+
+    if quantity_p.Quantity < 10
+      Basket.where(UserId: user, ProductId: product).update(Quantity: quantity_p.Quantity + 1)  
+    end
+  end
 end
