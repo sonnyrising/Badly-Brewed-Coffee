@@ -41,7 +41,6 @@ get "/admin/feedback" do
 end
 
 get "/admin/run-inactivity-check" do
-  validate_session
   Users.daily_inactivity_check
   redirect "/admin/accounts"
 end
