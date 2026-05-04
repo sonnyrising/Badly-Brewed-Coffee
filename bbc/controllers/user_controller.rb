@@ -98,6 +98,14 @@ end
 post "/user/feedback-page-submit" do
   @feedback = Feedbacks.new
   @feedback.load(params)
+  @feedback.UserId = session[:userId]
+
+
+
+  if @feedback.save_changes
+    @feedback_text = h(@feedback.IssueContent)
+    @refund_reason = h(@feedback.RefundReason)
+    erb :"user/feedback_page_submission"
 
   transaction = Transactions.where(TransactionId: @feedback.TransactionId).first
 
