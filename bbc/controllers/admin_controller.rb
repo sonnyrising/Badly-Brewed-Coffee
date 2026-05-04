@@ -30,13 +30,7 @@ post "/admin/views/user" do
 end
 
 get "/admin/feedback" do
-  options = params["filter"]
-  if options == "refund"
-    @shown_feedback = Feedbacks.where(RefundRequest: "Yes").all
-  else
-    @shown_feedback = Feedbacks.all
-  end
-
+   @shown_feedback = Feedbacks.all
   erb :"admin/feedback"
 end
 
@@ -46,9 +40,8 @@ get "/admin/run-inactivity-check" do
 end
 
 post "/admin/feedback/filter" do
-  if !params[:'search-filter'].empty?
-    @shown_feedback = []
-    @shown_feedback << Feedbacks.where(FeedbackId: params[:'search-filter'].to_i).get(:FeedbackId)
+  if !params[:filter].empty? && params[:filter] == "refund_issue"
+    @shown_feedback = Feedbacks.where(RefundRequest: "1").all
     erb :"admin/feedback"
   else
     redirect "/admin/feedback"
