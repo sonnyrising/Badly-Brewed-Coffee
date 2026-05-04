@@ -48,16 +48,21 @@
                       background-color: rgb(255, 94, 94);
                     }
                   </style>
-                  <h3 style="margin-left: 10%;"><%= order.TransactionId %></h3>
+                  <div style="display: flex; flex-direction: row; justify-content: space-evenly; width: 50%;">
+                    <h3 style="margin-left: 10%;"><%= order.TransactionId %></h3>
+                    <b><%= Users[order.UserId].Username %></b>
+                    <b>£<%= order.TotalCost %></b>
+                    <b><%= order.TransactionDate.to_s.insert(2, "/").insert(5, "/") %></b>
+                  </div>
                   
                   <div style="display: grid; grid-template-columns: 3vw 3vw 5vw 3vw;position:absolute; right:5%">
                     <form method="post" action="/admin/orders/edit">
                       <button type="submit" class="edit-button">Edit</button>
-                      <input type="hidden" name="transactionId" value="<%= order.TransactionId %>">
+                      <input type="hidden" name="transaction-id" value="<%= order.TransactionId %>">
                     </form>
                     <form method="post" action="/admin/orders/delete">
                       <button type="submit" class="delete-button">Delete</button>
-                      <input type="hidden" name="transactionId" value="<%= order.TransactionId %>">
+                      <input type="hidden" name="transaction-id" value="<%= order.TransactionId %>">
                     </form>
                   </div>
                 </div>

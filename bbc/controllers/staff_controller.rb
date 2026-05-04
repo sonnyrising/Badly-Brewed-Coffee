@@ -1,5 +1,5 @@
 before "/staff/*" do
-  if session[:uname] != "staff"
+  unless session[:uname] == "staff" || session[:uname] == "manager"
     redirect "/"
   end
 end

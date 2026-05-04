@@ -9,7 +9,7 @@ get "/admin" do
 end
 
 get "/admin/accounts" do
-  @shown_accounts = Users.map(:UserId)
+  @shown_accounts = Users.all
   erb :"admin/accounts"
 end
 
@@ -30,26 +30,18 @@ post "/admin/views/user" do
 end
 
 get "/admin/feedback" do
-  options = params["filter"]
-  if options == "refund"
-    @shown_feedback = Feedbacks.where(RefundRequest: "Yes").all
-  else
-    @shown_feedback = Feedbacks.all
-  end
-
+   @shown_feedback = Feedbacks.all
   erb :"admin/feedback"
 end
 
 get "/admin/run-inactivity-check" do
-  validate_session
   Users.daily_inactivity_check
   redirect "/admin/accounts"
 end
 
 post "/admin/feedback/filter" do
-  if !params[:'search-filter'].empty?
-    @shown_feedback = []
-    @shown_feedback << Feedbacks.where(FeedbackId: params[:'search-filter'].to_i).get(:FeedbackId)
+  if !params[:filter].empty? && params[:filter] == "refund_issue"
+    @shown_feedback = Feedbacks.where(RefundRequest: "1").all
     erb :"admin/feedback"
   else
     redirect "/admin/feedback"
@@ -102,7 +94,7 @@ end
 post "/admin/accounts/filter" do
   if !params[:'search-filter'].empty?
     @shown_accounts = []
-    @shown_accounts << Users.where(Username: "#{params[:'search-filter']}").get(:UserId)
+    @shown_accounts << Users.where(Username: "#{params[:'search-filter']}").all
     erb :"admin/accounts"
   else
     redirect "/admin/accounts"
@@ -110,63 +102,69 @@ post "/admin/accounts/filter" do
 end
 
 post "/admin/accounts/view" do
-  @user_id= params[:userId]
+  @account = Users[params[:'account-data'].to_i]
   erb :"admin/account"
 end
 
 post "/admin/accounts/edit" do
-  @user_id= params[:userId]
+  @account = Users[params[:'account-data'].to_i]
   erb :"admin/accountedit"
 end
 
 post "/admin/accounts/edit/update" do
-  user_id= params[:'id-data']
+  @account = Users[params[:'account-data'].to_i]
 
   if !params[:'username-data'].empty?
-    Users.where(UserId: user_id).update(Username: "#{params[:'username-data']}")
+    @account.update(Username: "#{params[:'username-data']}")
   end
   if !params[:'email-data'].empty?
-    Users.where(UserId: user_id).update(Email: "#{params[:'email-data']}")
+    @account.update(Email: "#{params[:'email-data']}")
   end
   if !params[:'loyaltypoint-data'].empty?
-    Users.where(UserId: user_id).update(LoyaltyPoints: params[:'loyaltypoint-data'])
+    @account.update(LoyaltyPoints: params[:'loyaltypoint-data'])
   end
   #if !params[:'address-data'].empty?
   #  Users.where(UserId: user_id).update(LoyaltyPoints: "#{params[:'username-data']}")
   #end
   if !params[:'inactivity-data'].empty?
-    Users.where(UserId: user_id).update(DaysSinceLastUse: params[:'inactivity-data'])
+    @account.update(DaysSinceLastUse: params[:'inactivity-data'])
   end
 
   redirect "/admin/accounts"
 end
 
 post "/admin/accounts/edit/recover" do
-  user_id= params[:'id-data']
+  @account = Users[params[:'account-data'].to_i]
   @password = BCrypt::Password.create("password")
 
-  Users.where(UserId: user_id).update(PassHash: @password)
+  @account.update(PassHash: @password)
 
   redirect "/admin/accounts"
 end
 
 post "/admin/accounts/suspend" do
-  @user_id= params[:userId]
-  if !Users.isSuspended?(@user_id)
-    Users.where(UserId: @user_id).update(Suspended: 1)
+  @account = Users[params[:'account-data'].to_i]
+  button_data = params[:'button-type-data']
+
+  if button_data == "end-warning"
+    @account.update(Suspended: 0, Warning: 0, DaysSinceWarning: 0)
+  end
+
+  if !Users.is_on_warning?(@user_id)
+    @account.update(Warning: 1, DaysSinceWarning: 0)
   else
-    Users.where(UserId: @user_id).update(Suspended: 0)
+    @account.update(Warning: 0, DaysSinceWarning: 0)
   end
 
   redirect "/admin/accounts"
 end
 
 post "/admin/accounts/delete" do
-  user_id= params[:userId]
-  Users.where(UserId: user_id).delete
-  Transactions.where(UserId: user_id).delete
-  Feedbacks.where(UserId: user_id).delete
-  Basket.where(UserId: user_id).delete
+  @account = Users[params[:'account-data'].to_i]
+  @account.delete
+  Transactions.where(UserId: @account.UserId).delete
+  Feedbacks.where(UserId: @account.UserId).delete
+  Basket.where(UserId: @account.UserId).delete
 
   redirect "/admin/accounts"
 end
@@ -188,9 +186,25 @@ post "/admin/orders/filter" do
 end
 
 post "/admin/orders/edit" do
+  @order = Transactions[params[:'transaction-id'].to_i] 
+  
   erb :'admin/orderedit'
 end
 
-post "/admin/orders/delete" do
+post "/admin/orders/edit/update" do
+  order = Transactions[params[:'order-data'].to_i]
 
+  if !params[:'address-data'].empty?
+    order.update(Address: "#{params[:'address-data']}")
+  end
+  if !params[:'refund-data'].empty?
+    order.update(Refunded: "#{params[:'refund-data']}")
+  end
+
+  redirect "/admin/orders"
+end
+
+post "/admin/orders/delete" do
+  @order = Transactions[params[:'transaction-id'].to_i]
+  @order.delete
 end

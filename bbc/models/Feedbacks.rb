@@ -1,5 +1,4 @@
 class Feedbacks < Sequel::Model
-
     def self.get_feedback_quantity
       return Feedbacks.count
     end
@@ -9,17 +8,17 @@ class Feedbacks < Sequel::Model
       return issue_content
     end
 
-    def self.get_refund_request(feedbackId)
+    def self.get_refund_request(feedback_id)
       refund_req = Feedbacks.where(FeedbackId: feedback_id).get(:RefundRequest)
       return refund_req
     end
 
-    def self.get_refund_reason(feedbackId)
+    def self.get_refund_reason(feedback_id)
       refund_reason = Feedbacks.where(FeedbackId: feedback_id).get(:RefundReason)
       return refund_reason
     end
 
-    def self.get_ticket_number(feedbackId)
+    def self.get_ticket_number(feedback_id)
       ticket_num = Feedbacks.where(FeedbackId: feedback_id).get(:TicketNumber)
       return ticket_num
     end
@@ -29,6 +28,9 @@ class Feedbacks < Sequel::Model
       self.RefundRequest = params.fetch("request","")
       self.RefundReason = params.fetch("reason","").strip
       self.TransactionId = params.fetch("transaction_id","").strip
+
+      Transactions.where(TransactionId: self.TransactionId).update(RefundRequested: true)
+
       
       #only generates a ticket number if RefundRequest == "Yes"
       if self.RefundRequest == "Yes"
@@ -37,7 +39,7 @@ class Feedbacks < Sequel::Model
           break self.TicketNumber = new_ticket_num if Feedbacks.where(TicketNumber: new_ticket_num).empty?
         end 
       else
-        self.ticket_number = nil
+        self.TicketNumber = nil
       end
    end
 

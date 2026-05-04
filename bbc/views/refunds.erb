@@ -143,14 +143,28 @@
       <div style="width: 100%; text-align: left;">
         <a href="/logout" style="font-size: 24px; color: white; text-decoration: none">Logout</a>
       </div>
-      <h1 style="text-align: center; margin-top: 2vh;">Welcome Back Kenny!</h1>
-      <h4 style="color: lightgray; margin-top: 10px; text-align: center;">What would you like to do today?</h4>
+
+      <h1> Refunds</h1>
       <div style="width: 100%; text-align: center;" class="column-buttons">
-        <a href="/manager/homepage"><button class="button">View Dashboard</button></a>
-        <a href="/staff/homepage"><button class="button">Step in as Barista</button></a>
-        <a href="/manager/managestock"><button class="button">Manage Stock</button></a>
-        <a href="/manager/orders"><button class="button">View Orders</button></a>
-        <a href="/manager/refunds"><button class="button">View Refunds</button></a>
+        <% if session[:uname] == "manager" %>
+          <a href = "/manager/homepage">
+            <button class="button">View Dashboard</button>
+          </a>
+        <% end %>
+        <% if session[:uname] == "staff" %>
+          <a href = "/staff/homepage">
+            <button class="button">Back to Home</button>
+          </a>
+        <% end %>
+        <a href = "/managestock">
+          <button class="button">Manage Stock</button>
+        </a>
+        <a href = "/orders">
+          <button class="button">View Orders</button>
+        </a>
+        <a href = "/refunds">
+          <button class="button">View Refunds</button>
+        </a>
       </div>
     </div>
 
@@ -159,7 +173,7 @@
 
       <div class="container">
         <div class="glass-card" style="top: 3%; left: 5%; width: 44%; height: 93%;">
-          <h1>Pending Online Refunds</h1>
+          <h1>Pending Refunds</h1>
           <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
             <thead>
             <tr>
@@ -182,7 +196,7 @@
                   <td><%= format_date(order.TransactionDate) %></td>
                   <td><%= order.Status %></td>
                   <td>
-                    <a href="/manager/refunddetails?transaction_id=<%= order.TransactionId %>" class="btn btn-green">
+                    <a href="/refunddetails?transaction_id=<%= order.TransactionId %>" class="btn btn-green">
                     View
                     </a>
                   </td>
@@ -220,7 +234,22 @@
 
       <div class="glass-card" style="top: 3%; left: 53%; width: 44%; height: 93%; text-align: left;">
         <h1>In-Store Refunds</h1>
-        <p>Enter UserID</p>
+        <h2>Enter the details of the refund here </h2>
+        <h2> and it will appear in pending refunds to be approved</h2>
+        <form method="post" action="/user/feedback-page-submit">
+          <input type="hidden" id="general_issue" name="issue" value="In-Store Refund">
+          <input type="hidden" id="yes" name="request" value="1" checked>
+
+          <p>Reason the customer is requesting a refund: </p>
+          <input type="text" id="refund_reasoning" name="reason" maxlength="250" placeholder="Type the reason here..." required>
+
+          <p>Transaction ID of the order</p>
+          <input type="number" id="transaction_id" name="transaction_id" placeholder="Transaction ID" required>
+
+          <p>
+            <input class="btn-green" type="submit" value="Submit">
+          </p>
+        </form>
       </div>
 
     </div>

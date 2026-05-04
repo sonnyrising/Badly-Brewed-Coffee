@@ -133,67 +133,58 @@
 
       <div class="container">
         <div class="glass-card" style="top: 15%; left: 5%; width: 85%; height: 80%;">
-          <h1> Adjust Loyalty Discount for Customers</h1>
-          <h2> Customers will have this discount applied to all orders</h2>
+          <h1>Customer Feedback</h1>
+          <h2>Feedback and reviews left by customers</h2>
+          <div style="display: flex; justify-content: center; align-items: center; margin-top: 5px;">
+            <form action="/manager/viewfeedback" method="get">
+              <input type="radio" style="border-spacing: 10px" id="issues" name="filter" value="general_issue" <%= 'checked' if params['filter'] != 'refund' %>>
+              <label for="issues" style="white-space: nowrap; font-size: 18px">General Issues</label>
 
-          <% @users.each do |user| %>
-            <form id="update-form-<%= user.UserId %>" class="update-discount" action="/manager/updatediscount" method="POST">
-              <input type="hidden" name="user_id" value="<%= user.UserId %>">
+              <input type="radio" id="refund" name="filter" value="refund" <%= 'checked' if params['filter'] == 'refund' %>>
+              <label for="refund" style="white-space: nowrap; font-size: 18px">Refunds Only</label>
+
+              <input style="border-radius: 8px; font-size: 18px; border-spacing: 5px" type="submit" value="Filter">
             </form>
-          <% end %>
-
+          </div>
           <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
             <thead>
             <tr>
+              <th>Ticket Number</th>
               <th>User ID</th>
               <th>Username</th>
-              <th>Coffees Ordered</th>
-              <th>Loyalty Points</th>
-              <th>Loyalty Discount</th>
-              <th>Action</th>
+              <th>Date ordered</th>
+              <th>Refund Requested</th>
+              <th>Feedback</th>
             </tr>
             </thead>
             <tbody>
-            <% if @users.empty? %>
+            <% if @shown_feedback.nil? || @shown_feedback.empty? %>
               <tr>
-                <td colspan="6">No Users.</td>
+                <td colspan="7">No Feedback.</td>
               </tr>
             <% else %>
-              <% @users.each do |user| %>
+              <% @shown_feedback.each do |feedback| %>
                 <tr>
-                  <td><%= user.UserId %></td>
-                  <td><%= user.Username %></td>
-                  <td><%= get_coffees_ordered(user.UserId).round %></td>
-                  <td><%= user.LoyaltyPoints.round %></td>
-                  <td>
-                    <input type="number" form="update-form-<%= user.UserId %>" name="discount" value="<%= user.LoyaltyDiscount %>" class="inline-input" autocomplete="off">
-                  </td>
-                  <td>
-                    <button type="submit" form="update-form-<%= user.UserId %>">Update Loyalty Discount</button>
-                  </td>
+                  <td><%= feedback.TicketNumber %></td>
+                  <td><%= feedback.UserId %></td>
+                  <td><%= Users.where(UserId: feedback.UserId).first.Username %></td>
+                  <td><%= format_date(Transactions.where(TransactionId: feedback.TransactionId).first.TransactionDate) %></td>
+                    <% if feedback.RefundRequest %>
+                      <td>Yes</td>
+                    <% else %>
+                      <td>No</td>
+                    <% end %>
+                  <td><%= feedback.IssueContent %></td>
                 </tr>
               <% end %>
             <% end %>
             </tbody>
           </table>
+
         </div>
       </div>
     </div>
   </div>
-
-  <% if @alert_message %>
-    <div id="alert-banner" class="alert-banner">
-      <%= @alert_message %>
-      <span onclick="document.getElementById('alert-banner').remove()" class="alert-close-btn">✕</span>
-    </div>
-
-    <script>
-        setTimeout(() => {
-            const banner = document.getElementById('alert-banner');
-            if (banner) banner.remove();
-        }, 5000);
-    </script>
-  <% end %>
 
 </main>
 </body>

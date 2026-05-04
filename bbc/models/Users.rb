@@ -34,7 +34,7 @@ class Users < Sequel::Model
       end
     end
     
-    def self.GetLoyaltyPoints(userId)
+    def self.get_loyalty_points(userId)
         numberOfPoints = Users.where(UserId: userId).get(:LoyaltyPoints)
         return numberOfPoints
     end
@@ -47,26 +47,43 @@ class Users < Sequel::Model
         return false
     end
 
-    def self.GetDaysSinceLastUse(userId)
-      daysSinceLastUse = Users.where(UserId: userId).get(:DaysSinceLastUse)
-      return daysSinceLastUse
-    end
-
     def self.SetDaysSinceLastUse(userId)
       Users.where(UserId: userId).update(DaysSinceLastUse: 0)
+    end
+
+    def self.is_on_warning?(userId)
+      if Users.where(UserId: userId).get(:Warning) == 1
+        return true
+      else
+        false
+      end
     end
 
     def self.isSuspended?(userId)
       if Users.where(UserId: userId).get(:Suspended) == 1
         return true
       else
-        return false
+        false
       end
     end
 
-    def self.daily_inactivity_check
+    def self.get_days_since_warning(userId)
+      return Users.where(UserId: userId).get(:DaysSinceWarning)
+    end
+
+    def self.set_days_since_warning(userId)
+      Users.where(UserId: userId).update(DaysSinceWarning: 0)
+    end
+
+    def self.acc_suspension(userId)
+      Users.where(UserId: userId).update(Warning: 1, DaysSinceWarning: 0)
+    end 
+
+    def self.daily_acc_activity_check
+      Users.where(Warning: 1, DaysSinceWarning: 5).update(Suspended: 1, Warning: 0)
+      Users.where(DaysSinceLastUse: 180).update(Warning: 1, DaysSinceWarning: 0)
       Users.where(Suspended: 0).update(DaysSinceLastUse: Sequel[:DaysSinceLastUse] + 1)
-      Users.where(Sequel[:DaysSinceLastUse] >= 180).update(Suspended: 1)    
+      Users.where(Warning: 1).update(DaysSinceWarning: Sequel[:DaysSinceWarning] + 1)
     end
 
     def load(params)
@@ -75,6 +92,7 @@ class Users < Sequel::Model
       self.PassHash = params.fetch("pword","").strip
       self.LoyaltyPoints = 0
       self.DaysSinceLastUse = 0
+      self.DateJoined = Date.today.to_s
    end
    
    def compareUsername(username)

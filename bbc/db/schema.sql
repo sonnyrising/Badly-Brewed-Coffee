@@ -1,5 +1,4 @@
 PRAGMA foreign_keys = ON;
-d
 CREATE TABLE Users(
   UserId INTEGER PRIMARY KEY,
   Username TEXT,
@@ -7,9 +6,12 @@ CREATE TABLE Users(
   Email TEXT,
   LoyaltyPoints INTEGER,
   DaysSinceLastUse INTEGER,
+  DaysSinceWarning INTEGER,
+  Warning INTEGER,
   Suspended INTEGER,
   FreeCoffeesRedeemed INTEGER,
-  LoyaltyDiscount
+  LoyaltyDiscount FLOAT,
+  DateJoined TEXT
 );
 
 CREATE TABLE Transactions(
@@ -40,8 +42,11 @@ CREATE TABLE Products(
   ProductName TEXT,
   ProductImage TEXT,
   ProductDescription TEXT,
+  Roast TEXT,
+  Origin TEXT,
   Price FLOAT,
-  StockQuantity INTEGER
+  StockQuantity INTEGER,
+  Bean BOOLEAN
 );
 
 CREATE TABLE Basket(
@@ -63,22 +68,17 @@ CREATE TABLE Staff(
   EmploymentStatus TEXT
 );
 
-CREATE TABLE Coffees (
-  CoffeeId INTEGER,
-  Name TEXT,
-  Image TEXT,
-  Description TEXT,
-  Price FLOAT
-);
 
-CREATE TABLE Sizes (
-  SizeID INTEGER,
+CREATE TABLE CoffeeSize (
+  FOREIGN KEY (BasketId) REFERENCES Basket(BasketId) ON DELETE CASCADE,
+  FOREIGN KEY (ProductId) REFERENCES Basket(ProductId) ON DELETE CASCADE,
+  FOREIGN KEY (Quantity) REFERENCES Basket(Quantity) ON DELETE CASCADE,
   CoffeeSize TEXT,
-  Multiplier FLOAT
 );
 
 CREATE TABLE MilkTypes (
-  MilkID INTEGER,
+  FOREIGN KEY (BasketId) REFERENCES Basket(BasketId) ON DELETE CASCADE,
+  FOREIGN KEY (ProductId) REFERENCES Basket(ProductId) ON DELETE CASCADE,
+  FOREIGN KEY (Quantity) REFERENCES Basket(Quantity) ON DELETE CASCADE,
   MilkType TEXT,
-  MilkPrice INTEGER 
 );

@@ -99,6 +99,54 @@
           width: 100%;
       }
 
+      .alert-banner {
+          position: fixed;
+          top: 20px;
+          left: 50%;
+          transform: translateX(-50%);
+          background: rgba(200, 50, 50, 0.85);
+          backdrop-filter: blur(15px);
+          -webkit-backdrop-filter: blur(15px); /* Safari support */
+          color: white;
+          padding: 16px 40px 16px 20px;
+          border-radius: 12px;
+          box-shadow: 0px 4px 20px rgba(0,0,0,0.3);
+          font-family: Helvetica, sans-serif;
+          font-size: 13pt;
+          z-index: 9999;
+          max-width: 600px;
+          text-align: center;
+          transition: opacity 0.4s ease; /* Enables the smooth fade out */
+      }
+
+      .alert-close-btn {
+          position: absolute;
+          top: 8px;
+          right: 14px;
+          background: none;
+          border: none;
+          color: white;
+          cursor: pointer;
+          font-size: 16pt;
+          line-height: 1;
+          padding: 0;
+      }
+
+      .btn {
+          height: 80%;
+          color: white;
+          padding: 4px 8px;
+          border-radius: 8px;
+          border: none;
+          cursor: pointer;
+          font-size: 9pt;
+          font-weight: bold;
+          text-decoration: none;
+      }
+
+      .btn-green { background: rgba(50, 160, 80, 0.85); }
+      .btn-red   { background: rgba(200, 50, 50, 0.85); }
+      .btn-grey  { background: rgba(100, 100, 100, 0.7); }
 
   </style>
 </head>
@@ -113,23 +161,26 @@
         <a href="/logout" style="font-size: 24px; color: white; text-decoration: none">Logout</a>
       </div>
 
-      <h1 style="text-align: center; margin-top: 2vh;">Welcome Back Kenny!</h1>
-      <h4 style="color: lightgray; margin-top: 10px; text-align: center;">What would you like to do today?</h4>
+      <h1 style="text-align: center; margin-top: 2vh;">Manage Stock</h1>
 
       <div style="width: 100%; text-align: center;" class="column-buttons">
-        <a href = "/manager/homepage">
-          <button class="button">View Dashboard</button>
-        </a>
-        <a href = "/staff/homepage">
-          <button class="button">Step in as Barista</button>
-        </a>
-        <a href = "/manager/managestock">
+        <% if session[:uname] == "manager" %>
+          <a href = "/manager/homepage">
+            <button class="button">View Dashboard</button>
+          </a>
+        <% end %>
+        <% if session[:uname] == "staff" %>
+            <a href = "/staff/homepage">
+              <button class="button">Back to Home</button>
+            </a>
+        <% end %>
+        <a href = "/managestock">
           <button class="button">Manage Stock</button>
         </a>
-        <a href = "/manager/orders">
+        <a href = "/orders">
           <button class="button">View Orders</button>
         </a>
-        <a href = "/manager/refunds">
+        <a href = "/refunds">
           <button class="button">View Refunds</button>
         </a>
       </div>
@@ -154,7 +205,7 @@
                   <div class="product-box">
                     <img src="/imgs/<%= product.ProductImage %>" alt="Coffee" class="product-image">
 
-                    <form class="manage-stock-form" action="/manager/updatestock" method="POST">
+                    <form class="manage-stock-form" action="/updatestock" method="POST">
                       <input type="hidden" name="product_id" value="<%= product.ProductId %>">
 
                       <h3>
@@ -163,21 +214,30 @@
 
                       <p>Stock <input type="number" name="product_stock" value="<%= product.StockQuantity %>" class="inline-input"> Units</p>
                       <p>Price: £ <input type="number" step="0.01" name="product_price" value="<%= product.Price %>" class="inline-input"> Per Unit</p>
+                      <% if product.Bean == false %>
+                        <% type = "Coffee" %>
+                      <% elsif product.Bean == true %>
+                        <% type = "Bean" %>
+                      <% end %>
+                      <p>Type: <input type="text" name="product_type" value="<%= type%>" class="inline-input"></p>
+
+                      <p>Roast: <input type="text" name="product_roast" value="<%= product.Roast %>" class="inline-input"></p>
+                      <p>Origin: <input type="text" name="product_origin" value="<%= product.Origin %>" class="inline-input"></p>
                       <p>Description: <input type="text" name="product_description" value="<%= product.ProductDescription %>" class="inline-input" autocomplete="off"></p>
                       <p>Image: <input type="text" name="product_image" value="<%= product.ProductImage %>" class="inline-input" autocomplete="off"></p>
 
-                      <button type="submit">Save Changes</button>
+                      <button class="btn-green" type="submit">Save Changes</button>
                     </form>
 
-                    <form class="delete-stock-form" action="/manager/deleteproduct" method="POST" style="margin-top: 10px;">
+                    <form class="delete-stock-form" action="/deleteproduct" method="POST" style="margin-top: 10px;">
                       <input type="hidden" name="product_id" value="<%= product.ProductId %>">
-                      <button type="submit" style="background-color: darkred; color: white;">Delete Product</button>
+                      <button class="btn-red" type="submit" style="background-color: darkred; color: white;">Delete Product</button>
                     </form>
                   </div>
                 <% end %>
 
-                <a href="/manager/addproduct" class="product-box" style="text-decoration: none; color: inherit;">
-                    <h1 style="font-size: 60px"> + </h1>
+                <a href="/addproduct" class="product-box" style="text-decoration: none; color: inherit;">
+                  <h1 style="font-size: 60px"> + </h1>
                 </a>
               </div>
             </div>
@@ -189,32 +249,9 @@
   </div>
 
   <% if @alert_message %>
-    <div id="alert-banner" style="
-    position: fixed;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(200, 50, 50, 0.85);
-      backdrop-filter: blur(15px);
-      color: white;
-      padding: 16px 40px 16px 20px;
-      border-radius: 12px;
-      box-shadow: 0px 4px 20px rgba(0,0,0,0.3);
-      font-family: Helvetica, sans-serif;
-      font-size: 13pt;
-      z-index: 9999;
-      max-width: 600px;
-      text-align: center;
-    ">
+    <div id="alert-banner" class="alert-banner">
       <%= @alert_message %>
-      <span onclick="document.getElementById('alert-banner').remove()" style="
-      position: absolute;
-        top: 8px;
-        right: 14px;
-        cursor: pointer;
-        font-size: 16pt;
-        line-height: 1;
-      ">✕</span>
+      <span onclick="document.getElementById('alert-banner').remove()" class="alert-close-btn">✕</span>
     </div>
 
     <script>

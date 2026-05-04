@@ -47,8 +47,8 @@
               </form>
             </div>
             <div style="position:relative;top:3vh;">
-              <% @shown_accounts.each do |userId| %>
-                <%= erb :"admin/accountwidget" , locals:{userId: userId} %>
+              <% @shown_accounts.each do |account| %>
+                <%= erb :"admin/accountwidget" , locals:{account: account} %>
                 <br>
               <% end %>
             </div>

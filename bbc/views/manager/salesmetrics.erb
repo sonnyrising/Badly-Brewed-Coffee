@@ -38,53 +38,6 @@
           box-sizing: border-box;
           overflow-y: auto;
       }
-
-      .inline-input {
-          border: none;
-          background: transparent;
-          padding: 0 2px;
-          margin: 0 2px;
-          font: inherit;
-          color: inherit;
-          border-bottom: 1px dashed #999;
-          cursor: text;
-          width: 90%;
-          max-width: 180px;
-          text-align: center;
-      }
-
-      .alert-banner {
-          position: fixed;
-          top: 20px;
-          left: 50%;
-          transform: translateX(-50%);
-          background: rgba(200, 50, 50, 0.85);
-          backdrop-filter: blur(15px);
-          -webkit-backdrop-filter: blur(15px); /* Safari support */
-          color: white;
-          padding: 16px 40px 16px 20px;
-          border-radius: 12px;
-          box-shadow: 0px 4px 20px rgba(0,0,0,0.3);
-          font-family: Helvetica, sans-serif;
-          font-size: 13pt;
-          z-index: 9999;
-          max-width: 600px;
-          text-align: center;
-          transition: opacity 0.4s ease; /* Enables the smooth fade out */
-      }
-
-      .alert-close-btn {
-          position: absolute;
-          top: 8px;
-          right: 14px;
-          background: none;
-          border: none;
-          color: white;
-          cursor: pointer;
-          font-size: 16pt;
-          line-height: 1;
-          padding: 0;
-      }
   </style>
 </head>
 
@@ -132,45 +85,71 @@
       </nav>
 
       <div class="container">
-        <div class="glass-card" style="top: 15%; left: 5%; width: 85%; height: 80%;">
-          <h1> Adjust Loyalty Discount for Customers</h1>
-          <h2> Customers will have this discount applied to all orders</h2>
-
-          <% @users.each do |user| %>
-            <form id="update-form-<%= user.UserId %>" class="update-discount" action="/manager/updatediscount" method="POST">
-              <input type="hidden" name="user_id" value="<%= user.UserId %>">
-            </form>
-          <% end %>
-
+        <div class="glass-card" style="top: 8%; left: 5%; width: 42%; height: 22%;">
+          <h1>Top Coffees</h1>
+          <% @top_coffees = find_top_coffees %>
           <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
             <thead>
             <tr>
-              <th>User ID</th>
-              <th>Username</th>
-              <th>Coffees Ordered</th>
-              <th>Loyalty Points</th>
-              <th>Loyalty Discount</th>
-              <th>Action</th>
+              <th>Rank</th>
+              <th>Coffee Name</th>
+              <th>Coffee Cost</th>
+              <th>Total Sold</th>
             </tr>
             </thead>
             <tbody>
-            <% if @users.empty? %>
+            <% if @top_coffees.empty? %>
               <tr>
-                <td colspan="6">No Users.</td>
+                <td colspan="3">No Coffees.</td>
               </tr>
             <% else %>
-              <% @users.each do |user| %>
+              <% @top_coffees.each do |coffee| %>
                 <tr>
-                  <td><%= user.UserId %></td>
-                  <td><%= user.Username %></td>
-                  <td><%= get_coffees_ordered(user.UserId).round %></td>
-                  <td><%= user.LoyaltyPoints.round %></td>
-                  <td>
-                    <input type="number" form="update-form-<%= user.UserId %>" name="discount" value="<%= user.LoyaltyDiscount %>" class="inline-input" autocomplete="off">
-                  </td>
-                  <td>
-                    <button type="submit" form="update-form-<%= user.UserId %>">Update Loyalty Discount</button>
-                  </td>
+                  <td><%= @top_coffees.find_index(coffee) +1 %></td>
+                  <td><%= coffee.product_name %></td>
+                  <td><%= coffee.price %></td>
+                  <td><%= coffee.quantity_sold %></td>
+                </tr>
+              <% end %>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+
+
+        <div class="glass-card" style="top: 8%; left: 53%; width: 42%; height: 22%;">
+          <h1 style="text-align: center; margin-top: 2vh;">Free Coffees Redeemed</h1>
+          <% @free_coffees = get_free_coffees_redeemed %>
+          <div>
+            <%= @free_coffees %>
+            Coffees have been redeemed!
+          </div>
+        </div>
+
+        <div class="glass-card" style="top: 32%; left: 5%; width: 42%; height: 22%;">
+          <h1>Top Beans</h1>
+          <% @top_beans = find_top_beans %>
+          <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+            <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Bean Name</th>
+              <th>Bean Cost</th>
+              <th>Total Sold</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% if @top_beans.empty? %>
+              <tr>
+                <td colspan="3">No Beans.</td>
+              </tr>
+            <% else %>
+              <% @top_beans.each do |bean| %>
+                <tr>
+                  <td><%= @top_beans.find_index(bean) +1 %></td>
+                  <td><%= bean.product_name %></td>
+                  <td><%= bean.price %></td>
+                  <td><%= bean.quantity_sold %></td>
                 </tr>
               <% end %>
             <% end %>
@@ -178,23 +157,65 @@
           </table>
         </div>
       </div>
+
+      <div class="glass-card" style="top: 32%; left: 53%; width: 42%; height: 22%;">
+        <h1>Top Customers</h1>
+        <% @top_beans = find_top_beans %>
+        <% @top_customers = find_top_customers %>
+        <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+          <thead>
+          <tr>
+            <th>Ranking</th>
+            <th>User ID</th>
+            <th>Username</th>
+            <th>Total Spent</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% if @top_customers.empty? %>
+            <tr>
+              <td colspan="4">No Users.</td>
+            </tr>
+          <% else %>
+            <% @top_customers.each do |customer| %>
+              <tr>
+                <td><%= @top_customers.find_index(customer) +1 %></td>
+                <td><%= customer.user_id %></td>
+                <td><%= customer.username %></td>
+                <td><%= customer.total_spent %></td>
+              </tr>
+            <% end %>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="glass-card" style="top: 56%; left: 5%; width: 90%; height: 36%;">
+        <h1>Membership</h1>
+        <p>There are <%= Users.count %> members in total</p>
+
+        <% this_month = Date.today.strftime("%m") %>
+        <% this_year  = Date.today.strftime("%Y") %>
+        <% members_this_month = get_members_this_month(this_month, this_year) %>
+
+        <% last_month_date = Date.today.prev_month %>
+        <% last_month = last_month_date.strftime("%m") %>
+        <% last_year  = last_month_date.strftime("%Y") %>
+        <% members_last_month = get_members_this_month(last_month, last_year) %>
+
+        <p>There have been <%= members_this_month %> new members this month</p>
+
+        <% if members_last_month > 0 %>
+          <p>That is <%= ((members_this_month.to_f / members_last_month) * 100).round(2) %>% of last month's growth</p>
+        <% else %>
+          <p>Last month had no new members to compare.</p>
+        <% end %>
+      </div>
+
+    </div>
+
     </div>
   </div>
-
-  <% if @alert_message %>
-    <div id="alert-banner" class="alert-banner">
-      <%= @alert_message %>
-      <span onclick="document.getElementById('alert-banner').remove()" class="alert-close-btn">✕</span>
-    </div>
-
-    <script>
-        setTimeout(() => {
-            const banner = document.getElementById('alert-banner');
-            if (banner) banner.remove();
-        }, 5000);
-    </script>
-  <% end %>
-
 </main>
 </body>
 </html>

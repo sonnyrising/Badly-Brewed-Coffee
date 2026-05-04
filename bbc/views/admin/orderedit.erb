@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<head>
+    <link href="/css/GenericTheme.css" rel="stylesheet">
+    <title>Edit order</title>
+    <style>
+      * body{
+        overflow:visible;
+      }
+    </style>
+
+</head>
+<body>
+    <header>
+      <nav>
+        <h1 style="color:black;float: left;margin-left: 1vw;">Orders</h1>
+        <ul style="position:absolute; top:1vh;">
+            <li><a href="/admin" class="smooth-link">Dashboard</a></li>
+            <li><a href="/admin/views" class="smooth-link">Views</a></li>
+            <li><a href="/admin/orders" class="smooth-link">Orders</a></li>
+            <li><a href="/admin/accounts" class="smooth-link">Accounts</a></li>
+            <li><a href="/admin/feedback" class="smooth-link">Feedback</a></li>
+            <li><a href="/user/settings" class="smooth-link">Settings</a></li>
+            <li><a href="/" class="smooth-link">Log out</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div style="background-color: rgb(130 72 24); height: 100vh;">
+        <img src="/imgs/dashboard.png" alt="Dashboard" style="width: 100%;height: 100%;object-fit: fill;">
+
+        <div style="position: absolute;top: 10vh;left:50vw;transform:translateX(-50%);">
+          <div style="color: black;background: transparent;backdrop-filter: blur(15px);box-shadow: 0px 0px 20px 0px #0000007a;border-radius: 30px;text-align: center;width:94vw;align-items: center;height: max-content;">
+            <h1><%= @order.TransactionId %></h1>
+            <form method="post" action="/admin/orders/edit/update">
+              <div style="display: grid;grid-template-columns: 100%;gap: 1vh;text-align: left;" >
+                <div style="display: grid; grid-template-columns: 2fr 1fr;">
+                    <b style="position:relative; padding-left: 10vw;">Order ID:</b>
+                    <%= @order.TransactionId %>
+                </div>
+                <div style="display: grid; grid-template-columns: 2fr 1fr;">
+                    <b style="position:relative; padding-left: 10vw;">Order date:</b>
+                    <%= @order.TransactionDate.to_s.insert(2, "/").insert(5, "/") %>
+                </div>
+                <div style="display: grid; grid-template-columns: 2fr 1fr;">
+                    <b style="position:relative; padding-left: 10vw;">Order account:</b>
+                    <%= Users[@order.UserId].Username %>
+                </div>
+                <div style="display: grid; grid-template-columns: 2fr 1fr;">
+                    <b style="position:relative; padding-left: 10vw;">Order value:</b>
+                    <%= @order.TotalCost %>
+                </div>
+                <div style="display: grid; grid-template-columns: 2fr 1fr;">
+                    <b style="position:relative; padding-left: 10vw;">Shipping address:</b>
+                    <input type="text" name="address-data" value=<%= @order.Address %>>
+                </div>
+                <div style="display: grid; grid-template-columns: 2fr 1fr;">
+                    <b style="position:relative; padding-left: 10vw;">Order items:</b>
+                    <%= "To be implemented soon... " %>
+                </div>
+                <div style="display: grid; grid-template-columns: 2fr 1fr;">
+                    <b style="position:relative; padding-left: 10vw;">Order refunded:</b>
+                    <input type="text" name="refund-data" value=<%= @order.Refunded %>>
+                </div>
+
+                <input type="hidden" name="order-data" value="<%= @order.TransactionId %>">
+              </div>
+              <button type="submit" style="width:5vw;height:3vh;">Save</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+
+    </footer>
+</body>

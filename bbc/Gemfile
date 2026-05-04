@@ -30,3 +30,7 @@ gem 'bcrypt'
 gem 'require_all'
 
 gem 'simplecov'
+
+# Used to get the current date when a user registers.
+gem 'date'
+

@@ -44,30 +44,30 @@
 <body>
 <main>
   <div style="display: grid; grid-template-columns: 20vw 80vw;" class="squish">
-
     <div class="squish" style="; background-color: rgb(130 72 24); height: 100vh; box-shadow: 11px 5px 15px rgba(0, 0, 0, 0.3); z-index: 100; min-width: 220px;">
-
       <div style="width: 100%; text-align: left;">
         <a href="/logout" style="font-size: 24px; color: white; text-decoration: none">Logout</a>
       </div>
 
-      <h1 style="text-align: center; margin-top: 2vh;">Welcome Back Kenny!</h1>
-      <h4 style="color: lightgray; margin-top: 10px; text-align: center;">What would you like to do today?</h4>
-
+      <h1 style="text-align: center; margin-top: 2vh;">Orders</h1>
       <div style="width: 100%; text-align: center;" class="column-buttons">
-        <a href = "/manager/homepage">
-          <button class="button">View Dashboard</button>
-        </a>
-        <a href = "/staff/homepage">
-          <button class="button">Step in as Barista</button>
-        </a>
-        <a href = "/manager/managestock">
+        <% if session[:uname] == "manager" %>
+          <a href = "/manager/homepage">
+            <button class="button">View Dashboard</button>
+          </a>
+        <% end %>
+        <% if session[:uname] == "staff" %>
+          <a href = "/staff/homepage">
+            <button class="button">Back to Home</button>
+          </a>
+        <% end %>
+        <a href = "/managestock">
           <button class="button">Manage Stock</button>
         </a>
-        <a href = "/manager/orders">
+        <a href = "/orders">
           <button class="button">View Orders</button>
         </a>
-        <a href = "/manager/refunds">
+        <a href = "/refunds">
           <button class="button">View Refunds</button>
         </a>
       </div>
@@ -93,17 +93,18 @@
             <% @orders.each do |order| %>
               <tr>
                 <td><%= order.TransactionId %></td>
-                <td>£<%= order.Quantity %></td>
+                <td>£<%= get_quantity(order.TransactionId) %></td>
                 <td><%= format_date(order.TransactionDate) %></td>
                 <td>
-                  <form action="/manager/orders/updatestatus" method="POST">
+                  <form action="/orders/updatestatus" method="POST">
                     <input type="hidden" name="transaction_id" value="<%= order.TransactionId %>">
                     <select name="status" onchange="this.form.submit()">
-                      <option value="Pending"    <%= 'selected' if order.Status == 'Pending'    %>>Pending</option>
+                      <option value="Pending" <%= 'selected' if order.Status == 'Pending'    %>>Pending</option>
                       <option value="Processing" <%= 'selected' if order.Status == 'Processing' %>>Processing</option>
-                      <option value="Completed"  <%= 'selected' if order.Status == 'Completed'  %>>Completed</option>
-                      <option value="Cancelled"  <%= 'selected' if order.Status == 'Cancelled'  %>>Cancelled</option>
-                      <option value="Refunded"   <%= 'selected' if order.Status == 'Refunded'   %>>Refunded</option>>
+                      <option value="Completed" <%= 'selected' if order.Status == 'Completed'  %>>Completed</option>
+                      <option value="Collected" <%= 'selected' if order.Status == 'Collected'  %>>Collected</option>
+                      <option value="Cancelled" <%= 'selected' if order.Status == 'Cancelled'  %>>Cancelled</option>
+                      <option value="Refunded" <%= 'selected' if order.Status == 'Refunded'   %>>Refunded</option>>
                     </select>
                   </form>
                 </td>
