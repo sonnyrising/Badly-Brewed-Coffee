@@ -106,7 +106,7 @@ post "/user/feedback-page-submit" do
     @feedback_text = h(@feedback.IssueContent)
     @refund_reason = h(@feedback.RefundReason)
     erb :"user/feedback_page_submission"
-
+  end
   transaction = Transactions.where(TransactionId: @feedback.TransactionId).first
 
   if transaction.nil?

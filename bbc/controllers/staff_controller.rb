@@ -5,7 +5,6 @@ before "/staff/*" do
 end
 
 get "/staff/homepage" do
-  @userid = 1
   erb :"staff/homepage"
 end
 
