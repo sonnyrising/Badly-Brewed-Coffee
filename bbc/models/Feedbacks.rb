@@ -25,16 +25,16 @@ class Feedbacks < Sequel::Model
     end
 
     def load(params)
-      self.issue_content = params.fetch("issue","").strip
-      self.refund_request = params.fetch("request","")
-      self.refund_reason = params.fetch("reason","").strip
-      self.transaction_id = params.fetch("transaction_id","").strip
+      self.IssueContent = params.fetch("issue","").strip
+      self.RefundRequest = params.fetch("request","")
+      self.RefundReason = params.fetch("reason","").strip
+      self.TransactionId = params.fetch("transaction_id","").strip
       
       #only generates a ticket number if RefundRequest == "Yes"
-      if self.refund_request == "Yes"
+      if self.RefundRequest == "Yes"
         loop do
           new_ticket_num = rand(1000..9999)
-          break self.ticket_number = new_ticket_num if Feedbacks.where(TicketNumber: new_ticket_num).empty?
+          break self.TicketNumber = new_ticket_num if Feedbacks.where(TicketNumber: new_ticket_num).empty?
         end 
       else
         self.ticket_number = nil
