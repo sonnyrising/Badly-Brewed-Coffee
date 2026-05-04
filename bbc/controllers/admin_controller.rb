@@ -193,9 +193,25 @@ post "/admin/orders/filter" do
 end
 
 post "/admin/orders/edit" do
+  @order = Transactions[params[:'transaction-id'].to_i] 
+  
   erb :'admin/orderedit'
 end
 
-post "/admin/orders/delete" do
+post "/admin/orders/edit/update" do
+  order = Transactions[params[:'order-data'].to_i]
 
+  if !params[:'address-data'].empty?
+    order.update(Address: "#{params[:'address-data']}")
+  end
+  if !params[:'refund-data'].empty?
+    order.update(Refunded: "#{params[:'refund-data']}")
+  end
+
+  redirect "/admin/orders"
+end
+
+post "/admin/orders/delete" do
+  @order = Transactions[params[:'transaction-id'].to_i]
+  @order.delete
 end
