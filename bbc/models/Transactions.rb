@@ -7,4 +7,11 @@ class Transactions < Sequel::Model
     self.Status = "Pending"
     self.RefundRequested = false
   end
+
+
+  def totalsales(currentDate)
+    totalsales = 0
+    totalsales += Transactions.where(TransactionDate: currentDate).get(:TotalCost)
+    return totalsales
+  end
 end

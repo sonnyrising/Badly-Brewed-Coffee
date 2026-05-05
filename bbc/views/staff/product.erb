@@ -16,31 +16,33 @@
     <input type="hidden" name="productId" value="<%= p.ProductId %>">
     <input type="hidden" name="userId" value="<%= session[:userId]%>">
     
-    <label for="quantity">Select a quantity</label>
-      <select name="quantity">
-        <%max_available = [p.StockQuantity.to_i, 10].min %>
-        <% (1..max_available).each do |q| %>
-          <option value="<%= q %>"><%= q %></option>
-        <% end %>
-      </select>
+      <label for="quantity">Select a quantity</label>
+      <p></p>
+        <select name="quantity">
+          <%max_available = [p.StockQuantity.to_i, 10].min %>
+          <% (1..max_available).each do |q| %>
+            <option value="<%= q %>"><%= q %></option>
+          <% end %>
+        </select>
+      <p></p>
+      <% if p.ProductId > 6 %>
+          <label for="Size">Size</label>
+          <p></p>
+            <select name="Size">
+              <option value="Small">Small</option>
+              <option value="Medium">Medium</option>
+              <option value="Large">Large</option>
+            </select>
+      <p></p>
+          <label for="milkType">Milk Type</label>
+          <p></p>
+            <select name="milkType">
+              <option value="Whole Milk">Whole Milk</option>
+              <option value="Soy Milk">Soy Milk</option>
+              <option value="Oat Milk">Oat Milk</option>
+            </select>
 
-    <% if p.ProductId > 6 %>
-        <label for="Size">Size</label>
-          <select name="Size">
-            <option value="Small">Small</option>
-            <option value="Medium">Medium</option>
-            <option value="Large">Large</option>
-          </select>
-
-        <label for="milkType">Milk Type</label>
-          <select name="milkType">
-            <option value="Whole Milk">Whole Milk</option>
-            <option value="Soy Milk">Soy Milk</option>
-            <option value="Oat Milk">Oat Milk</option>
-          </select>
-
-    <% end %>
-
+      <% end %>
     <button type="submit" style="cursor: pointer;">Add to basket</button>
   </form>
 </div>  

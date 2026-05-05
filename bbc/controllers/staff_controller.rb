@@ -6,6 +6,7 @@ before "/staff/*" do
 end
 
 get "/staff/homepage" do
+  @shown_orders = Transactions.all
   erb :"staff/homepage"
 end
 
