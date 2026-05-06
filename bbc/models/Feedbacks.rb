@@ -29,7 +29,7 @@ class Feedbacks < Sequel::Model
       self.RefundReason = params.fetch("reason","").strip
       self.TransactionId = params.fetch("transaction_id","").strip
 
-      Transactions.where(TransactionId: self.TransactionId).update(RefundRequested: true)
+      #Transactions.where(TransactionId: self.TransactionId).update(RefundRequested: true)
 
       
       #only generates a ticket number if RefundRequest == "Yes"

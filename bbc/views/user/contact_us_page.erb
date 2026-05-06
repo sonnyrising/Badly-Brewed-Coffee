@@ -93,8 +93,12 @@
             <input type="text" id="refund_reasoning" name="reason" maxlength="250" placeholder="Type your message here..." required>
 
             <p style="color:white">Please enter the Transaction ID of your order</p>
-            <input type="number" id="transaction_id" name="transaction_id" placeholder="Transaction ID" required>
-
+            <input type="number" id="transaction_id" name="transaction_id" placeholder="Transaction ID" >
+            <% if @alert_message %>
+              <div style="background-color: #ffcccc; color: #cc0000; padding: 15px; border-radius: 5px; margin-bottom: 20px; text-align: center; font-weight: bold;">
+                <%= @alert_message %>
+              </div>
+            <% end %>
             <p style="margin-top: 30px;">
                 <input type="submit" value="Submit">
             </p>

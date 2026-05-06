@@ -100,45 +100,40 @@ post "/user/feedback-page-submit" do
   @feedback.load(params)
   @feedback.UserId = session[:userId]
 
+  if params[:request] == "Yes"
+    transaction = Transactions.where(TransactionId: @feedback.TransactionId).first
 
+    if transaction.nil?
+      @alert_message = "Transaction ID not found. Please try again!"
+      return erb :"user/contact_us_page"
 
+    elsif transaction.Refunded == true
+      @alert_message = "This transaction has already been refunded. Please try again!"
+      return erb :"user/contact_us_page"
+
+    elsif transaction.RefundRequested == true
+      @alert_message = "This transaction has already been requested for a refund. Please try again!"
+      return erb :"user/contact_us_page"
+      
+    end
+  end
+  
   if @feedback.save_changes
     @feedback_text = h(@feedback.IssueContent)
     @refund_reason = h(@feedback.RefundReason)
-    erb :"user/feedback_page_submission"
-  end
-  transaction = Transactions.where(TransactionId: @feedback.TransactionId).first
 
-  if transaction.nil?
-    @alert_message = "Transaction ID not found. Please try again!"
-
-  elsif transaction.Refunded == true
-    @alert_message = "This transaction has already been refunded. Please try again!"
-
-  elsif transaction.RefundRequested == true
-    @alert_message = "This transaction has already been requested for a refund. Please try again!"
-
-  else
-    if @feedback.save_changes
-      @feedback_text = h(@feedback.issue_content)
-      @refund_reason = h(@feedback.refund_reason)
-
-      if session[:uname] == 'manager' || session[:uname] == 'staff'
-        @refunds = Transactions.where(RefundRequested: true).all
-        return erb :"/refunds"
-      else
-        return erb :"user/feedback_page_submission"
-      end
-    else
-      @alert_message = "Something went wrong while saving. Please try again!"
+    if params[:request] == "Yes"
+      Transactions.where(TransactionId: @feedback.TransactionId).update(RefundRequested: true)
     end
-  end
 
-  if session[:uname] == 'manager' || session[:uname] == 'staff'
-    @refunds = Transactions.where(RefundRequested: true).all
-    erb :"/refunds"
+    if session[:uname] == 'manager' || session[:uname] == 'staff'
+      @refunds = Transactions.where(RefundRequested: true).all
+      return erb :"/refunds"
+    else
+      return erb :"user/feedback_page_submission"
+    end
   else
-    @error = @alert_message
-    erb :"user/contact_us_page"
+    @alert_message = "Something went wrong while saving. Please try again!"
+    return erb :"user/contact_us_page"
   end
 end
