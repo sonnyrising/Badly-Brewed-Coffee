@@ -41,9 +41,10 @@ end
 
 post "/admin/feedback/filter" do
   if !params[:filter].empty? && params[:filter] == "refund_issue"
-    @shown_feedback = Feedbacks.where(RefundRequest: "1").all
+    @shown_feedback = Feedbacks.where(RefundRequest: "Yes").all
     erb :"admin/feedback"
   else
+    @shown_feedback = Feedbacks.all
     redirect "/admin/feedback"
   end
 end
