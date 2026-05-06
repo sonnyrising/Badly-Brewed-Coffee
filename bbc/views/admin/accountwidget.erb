@@ -14,7 +14,7 @@
         <h3 style="margin-left: 10%;">
           <%= account.Username %>
           <% if Users.is_on_warning?(account.UserId) && !Users.isSuspended?(account.UserId) %>
-            <span title="Grace Period: <%= account.DaysSinceWarning %> days" style="color: orange; margin-left: 10px;">!<b></span>
+            <span title="Grace Period: <%= account.DaysSinceWarning %> days" style="color: orange; margin-left: 10px;"><b>!</b></span>
           <% end %>
         </h3>
         <div style="display: grid; grid-template-columns: 3vw 3vw 5vw 3vw;position:absolute; right:5%">

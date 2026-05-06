@@ -35,7 +35,7 @@ get "/admin/feedback" do
 end
 
 get "/admin/run-inactivity-check" do
-  Users.daily_inactivity_check
+  Users.daily_acc_activity_check
   redirect "/admin/accounts"
 end
 
@@ -44,7 +44,6 @@ post "/admin/feedback/filter" do
     @shown_feedback = Feedbacks.where(RefundRequest: "Yes").all
     erb :"admin/feedback"
   else
-    @shown_feedback = Feedbacks.all
     redirect "/admin/feedback"
   end
 end
@@ -149,12 +148,16 @@ post "/admin/accounts/suspend" do
 
   if button_data == "end-warning"
     @account.update(Suspended: 0, Warning: 0, DaysSinceWarning: 0)
-  end
+  
+  elsif Users.isSuspended?(@account.UserId)   #reinstate account status
+    @account.update(Suspended: 0) 
 
-  if !Users.is_on_warning?(@user_id)
-    @account.update(Warning: 1, DaysSinceWarning: 0)
   else
-    @account.update(Warning: 0, DaysSinceWarning: 0)
+    if !Users.is_on_warning?(@account.UserId)
+      @account.update(Warning: 1, DaysSinceWarning: 0)
+    else
+      @account.update(Suspended: 1, DaysSinceWarning: 0)  #suspend if already on warning
+    end
   end
 
   redirect "/admin/accounts"
