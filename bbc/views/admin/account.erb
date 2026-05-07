@@ -64,12 +64,36 @@
 
             <div style="color: black;background: transparent;backdrop-filter: blur(15px);box-shadow: 0px 0px 20px 0px #0000007a;border-radius: 10px;text-align: center;width:80vw;margin: 0 auto;">
               <h1>Transaction history:</h1>
-              <% Transactions.where(UserId: @userId).each do |transaction| %>
-                <div style="display: grid; grid-template-columns: 4fr 1fr 1fr;padding:10px;">
-                  <p><%= Products.GetProductName(transaction.ProductId) %></p>
-                  <p><%= transaction.TransactionDate %></p>
-                  <p>£<%= transaction.ItemPrice * transaction.Quantity %></p>
+              <% Transactions.where(UserId: @account.UserId).each do |order| %>
+                <div style="display: flex;flex-direction: row;flex-wrap: wrap;background: transparent;backdrop-filter: blur(15px);box-shadow: 0px 0px 20px 0px #0000007a;border-radius:30px;width: 90%;margin: 0 auto;overflow-y:auto;">
+                  <style>
+                    .delete-button:hover{
+                      background-color: rgb(255, 94, 94);
+                    }
+                  </style>
+                  <div style="display: flex; flex-direction: row; justify-content: space-evenly; width: 50%;">
+                    <h3 style="margin-left: 10%;"><%= order.TransactionId %></h3>
+                    <b><%= Users[order.UserId].Username %></b>
+                    <b>£<%= order.TotalCost %></b>
+                    <b>
+                      <%= order.TransactionDate.to_s.length > 5 ?
+                            order.TransactionDate.to_s.insert(2, "/").insert(5, "/") :
+                            order.TransactionDate %>
+                    </b>
+                  </div>
+                  
+                  <div style="display: grid; grid-template-columns: 3vw 3vw 5vw 3vw;position:absolute; right:5%">
+                    <form method="post" action="/admin/orders/edit">
+                      <button type="submit" class="edit-button">Edit</button>
+                      <input type="hidden" name="transaction-id" value="<%= order.TransactionId %>">
+                    </form>
+                    <form method="post" action="/admin/orders/delete">
+                      <button type="submit" class="delete-button">Delete</button>
+                      <input type="hidden" name="transaction-id" value="<%= order.TransactionId %>">
+                    </form>
+                  </div>
                 </div>
+                <br>
               <% end %>
             </div>
           </div>
