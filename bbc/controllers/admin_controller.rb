@@ -211,4 +211,6 @@ end
 post "/admin/orders/delete" do
   @order = Transactions[params[:'transaction-id'].to_i]
   @order.delete
+
+  redirect "/admin/orders"
 end
