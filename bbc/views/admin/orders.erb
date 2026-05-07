@@ -52,7 +52,11 @@
                     <h3 style="margin-left: 10%;"><%= order.TransactionId %></h3>
                     <b><%= Users[order.UserId].Username %></b>
                     <b>£<%= order.TotalCost %></b>
-                    <b><%= order.TransactionDate.to_s.insert(2, "/").insert(5, "/") %></b>
+                    <b>
+                      <%= order.TransactionDate.to_s.length > 5 ?
+                            order.TransactionDate.to_s.insert(2, "/").insert(5, "/") :
+                            order.TransactionDate %>
+                    </b>
                   </div>
                   
                   <div style="display: grid; grid-template-columns: 3vw 3vw 5vw 3vw;position:absolute; right:5%">
