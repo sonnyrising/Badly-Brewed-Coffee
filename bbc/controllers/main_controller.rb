@@ -159,15 +159,20 @@ post '/updatestock' do
   redirect 'managestock'
 end
 
-post "/deleteproduct" do
-  product_id = params[:product_id]
-  if product_id.nil? || product_id.empty? || product_id.to_i <= 0 || !Products[product_id]
-    puts "Error: Invalid product ID"
-    redirect "managestock"
+post "/manager/updatediscount" do
+  user_id = params[:user_id]
+  discount = params[:discount]
+
+  #Uses a regex to check the discount is a number
+  if discount.nil? || discount.empty? || discount !~ /\A\d+\z/ || discount.to_i < 0 || discount.to_i > 100
+    @alert_message = "Please enter a valid discount percentage (0-100)."
+    @users = Users.where(Suspended: 0)
+    return erb :"manager/adjustloyalty"
   else
-    Products.where(ProductId: product_id).delete
+    Users.where(UserId: user_id).update(LoyaltyDiscount: discount.to_i)
   end
-  redirect "managestock"
+
+  redirect "/manager/adjustloyalty"
 end
 
 get "/addproduct" do
@@ -175,21 +180,29 @@ get "/addproduct" do
 end
 
 post "/addproduct" do
-  highest_id = Products.max(:ProductId)
-  @products = Products.all
+  name   = sanitise_string(params['product_name'])
+  stock  = sanitise_int(params['product_stock'])
+  price  = sanitise_price(params['product_price'])
 
-  is_bean = (check_type(params['product_type']) == "Bean")
-
-  Products.insert(
-    ProductId: highest_id + 1,
-    ProductName: sanitise_string(params['product_name']),
-    StockQuantity: sanitise_int(params['product_stock']),
-    Price: sanitise_price(params['product_price']),
-    ProductImage: sanitise_string(params['product_image']),
-    ProductDescription: sanitise_string(params['product_description']),
-    Origin: sanitise_string(params['product_origin']),
-    Roast: sanitise_string(params['product_roast']),
-    Bean: is_bean
-  )
-  redirect "/managestock"
+  if name.nil? || name == 0 || name.to_s.strip.empty?
+    redirect "/managestock?error=invalid_name"
+  elsif stock.nil? || stock == 0
+    redirect "/managestock?error=invalid_stock"
+  elsif price.nil? || price == 0
+    redirect "/managestock?error=invalid_price"
+  else
+    highest_id = Products.max(:ProductId)
+    Products.insert(
+      ProductId:          highest_id + 1,
+      ProductName:        name,
+      StockQuantity:      stock,
+      Price:              price,
+      ProductImage:       sanitise_string(params['product_image']),
+      ProductDescription: sanitise_string(params['product_description']),
+      Origin:             sanitise_string(params['product_origin']),
+      Roast:              sanitise_string(params['product_roast']),
+      Bean:               (check_type(params['product_type']) == "Bean")
+    )
+    redirect "/managestock"
+  end
 end

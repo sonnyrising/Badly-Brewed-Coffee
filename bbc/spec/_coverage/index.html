@@ -13,7 +13,7 @@
       <img src="./assets/0.13.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2026-05-07T12:43:44+01:00">2026-05-07T12:43:44+01:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2026-05-07T12:55:38+01:00">2026-05-07T12:55:38+01:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -22,14 +22,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="red">
-  39.49%
+  38.27%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.89
+         1.87
        </span>
     </span> hits/line
     )
@@ -42,11 +42,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>747</b> relevant lines,
-    <span class="green"><b>295</b> lines covered</span> and
-    <span class="red"><b>452</b> lines missed. </span>
+    <b>750</b> relevant lines,
+    <span class="green"><b>287</b> lines covered</span> and
+    <span class="red"><b>463</b> lines missed. </span>
     (<span class="red">
-  39.49%
+  38.27%
 </span>
 )
   </div>
@@ -93,23 +93,23 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#6017965456e78eb182413f7f8ac7ae757824a59a" class="src_link" title="controllers/main_controller.rb">controllers/main_controller.rb</a></td>
-            <td class="green strong cell--number t-file__coverage">92.86 %</td>
-            <td class="cell--number">195</td>
+            <td class="green strong cell--number t-file__coverage">90.74 %</td>
+            <td class="cell--number">208</td>
+            <td class="cell--number">108</td>
             <td class="cell--number">98</td>
-            <td class="cell--number">91</td>
-            <td class="cell--number">7</td>
-            <td class="cell--number">10.01</td>
+            <td class="cell--number">10</td>
+            <td class="cell--number">10.02</td>
             
           </tr>
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#6c6663b41c3546d2f7d6dc5b0b44488163157893" class="src_link" title="controllers/manager_controller.rb">controllers/manager_controller.rb</a></td>
-            <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">71</td>
-            <td class="cell--number">42</td>
-            <td class="cell--number">42</td>
-            <td class="cell--number">0</td>
-            <td class="cell--number">4.98</td>
+            <td class="red strong cell--number t-file__coverage">77.14 %</td>
+            <td class="cell--number">59</td>
+            <td class="cell--number">35</td>
+            <td class="cell--number">27</td>
+            <td class="cell--number">8</td>
+            <td class="cell--number">2.89</td>
             
           </tr>
         
@@ -3202,7 +3202,7 @@
     <h3>controllers/main_controller.rb</h3>
     <h4>
       <span class="green">
-  92.86%
+  90.74%
 </span>
 
       lines covered
@@ -3211,9 +3211,9 @@
     
 
     <div class="t-line-summary">
-      <b>98</b> relevant lines.
-      <span class="green"><b>91</b> lines covered</span> and
-      <span class="red"><b>7</b> lines missed.</span>
+      <b>108</b> relevant lines.
+      <span class="green"><b>98</b> lines covered</span> and
+      <span class="red"><b>10</b> lines missed.</span>
     </div>
 
     
@@ -4993,114 +4993,36 @@
 
             
 
-            <code class="ruby">post &quot;/deleteproduct&quot; do</code>
+            <code class="ruby">post &quot;/manager/updatediscount&quot; do</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="8" data-linenumber="163">
+          <li class="covered" data-hits="14" data-linenumber="163">
             
-              <span class="hits">8</span>
-            
-
+              <span class="hits">14</span>
             
 
-            <code class="ruby">  product_id = params[:product_id]</code>
+            
+
+            <code class="ruby">  user_id = params[:user_id]</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="8" data-linenumber="164">
+          <li class="covered" data-hits="14" data-linenumber="164">
             
-              <span class="hits">8</span>
-            
-
+              <span class="hits">14</span>
             
 
-            <code class="ruby">  if product_id.nil? || product_id.empty? || product_id.to_i &lt;= 0 || !Products[product_id]</code>
+            
+
+            <code class="ruby">  discount = params[:discount]</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="5" data-linenumber="165">
-            
-              <span class="hits">5</span>
-            
-
-            
-
-            <code class="ruby">    puts &quot;Error: Invalid product ID&quot;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="5" data-linenumber="166">
-            
-              <span class="hits">5</span>
-            
-
-            
-
-            <code class="ruby">    redirect &quot;managestock&quot;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="167">
-            
-
-            
-
-            <code class="ruby">  else</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="3" data-linenumber="168">
-            
-              <span class="hits">3</span>
-            
-
-            
-
-            <code class="ruby">    Products.where(ProductId: product_id).delete</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="169">
-            
-
-            
-
-            <code class="ruby">  end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="3" data-linenumber="170">
-            
-              <span class="hits">3</span>
-            
-
-            
-
-            <code class="ruby">  redirect &quot;managestock&quot;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="171">
-            
-
-            
-
-            <code class="ruby">end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="172">
+          <li class="never" data-hits="" data-linenumber="165">
             
 
             
@@ -5110,7 +5032,139 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="173">
+          <li class="never" data-hits="" data-linenumber="166">
+            
+
+            
+
+            <code class="ruby">  #Uses a regex to check the discount is a number</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="14" data-linenumber="167">
+            
+              <span class="hits">14</span>
+            
+
+            
+
+            <code class="ruby">  if discount.nil? || discount.empty? || discount !~ /\A\d+\z/ || discount.to_i &lt; 0 || discount.to_i &gt; 100</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="8" data-linenumber="168">
+            
+              <span class="hits">8</span>
+            
+
+            
+
+            <code class="ruby">    @alert_message = &quot;Please enter a valid discount percentage (0-100).&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="8" data-linenumber="169">
+            
+              <span class="hits">8</span>
+            
+
+            
+
+            <code class="ruby">    @users = Users.where(Suspended: 0)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="8" data-linenumber="170">
+            
+              <span class="hits">8</span>
+            
+
+            
+
+            <code class="ruby">    return erb :&quot;manager/adjustloyalty&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="171">
+            
+
+            
+
+            <code class="ruby">  else</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="6" data-linenumber="172">
+            
+              <span class="hits">6</span>
+            
+
+            
+
+            <code class="ruby">    Users.where(UserId: user_id).update(LoyaltyDiscount: discount.to_i)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="173">
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="174">
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="6" data-linenumber="175">
+            
+              <span class="hits">6</span>
+            
+
+            
+
+            <code class="ruby">  redirect &quot;/manager/adjustloyalty&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="176">
+            
+
+            
+
+            <code class="ruby">end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="177">
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="178">
             
               <span class="hits">1</span>
             
@@ -5122,7 +5176,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="5" data-linenumber="174">
+          <li class="covered" data-hits="5" data-linenumber="179">
             
               <span class="hits">5</span>
             
@@ -5134,7 +5188,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="175">
+          <li class="never" data-hits="" data-linenumber="180">
             
 
             
@@ -5144,7 +5198,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="176">
+          <li class="never" data-hits="" data-linenumber="181">
             
 
             
@@ -5154,7 +5208,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="177">
+          <li class="covered" data-hits="1" data-linenumber="182">
             
               <span class="hits">1</span>
             
@@ -5166,62 +5220,6 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="11" data-linenumber="178">
-            
-              <span class="hits">11</span>
-            
-
-            
-
-            <code class="ruby">  highest_id = Products.max(:ProductId)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="11" data-linenumber="179">
-            
-              <span class="hits">11</span>
-            
-
-            
-
-            <code class="ruby">  @products = Products.all</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="180">
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="11" data-linenumber="181">
-            
-              <span class="hits">11</span>
-            
-
-            
-
-            <code class="ruby">  is_bean = (check_type(params[&#39;product_type&#39;]) == &quot;Bean&quot;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="182">
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
           <li class="covered" data-hits="11" data-linenumber="183">
             
               <span class="hits">11</span>
@@ -5229,27 +5227,31 @@
 
             
 
-            <code class="ruby">  Products.insert(</code>
+            <code class="ruby">  name   = sanitise_string(params[&#39;product_name&#39;])</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="184">
+          <li class="covered" data-hits="11" data-linenumber="184">
+            
+              <span class="hits">11</span>
             
 
             
 
-            <code class="ruby">    ProductId: highest_id + 1,</code>
+            <code class="ruby">  stock  = sanitise_int(params[&#39;product_stock&#39;])</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="185">
+          <li class="covered" data-hits="11" data-linenumber="185">
+            
+              <span class="hits">11</span>
             
 
             
 
-            <code class="ruby">    ProductName: sanitise_string(params[&#39;product_name&#39;]),</code>
+            <code class="ruby">  price  = sanitise_price(params[&#39;product_price&#39;])</code>
           </li>
         </div>
       
@@ -5259,67 +5261,73 @@
 
             
 
-            <code class="ruby">    StockQuantity: sanitise_int(params[&#39;product_stock&#39;]),</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="187">
+          <li class="covered" data-hits="11" data-linenumber="187">
+            
+              <span class="hits">11</span>
             
 
             
 
-            <code class="ruby">    Price: sanitise_price(params[&#39;product_price&#39;]),</code>
+            <code class="ruby">  if name.nil? || name == 0 || name.to_s.strip.empty?</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="188">
+          <li class="missed" data-hits="0" data-linenumber="188">
             
 
             
 
-            <code class="ruby">    ProductImage: sanitise_string(params[&#39;product_image&#39;]),</code>
+            <code class="ruby">    redirect &quot;/managestock?error=invalid_name&quot;</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="189">
+          <li class="covered" data-hits="11" data-linenumber="189">
+            
+              <span class="hits">11</span>
             
 
             
 
-            <code class="ruby">    ProductDescription: sanitise_string(params[&#39;product_description&#39;]),</code>
+            <code class="ruby">  elsif stock.nil? || stock == 0</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="190">
+          <li class="missed" data-hits="0" data-linenumber="190">
             
 
             
 
-            <code class="ruby">    Origin: sanitise_string(params[&#39;product_origin&#39;]),</code>
+            <code class="ruby">    redirect &quot;/managestock?error=invalid_stock&quot;</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="191">
+          <li class="covered" data-hits="11" data-linenumber="191">
+            
+              <span class="hits">11</span>
             
 
             
 
-            <code class="ruby">    Roast: sanitise_string(params[&#39;product_roast&#39;]),</code>
+            <code class="ruby">  elsif price.nil? || price == 0</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="192">
+          <li class="missed" data-hits="0" data-linenumber="192">
             
 
             
 
-            <code class="ruby">    Bean: is_bean</code>
+            <code class="ruby">    redirect &quot;/managestock?error=invalid_price&quot;</code>
           </li>
         </div>
       
@@ -5329,7 +5337,7 @@
 
             
 
-            <code class="ruby">  )</code>
+            <code class="ruby">  else</code>
           </li>
         </div>
       
@@ -5341,12 +5349,148 @@
 
             
 
-            <code class="ruby">  redirect &quot;/managestock&quot;</code>
+            <code class="ruby">    highest_id = Products.max(:ProductId)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="195">
+          <li class="covered" data-hits="11" data-linenumber="195">
+            
+              <span class="hits">11</span>
+            
+
+            
+
+            <code class="ruby">    Products.insert(</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="196">
+            
+
+            
+
+            <code class="ruby">      ProductId:          highest_id + 1,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="197">
+            
+
+            
+
+            <code class="ruby">      ProductName:        name,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="198">
+            
+
+            
+
+            <code class="ruby">      StockQuantity:      stock,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="199">
+            
+
+            
+
+            <code class="ruby">      Price:              price,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="200">
+            
+
+            
+
+            <code class="ruby">      ProductImage:       sanitise_string(params[&#39;product_image&#39;]),</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="201">
+            
+
+            
+
+            <code class="ruby">      ProductDescription: sanitise_string(params[&#39;product_description&#39;]),</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="202">
+            
+
+            
+
+            <code class="ruby">      Origin:             sanitise_string(params[&#39;product_origin&#39;]),</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="203">
+            
+
+            
+
+            <code class="ruby">      Roast:              sanitise_string(params[&#39;product_roast&#39;]),</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="11" data-linenumber="204">
+            
+              <span class="hits">11</span>
+            
+
+            
+
+            <code class="ruby">      Bean:               (check_type(params[&#39;product_type&#39;]) == &quot;Bean&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="205">
+            
+
+            
+
+            <code class="ruby">    )</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="11" data-linenumber="206">
+            
+              <span class="hits">11</span>
+            
+
+            
+
+            <code class="ruby">    redirect &quot;/managestock&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="207">
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="208">
             
 
             
@@ -5364,8 +5508,8 @@
   <div class="header">
     <h3>controllers/manager_controller.rb</h3>
     <h4>
-      <span class="green">
-  100.0%
+      <span class="red">
+  77.14%
 </span>
 
       lines covered
@@ -5374,9 +5518,9 @@
     
 
     <div class="t-line-summary">
-      <b>42</b> relevant lines.
-      <span class="green"><b>42</b> lines covered</span> and
-      <span class="red"><b>0</b> lines missed.</span>
+      <b>35</b> relevant lines.
+      <span class="green"><b>27</b> lines covered</span> and
+      <span class="red"><b>8</b> lines missed.</span>
     </div>
 
     
@@ -5776,7 +5920,7 @@
 
             
 
-            <code class="ruby">  </code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -5842,7 +5986,7 @@
 
             
 
-            <code class="ruby">  </code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -5854,7 +5998,7 @@
 
             
 
-            <code class="ruby">  puts &quot;=== DEBUG: I found #{@shown_feedback.count} records in the DB! ===&quot;</code>
+            <code class="ruby">  erb :&quot;manager/viewfeedback&quot;</code>
           </li>
         </div>
       
@@ -5864,56 +6008,12 @@
 
             
 
-            <code class="ruby">  </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="4" data-linenumber="44">
-            
-              <span class="hits">4</span>
-            
-
-            
-
-            <code class="ruby">  puts &quot;=== DEBUG: Data: #{@shown_feedback.inspect} ===&quot;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="45">
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="4" data-linenumber="46">
-            
-              <span class="hits">4</span>
-            
-
-            
-
-            <code class="ruby">  erb :&quot;manager/viewfeedback&quot;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="47">
-            
-
-            
-
             <code class="ruby">end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="48">
+          <li class="never" data-hits="" data-linenumber="44">
             
 
             
@@ -5923,7 +6023,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="49">
+          <li class="covered" data-hits="1" data-linenumber="45">
             
               <span class="hits">1</span>
             
@@ -5935,9 +6035,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="14" data-linenumber="50">
-            
-              <span class="hits">14</span>
+          <li class="missed" data-hits="0" data-linenumber="46">
             
 
             
@@ -5947,33 +6045,27 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="14" data-linenumber="51">
-            
-              <span class="hits">14</span>
+          <li class="missed" data-hits="0" data-linenumber="47">
             
 
             
 
-            <code class="ruby">  discount = params[:discount]</code>
+            <code class="ruby">  discount = params[:discount].to_i</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="14" data-linenumber="52">
-            
-              <span class="hits">14</span>
+          <li class="missed" data-hits="0" data-linenumber="48">
             
 
             
 
-            <code class="ruby">  if discount.nil?</code>
+            <code class="ruby">  if discount.nil? || discount.empty? || !discount.is_a?(Numeric) || discount &lt; 0 || discount &gt; 100</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="53">
-            
-              <span class="hits">2</span>
+          <li class="missed" data-hits="0" data-linenumber="49">
             
 
             
@@ -5983,9 +6075,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="54">
-            
-              <span class="hits">2</span>
+          <li class="missed" data-hits="0" data-linenumber="50">
             
 
             
@@ -5995,9 +6085,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="55">
-            
-              <span class="hits">2</span>
+          <li class="missed" data-hits="0" data-linenumber="51">
             
 
             
@@ -6007,7 +6095,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="56">
+          <li class="never" data-hits="" data-linenumber="52">
             
 
             
@@ -6017,99 +6105,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="12" data-linenumber="57">
-            
-              <span class="hits">12</span>
-            
-
-            
-
-            <code class="ruby">    discount = discount.to_i</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="58">
-            
-
-            
-
-            <code class="ruby">  end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="59">
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="12" data-linenumber="60">
-            
-              <span class="hits">12</span>
-            
-
-            
-
-            <code class="ruby">  if discount.negative? || discount &gt; 100</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="4" data-linenumber="61">
-            
-              <span class="hits">4</span>
-            
-
-            
-
-            <code class="ruby">    @alert_message = &quot;Please enter a valid discount percentage (0-100).&quot;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="4" data-linenumber="62">
-            
-              <span class="hits">4</span>
-            
-
-            
-
-            <code class="ruby">    @users = Users.where(Suspended: 0)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="4" data-linenumber="63">
-            
-              <span class="hits">4</span>
-            
-
-            
-
-            <code class="ruby">    return erb :&quot;manager/adjustloyalty&quot;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="64">
-            
-
-            
-
-            <code class="ruby">  else</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="8" data-linenumber="65">
-            
-              <span class="hits">8</span>
+          <li class="missed" data-hits="0" data-linenumber="53">
             
 
             
@@ -6119,7 +6115,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="66">
+          <li class="never" data-hits="" data-linenumber="54">
             
 
             
@@ -6129,7 +6125,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="67">
+          <li class="never" data-hits="" data-linenumber="55">
             
 
             
@@ -6139,9 +6135,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="8" data-linenumber="68">
-            
-              <span class="hits">8</span>
+          <li class="missed" data-hits="0" data-linenumber="56">
             
 
             
@@ -6151,7 +6145,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="69">
+          <li class="never" data-hits="" data-linenumber="57">
             
 
             
@@ -6161,7 +6155,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="70">
+          <li class="never" data-hits="" data-linenumber="58">
             
 
             
@@ -6171,7 +6165,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="71">
+          <li class="never" data-hits="" data-linenumber="59">
             
 
             

@@ -44,13 +44,13 @@ end
 
 post "/manager/updatediscount" do
   user_id = params[:user_id]
-  discount = params[:discount]
-  if discount.nil? || discount.empty? || !discount.is_a?(Numeric) || !discount.between?(0, 100)
+  discount = params[:discount].to_i
+  if discount.nil? || discount.empty? || !discount.is_a?(Numeric) || discount < 0 || discount > 100
     @alert_message = "Please enter a valid discount percentage (0-100)."
     @users = Users.where(Suspended: 0)
     return erb :"manager/adjustloyalty"
   else
-    Users.where(UserId: user_id).update(LoyaltyDiscount: discount.to_i)
+    Users.where(UserId: user_id).update(LoyaltyDiscount: discount)
   end
 
   redirect "/manager/adjustloyalty"
