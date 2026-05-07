@@ -180,16 +180,32 @@ get "/addproduct" do
 end
 
 post "/addproduct" do
-  name   = sanitise_string(params['product_name'])
-  stock  = sanitise_int(params['product_stock'])
-  price  = sanitise_price(params['product_price'])
+  name        = sanitise_string(params['product_name'])
+  stock       = sanitise_int(params['product_stock'])
+  price       = sanitise_price(params['product_price'])
+  image       = sanitise_string(params['product_image'])
+  description = sanitise_string(params['product_description'])
+  origin      = sanitise_string(params['product_origin'])
+  roast       = sanitise_string(params['product_roast'])
+  type        = check_type(params['product_type'])
 
-  if name.nil? || name == 0 || name.to_s.strip.empty?
+  # Name stock and price are required
+  if name == false
     redirect "/managestock?error=invalid_name"
-  elsif stock.nil? || stock == 0
+  elsif stock == false
     redirect "/managestock?error=invalid_stock"
-  elsif price.nil? || price == 0
+  elsif price == false
     redirect "/managestock?error=invalid_price"
+  elsif image == false
+    redirect "/managestock?error=invalid_image"
+  elsif description == false
+    redirect "/managestock?error=invalid_description"
+  elsif origin == false
+    redirect "/managestock?error=invalid_origin"
+  elsif roast == false
+    redirect "/managestock?error=invalid_roast"
+  elsif type == false
+    redirect "/managestock?error=invalid_type"
   else
     highest_id = Products.max(:ProductId)
     Products.insert(
@@ -197,12 +213,25 @@ post "/addproduct" do
       ProductName:        name,
       StockQuantity:      stock,
       Price:              price,
-      ProductImage:       sanitise_string(params['product_image']),
-      ProductDescription: sanitise_string(params['product_description']),
-      Origin:             sanitise_string(params['product_origin']),
-      Roast:              sanitise_string(params['product_roast']),
-      Bean:               (check_type(params['product_type']) == "Bean")
+      ProductImage:       image,
+      ProductDescription: description,
+      Origin:             origin,
+      Roast:              roast,
+      Bean:               (type == "Bean")
     )
     redirect "/managestock"
   end
+end
+
+post "/deleteproduct" do
+  product_id = params[:product_id]
+
+  # Use a regex to check if the product_id is a valid integer
+  if product_id.nil? || product_id.to_s !~ /\A\d+\z/ || Products[product_id.to_i].nil?
+    puts "Error: Invalid product ID: #{product_id}"
+  else
+    Products.where(ProductId: product_id.to_i).delete
+  end
+
+  redirect "/managestock"
 end
