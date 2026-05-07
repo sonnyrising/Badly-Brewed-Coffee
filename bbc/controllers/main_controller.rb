@@ -161,7 +161,7 @@ end
 
 post "/deleteproduct" do
   product_id = params[:product_id]
-  if product_id.nil? || product_id.empty? || product_id <= 0 || !Products[product_id]
+  if product_id.nil? || product_id.empty? || product_id.to_i <= 0 || !Products[product_id]
     puts "Error: Invalid product ID"
     redirect "managestock"
   else
@@ -189,7 +189,7 @@ post "/addproduct" do
     ProductDescription: sanitise_string(params['product_description']),
     Origin: sanitise_string(params['product_origin']),
     Roast: sanitise_string(params['product_roast']),
-    Type: is_bean
+    Bean: is_bean
   )
   redirect "/managestock"
 end
