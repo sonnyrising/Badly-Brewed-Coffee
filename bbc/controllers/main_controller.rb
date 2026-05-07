@@ -67,6 +67,18 @@ before "/addproduct" do
   end
 end
 
+before "/deleteproduct" do
+  unless @has_access
+    redirect "/login"
+  end
+end
+
+before "/updatestock" do
+  unless @has_access
+    redirect "/login"
+  end
+end
+
 get "/orders" do
   @orders = Transactions.all
   erb :"orders"
@@ -149,7 +161,12 @@ end
 
 post "/deleteproduct" do
   product_id = params[:product_id]
-  Products.where(ProductId: product_id).delete
+  if product_id.nil? || product_id.empty? || product_id <= 0 || !Products[product_id]
+    puts "Error: Invalid product ID"
+    redirect "managestock"
+  else
+    Products.where(ProductId: product_id).delete
+  end
   redirect "managestock"
 end
 
