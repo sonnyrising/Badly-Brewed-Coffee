@@ -174,7 +174,7 @@
                     <% else %>
                       <td>No</td>
                     <% end %>
-                  <td><%= feedback.IssueContent %></td>
+                  <td><%= feedback.IssueContent || feedback.RefundReason %></td>
                 </tr>
               <% end %>
             <% end %>
