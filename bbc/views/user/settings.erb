@@ -9,8 +9,9 @@
             <nav>
             <ul>
                 <li><a href="/user/homepage" class="smooth-link">Dashboard</a></li>
-                <li><a href="/user/shop" class="smooth-link">Shop</a></li>
+                <li><a href="/user/shop" class="smooth-link">Bean Shop</a></li>
                 <% if session[:userId] != 1 %>
+                <li><a href="/user/coffeeshop" class="smooth-link"> Coffee Shop</a></li>
                 <li><a href="/user/orders" class="smooth-link">Orders</a></li>
                 <li><a href="/user/settings" class="smooth-link">Settings</a></li>
                 <% end %>

@@ -222,7 +222,7 @@
     <main>
         <div class="layout-grid">
           <div class="sidebar">
-              <h1 style="text-align: center;">Beans</h1>
+              <h1 style="text-align: center;">Coffees</h1>
 
               <div style="text-align: center;">
                 <div class="basket-icon-wrapper">
@@ -268,7 +268,7 @@
             <div class="display-area">
                 <div class="product-inner-grid">
                 <% @products.each do |product| %>
-                    <%= erb :"user/product", locals: { p: product } %>
+                    <%= erb :"user/coffees", locals: { p: product } %>
                 <% end %>
                 </div>
             </div>

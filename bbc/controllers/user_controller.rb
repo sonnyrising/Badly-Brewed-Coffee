@@ -20,6 +20,12 @@ get "/user/shop" do
   erb :"user/selectproducts"
 end
 
+get "/user/coffeeshop" do
+   @products = Products.all
+
+   erb :"user/coffeeSelect"
+end
+
 post "/user/shop" do
   @products = Products.all
   @basket = Basket.new

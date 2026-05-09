@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
- <% if p.Bean == true %>
+ <% if p.Bean == false %>
   <div class="product-box <%= 'out-of-stock' if p.StockQuantity.to_i <= 0 %>">  
 
     <% if p.StockQuantity.to_i <= 0 %>
