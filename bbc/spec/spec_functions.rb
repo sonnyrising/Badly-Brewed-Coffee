@@ -58,9 +58,11 @@ def spec_before
 
   Feedbacks.insert(
     FeedbackId:     1,
-    TransactionId:  2,
     UserId:         1,
-    RefundReason:   "Cold coffee",
-    RefundRequest:  true
+    TransactionId:  2,
+    IssueContent: "General issue",
+    RefundReason: "Test reason",
+    RefundRequest:  "Yes"
+    TicketNumber:   1001
   )
 end
