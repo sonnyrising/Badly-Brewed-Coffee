@@ -26,6 +26,5 @@ INSERT INTO Transactions VALUES (2,2, 24.54,"Sam grove", 24032026, 'Pending', tr
 INSERT INTO Transactions VALUES (3,3, 3.99, "Sonny park avenue", 24032026, 'Pending', true, null);
 
 INSERT INTO Feedbacks VALUES (1, 1, 1, 'I dislike the fact that BBC coffee has not released more BBC into the world.', '0', 'true', 1);
-
 INSERT INTO Feedbacks VALUES (2, 4, 2, 'I am scrumming right now. For no particular reason.', '0', 'true', 2);
 
