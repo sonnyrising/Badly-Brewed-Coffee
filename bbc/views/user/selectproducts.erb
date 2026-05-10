@@ -236,27 +236,27 @@
               <div style="margin-top: 40px; padding: 0 10px;">
                 <% (Basket.getProductNamesForUser(session[:userId])).each do |p| %>
                   <% if Basket.finishedTransaction(p.ProductId, session[:userId])%>
-                  <div class="sidebar-item">
-                    <span style="font-size: 0.9em; font-weight: bold;"><%= p.ProductName %></span>
-                    <div class="buttons">
-                      <form action="/user/shop/add" method="post">
-                        <input type="hidden" name="userId" value="<%= session[:userId] %>">
-                        <input type="hidden" name="productId" value="<%= p.ProductId %>">
-                        <button type="submit" class="qty-btn">+</button>
-                      </form>
-                      <form action="/user/shop/subtract" method="post">
-                        <input type="hidden" name="userId" value="<%= session[:userId] %>">
-                        <input type="hidden" name="productId" value="<%= p.ProductId %>">
-                        <button type="submit" class="qty-btn">-</button>
-                      </form>
-                      <form action="/user/shop/delete" method="post">
-                        <input type="hidden" name="userId" value="<%= session[:userId] %>">
-                        <input type="hidden" name="productId" value="<%= p.ProductId %>">
-                        <button type="submit" class="bin"><img src="/imgs/bin.png" alt="Delete"></button>
-                      </form>
+                    <div class="sidebar-item">
+                      <span style="font-size: 0.9em; font-weight: bold;"><%= p.ProductName %></span>
+                        <div class="buttons">
+                          <form action="/user/shop/add" method="post">
+                            <input type="hidden" name="userId" value="<%= session[:userId] %>">
+                            <input type="hidden" name="productId" value="<%= p.ProductId %>">
+                            <button type="submit" class="qty-btn">+</button>
+                          </form>
+                          <form action="/user/shop/subtract" method="post">
+                            <input type="hidden" name="userId" value="<%= session[:userId] %>">
+                            <input type="hidden" name="productId" value="<%= p.ProductId %>">
+                            <button type="submit" class="qty-btn">-</button>
+                          </form>
+                          <form action="/user/shop/delete" method="post">
+                            <input type="hidden" name="userId" value="<%= session[:userId] %>">
+                            <input type="hidden" name="productId" value="<%= p.ProductId %>">
+                            <button type="submit" class="bin"><img src="/imgs/bin.png" alt="Delete"></button>
+                          </form>
+                        </div>
+                      <span class="qty-tag">x<%= Basket.where(UserId: session[:userId], ProductId: p.ProductId).first.Quantity %></span>
                     </div>
-                    <span class="qty-tag">x<%= Basket.where(UserId: session[:userId], ProductId: p.ProductId).first.Quantity %></span>
-                  </div>
                   <% end %>
                 <% end %>
 

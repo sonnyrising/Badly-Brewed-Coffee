@@ -109,7 +109,7 @@ class Basket < Sequel::Model(:Basket)
   def self.finishedTransaction(productId, userId)
     product = Basket.where(UserId: userId, ProductId: productId).first
     
-    if (product.TransactionId).nil?
+    if (product.TransactionId).nil?  
       return true
     else
       return false
@@ -132,4 +132,12 @@ class Basket < Sequel::Model(:Basket)
       Basket.where(UserId: user, ProductId: product).update(Quantity: quantity_p.Quantity + 1)  
     end
   end
+
+  def self.hasBeenBought(params)
+    item = Basket.where(UserId:user, ProductId: product).last
+    if (item.TransactionId.nil?)
+      
+    end
+  end
+
 end
