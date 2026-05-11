@@ -68,7 +68,7 @@ RSpec.describe "Authentication Tests" do
 
       context "not logged in as an admin" do
         it "denies access and redirects" do
-          post route, test_params, admin_session
+          post route, test_params, guest_session
           expect(last_response.status).to eq(302)
           expect(last_response.location).to eq("http://example.org/")
         end
@@ -76,6 +76,3 @@ RSpec.describe "Authentication Tests" do
     end
   end
 end
-
-
-
