@@ -1,43 +1,67 @@
-# BADLY BREWED COFFEE
-=======================
+README = <<~MARKDOWN
+  # Badly Brewed Coffee — Management & Customer Platform
 
-### Introduction
+  A web-based software interface built for **Badly Brewed Coffee**, providing tools for administrators, staff, and customers to manage daily operations, orders, and internal workflows.
 
-This project aims to create a working software interface for the company "Badly Brewed Coffee".
-This software will cater to the admins, staff and customers of the company.
+  ---
 
-### Setup
+  ## Overview
 
-*This section will contain information on how to setup the software when installing for the first time.*
+  Badly Brewed Coffee needs a lightweight, fast, and maintainable system to support:
 
-To set up the application, please clone the remote repository to your local machine using the HTTPS link:
-[https://git.shefcompsci.org.uk/com1001-2025-26/team22/project.git](https://git.shefcompsci.org.uk/com1001-2025-26/team22/project.git) <br/>
-Or with SSH:<br/>
-[git@git.shefcompsci.org.uk:com1001-2025-26/team22/project.git](git@git.shefcompsci.org.uk:com1001-2025-26/team22/project.git)
+  - Staff order management  
+  - Admin transaction and product control  
+  - Customer-facing purchase and refund interfaces
 
-Once the repository is on your local system, use the following command to navigate to the "bbc/" folder:<br/>
-> cd ~/project/bbc/
+  ---
 
-Once in the bbc/ directory, run the following command:<br/>
-> bundle install
+  ## Features
 
-This will install all required dependencies for the application.
+  ### For Admins
+  - View all transactions
+  - Add, edit, and delete products
+  - Manage staff accounts
+  - Access reporting tools
 
-### Launching
+  ### For Staff
+  - Create and manage customer orders
+  - Process transactions
+  - View product availability
 
-*This section will explain how to start the application and some basic troubleshooting tips.*
+  ### For Customers
+  - Browse products
+  - Place orders (if enabled)
+  - Receive order confirmations
 
-To start the application, please make sure that you are in the "project/bbc/" directory and enter command:<br/>
-> sinatra
+  ---
 
-### Accessing different accounts
+  ## Technology Stack
 
-All accounts can be accessed via the login page on application start.
+  | Component | Description |
+  |----------|-------------|
+  | **Sinatra** | Lightweight Ruby web framework used for routing and views |
+  | **Puma** | High-performance Ruby web server |
+  | **Rack** | Middleware layer connecting Sinatra to Puma |
+  | **Sequel** | Database toolkit for interacting with SQL databases |
+  | **ERB** | Templating engine for rendering HTML views |
 
-To view the website as a user, either create a new user account or use the test account with username >user and password >user .
+  ---
 
-To view the website as a barista, log in using the username >staff and password >staff.
+  ## Installation & Setup
 
-To view the website as a manager, log in using the username >manager and password >manager.
+  ### 1. Clone the repository
+  > git clone https://github.com/yourusername/badly-brewed-coffee.git
+  > cd badly-brewed-coffee
 
-To view the website as an admin, log in using the username >admin and password >admin.
+  ### 2. Install dependencies
+  > bundle install
+
+  ### 4. Start the server
+  Using Puma:
+  > puma
+  Or with rack:
+  > rackup
+
+  ## Account access
+
+  This section is about to be written.
