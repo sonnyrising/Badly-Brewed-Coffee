@@ -1,0 +1,93 @@
+1. Loyalty Stamp System
+
+	Automated Stamp Tracking: Every in-store coffee sale must automatically add one stamp to the customer's digital account.
+Completed:
+Tested:
+
+	The "10th Cup" Rule: Upon reaching the 10th coffee, the system must automatically apply a £5 discount max.
+Completed:
+Tested:
+
+	Multi-Buy Logic: In orders with multiple coffees, the "free" reward must apply to the cheapest drink in the basket.
+Completed:
+Tested:
+
+	Manual Overrides: Staff must be able to search for a customer and manually add stamps if a physical card is not present.
+Completed:
+Tested:
+
+
+2. Product Catalogue & Bean E-commerce
+
+	Dynamic Catalogue: Customers must be able to browse and filter products by category (e.g., Drinks vs Beans).
+Completed:
+Tested:
+
+	Product Variations: Bean products must support specific attributes: Origins (Arabic, Ethiopian, Brazilian) and Roast Levels (Light, Medium, Dark).
+Completed: Sonny
+Tested: I've tested that it works for the manager/staff stock management but haven't tested the customer side.
+
+	Checkout Simulation: The system should handle a shopping cart and a "mock" redirection to a payment provider.
+Completed:
+Tested:
+
+	Payment Status Tracking: Orders must be stored with a Payment Reference ID and a status (e.g., "Paid", "Unpaid", or "Pay in Store").
+Completed:
+Tested:
+
+
+3. Operational Dashboards (Staff & Manager)
+
+	Order Fulfilment: A real-time dashboard for staff to view unprocessed online orders and mark them as "Completed" or "Collected".
+Completed: Sonny
+Tested: I've done rspec unit tests but not the capybara integration tests.
+
+	Manual Inventory Control: Staff/Managers must be able to manually mark items as "Out of Stock," which should immediately prevent those items from being sold online.
+Completed: Sonny
+Tested: I've done rspec unit tests but not the capybara integration tests.
+
+	Refund Workflow: A structured request-and-approval system for bean returns, where the barista can approve/deny and update the transaction record.
+Completed: Sonny
+Tested: I've done rspec unit tests but not the capybara integration tests.
+
+
+4. Business Intelligence & Account Rules
+
+	Sales Metrics: A manager's view displaying total coffees sold (by type), beans sold (by roast/origin), and total free coffees redeemed.
+Completed: Sonny
+Tested: I've done rspec unit tests but not the capybara integration tests.
+
+	Membership Growth: Tracking the total number of account holders and the monthly change in sign-ups.
+Completed: Sonny
+Tested: I've done rspec unit tests but not the capybara integration tests.
+
+	Inactivity Policy: To maintain system hygiene, the system must automatically flag or suspend accounts that have had no login activity for over 6 months.
+Completed:
+Tested:
+
+	Admin Correction: Admins must be able to manually update a payment status if a processing error occurs (requires a reason note in the audit log).
+Completed:
+Tested:
+
+
+5. Agile Evolution (Refined Requirements)
+
+	Product Variations to Drinks: Customers must be able to select Milk Type (e.g., Whole, Oat, Soy) and Size (Regular, Large) for their coffees.
+Completed:
+Tested:
+
+	Online Coffee Purchases: Customers can purchase coffee online, but only after signing in to an existing account or creating a new one. For in-store purchases, an account or loyalty card number is not required.
+Completed:
+Tested:
+
+	Updated Loyalty Stamp Logic: Purchasing a bag of coffee beans should automatically add 3 stamps to the customer's loyalty account.
+Completed:
+Tested:
+
+	Automated Inventory Control: The system must track the actual numeric stock quantity of beans. When an order is completed, the stock should automatically decrease, and the item should automatically flag as "Out of Stock" when the count hits zero.
+Completed:
+Tested:
+
+	Grace Period for Account Suspensions: The system should flag the account at 4 days for a "Warning" (e.g. simulating an email being sent), and only move it to "Suspended" at 5 days.
+Completed:
+Tested:
