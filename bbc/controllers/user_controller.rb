@@ -3,6 +3,8 @@ before "/user/*" do
 end
 
 get "/user/homepage" do
+  @shown_orders = Transactions.where(UserId: session[:userId]).all
+
   erb :"user/homepage"
 end
 
