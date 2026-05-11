@@ -131,13 +131,15 @@
             <div style="color: black;width: 55vw;height: 40vh;position: absolute;top: 55%;left: 30%;background: transparent;backdrop-filter: blur(15px);box-shadow: 0px 0px 20px 0px #0000007a;border-radius: 30px; text-align: center;">
               <h1>Recent Transactions</h1>
               <div style="position:relative;top:3vh;">
-              <% @shown_orders.each do |order| %>
-                  <div style="display: flex; flex-direction: row; justify-content: space-evenly; width: 50%;">
-                    <h3 style="margin-left: 10%;"><%= order.TransactionId %></h3>
-                    <b><%= Users[order.UserId].Username %></b>
-                    <b>£<%= order.TotalCost %></b>
-                    <b><%= order.TransactionDate.to_s.insert(2, "/").insert(5, "/") %></b>
-                  </div>
+              <% if !@shown_orders.nil? %>
+                <% @shown_orders.each do |order| %>
+                    <div style="display: flex; flex-direction: row; justify-content: space-evenly; width: 50%;">
+                      <h3 style="margin-left: 10%;"><%= order.TransactionId %></h3>
+                      <b><%= Users[order.UserId].Username %></b>
+                      <b>£<%= order.TotalCost %></b>
+                      <b><%= order.TransactionDate.to_s.insert(2, "/").insert(5, "/") %></b>
+                    </div>
+                <% end %>
               <% end %>
             </div>
         </div>

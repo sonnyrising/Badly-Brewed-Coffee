@@ -58,6 +58,7 @@
   ### 4. Start the server
   Using Puma:
   > puma
+  
   Or with rack:
   > rackup
 
