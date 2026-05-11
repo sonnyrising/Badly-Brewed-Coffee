@@ -17,13 +17,16 @@ gem 'sequel'
 # Sqlite3 is the chosen database.
 gem 'sqlite3'
 
-# Capybara is used to run tests on website forms and check for edge cases.
+# Ruby testing framework.
+gem 'rspec'
+
+# Capybara is used to run tests on user-facing webpages.
 gem 'capybara'
 
 # Ruby sintax policing gem.
 gem 'rubocop'
 
-# BCrypt (blowfish-crypt) is the gem that provides hashing capabilities.
+# BCrypt is the gem that provides hashing capabilities.
 gem 'bcrypt'
 
 # Utility for loading multiple files very quickly.

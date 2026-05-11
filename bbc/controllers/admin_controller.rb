@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 before '/admin/*' do
-  redirect '/' if session[:uname] != 'admin'
+  #redirect '/' if session[:uname] != 'admin'
 end
 
 get '/admin' do
@@ -56,6 +56,10 @@ post '/admin/feedback/delete' do
 end
 
 post '/admin/accounts/create' do
+  redirect '/admin/accounts/create'
+end
+
+get '/admin/accounts/create' do
   erb :"admin/accountcreation"
 end
 
