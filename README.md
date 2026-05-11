@@ -1,4 +1,3 @@
-README = <<~MARKDOWN
   # Badly Brewed Coffee — Management & Customer Platform
 
   A web-based software interface built for **Badly Brewed Coffee**, providing tools for administrators, staff, and customers to manage daily operations, orders, and internal workflows.
