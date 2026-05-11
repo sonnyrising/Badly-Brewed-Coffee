@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 before '/admin/*' do
-  #redirect '/' if session[:uname] != 'admin'
+  redirect '/' if session[:uname] != 'admin'
 end
 
 get '/admin' do
@@ -40,7 +40,7 @@ get '/admin/run-inactivity-check' do
 end
 
 post '/admin/feedback/filter' do
-  if !params[:filter].empty? && params[:filter] == 'refund_issue'
+  if !params[:filter].nil? && params[:filter] == 'refund_issue'
     @shown_feedback = Feedbacks.where(RefundRequest: 'Yes').all
     erb :"admin/feedback"
   else
@@ -67,7 +67,7 @@ post '/admin/accounts/create/submit' do
   @user_id = 1
   @password = BCrypt::Password.create('password')
   puts params[:'type-data']
-  if params[:'type-data'] == 'Staff'
+  if h(params[:'type-data']) == 'Staff'
     puts 'Creating a staff account!'
     @user_id = validate_staff_id(@user_id)
     Staff.insert(StaffId: @user_id, StaffUsername: params[:'username-data'].to_s,
@@ -94,13 +94,15 @@ def validate_user_id(user_id)
 end
 
 post '/admin/accounts/filter' do
-  if !params[:'search-filter'].empty?
-    @shown_accounts = []
-    @shown_accounts << Users.where(Username: params[:'search-filter'].to_s).all
-    erb :"admin/accounts"
-  else
+  filter = h(params[:'search-filter'].to_s.strip)
+  redirect '/admin/accounts' if filter.empty?
+
+  @shown_accounts = Users.where(Username: filter).all
+  if @shown_accounts.empty?
     redirect '/admin/accounts'
   end
+
+  erb :"admin/accounts"
 end
 
 post '/admin/accounts/view' do
@@ -114,21 +116,21 @@ post '/admin/accounts/edit' do
 end
 
 post '/admin/accounts/edit/update' do
-  @account = Users[params[:'account-data'].to_i]
+  @account = Users[h(params[:'account-data'].to_i)]
 
-  @account.update(Username: params[:'username-data'].to_s) unless params[:'username-data'].empty?
-  @account.update(Email: params[:'email-data'].to_s) unless params[:'email-data'].empty?
-  @account.update(LoyaltyPoints: params[:'loyaltypoint-data']) unless params[:'loyaltypoint-data'].empty?
+  @account.update(Username: h(params[:'username-data'].to_s)) unless params[:'username-data'].empty?
+  @account.update(Email: h(params[:'email-data'].to_s)) unless params[:'email-data'].empty?
+  @account.update(LoyaltyPoints: h(params[:'loyaltypoint-data'])) unless params[:'loyaltypoint-data'].empty?
   # if !params[:'address-data'].empty?
   #  Users.where(UserId: user_id).update(LoyaltyPoints: "#{params[:'username-data']}")
   # end
-  @account.update(DaysSinceLastUse: params[:'inactivity-data']) unless params[:'inactivity-data'].empty?
+  @account.update(DaysSinceLastUse: h(params[:'inactivity-data'])) unless params[:'inactivity-data'].empty?
 
   redirect '/admin/accounts'
 end
 
 post '/admin/accounts/edit/recover' do
-  @account = Users[params[:'account-data'].to_i]
+  @account = Users[h(params[:'account-data']).to_i]
   @password = BCrypt::Password.create('password')
 
   @account.update(PassHash: @password)
@@ -156,7 +158,7 @@ post '/admin/accounts/suspend' do
 end
 
 post '/admin/accounts/delete' do
-  @account = Users[params[:'account-data'].to_i]
+  @account = Users[h(params[:'account-data']).to_i]
   @account.delete
   Transactions.where(UserId: @account.UserId).delete
   Feedbacks.where(UserId: @account.UserId).delete
@@ -182,22 +184,22 @@ post '/admin/orders/filter' do
 end
 
 post '/admin/orders/edit' do
-  @order = Transactions[params[:'transaction-id'].to_i]
+  @order = Transactions[h(params[:'transaction-id']).to_i]
 
   erb :'admin/orderedit'
 end
 
 post '/admin/orders/edit/update' do
-  order = Transactions[params[:'order-data'].to_i]
+  order = Transactions[h(params[:'order-data']).to_i]
 
-  order.update(Address: params[:'address-data'].to_s) unless params[:'address-data'].empty?
-  order.update(Refunded: params[:'refund-data'].to_s) unless params[:'refund-data'].empty?
+  order.update(Address: h(params[:'address-data']).to_s) unless params[:'address-data'].empty?
+  order.update(Refunded: h(params[:'refund-data']).to_s) unless params[:'refund-data'].empty?
 
   redirect '/admin/orders'
 end
 
 post '/admin/orders/delete' do
-  @order = Transactions[params[:'transaction-id'].to_i]
+  @order = Transactions[h(params[:'transaction-id']).to_i]
   @order.delete
 
   redirect '/admin/orders'
