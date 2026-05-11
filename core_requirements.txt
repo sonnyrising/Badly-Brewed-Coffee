@@ -25,7 +25,7 @@ Tested:
 
 	Product Variations: Bean products must support specific attributes: Origins (Arabic, Ethiopian, Brazilian) and Roast Levels (Light, Medium, Dark).
 Completed: Sonny
-Tested: I've tested that it works for the manager/staff stock management but haven't tested the customer side.
+Tested: I've done rspec unit tests for the manager/staff stock management but haven't tested the customer side or done capybara integration tests.
 
 	Checkout Simulation: The system should handle a shopping cart and a "mock" redirection to a payment provider.
 Completed:
