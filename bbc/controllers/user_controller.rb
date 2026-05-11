@@ -33,9 +33,9 @@ post "/user/shop" do
   exists = @basket.productExists(params)
   user_exists = @basket.userCheck(params)
   product_exists = @basket.productCheck(params)
-  item_bought = @basket.hasBeenBought(params)
+  item_bought = @basket.bought(params)
 
-  if exists.nil? || user_exists.nil? || product_exists.nil?
+  if exists.nil? || user_exists.nil? || product_exists.nil? || item_bought.nil?
     @basket.addToBasket(params)
     @basket.save_changes
   else

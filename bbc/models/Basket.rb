@@ -24,11 +24,21 @@ class Basket < Sequel::Model(:Basket)
     return Basket.where(ProductId: product).first
   end
 
+  def bought(params)
+    user = params.fetch("userId","")
+    product = params.fetch("productId", "")
+
+    item = Basket.where(UserId:user, ProductId: product).last
+
+    return if item.nil? 
+    return item if !item.TransactionId.nil?
+  end
+
   def updateQuantity(params)
     user = params.fetch("userId", "")
     product = params.fetch("productId", "")
 
-    quantity_p = Basket.where(UserId: user, ProductId: product).first
+    quantity_p = Basket.where(UserId: user, ProductId: product).last
     additional_q = params.fetch("quantity","").to_i
     
     if (quantity_p.Quantity + additional_q) >= 10
@@ -132,12 +142,4 @@ class Basket < Sequel::Model(:Basket)
       Basket.where(UserId: user, ProductId: product).update(Quantity: quantity_p.Quantity + 1)  
     end
   end
-
-  def self.hasBeenBought(params)
-    item = Basket.where(UserId:user, ProductId: product).last
-    if (item.TransactionId.nil?)
-      
-    end
-  end
-
 end
