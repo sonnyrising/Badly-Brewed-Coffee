@@ -69,6 +69,8 @@ post "/user/shop/delete" do
 end
 
 get "/user/orders" do
+  @shown_orders = Transactions.where(UserId: session[:userId]).all
+
   erb :"user/orderhistory"
 end
 

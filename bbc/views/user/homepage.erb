@@ -78,7 +78,7 @@
           </div>
         </div>
 
-        <div style="color: black;background: transparent;backdrop-filter: blur(15px);box-shadow: 0px 0px 20px 0px #0000007a;border-radius: 30px; text-align: center;width:72vw;">
+        <div style="color: black; background: transparent;backdrop-filter: blur(15px);box-shadow: 0px 0px 20px 0px #0000007a;border-radius: 30px; text-align: center;width:72vw;">
           
           <style>
             table > tr > td {
@@ -87,14 +87,14 @@
           </style>
           
           <h1>Discounts / Recent Transactions</h1>
-          <table style="width: 100%;">
+          <table style="width: 100%; overflow-y: scroll; color: black !important;">
             <tr style="display: flex; flex-direction: row; justify-content: space-evenly;">
               <td>Items</td>
               <td>Date</td>
               <td>Price</td>
             </tr>
             
-            <% if !@shown_orders.nil? %>
+            <% if @shown_orders&.any? %>
               <% @shown_orders.each do |order| %>
                 <tr style="display: flex; flex-direction: row; justify-content: space-evenly;">
                   <td><%= order.UserId %></td>
@@ -102,6 +102,8 @@
                   <td>£<%= order.TotalCost %></td>
                 </tr>
               <% end %>
+            <% else %>
+              <tr><td colspan="3" style="text-align:center; color:black;">No past transactions.</td></tr>
             <% end %>
           </table>
         </div>
