@@ -42,7 +42,7 @@ def spec_before
     TotalCost:       10.00,
     TransactionDate: "2024-01-15",
     Status:          "Pending",
-    refundRequested: false,
+    RefundRequested: false,
     Refunded:        false
   )
 
@@ -52,17 +52,17 @@ def spec_before
     TotalCost:       15.00,
     TransactionDate: "2024-02-20",
     Status:          "Pending",
-    refundRequested: true,
+    RefundRequested: true,
     Refunded:        false
   )
 
   Feedbacks.insert(
-    FeedbackId:     1,
-    UserId:         1,
-    TransactionId:  2,
-    IssueContent: "General issue",
-    RefundReason: "Test reason",
-    RefundRequest:  "Yes",
-    TicketNumber:   1001
+    FeedbackId:    1,
+    UserId:        1,
+    TransactionId: 2,
+    IssueContent:  "General issue",
+    RefundReason:  "Cold coffee",
+    RefundRequest: true,
+    TicketNumber:  1001
   )
 end

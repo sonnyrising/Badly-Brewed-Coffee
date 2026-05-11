@@ -12,14 +12,6 @@ set :public_folder, File.expand_path('../public', __dir__)
 set :views, File.expand_path('../views', __dir__)
 
 #------------------------------ OPEN / CLOSE SESSION -------------------------------
-def validate_session
-  if !session[:userId]
-    redirect "/login"
-  else
-    return
-  end
-end
-
 get "/landingpage" do
   session.clear
   erb :landingpage

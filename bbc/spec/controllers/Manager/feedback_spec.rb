@@ -12,7 +12,7 @@ RSpec.describe "View Feedback Tests" do
     it "returns 200 and displays all feedback entries" do
       get "/manager/viewfeedback", {}, manager_session
       expect(last_response.status).to eq(200)
-      expect(last_response.body).to include("Cold coffee")
+      expect(last_response.body).to include("General issue")  # IssueContent column
     end
   end
 
@@ -20,7 +20,7 @@ RSpec.describe "View Feedback Tests" do
     it "returns 200 and shows only refund-request feedback" do
       get "/manager/viewfeedback?filter=refund", {}, manager_session
       expect(last_response.status).to eq(200)
-      expect(last_response.body).to include("Cold coffee")
+      expect(last_response.body).to include("General issue")
     end
   end
 
