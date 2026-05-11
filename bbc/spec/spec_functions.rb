@@ -62,7 +62,7 @@ def spec_before
     TransactionId:  2,
     IssueContent: "General issue",
     RefundReason: "Test reason",
-    RefundRequest:  "Yes"
+    RefundRequest:  "Yes",
     TicketNumber:   1001
   )
 end

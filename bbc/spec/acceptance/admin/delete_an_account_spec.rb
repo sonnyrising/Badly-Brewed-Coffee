@@ -7,8 +7,13 @@ RSpec.describe "Deleting an account", type: :feature do
       DaysSinceLastUse: 3
     )
 
-    Transactions.create(UserId: account.UserId, TotalCost: 10, TransactionDate: "01012024")
-    Feedbacks.create(UserId: account.UserId, Message: "hi")
+    Transactions.insert(
+      UserId: account.UserId,
+      TotalCost: 49.99,
+      TransactionDate: "01012024",
+      TransactionId: 1000
+    )
+    Feedbacks.create(UserId: account.UserId, IssueContent: "hi")
     Basket.create(UserId: account.UserId, ItemId: 1)
 
     visit "/admin/accounts/#{account.UserId}"
