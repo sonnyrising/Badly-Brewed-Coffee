@@ -39,7 +39,7 @@
                 </div>
                 <div style="display: grid; grid-template-columns: 2fr 1fr;">
                     <b style="position:relative; padding-left: 10vw;">Order date:</b>
-                    <%= @order.TransactionDate.to_s.insert(2, "/").insert(5, "/") %>
+                    <%= @order.TransactionDate %>
                 </div>
                 <div style="display: grid; grid-template-columns: 2fr 1fr;">
                     <b style="position:relative; padding-left: 10vw;">Order account:</b>
