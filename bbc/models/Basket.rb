@@ -11,27 +11,35 @@ class Basket < Sequel::Model(:Basket)
     user = params.fetch("userId", "")
     product = params.fetch("productId", "")
 
-    return Basket.where(UserId: user, ProductId: product).first
+    return Basket.where(UserId: user, ProductId: product).last
   end
 
   def userCheck(params)
     user = params.fetch("userId", "")
-    return Basket.where(UserId: user).first
+    return Basket.where(UserId: user).last
   end
 
   def productCheck(params)
     product = params.fetch("productId", "")
-    return Basket.where(ProductId: product).first
+    return Basket.where(ProductId: product).last
   end
 
   def bought(params)
     user = params.fetch("userId","")
     product = params.fetch("productId", "")
 
-    item = Basket.where(UserId:user, ProductId: product).last
+    item = Basket.where(UserId: user, ProductId: product).last
 
     return if item.nil? 
     return item if !item.TransactionId.nil?
+  end
+
+  def checkLatest(params)
+    user = params.fetch("userId","")
+    product = params.fetch("productId", "")
+
+    latest = Basket.where(UserId: user, ProductId: product).last
+    return if latest.TransactionId.nil?
   end
 
   def updateQuantity(params)
@@ -62,7 +70,7 @@ class Basket < Sequel::Model(:Basket)
   def self.getProductNamesForUser(userId)
     names = Array.new
     Basket.each do |b_product|
-      if b_product.UserId == userId
+      if b_product.UserId == userId && b_product.TransactionId.nil?
         Products.each do |product|
           if product.ProductId == b_product.ProductId
             names << product
@@ -96,7 +104,7 @@ class Basket < Sequel::Model(:Basket)
     user = params.fetch("userId", "")
     product = params.fetch("productId", "")
     
-    quantity_p = Basket.where(UserId: user, ProductId: product).first
+    quantity_p = Basket.where(UserId: user, ProductId: product).last
 
     if quantity_p.Quantity < 10
       Basket.where(UserId: user, ProductId: product).update(Quantity: quantity_p.Quantity + 1)  
@@ -107,7 +115,7 @@ class Basket < Sequel::Model(:Basket)
     user = params.fetch("userId", "")
     product = params.fetch("productId", "")
     
-    quantity_p = Basket.where(UserId: user, ProductId: product).first
+    quantity_p = Basket.where(UserId: user, ProductId: product).last
 
     if quantity_p.Quantity > 1
       Basket.where(UserId: user, ProductId: product).update(Quantity: quantity_p.Quantity - 1)
@@ -117,7 +125,7 @@ class Basket < Sequel::Model(:Basket)
   end
 
   def self.finishedTransaction(productId, userId)
-    product = Basket.where(UserId: userId, ProductId: productId).first
+    product = Basket.where(UserId: userId, ProductId: productId).last
     
     if (product.TransactionId).nil?  
       return true
@@ -136,7 +144,7 @@ class Basket < Sequel::Model(:Basket)
     milkType = params.fetch("milkType", "")
     coffeeSize = params.fetch("coffeeSize", "")
     
-    quantity_p = Basket.where(UserId: user, ProductId: product).first
+    quantity_p = Basket.where(UserId: user, ProductId: product).last
 
     if quantity_p.Quantity < 10
       Basket.where(UserId: user, ProductId: product).update(Quantity: quantity_p.Quantity + 1)  

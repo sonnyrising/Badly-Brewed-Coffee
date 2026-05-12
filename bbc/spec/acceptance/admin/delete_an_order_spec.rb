@@ -9,12 +9,10 @@ RSpec.describe "Admin deleting an order", type: :feature do
         Status: "Pending"
       )
 
-      allow_any_instance_of(Sinatra::Base).to receive(:session).and_return({ user_id: 1, uname: 'admin'})
       visit "/admin/orders"
       
-      within("div", text: order.TransactionId.to_s) do
-        click_on "Delete"
-      end
+      click_on "Delete"
+      
 
       expect(page).to have_current_path("/admin/orders")
       expect(Transactions[order.TransactionId]).to be_nil

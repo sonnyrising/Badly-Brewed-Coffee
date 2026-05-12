@@ -103,7 +103,11 @@ end
 
 post '/admin/accounts/view' do
   @account = Users[params[:'account-data'].to_i]
-  redirect '/admin/accounts/view'
+  if @account
+    erb :"admin/account"
+  else
+    redirect '/admin/accounts/view'
+  end
 end
 
 get '/admin/accounts/view' do
@@ -111,12 +115,17 @@ get '/admin/accounts/view' do
 end
 
 post '/admin/accounts/edit' do
-  redirect 'admin/accounts/edit'
+  id = params[:'account-data']
+  redirect "admin/accounts/edit/#{id}"
 end
 
-get '/admin/accounts/edit' do
-  @account = Users[params[:'account-data'].to_i]
-  erb :"admin/accountedit"
+get '/admin/accounts/edit/:id' do
+  @account = Users[params[:id].to_i]
+  if @account 
+    erb :"admin/accountedit"
+  else
+    redirect '/admin/accounts'
+  end
 end
 
 post '/admin/accounts/edit/update' do

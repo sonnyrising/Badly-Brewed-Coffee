@@ -13,7 +13,8 @@ RSpec.describe "Authentication Tests" do
     "/admin/homepage",
     "/admin/accounts",
     "/admin/views",
-    "/admin/feedback"
+    "/admin/feedback",
+    "/admin/accounts/create"
   ]
 
   admin_post_routes = [
@@ -25,7 +26,7 @@ RSpec.describe "Authentication Tests" do
     "/admin/accounts/edit/update",    "/admin/run-inactivity-check"
   ]
 
-  test_params = { userId: 1, feedbackId: 1, 
+  test_params = { Username: "test", userId: 1, feedbackId: 1, 
                   'id-data': 1, 'search-filter': 'test',
                   'account-data': 1, 'username-data': 'Alice',
                   'email-data': 'Alice@gmail.com', 'loyaltypoint-data': 10,
@@ -37,7 +38,7 @@ RSpec.describe "Authentication Tests" do
 
       context "when logged in as an admin" do
         it "has a status code of 200 (OK)" do
-          get route, {}, admin_session
+          get route, test_params, admin_session
           expect(last_response.status).to eq(200)
         end
       end

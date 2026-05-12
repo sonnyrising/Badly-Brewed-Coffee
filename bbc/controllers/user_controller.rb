@@ -52,7 +52,15 @@ post "/user/shop" do
   product_exists = @basket.productCheck(params)
   item_bought = @basket.bought(params)
 
-  if exists.nil? || user_exists.nil? || product_exists.nil? || item_bought.nil?
+  if !item_bought.nil?
+    latest_product = @basket.checkLatest(params)
+    if latest_product.nil?
+      @basket.addToBasket(params)
+      @basket.save_changes
+    else 
+      @basket.updateQuantity(params)
+    end
+  elsif exists.nil? || user_exists.nil? || product_exists.nil?
     @basket.addToBasket(params)
     @basket.save_changes
   else
@@ -117,9 +125,11 @@ end
 post "/thankyoupage" do
   transaction = Transactions.insert(
     UserId: params[:userId],
-    TotalCost: params[:totalcost],
+    TotalCost: params[:totalcost].to_f.round(2),
     Address: params[:address],
-    TransactionDate: Time.now.strftime("%d%m%Y").to_i
+    TransactionDate: Time.now.strftime("%d%m%Y").to_i,
+    Status: "Pending",
+    RefundRequested: false
   )
 
   transaction = Transactions[transaction]

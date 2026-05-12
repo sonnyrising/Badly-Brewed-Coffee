@@ -11,13 +11,10 @@ RSpec.describe "Updating an order", type: :feature do
         Refunded: "false"  
       )
       
-      allow_any_instance_of(Sinatra::Base).to receive(:session).and_return({ user_id: 1, uname: 'admin' })
-
       visit "/admin/orders"
 
-      within("div", text: order.TransactionId.to_s) do
-        click_on "Edit"
-      end
+      click_on "Edit"
+      
 
       fill_in "address-data", with: "New Address"
       fill_in "refund-data", with: "true"

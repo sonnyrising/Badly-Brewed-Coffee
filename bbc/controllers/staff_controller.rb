@@ -5,6 +5,7 @@ end
 
 get "/staff/homepage" do
   @shown_orders = Transactions.all
+
   erb :"staff/homepage"
 end
 
@@ -112,7 +113,7 @@ def update_product_values(params)
       params[:product].update(
         ProductName: params[:name],
         StockQuantity: params[:stock],
-        Price: params[:price],
+        Price: params[:price].to_f.round(2),
         ProductImage: params[:image],
         ProductDescription: params[:description]
       )
@@ -139,20 +140,28 @@ def product_error_message(params)
   end
 end
 
-post "/staff/basketpayment" do
+get "/staff/basketpayment" do
   erb :"staff/basketpayment"
 end
 
 post "/staff/thankyoupage" do
-  customerId = params[:accountnum]
+  user = Users[params[:accountnum]]
+  redirect '/staff/basketpayment' unless !user.nil? && user.UserId != 7
 
-  transaction = Transactions.new
-  transaction.load(params)
-  transaction.save_changes
+  transaction = Transactions.insert(
+    UserId: params[:accountnum],
+    TotalCost: params[:totalcost],
+    Address: params[:address],
+    TransactionDate: Time.now.strftime("%d%m%Y").to_i,
+    Status: "Pending",
+    RefundRequested: false
+  )
 
-  Basket.orderPlaced(customerId, transaction.TransactionId)
+  transaction = Transactions[transaction]
 
-  Users.coffeeLoyaltyPointIncrease(customerId)
+  Basket.orderPlaced(transaction.UserId, transaction.TransactionId)
+
+  user.update(LoyaltyPoints: user.LoyaltyPoints + 3)
 
   erb :"staff/thankyoupage"
 end
