@@ -155,7 +155,7 @@ post "/manager/updatediscount" do
   user_id = params[:user_id]
   discount = params[:discount]
 
-  #Uses a regex to check the discount is a number
+  # Use a regex to check the discount is a number
   if discount.nil? || discount.empty? || discount !~ /\A\d+\z/ || discount.to_i < 0 || discount.to_i > 100
     @alert_message = "Please enter a valid discount percentage (0-100)."
     @users = Users.where(Suspended: 0)

@@ -55,11 +55,11 @@ Tested: I've done rspec unit tests but not the capybara integration tests.
 
 	Sales Metrics: A manager's view displaying total coffees sold (by type), beans sold (by roast/origin), and total free coffees redeemed.
 Completed: Sonny
-Tested: I've done rspec unit tests but not the capybara integration tests.
+Tested: rspec unit tests and capybara acceptance tests.
 
 	Membership Growth: Tracking the total number of account holders and the monthly change in sign-ups.
 Completed: Sonny
-Tested: I've done rspec unit tests but not the capybara integration tests.
+Tested:  rspec unit tests and capybara acceptance tests.
 
 	Inactivity Policy: To maintain system hygiene, the system must automatically flag or suspend accounts that have had no login activity for over 6 months.
 Completed:
