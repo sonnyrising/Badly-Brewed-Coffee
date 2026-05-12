@@ -95,13 +95,18 @@ post "/user/basketpayment" do
 end
 
 post "/thankyoupage" do
-  transaction = Transactions.new
-  transaction.load(params)
-  transaction.save_changes
+  transaction = Transactions.insert(
+    UserId: params[:userId],
+    TotalCost: params[:totalcost],
+    Address: params[:address],
+    TransactionDate: Time.now.strftime("%d%m%Y").to_i
+  )
+
+  transaction = Transactions[transaction]
 
   Basket.orderPlaced(transaction.UserId, transaction.TransactionId)
 
-  Users.beanLoyaltyPointIncrease(transaction.UserId)
+  Users.beanLoyaltyPointIncrease(params[:userId])
 
   erb :"user/thankyoupage"
 end
