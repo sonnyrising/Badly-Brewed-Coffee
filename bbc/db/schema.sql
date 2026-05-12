@@ -1,4 +1,5 @@
 PRAGMA foreign_keys = ON;
+
 CREATE TABLE Users(
   UserId INTEGER PRIMARY KEY,
   Username TEXT,
@@ -71,17 +72,30 @@ CREATE TABLE Staff(
 
 CREATE TABLE CoffeeSize (
   ItemID INTEGER PRIMARY KEY,
+  BasketId INTEGER,
+  ProductId INTEGER,
+  Quantity INTEGER,
   CoffeeSize TEXT,
   FOREIGN KEY (BasketId) REFERENCES Basket(BasketId) ON DELETE CASCADE,
   FOREIGN KEY (ProductId) REFERENCES Basket(ProductId) ON DELETE CASCADE,
-  FOREIGN KEY (Quantity) REFERENCES Basket(Quantity) ON DELETE CASCADE,
+  FOREIGN KEY (Quantity) REFERENCES Basket(Quantity) ON DELETE CASCADE
 );
 
 CREATE TABLE MilkTypes (
   ItemID INTEGER PRIMARY KEY,
+  BasketId INTEGER,
+  ProductId INTEGER,
+  Quantity INTEGER,
   MilkType TEXT,
   FOREIGN KEY (BasketId) REFERENCES Basket(BasketId) ON DELETE CASCADE,
   FOREIGN KEY (ProductId) REFERENCES Basket(ProductId) ON DELETE CASCADE,
-  FOREIGN KEY (Quantity) REFERENCES Basket(Quantity) ON DELETE CASCADE,
-  
+  FOREIGN KEY (Quantity) REFERENCES Basket(Quantity) ON DELETE CASCADE
+);
+
+CREATE TABLE Logs (
+  LogId INTEGER PRIMARY KEY,
+  UserId INTEGER,
+  LogDate DATE,
+  LogDescription TEXT,
+  FOREIGN KEY (UserId) references Users(UserId) ON DELETE CASCADE
 );

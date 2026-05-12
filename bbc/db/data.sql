@@ -6,7 +6,7 @@ INSERT INTO Users VALUES (5, 'Steve', 'PasswordHere', 'steveneven@gmail.com', 4,
 INSERT INTO Users VALUES (6,'test', '$2a$12$DK0nnutcRQTkgVMfVSqX3uBQY7YLkG06Cxr1FULFcdPZxrs9ZOcP2', 'test@gmail.com', 0, 0, 0, 0, 0, 6, 10, 2026-01-01);
 INSERT INTO Users VALUES (7, 'staff', 'staff', null, null,null, null, null, null, null, 0, null);
 
-INSERT INTO Staff VALUES (1, 'staff', 'staff', 'staff', 'employed')
+INSERT INTO Staff VALUES (1, 'staff', 'staff', 'staff', 'employed');
 
 INSERT INTO Products VALUES (1, 'JorgeBean','jorge_bean.jpeg', 'The rich mexican Jorge bean', 'Extra Dark ;)', 'Mexico', 12.99, 10, 1);
 INSERT INTO Products VALUES (2, 'Ethiopian Yirgacheffe', 'Ethiopian_Yirgacheffe.webp','Filled with  joy and flavour', 'Medium', 'Ethiopia', 4.99, 256, 1);

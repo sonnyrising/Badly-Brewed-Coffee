@@ -199,6 +199,8 @@ post '/admin/orders/edit/update' do
   order.update(Address: h(params[:'address-data']).to_s) unless params[:'address-data'].empty?
   order.update(Refunded: h(params[:'refund-data']).to_s) unless params[:'refund-data'].empty?
 
+  Log.insert(UserId: session[:userId], LogDate: Time.now.strftime("%d/%m/%Y"), LogDescription: h(params[:'refund-reason']))
+
   redirect '/admin/orders'
 end
 
@@ -207,4 +209,9 @@ post '/admin/orders/delete' do
   @order.delete
 
   redirect '/admin/orders'
+end
+
+get '/admin/log' do
+  @shown_logs = Log.all
+  erb :'admin/logpage'
 end

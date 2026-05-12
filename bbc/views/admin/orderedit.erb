@@ -14,12 +14,12 @@
       <nav>
         <h1 style="color:black;float: left;margin-left: 1vw;">Orders</h1>
         <ul style="position:absolute; top:1vh;">
-            <li><a href="/admin" class="smooth-link">Dashboard</a></li>
+            <li><a href="/admin/homepage" class="smooth-link">Dashboard</a></li>
             <li><a href="/admin/views" class="smooth-link">Views</a></li>
             <li><a href="/admin/orders" class="smooth-link">Orders</a></li>
             <li><a href="/admin/accounts" class="smooth-link">Accounts</a></li>
             <li><a href="/admin/feedback" class="smooth-link">Feedback</a></li>
-            <li><a href="/user/settings" class="smooth-link">Settings</a></li>
+            <li><a href="/admin/log" class="smooth-link">Logs</a></li>
             <li><a href="/" class="smooth-link">Log out</a></li>
         </ul>
       </nav>
@@ -60,6 +60,10 @@
                 <div style="display: grid; grid-template-columns: 2fr 1fr;">
                     <b style="position:relative; padding-left: 10vw;">Order refunded:</b>
                     <input type="text" name="refund-data" value=<%= @order.Refunded %>>
+                </div>
+                <div style="display: grid; grid-template-columns: 2fr 1fr;">
+                    <b style="position:relative; padding-left: 10vw;">Reason for modification:</b>
+                    <input type="text" name="refund-reason" placeholder="Enter description here..." required>
                 </div>
 
                 <input type="hidden" name="order-data" value="<%= @order.TransactionId %>">
