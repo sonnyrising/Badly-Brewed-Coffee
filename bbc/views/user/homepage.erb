@@ -87,11 +87,11 @@
           </style>
           
           <h1>Most Recent Transaction</h1>
-          
+
             <% if @recent_items&.any? %>
               <p style="color: black;">
                 <strong>Date:</strong> <%= @formatted_date %> | 
-                <strong>Total Paid:</strong> £<%= '%.2f' % @total_cost %>
+                <strong>Total Paid:</strong> £<%= '%.2f' % @calculated_total %>
               </p>
             
             <table style="width: 100%; border-collapse: collapse; color: black !important;">
