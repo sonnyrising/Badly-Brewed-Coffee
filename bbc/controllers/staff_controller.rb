@@ -144,13 +144,15 @@ post "/staff/basketpayment" do
 end
 
 post "/staff/thankyoupage" do
+  customerId = params[:accountnum]
+
   transaction = Transactions.new
   transaction.load(params)
   transaction.save_changes
 
-  Basket.orderPlaced(transaction.UserId, transaction.TransactionId)
+  Basket.orderPlaced(customerId, transaction.TransactionId)
 
-  Users.coffeeLoyaltyPointIncrease(transaction.UserId)
+  Users.coffeeLoyaltyPointIncrease(customerId)
 
   erb :"staff/thankyoupage"
 end
