@@ -62,8 +62,8 @@ Completed: Sonny
 Tested:  rspec unit tests and capybara acceptance tests.
 
 	Inactivity Policy: To maintain system hygiene, the system must automatically flag or suspend accounts that have had no login activity for over 6 months.
-Completed:
-Tested:
+Completed: Azmir
+Tested: In process of doing rspec unit tests but not the capybara integration tests.
 
 	Admin Correction: Admins must be able to manually update a payment status if a processing error occurs (requires a reason note in the audit log).
 Completed:
@@ -89,5 +89,5 @@ Completed:
 Tested:
 
 	Grace Period for Account Suspensions: The system should flag the account at 4 days for a "Warning" (e.g. simulating an email being sent), and only move it to "Suspended" at 5 days.
-Completed:
-Tested:
+Completed: Azmir
+Tested: In process of doing rspec unit tests but not the capybara integration tests.
