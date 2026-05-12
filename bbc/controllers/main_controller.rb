@@ -24,7 +24,7 @@ end
 
 #------------------------------ Manager and Staff Shared Functionality -------------------------------
 before "/*" do
-  if session[:uname] == "manager" || session[:uname] == "staff"
+  if ["staff", "manager", "admin"].include?(session[:uname])
     @has_access = true
   end
 end

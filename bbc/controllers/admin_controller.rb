@@ -16,27 +16,15 @@ get '/admin/views' do
 end
 
 post '/admin/views/manager' do
-  redirect 'admin/views/manager'
-end
-
-get '/admin/views/manager' do
-  erb :'manager/homepage'
+  redirect 'manager/homepage'
 end
 
 post '/admin/views/barista' do
-  redirect '/admin/views/barista'
-end
-
-get '/admin/views/barista' do
-  erb :'staff/homepage'
+  redirect '/staff/homepage'
 end
 
 post '/admin/views/user' do
-  redirect '/admin/views/user'
-end
-
-get '/admin/views/user' do
-  erb :'user/homepage'
+  redirect '/user/homepage'
 end
 
 get '/admin/feedback' do
