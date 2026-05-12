@@ -21,33 +21,36 @@
         </section>
     </header>
 
-    <main>
-        <div style="display: grid; height: 100dvh;">
-            <img src="/imgs/CoffeeBeansSplash.png" alt="Whoops, we slipped up!" style="width:100%; height:100dvh; object-fit: cover; grid-area: 1/1;">
-            <div style="width:90%; height: 80%; margin: auto auto; grid-area: 1/1; color: black; background: transparent; backdrop-filter: blur(15px); box-shadow: 0px 0px 20px 0px #0000007a;border-radius: 30px; text-align: center;">
-                <h1>Recent Transactions</h1>
-                <table style="width: 90%; overflow-y: scroll; margin: 0 auto;">
-                    <tr style="text-align: center; color: black;">
-                        <td>Items</td>
-                        <td>Date</td>
-                        <td>Price</td>
-                    </tr>
-                    
-                    <% if @shown_orders&.any? %>
-                        <% @shown_orders.each do |order| %>
-                            <tr style="text-align: center; color: black;">
-                                <td><%= order.UserId %></td>
-                                <td><%= order.TransactionDate %></td>
-                                <td>£<%= order.TotalCost %></td>
-                            </tr>
-                        <% end %>
-                    <% else %>
-                        <tr><td colspan="3" style="text-align:center; color:black;">No past transactions.</td></tr>
-                    <% end %>
-                </table>
-            </div>
-        </div>
-    </main>
+      <main>
+          <div style="display: grid; min-height: 100dvh;">
+              <img src="/imgs/CoffeeBeansSplash.png" alt="Splash" style="width:100%; height:100%; object-fit: cover; grid-area: 1/1; position: fixed;">
+              
+              <div style="width:90%; margin: 5vh auto; grid-area: 1/1; color: black; background: transparent; backdrop-filter: blur(15px); box-shadow: 0px 0px 20px 0px #0000007a; border-radius: 30px; text-align: center; padding: 20px; z-index: 10; overflow-y: auto;">
+                  <h1>Your Order History</h1>
+
+                  <% if @all_transactions&.any? %>
+                      <% @all_transactions.each do |transaction| %>
+                          <% items = @orders_with_items[transaction.TransactionId] %>
+                          <div style="background: rgba(255,255,255,0.5); margin: 20px auto; padding: 15px; border-radius: 20px; width: 95%; text-align: left; border: 1px solid #824818;">
+                              <div style="display: flex; justify-content: space-between; border-bottom: 2px solid #824818; padding-bottom: 10px; margin-bottom: 10px;">
+
+                                  <span><strong>Order #<%= transaction.TransactionId %></strong></span>
+
+                                  <% date_str = transaction.TransactionDate.to_s %>
+                                  <span><strong>Date:</strong> <%= "#{date_str[0..1]}/#{date_str[2..3]}/#{date_str[4..7]}" %></span>
+                                  
+                                  <span><strong>Total: £<%= '%.2f' % items.sum { |i| i[:Price] * i.Quantity } %></strong></span>
+                              </div>
+                              
+                              <p>Items: <%= items.count %></p>
+                          </div>
+                      <% end %>
+                  <% else %>
+                      <p>No past transactions found.</p>
+                  <% end %>
+              </div>
+          </div>
+      </main>
 
     <footer>
         
