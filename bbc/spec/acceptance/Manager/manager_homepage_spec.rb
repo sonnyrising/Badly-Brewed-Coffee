@@ -21,7 +21,7 @@ RSpec.describe 'Manager Homepage', type: :feature do
   end
 
   # -------------------------------------------------------------------------
-  # Test the page loads
+  # Page load
   # -------------------------------------------------------------------------
 
   describe 'Page load' do
@@ -35,7 +35,7 @@ RSpec.describe 'Manager Homepage', type: :feature do
   end
 
   # -------------------------------------------------------------------------
-  # Test the top navigation bar
+  # Top navigation bar
   # -------------------------------------------------------------------------
 
   describe 'Top navigation bar' do
@@ -56,7 +56,7 @@ RSpec.describe 'Manager Homepage', type: :feature do
   end
 
   # -------------------------------------------------------------------------
-  # Test the sidebar
+  # Sidebar navigation
   # -------------------------------------------------------------------------
 
   describe 'Sidebar navigation' do
@@ -92,7 +92,7 @@ RSpec.describe 'Manager Homepage', type: :feature do
   end
 
   # -------------------------------------------------------------------------
-  # Test the top coffees panel
+  # Top Coffees panel
   # -------------------------------------------------------------------------
 
   describe 'Top Coffees panel' do
@@ -115,7 +115,7 @@ RSpec.describe 'Manager Homepage', type: :feature do
   end
 
   # -------------------------------------------------------------------------
-  # Test the top beans panel
+  # Top Beans panel
   # -------------------------------------------------------------------------
 
   describe 'Top Beans panel' do
@@ -127,7 +127,7 @@ RSpec.describe 'Manager Homepage', type: :feature do
   end
 
   # -------------------------------------------------------------------------
-  # Test the top Customers panel
+  # Top Customers panel
   # -------------------------------------------------------------------------
 
   describe 'Top Customers panel' do
@@ -150,7 +150,7 @@ RSpec.describe 'Manager Homepage', type: :feature do
   end
 
   # -------------------------------------------------------------------------
-  # Test the free Coffees Redeemed panel
+  # Free Coffees Redeemed panel
   # -------------------------------------------------------------------------
 
   describe 'Free Coffees Redeemed panel' do
@@ -163,7 +163,7 @@ RSpec.describe 'Manager Homepage', type: :feature do
   end
 
   # -------------------------------------------------------------------------
-  # Test the membership panel
+  # Membership panel
   # -------------------------------------------------------------------------
 
   describe 'Membership panel' do
@@ -171,19 +171,59 @@ RSpec.describe 'Manager Homepage', type: :feature do
       expect(page).to have_content("There are #{Users.count} members in total")
     end
 
-    it 'displays the number of new members this month' do
-      expect(page).to have_content('new members this month')
+    context 'when there are new members this month and last month' do
+      before do
+        this_month = Date.today.strftime('%Y-%m-%d')
+        last_month = Date.today.prev_month.strftime('%Y-%m-%d')
+
+        Users.insert(UserId: 10, Username: 'member_this_month', PassHash: BCrypt::Password.create('password'), LoyaltyDiscount: 0, LoyaltyPoints: 0, Suspended: false, DateJoined: this_month)
+        Users.insert(UserId: 11, Username: 'member_last_month', PassHash: BCrypt::Password.create('password'), LoyaltyDiscount: 0, LoyaltyPoints: 0, Suspended: false, DateJoined: last_month)
+
+        visit '/manager/homepage'
+      end
+
+      it 'shows the correct new member count for this month' do
+        this_month_num = Date.today.strftime('%m')
+        this_year_num  = Date.today.strftime('%Y')
+        expected_count = Users.where(
+          Sequel.function(:strftime, '%Y', :DateJoined) => this_year_num,
+          Sequel.function(:strftime, '%m', :DateJoined) => this_month_num
+        ).count
+        expect(page).to have_content("There have been #{expected_count} new members this month")
+      end
+
+      it 'shows the month-on-month growth percentage' do
+        expect(page).to have_content("of last month's growth")
+      end
     end
 
-    it 'shows a month-on-month growth comparison or explains there is nothing to compare' do
-      has_growth    = page.has_content?("of last month's growth")
-      has_no_growth = page.has_content?('Last month had no new members to compare.')
-      expect(has_growth || has_no_growth).to be true
+    context 'when there are new members this month but none last month' do
+      before do
+        this_month = Date.today.strftime('%Y-%m-%d')
+
+        Users.insert(UserId: 12, Username: 'only_this_month', PassHash: BCrypt::Password.create('password'), LoyaltyDiscount: 0, LoyaltyPoints: 0, Suspended: false, DateJoined: this_month)
+
+        visit '/manager/homepage'
+      end
+
+      it 'shows the correct new member count for this month' do
+        this_month_num = Date.today.strftime('%m')
+        this_year_num  = Date.today.strftime('%Y')
+        expected_count = Users.where(
+          Sequel.function(:strftime, '%Y', :DateJoined) => this_year_num,
+          Sequel.function(:strftime, '%m', :DateJoined) => this_month_num
+        ).count
+        expect(page).to have_content("There have been #{expected_count} new members this month")
+      end
+
+      it 'shows the no-comparison message instead of a percentage' do
+        expect(page).to have_content('Last month had no new members to compare.')
+      end
     end
   end
 
   # -------------------------------------------------------------------------
-  # Test the access control
+  # Access control
   # -------------------------------------------------------------------------
 
   describe 'Access control' do

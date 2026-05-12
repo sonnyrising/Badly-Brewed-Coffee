@@ -88731,3 +88731,926 @@ I, [2026-05-12T12:56:37.198884 #17108]  INFO -- : (0.000261s) SELECT * FROM `tra
 I, [2026-05-12T12:56:37.199516 #17108]  INFO -- : (0.000253s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
 I, [2026-05-12T12:56:37.200401 #17108]  INFO -- : (0.000336s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
 I, [2026-05-12T12:56:37.201160 #17108]  INFO -- : (0.000246s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:40.998483 #5868]  INFO -- : Database file found and loaded ('C:/Users/sonny/RubymineProjects/project/bbc/db/db_test.sqlite3')
+I, [2026-05-12T13:00:41.207245 #5868]  INFO -- : (0.000208s) PRAGMA foreign_keys = 1
+I, [2026-05-12T13:00:41.207574 #5868]  INFO -- : (0.000039s) PRAGMA case_sensitive_like = 1
+I, [2026-05-12T13:00:41.214537 #5868]  INFO -- : (0.000618s) SELECT sqlite_version()
+I, [2026-05-12T13:00:41.215427 #5868]  INFO -- : (0.000326s) PRAGMA table_xinfo('Basket')
+I, [2026-05-12T13:00:41.219109 #5868]  INFO -- : (0.000372s) PRAGMA table_xinfo('feedbacks')
+I, [2026-05-12T13:00:41.224405 #5868]  INFO -- : (0.000411s) PRAGMA table_xinfo('Products')
+I, [2026-05-12T13:00:41.229835 #5868]  INFO -- : (0.000342s) PRAGMA table_xinfo('transactions')
+I, [2026-05-12T13:00:41.233907 #5868]  INFO -- : (0.000389s) PRAGMA table_xinfo('users')
+I, [2026-05-12T13:00:44.342463 #5868]  INFO -- : (0.010584s) DELETE FROM `feedbacks` WHERE (1 = 1)
+I, [2026-05-12T13:00:44.350229 #5868]  INFO -- : (0.007220s) DELETE FROM `transactions` WHERE (1 = 1)
+I, [2026-05-12T13:00:44.359069 #5868]  INFO -- : (0.008413s) DELETE FROM `users` WHERE (1 = 1)
+I, [2026-05-12T13:00:44.367691 #5868]  INFO -- : (0.008132s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-05-12T13:00:44.376409 #5868]  INFO -- : (0.008129s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc', 'Brazil', 'Medium', 0)
+I, [2026-05-12T13:00:44.385112 #5868]  INFO -- : (0.008194s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (2, 'Blend', 5, 5.0, 'blend.jpg', 'blend desc', 'Colombia', 'Light', 0)
+I, [2026-05-12T13:00:44.397434 #5868]  INFO -- : (0.011705s) INSERT INTO `users` (`UserId`, `Username`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (1, 'testuser', 0, 0, 0)
+I, [2026-05-12T13:00:44.759231 #5868]  INFO -- : (0.010188s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (2, 'manager', '$2a$12$XOHneNCbNIMgy6AVfBkzueRodCKKJuI2UW6itUHRMUZ4zkupTeGu2', 0, 0, 0)
+I, [2026-05-12T13:00:44.767184 #5868]  INFO -- : (0.007378s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (1, 1, 10.0, '2024-01-15', 'Pending', 0, 0)
+I, [2026-05-12T13:00:44.774910 #5868]  INFO -- : (0.007266s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (2, 1, 15.0, '2024-02-20', 'Pending', 1, 0)
+I, [2026-05-12T13:00:44.783116 #5868]  INFO -- : (0.007663s) INSERT INTO `feedbacks` (`FeedbackId`, `UserId`, `TransactionId`, `IssueContent`, `RefundReason`, `RefundRequest`, `TicketNumber`) VALUES (1, 1, 2, 'General issue', 'Cold coffee', 1, 1001)
+I, [2026-05-12T13:00:44.969367 #5868]  INFO -- : (0.000093s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:44.969848 #5868]  INFO -- : (0.000084s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:44.970121 #5868]  INFO -- : (0.001340s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:44.970892 #5868]  INFO -- : (0.000326s) SELECT * FROM `users`
+I, [2026-05-12T13:00:44.971546 #5868]  INFO -- : (0.000265s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:44.972240 #5868]  INFO -- : (0.000260s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:44.972910 #5868]  INFO -- : (0.000311s) SELECT * FROM `users`
+I, [2026-05-12T13:00:44.973673 #5868]  INFO -- : (0.000319s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:44.974409 #5868]  INFO -- : (0.000346s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:44.975139 #5868]  INFO -- : (0.000244s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:44.976076 #5868]  INFO -- : (0.000266s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:44.976975 #5868]  INFO -- : (0.000241s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:44.981052 #5868]  INFO -- : (0.000079s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:44.981521 #5868]  INFO -- : (0.000083s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:44.981862 #5868]  INFO -- : (0.001360s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:44.982490 #5868]  INFO -- : (0.000312s) SELECT * FROM `users`
+I, [2026-05-12T13:00:44.983221 #5868]  INFO -- : (0.000350s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:44.983844 #5868]  INFO -- : (0.000263s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:44.984529 #5868]  INFO -- : (0.000394s) SELECT * FROM `users`
+I, [2026-05-12T13:00:44.985234 #5868]  INFO -- : (0.000298s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:44.985957 #5868]  INFO -- : (0.000261s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:44.986508 #5868]  INFO -- : (0.000234s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:44.987356 #5868]  INFO -- : (0.000252s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:44.988191 #5868]  INFO -- : (0.000321s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:45.009230 #5868]  INFO -- : (0.009993s) DELETE FROM `feedbacks` WHERE (1 = 1)
+I, [2026-05-12T13:00:45.017482 #5868]  INFO -- : (0.007810s) DELETE FROM `transactions` WHERE (1 = 1)
+I, [2026-05-12T13:00:45.026239 #5868]  INFO -- : (0.008318s) DELETE FROM `users` WHERE (1 = 1)
+I, [2026-05-12T13:00:45.034697 #5868]  INFO -- : (0.007989s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-05-12T13:00:45.042670 #5868]  INFO -- : (0.007456s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc', 'Brazil', 'Medium', 0)
+I, [2026-05-12T13:00:45.052031 #5868]  INFO -- : (0.008853s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (2, 'Blend', 5, 5.0, 'blend.jpg', 'blend desc', 'Colombia', 'Light', 0)
+I, [2026-05-12T13:00:45.060438 #5868]  INFO -- : (0.007915s) INSERT INTO `users` (`UserId`, `Username`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (1, 'testuser', 0, 0, 0)
+I, [2026-05-12T13:00:45.421850 #5868]  INFO -- : (0.011305s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (2, 'manager', '$2a$12$5ZJHqQOSQQKS.xPx3zKDoOOfuEQivCqXtgRS5ctVSYCCpfnnbFbTK', 0, 0, 0)
+I, [2026-05-12T13:00:45.430804 #5868]  INFO -- : (0.008449s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (1, 1, 10.0, '2024-01-15', 'Pending', 0, 0)
+I, [2026-05-12T13:00:45.440005 #5868]  INFO -- : (0.008714s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (2, 1, 15.0, '2024-02-20', 'Pending', 1, 0)
+I, [2026-05-12T13:00:45.448507 #5868]  INFO -- : (0.007996s) INSERT INTO `feedbacks` (`FeedbackId`, `UserId`, `TransactionId`, `IssueContent`, `RefundReason`, `RefundRequest`, `TicketNumber`) VALUES (1, 1, 2, 'General issue', 'Cold coffee', 1, 1001)
+I, [2026-05-12T13:00:45.462564 #5868]  INFO -- : (0.000149s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:45.463116 #5868]  INFO -- : (0.000156s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:45.463394 #5868]  INFO -- : (0.001404s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:45.464022 #5868]  INFO -- : (0.000307s) SELECT * FROM `users`
+I, [2026-05-12T13:00:45.464896 #5868]  INFO -- : (0.000262s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:45.465585 #5868]  INFO -- : (0.000325s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:45.466190 #5868]  INFO -- : (0.000305s) SELECT * FROM `users`
+I, [2026-05-12T13:00:45.466992 #5868]  INFO -- : (0.000392s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:45.467650 #5868]  INFO -- : (0.000258s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:45.468265 #5868]  INFO -- : (0.000297s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:45.469200 #5868]  INFO -- : (0.000315s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:45.469960 #5868]  INFO -- : (0.000245s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:45.473946 #5868]  INFO -- : (0.000096s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:45.474404 #5868]  INFO -- : (0.000082s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:45.474692 #5868]  INFO -- : (0.001230s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:45.475324 #5868]  INFO -- : (0.000304s) SELECT * FROM `users`
+I, [2026-05-12T13:00:45.476069 #5868]  INFO -- : (0.000367s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:45.476698 #5868]  INFO -- : (0.000256s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:45.477379 #5868]  INFO -- : (0.000385s) SELECT * FROM `users`
+I, [2026-05-12T13:00:45.478084 #5868]  INFO -- : (0.000291s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:45.478809 #5868]  INFO -- : (0.000257s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:45.479419 #5868]  INFO -- : (0.000228s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:45.480290 #5868]  INFO -- : (0.000245s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:45.481122 #5868]  INFO -- : (0.000249s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:45.501109 #5868]  INFO -- : (0.007778s) DELETE FROM `feedbacks` WHERE (1 = 1)
+I, [2026-05-12T13:00:45.509385 #5868]  INFO -- : (0.007848s) DELETE FROM `transactions` WHERE (1 = 1)
+I, [2026-05-12T13:00:45.516886 #5868]  INFO -- : (0.007144s) DELETE FROM `users` WHERE (1 = 1)
+I, [2026-05-12T13:00:45.524638 #5868]  INFO -- : (0.007312s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-05-12T13:00:45.532701 #5868]  INFO -- : (0.007599s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc', 'Brazil', 'Medium', 0)
+I, [2026-05-12T13:00:45.540497 #5868]  INFO -- : (0.007322s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (2, 'Blend', 5, 5.0, 'blend.jpg', 'blend desc', 'Colombia', 'Light', 0)
+I, [2026-05-12T13:00:45.547971 #5868]  INFO -- : (0.007047s) INSERT INTO `users` (`UserId`, `Username`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (1, 'testuser', 0, 0, 0)
+I, [2026-05-12T13:00:45.910608 #5868]  INFO -- : (0.011251s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (2, 'manager', '$2a$12$7Thn0wFjf0OBqtaQV.llauPpAQFRxyUme4bDhV3/AsEBaAVaIUpfu', 0, 0, 0)
+I, [2026-05-12T13:00:45.919493 #5868]  INFO -- : (0.008368s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (1, 1, 10.0, '2024-01-15', 'Pending', 0, 0)
+I, [2026-05-12T13:00:45.932656 #5868]  INFO -- : (0.012368s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (2, 1, 15.0, '2024-02-20', 'Pending', 1, 0)
+I, [2026-05-12T13:00:45.940356 #5868]  INFO -- : (0.007252s) INSERT INTO `feedbacks` (`FeedbackId`, `UserId`, `TransactionId`, `IssueContent`, `RefundReason`, `RefundRequest`, `TicketNumber`) VALUES (1, 1, 2, 'General issue', 'Cold coffee', 1, 1001)
+I, [2026-05-12T13:00:45.954550 #5868]  INFO -- : (0.000087s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:45.955057 #5868]  INFO -- : (0.000080s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:45.955296 #5868]  INFO -- : (0.001284s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:45.955966 #5868]  INFO -- : (0.000391s) SELECT * FROM `users`
+I, [2026-05-12T13:00:45.956680 #5868]  INFO -- : (0.000261s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:45.957311 #5868]  INFO -- : (0.000255s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:45.957915 #5868]  INFO -- : (0.000301s) SELECT * FROM `users`
+I, [2026-05-12T13:00:45.958705 #5868]  INFO -- : (0.000296s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:45.959432 #5868]  INFO -- : (0.000329s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:45.959991 #5868]  INFO -- : (0.000231s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:45.960870 #5868]  INFO -- : (0.000246s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:45.961710 #5868]  INFO -- : (0.000327s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:45.965521 #5868]  INFO -- : (0.000078s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:45.966067 #5868]  INFO -- : (0.000086s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:45.966343 #5868]  INFO -- : (0.001269s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:45.967184 #5868]  INFO -- : (0.000465s) SELECT * FROM `users`
+I, [2026-05-12T13:00:45.967937 #5868]  INFO -- : (0.000384s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:45.968822 #5868]  INFO -- : (0.000260s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:45.969498 #5868]  INFO -- : (0.000371s) SELECT * FROM `users`
+I, [2026-05-12T13:00:45.970198 #5868]  INFO -- : (0.000291s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:45.970939 #5868]  INFO -- : (0.000343s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:45.971490 #5868]  INFO -- : (0.000236s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:45.972398 #5868]  INFO -- : (0.000257s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:45.973250 #5868]  INFO -- : (0.000330s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:45.984109 #5868]  INFO -- : (0.000432s) SELECT * FROM `users` WHERE (`Suspended` = 0)
+I, [2026-05-12T13:00:45.984827 #5868]  INFO -- : (0.000252s) SELECT 1 AS 'one' FROM `users` WHERE (`Suspended` = 0) LIMIT 1
+I, [2026-05-12T13:00:45.985965 #5868]  INFO -- : (0.000073s) SELECT * FROM `Basket` WHERE (`TransactionId` = 1)
+I, [2026-05-12T13:00:45.986316 #5868]  INFO -- : (0.000082s) SELECT * FROM `Basket` WHERE (`TransactionId` = 2)
+I, [2026-05-12T13:00:45.986576 #5868]  INFO -- : (0.000948s) SELECT * FROM `transactions` WHERE (`UserId` = 1)
+I, [2026-05-12T13:00:45.987056 #5868]  INFO -- : (0.000095s) SELECT * FROM `transactions` WHERE (`UserId` = 2)
+I, [2026-05-12T13:00:45.987376 #5868]  INFO -- : (0.002187s) SELECT * FROM `users` WHERE (`Suspended` = 0)
+I, [2026-05-12T13:00:46.030102 #5868]  INFO -- : (0.010854s) DELETE FROM `feedbacks` WHERE (1 = 1)
+I, [2026-05-12T13:00:46.039025 #5868]  INFO -- : (0.008460s) DELETE FROM `transactions` WHERE (1 = 1)
+I, [2026-05-12T13:00:46.047924 #5868]  INFO -- : (0.008365s) DELETE FROM `users` WHERE (1 = 1)
+I, [2026-05-12T13:00:46.056750 #5868]  INFO -- : (0.008093s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-05-12T13:00:46.065714 #5868]  INFO -- : (0.008380s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc', 'Brazil', 'Medium', 0)
+I, [2026-05-12T13:00:46.074462 #5868]  INFO -- : (0.008291s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (2, 'Blend', 5, 5.0, 'blend.jpg', 'blend desc', 'Colombia', 'Light', 0)
+I, [2026-05-12T13:00:46.083014 #5868]  INFO -- : (0.008057s) INSERT INTO `users` (`UserId`, `Username`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (1, 'testuser', 0, 0, 0)
+I, [2026-05-12T13:00:46.443750 #5868]  INFO -- : (0.010900s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (2, 'manager', '$2a$12$AvA1EE96SsSRsUR.uQ2Y8efuvDVEa4VwlTuyetoddkf5YyMdu4V9m', 0, 0, 0)
+I, [2026-05-12T13:00:46.453106 #5868]  INFO -- : (0.008883s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (1, 1, 10.0, '2024-01-15', 'Pending', 0, 0)
+I, [2026-05-12T13:00:46.461903 #5868]  INFO -- : (0.008158s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (2, 1, 15.0, '2024-02-20', 'Pending', 1, 0)
+I, [2026-05-12T13:00:46.471187 #5868]  INFO -- : (0.008759s) INSERT INTO `feedbacks` (`FeedbackId`, `UserId`, `TransactionId`, `IssueContent`, `RefundReason`, `RefundRequest`, `TicketNumber`) VALUES (1, 1, 2, 'General issue', 'Cold coffee', 1, 1001)
+I, [2026-05-12T13:00:46.484986 #5868]  INFO -- : (0.000081s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:46.485426 #5868]  INFO -- : (0.000082s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:46.485707 #5868]  INFO -- : (0.001243s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:46.486436 #5868]  INFO -- : (0.000405s) SELECT * FROM `users`
+I, [2026-05-12T13:00:46.487072 #5868]  INFO -- : (0.000259s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:46.487767 #5868]  INFO -- : (0.000327s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:46.488399 #5868]  INFO -- : (0.000322s) SELECT * FROM `users`
+I, [2026-05-12T13:00:46.489173 #5868]  INFO -- : (0.000383s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:46.489826 #5868]  INFO -- : (0.000258s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:46.490440 #5868]  INFO -- : (0.000298s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:46.491243 #5868]  INFO -- : (0.000249s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:46.492193 #5868]  INFO -- : (0.000245s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:46.496216 #5868]  INFO -- : (0.000081s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:46.496670 #5868]  INFO -- : (0.000082s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:46.497002 #5868]  INFO -- : (0.001260s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:46.497730 #5868]  INFO -- : (0.000400s) SELECT * FROM `users`
+I, [2026-05-12T13:00:46.498490 #5868]  INFO -- : (0.000290s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:46.499130 #5868]  INFO -- : (0.000273s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:46.499756 #5868]  INFO -- : (0.000328s) SELECT * FROM `users`
+I, [2026-05-12T13:00:46.500466 #5868]  INFO -- : (0.000298s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:46.501201 #5868]  INFO -- : (0.000259s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:46.501744 #5868]  INFO -- : (0.000230s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:46.502599 #5868]  INFO -- : (0.000246s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:46.503429 #5868]  INFO -- : (0.000317s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:46.509445 #5868]  INFO -- : (0.000342s) SELECT * FROM `feedbacks`
+I, [2026-05-12T13:00:46.524716 #5868]  INFO -- : (0.000477s) SELECT * FROM `users` WHERE (`UserId` = 1) LIMIT 1
+I, [2026-05-12T13:00:46.525470 #5868]  INFO -- : (0.000293s) SELECT * FROM `transactions` WHERE (`TransactionId` = '2') LIMIT 1
+I, [2026-05-12T13:00:46.544561 #5868]  INFO -- : (0.011106s) DELETE FROM `feedbacks` WHERE (1 = 1)
+I, [2026-05-12T13:00:46.553339 #5868]  INFO -- : (0.008206s) DELETE FROM `transactions` WHERE (1 = 1)
+I, [2026-05-12T13:00:46.560765 #5868]  INFO -- : (0.006850s) DELETE FROM `users` WHERE (1 = 1)
+I, [2026-05-12T13:00:46.568019 #5868]  INFO -- : (0.006867s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-05-12T13:00:46.575484 #5868]  INFO -- : (0.006947s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc', 'Brazil', 'Medium', 0)
+I, [2026-05-12T13:00:46.585753 #5868]  INFO -- : (0.009443s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (2, 'Blend', 5, 5.0, 'blend.jpg', 'blend desc', 'Colombia', 'Light', 0)
+I, [2026-05-12T13:00:46.593309 #5868]  INFO -- : (0.007122s) INSERT INTO `users` (`UserId`, `Username`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (1, 'testuser', 0, 0, 0)
+I, [2026-05-12T13:00:46.952259 #5868]  INFO -- : (0.010007s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (2, 'manager', '$2a$12$wjOYZKoGFKUlRdvNlpJuDOW1i5lGRI5MEckKtYR1tIIl69eZDqMFi', 0, 0, 0)
+I, [2026-05-12T13:00:46.959960 #5868]  INFO -- : (0.007154s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (1, 1, 10.0, '2024-01-15', 'Pending', 0, 0)
+I, [2026-05-12T13:00:46.968474 #5868]  INFO -- : (0.007987s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (2, 1, 15.0, '2024-02-20', 'Pending', 1, 0)
+I, [2026-05-12T13:00:46.976782 #5868]  INFO -- : (0.007837s) INSERT INTO `feedbacks` (`FeedbackId`, `UserId`, `TransactionId`, `IssueContent`, `RefundReason`, `RefundRequest`, `TicketNumber`) VALUES (1, 1, 2, 'General issue', 'Cold coffee', 1, 1001)
+I, [2026-05-12T13:00:46.992732 #5868]  INFO -- : (0.000085s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:46.993211 #5868]  INFO -- : (0.000083s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:46.993486 #5868]  INFO -- : (0.001331s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:46.994217 #5868]  INFO -- : (0.000394s) SELECT * FROM `users`
+I, [2026-05-12T13:00:46.994850 #5868]  INFO -- : (0.000259s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:46.995543 #5868]  INFO -- : (0.000335s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:46.996701 #5868]  INFO -- : (0.000863s) SELECT * FROM `users`
+I, [2026-05-12T13:00:46.997537 #5868]  INFO -- : (0.000327s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:46.998222 #5868]  INFO -- : (0.000268s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:46.998878 #5868]  INFO -- : (0.000333s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:46.999741 #5868]  INFO -- : (0.000262s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:47.000728 #5868]  INFO -- : (0.000248s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:47.004711 #5868]  INFO -- : (0.000096s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:47.005170 #5868]  INFO -- : (0.000083s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:47.005512 #5868]  INFO -- : (0.001270s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:47.006142 #5868]  INFO -- : (0.000307s) SELECT * FROM `users`
+I, [2026-05-12T13:00:47.006865 #5868]  INFO -- : (0.000351s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:47.007487 #5868]  INFO -- : (0.000257s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:47.008215 #5868]  INFO -- : (0.000387s) SELECT * FROM `users`
+I, [2026-05-12T13:00:47.008910 #5868]  INFO -- : (0.000292s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:47.009635 #5868]  INFO -- : (0.000258s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:47.010184 #5868]  INFO -- : (0.000229s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:47.011020 #5868]  INFO -- : (0.000244s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:47.011833 #5868]  INFO -- : (0.000309s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:47.018685 #5868]  INFO -- : (0.000083s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:47.019214 #5868]  INFO -- : (0.000083s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:47.019489 #5868]  INFO -- : (0.001311s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:47.020179 #5868]  INFO -- : (0.000377s) SELECT * FROM `users`
+I, [2026-05-12T13:00:47.020830 #5868]  INFO -- : (0.000262s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:47.021536 #5868]  INFO -- : (0.000341s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:47.022158 #5868]  INFO -- : (0.000316s) SELECT * FROM `users`
+I, [2026-05-12T13:00:47.022938 #5868]  INFO -- : (0.000293s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:47.023588 #5868]  INFO -- : (0.000259s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:47.024202 #5868]  INFO -- : (0.000228s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:47.025088 #5868]  INFO -- : (0.000334s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:47.026298 #5868]  INFO -- : (0.000308s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:47.046579 #5868]  INFO -- : (0.011100s) DELETE FROM `feedbacks` WHERE (1 = 1)
+I, [2026-05-12T13:00:47.054496 #5868]  INFO -- : (0.007560s) DELETE FROM `transactions` WHERE (1 = 1)
+I, [2026-05-12T13:00:47.062195 #5868]  INFO -- : (0.007276s) DELETE FROM `users` WHERE (1 = 1)
+I, [2026-05-12T13:00:47.070049 #5868]  INFO -- : (0.007453s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-05-12T13:00:47.078021 #5868]  INFO -- : (0.007514s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc', 'Brazil', 'Medium', 0)
+I, [2026-05-12T13:00:47.085848 #5868]  INFO -- : (0.007343s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (2, 'Blend', 5, 5.0, 'blend.jpg', 'blend desc', 'Colombia', 'Light', 0)
+I, [2026-05-12T13:00:47.093552 #5868]  INFO -- : (0.007251s) INSERT INTO `users` (`UserId`, `Username`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (1, 'testuser', 0, 0, 0)
+I, [2026-05-12T13:00:47.456603 #5868]  INFO -- : (0.011600s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (2, 'manager', '$2a$12$QvEXw3Yx7w7yB7KMBHcfV.hl7L1RfuhdJpC3TUDF4KY1flDC1Rzte', 0, 0, 0)
+I, [2026-05-12T13:00:47.465507 #5868]  INFO -- : (0.008391s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (1, 1, 10.0, '2024-01-15', 'Pending', 0, 0)
+I, [2026-05-12T13:00:47.474058 #5868]  INFO -- : (0.007986s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (2, 1, 15.0, '2024-02-20', 'Pending', 1, 0)
+I, [2026-05-12T13:00:47.483157 #5868]  INFO -- : (0.008580s) INSERT INTO `feedbacks` (`FeedbackId`, `UserId`, `TransactionId`, `IssueContent`, `RefundReason`, `RefundRequest`, `TicketNumber`) VALUES (1, 1, 2, 'General issue', 'Cold coffee', 1, 1001)
+I, [2026-05-12T13:00:47.497616 #5868]  INFO -- : (0.000079s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:47.498143 #5868]  INFO -- : (0.000082s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:47.498414 #5868]  INFO -- : (0.001304s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:47.499348 #5868]  INFO -- : (0.000504s) SELECT * FROM `users`
+I, [2026-05-12T13:00:47.499998 #5868]  INFO -- : (0.000266s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:47.500682 #5868]  INFO -- : (0.000257s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:47.501149 #5868]  INFO -- : (0.000291s) SELECT * FROM `users`
+I, [2026-05-12T13:00:47.501892 #5868]  INFO -- : (0.000365s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:47.502599 #5868]  INFO -- : (0.000263s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:47.503139 #5868]  INFO -- : (0.000229s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:47.504034 #5868]  INFO -- : (0.000246s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:47.504863 #5868]  INFO -- : (0.000244s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:47.508558 #5868]  INFO -- : (0.000078s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:47.509014 #5868]  INFO -- : (0.000083s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:47.509285 #5868]  INFO -- : (0.001164s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:47.509902 #5868]  INFO -- : (0.000303s) SELECT * FROM `users`
+I, [2026-05-12T13:00:47.510542 #5868]  INFO -- : (0.000261s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:47.511156 #5868]  INFO -- : (0.000256s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:47.511817 #5868]  INFO -- : (0.000304s) SELECT * FROM `users`
+I, [2026-05-12T13:00:47.512715 #5868]  INFO -- : (0.000505s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:47.513355 #5868]  INFO -- : (0.000258s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:47.513954 #5868]  INFO -- : (0.000228s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:47.514734 #5868]  INFO -- : (0.000246s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:47.515539 #5868]  INFO -- : (0.000256s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:47.522059 #5868]  INFO -- : (0.000083s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:47.522632 #5868]  INFO -- : (0.000083s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:47.522906 #5868]  INFO -- : (0.001363s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:47.523533 #5868]  INFO -- : (0.000317s) SELECT * FROM `users`
+I, [2026-05-12T13:00:47.524229 #5868]  INFO -- : (0.000259s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:47.524928 #5868]  INFO -- : (0.000343s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:47.525521 #5868]  INFO -- : (0.000305s) SELECT * FROM `users`
+I, [2026-05-12T13:00:47.526302 #5868]  INFO -- : (0.000381s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:47.526948 #5868]  INFO -- : (0.000258s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:47.527550 #5868]  INFO -- : (0.000292s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:47.528342 #5868]  INFO -- : (0.000248s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:47.529145 #5868]  INFO -- : (0.000243s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:47.545524 #5868]  INFO -- : (0.009210s) DELETE FROM `feedbacks` WHERE (1 = 1)
+I, [2026-05-12T13:00:47.558234 #5868]  INFO -- : (0.012140s) DELETE FROM `transactions` WHERE (1 = 1)
+I, [2026-05-12T13:00:47.572374 #5868]  INFO -- : (0.013664s) DELETE FROM `users` WHERE (1 = 1)
+I, [2026-05-12T13:00:47.584659 #5868]  INFO -- : (0.011701s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-05-12T13:00:47.593517 #5868]  INFO -- : (0.008339s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc', 'Brazil', 'Medium', 0)
+I, [2026-05-12T13:00:47.602685 #5868]  INFO -- : (0.008525s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (2, 'Blend', 5, 5.0, 'blend.jpg', 'blend desc', 'Colombia', 'Light', 0)
+I, [2026-05-12T13:00:47.612124 #5868]  INFO -- : (0.008975s) INSERT INTO `users` (`UserId`, `Username`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (1, 'testuser', 0, 0, 0)
+I, [2026-05-12T13:00:47.973356 #5868]  INFO -- : (0.011430s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (2, 'manager', '$2a$12$YdQwGfcjqMj7tZRa8iILY.KZsTr/MnWtUJL9wmOqef.5J9k1ljVtK', 0, 0, 0)
+I, [2026-05-12T13:00:47.981983 #5868]  INFO -- : (0.008196s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (1, 1, 10.0, '2024-01-15', 'Pending', 0, 0)
+I, [2026-05-12T13:00:47.990540 #5868]  INFO -- : (0.008043s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (2, 1, 15.0, '2024-02-20', 'Pending', 1, 0)
+I, [2026-05-12T13:00:47.999267 #5868]  INFO -- : (0.008222s) INSERT INTO `feedbacks` (`FeedbackId`, `UserId`, `TransactionId`, `IssueContent`, `RefundReason`, `RefundRequest`, `TicketNumber`) VALUES (1, 1, 2, 'General issue', 'Cold coffee', 1, 1001)
+I, [2026-05-12T13:00:48.013824 #5868]  INFO -- : (0.000084s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:48.014295 #5868]  INFO -- : (0.000083s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:48.014569 #5868]  INFO -- : (0.001322s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:48.015203 #5868]  INFO -- : (0.000316s) SELECT * FROM `users`
+I, [2026-05-12T13:00:48.015910 #5868]  INFO -- : (0.000259s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:48.016612 #5868]  INFO -- : (0.000340s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:48.017212 #5868]  INFO -- : (0.000307s) SELECT * FROM `users`
+I, [2026-05-12T13:00:48.018013 #5868]  INFO -- : (0.000397s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:48.018658 #5868]  INFO -- : (0.000259s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:48.019268 #5868]  INFO -- : (0.000296s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:48.020143 #5868]  INFO -- : (0.000252s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:48.020905 #5868]  INFO -- : (0.000248s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:48.024979 #5868]  INFO -- : (0.000078s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:48.025497 #5868]  INFO -- : (0.000083s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:48.025772 #5868]  INFO -- : (0.001252s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:48.026390 #5868]  INFO -- : (0.000309s) SELECT * FROM `users`
+I, [2026-05-12T13:00:48.027122 #5868]  INFO -- : (0.000262s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:48.027805 #5868]  INFO -- : (0.000258s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:48.028406 #5868]  INFO -- : (0.000304s) SELECT * FROM `users`
+I, [2026-05-12T13:00:48.029204 #5868]  INFO -- : (0.000395s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:48.029865 #5868]  INFO -- : (0.000259s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:48.030491 #5868]  INFO -- : (0.000312s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:48.031264 #5868]  INFO -- : (0.000245s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:48.032080 #5868]  INFO -- : (0.000245s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:48.043352 #5868]  INFO -- : (0.000352s) SELECT * FROM `transactions`
+I, [2026-05-12T13:00:48.048308 #5868]  INFO -- : (0.000321s) SELECT * FROM `users` WHERE `UserId` = 1
+I, [2026-05-12T13:00:48.048933 #5868]  INFO -- : (0.000298s) SELECT * FROM `users` WHERE `UserId` = 1
+I, [2026-05-12T13:00:48.069134 #5868]  INFO -- : (0.011749s) DELETE FROM `feedbacks` WHERE (1 = 1)
+I, [2026-05-12T13:00:48.077647 #5868]  INFO -- : (0.008004s) DELETE FROM `transactions` WHERE (1 = 1)
+I, [2026-05-12T13:00:48.085528 #5868]  INFO -- : (0.007392s) DELETE FROM `users` WHERE (1 = 1)
+I, [2026-05-12T13:00:48.093862 #5868]  INFO -- : (0.007884s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-05-12T13:00:48.102761 #5868]  INFO -- : (0.008392s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc', 'Brazil', 'Medium', 0)
+I, [2026-05-12T13:00:48.112245 #5868]  INFO -- : (0.008336s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (2, 'Blend', 5, 5.0, 'blend.jpg', 'blend desc', 'Colombia', 'Light', 0)
+I, [2026-05-12T13:00:48.120780 #5868]  INFO -- : (0.007372s) INSERT INTO `users` (`UserId`, `Username`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (1, 'testuser', 0, 0, 0)
+I, [2026-05-12T13:00:48.481855 #5868]  INFO -- : (0.010460s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (2, 'manager', '$2a$12$UO8Yp3ZYtV7tJQgLY.X4ge5gNUS9dbMr90TdYS5hFQLshfRSfo65O', 0, 0, 0)
+I, [2026-05-12T13:00:48.490335 #5868]  INFO -- : (0.007938s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (1, 1, 10.0, '2024-01-15', 'Pending', 0, 0)
+I, [2026-05-12T13:00:48.499201 #5868]  INFO -- : (0.008313s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (2, 1, 15.0, '2024-02-20', 'Pending', 1, 0)
+I, [2026-05-12T13:00:48.508172 #5868]  INFO -- : (0.008461s) INSERT INTO `feedbacks` (`FeedbackId`, `UserId`, `TransactionId`, `IssueContent`, `RefundReason`, `RefundRequest`, `TicketNumber`) VALUES (1, 1, 2, 'General issue', 'Cold coffee', 1, 1001)
+I, [2026-05-12T13:00:48.530296 #5868]  INFO -- : (0.000098s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:48.531284 #5868]  INFO -- : (0.000085s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:48.531562 #5868]  INFO -- : (0.001880s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:48.532846 #5868]  INFO -- : (0.000896s) SELECT * FROM `users`
+I, [2026-05-12T13:00:48.533488 #5868]  INFO -- : (0.000262s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:48.534211 #5868]  INFO -- : (0.000350s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:48.534859 #5868]  INFO -- : (0.000307s) SELECT * FROM `users`
+I, [2026-05-12T13:00:48.535633 #5868]  INFO -- : (0.000362s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:48.537027 #5868]  INFO -- : (0.000262s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:48.537643 #5868]  INFO -- : (0.000294s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:48.538466 #5868]  INFO -- : (0.000248s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:48.539290 #5868]  INFO -- : (0.000244s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:48.545135 #5868]  INFO -- : (0.000082s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:48.546272 #5868]  INFO -- : (0.000085s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:48.546557 #5868]  INFO -- : (0.001978s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:48.547783 #5868]  INFO -- : (0.000903s) SELECT * FROM `users`
+I, [2026-05-12T13:00:48.548421 #5868]  INFO -- : (0.000260s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:48.549644 #5868]  INFO -- : (0.000325s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:48.550240 #5868]  INFO -- : (0.000304s) SELECT * FROM `users`
+I, [2026-05-12T13:00:48.551036 #5868]  INFO -- : (0.000386s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:48.551686 #5868]  INFO -- : (0.000259s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:48.552312 #5868]  INFO -- : (0.000311s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:48.553652 #5868]  INFO -- : (0.000248s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:48.554496 #5868]  INFO -- : (0.000328s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:48.563347 #5868]  INFO -- : (0.000510s) SELECT * FROM `Products`
+I, [2026-05-12T13:00:48.587614 #5868]  INFO -- : (0.010621s) DELETE FROM `feedbacks` WHERE (1 = 1)
+I, [2026-05-12T13:00:48.595758 #5868]  INFO -- : (0.006964s) DELETE FROM `transactions` WHERE (1 = 1)
+I, [2026-05-12T13:00:48.603123 #5868]  INFO -- : (0.006971s) DELETE FROM `users` WHERE (1 = 1)
+I, [2026-05-12T13:00:48.610299 #5868]  INFO -- : (0.006833s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-05-12T13:00:48.617370 #5868]  INFO -- : (0.006631s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc', 'Brazil', 'Medium', 0)
+I, [2026-05-12T13:00:48.624715 #5868]  INFO -- : (0.006944s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (2, 'Blend', 5, 5.0, 'blend.jpg', 'blend desc', 'Colombia', 'Light', 0)
+I, [2026-05-12T13:00:48.632182 #5868]  INFO -- : (0.007018s) INSERT INTO `users` (`UserId`, `Username`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (1, 'testuser', 0, 0, 0)
+I, [2026-05-12T13:00:48.996510 #5868]  INFO -- : (0.010162s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (2, 'manager', '$2a$12$pKp0jYkQWa5WKqnKQE90meJfkkhkdEV/zIlYcD0AkNX1zWu.Pmtzi', 0, 0, 0)
+I, [2026-05-12T13:00:49.004483 #5868]  INFO -- : (0.007517s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (1, 1, 10.0, '2024-01-15', 'Pending', 0, 0)
+I, [2026-05-12T13:00:49.013283 #5868]  INFO -- : (0.008331s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (2, 1, 15.0, '2024-02-20', 'Pending', 1, 0)
+I, [2026-05-12T13:00:49.021459 #5868]  INFO -- : (0.007643s) INSERT INTO `feedbacks` (`FeedbackId`, `UserId`, `TransactionId`, `IssueContent`, `RefundReason`, `RefundRequest`, `TicketNumber`) VALUES (1, 1, 2, 'General issue', 'Cold coffee', 1, 1001)
+I, [2026-05-12T13:00:49.036287 #5868]  INFO -- : (0.000082s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:49.037145 #5868]  INFO -- : (0.000467s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:49.037485 #5868]  INFO -- : (0.001708s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:49.038114 #5868]  INFO -- : (0.000316s) SELECT * FROM `users`
+I, [2026-05-12T13:00:49.038859 #5868]  INFO -- : (0.000370s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:49.039486 #5868]  INFO -- : (0.000259s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:49.040150 #5868]  INFO -- : (0.000371s) SELECT * FROM `users`
+I, [2026-05-12T13:00:49.040858 #5868]  INFO -- : (0.000297s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:49.041569 #5868]  INFO -- : (0.000258s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:49.042117 #5868]  INFO -- : (0.000230s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:49.042956 #5868]  INFO -- : (0.000248s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:49.043776 #5868]  INFO -- : (0.000245s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:49.047803 #5868]  INFO -- : (0.000082s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:49.048269 #5868]  INFO -- : (0.000085s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:49.048545 #5868]  INFO -- : (0.001282s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:49.049221 #5868]  INFO -- : (0.000304s) SELECT * FROM `users`
+I, [2026-05-12T13:00:49.049901 #5868]  INFO -- : (0.000262s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:49.050609 #5868]  INFO -- : (0.000259s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:49.051207 #5868]  INFO -- : (0.000304s) SELECT * FROM `users`
+I, [2026-05-12T13:00:49.051906 #5868]  INFO -- : (0.000290s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:49.052644 #5868]  INFO -- : (0.000348s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:49.053180 #5868]  INFO -- : (0.000227s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:49.054029 #5868]  INFO -- : (0.000315s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:49.055358 #5868]  INFO -- : (0.000270s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:49.061147 #5868]  INFO -- : (0.000309s) SELECT * FROM `transactions`
+I, [2026-05-12T13:00:49.065136 #5868]  INFO -- : (0.000259s) SELECT `Quantity` FROM `Basket` WHERE (`TransactionId` = 1) LIMIT 1
+I, [2026-05-12T13:00:49.065798 #5868]  INFO -- : (0.000228s) SELECT `Quantity` FROM `Basket` WHERE (`TransactionId` = 2) LIMIT 1
+I, [2026-05-12T13:00:49.080138 #5868]  INFO -- : (0.008135s) DELETE FROM `feedbacks` WHERE (1 = 1)
+I, [2026-05-12T13:00:49.089211 #5868]  INFO -- : (0.008577s) DELETE FROM `transactions` WHERE (1 = 1)
+I, [2026-05-12T13:00:49.097135 #5868]  INFO -- : (0.007440s) DELETE FROM `users` WHERE (1 = 1)
+I, [2026-05-12T13:00:49.105603 #5868]  INFO -- : (0.007933s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-05-12T13:00:49.114365 #5868]  INFO -- : (0.008263s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc', 'Brazil', 'Medium', 0)
+I, [2026-05-12T13:00:49.122706 #5868]  INFO -- : (0.007828s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (2, 'Blend', 5, 5.0, 'blend.jpg', 'blend desc', 'Colombia', 'Light', 0)
+I, [2026-05-12T13:00:49.130270 #5868]  INFO -- : (0.007106s) INSERT INTO `users` (`UserId`, `Username`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (1, 'testuser', 0, 0, 0)
+I, [2026-05-12T13:00:49.495056 #5868]  INFO -- : (0.011649s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (2, 'manager', '$2a$12$Si4RI4rcF0nmEavOmv7D8uYLkowJzbdjwDn9lSgcBV1UicIaxVcdC', 0, 0, 0)
+I, [2026-05-12T13:00:49.504345 #5868]  INFO -- : (0.008670s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (1, 1, 10.0, '2024-01-15', 'Pending', 0, 0)
+I, [2026-05-12T13:00:49.513533 #5868]  INFO -- : (0.008659s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (2, 1, 15.0, '2024-02-20', 'Pending', 1, 0)
+I, [2026-05-12T13:00:49.522402 #5868]  INFO -- : (0.008345s) INSERT INTO `feedbacks` (`FeedbackId`, `UserId`, `TransactionId`, `IssueContent`, `RefundReason`, `RefundRequest`, `TicketNumber`) VALUES (1, 1, 2, 'General issue', 'Cold coffee', 1, 1001)
+I, [2026-05-12T13:00:49.537341 #5868]  INFO -- : (0.000340s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:49.537818 #5868]  INFO -- : (0.000083s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:49.538093 #5868]  INFO -- : (0.001591s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:49.538786 #5868]  INFO -- : (0.000311s) SELECT * FROM `users`
+I, [2026-05-12T13:00:49.539423 #5868]  INFO -- : (0.000259s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:49.540110 #5868]  INFO -- : (0.000331s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:49.540872 #5868]  INFO -- : (0.000418s) SELECT * FROM `users`
+I, [2026-05-12T13:00:49.541652 #5868]  INFO -- : (0.000293s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:49.542311 #5868]  INFO -- : (0.000255s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:49.542889 #5868]  INFO -- : (0.000237s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:49.543655 #5868]  INFO -- : (0.000250s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:49.544478 #5868]  INFO -- : (0.000245s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:49.548376 #5868]  INFO -- : (0.000081s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:49.548848 #5868]  INFO -- : (0.000083s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:49.549124 #5868]  INFO -- : (0.001265s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:49.549835 #5868]  INFO -- : (0.000400s) SELECT * FROM `users`
+I, [2026-05-12T13:00:49.550468 #5868]  INFO -- : (0.000260s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:49.551149 #5868]  INFO -- : (0.000257s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:49.551751 #5868]  INFO -- : (0.000304s) SELECT * FROM `users`
+I, [2026-05-12T13:00:49.552514 #5868]  INFO -- : (0.000289s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:49.553162 #5868]  INFO -- : (0.000259s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:49.553776 #5868]  INFO -- : (0.000228s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:49.554638 #5868]  INFO -- : (0.000332s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:49.555389 #5868]  INFO -- : (0.000244s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:49.566403 #5868]  INFO -- : (0.000284s) SELECT 1 AS 'one' FROM `transactions` WHERE (`refundRequested` = 1) LIMIT 1
+I, [2026-05-12T13:00:49.567139 #5868]  INFO -- : (0.000378s) SELECT * FROM `transactions` WHERE (`refundRequested` = 1)
+I, [2026-05-12T13:00:49.581385 #5868]  INFO -- : (0.007374s) DELETE FROM `feedbacks` WHERE (1 = 1)
+I, [2026-05-12T13:00:49.589083 #5868]  INFO -- : (0.007281s) DELETE FROM `transactions` WHERE (1 = 1)
+I, [2026-05-12T13:00:49.597455 #5868]  INFO -- : (0.007988s) DELETE FROM `users` WHERE (1 = 1)
+I, [2026-05-12T13:00:49.606451 #5868]  INFO -- : (0.008496s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-05-12T13:00:49.615794 #5868]  INFO -- : (0.008825s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc', 'Brazil', 'Medium', 0)
+I, [2026-05-12T13:00:49.624437 #5868]  INFO -- : (0.008078s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (2, 'Blend', 5, 5.0, 'blend.jpg', 'blend desc', 'Colombia', 'Light', 0)
+I, [2026-05-12T13:00:49.632720 #5868]  INFO -- : (0.007791s) INSERT INTO `users` (`UserId`, `Username`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (1, 'testuser', 0, 0, 0)
+I, [2026-05-12T13:00:49.994614 #5868]  INFO -- : (0.010969s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (2, 'manager', '$2a$12$hoXSoRqo3sPDfU7N2GuTSOrpwOhPsFymVC7J9MDrrJ4ojgnnCjtga', 0, 0, 0)
+I, [2026-05-12T13:00:50.002795 #5868]  INFO -- : (0.007619s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (1, 1, 10.0, '2024-01-15', 'Pending', 0, 0)
+I, [2026-05-12T13:00:50.010390 #5868]  INFO -- : (0.007163s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (2, 1, 15.0, '2024-02-20', 'Pending', 1, 0)
+I, [2026-05-12T13:00:50.018703 #5868]  INFO -- : (0.007874s) INSERT INTO `feedbacks` (`FeedbackId`, `UserId`, `TransactionId`, `IssueContent`, `RefundReason`, `RefundRequest`, `TicketNumber`) VALUES (1, 1, 2, 'General issue', 'Cold coffee', 1, 1001)
+I, [2026-05-12T13:00:50.033711 #5868]  INFO -- : (0.000080s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:50.034179 #5868]  INFO -- : (0.000082s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:50.034452 #5868]  INFO -- : (0.001252s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:50.035144 #5868]  INFO -- : (0.000377s) SELECT * FROM `users`
+I, [2026-05-12T13:00:50.035818 #5868]  INFO -- : (0.000260s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:50.036583 #5868]  INFO -- : (0.000295s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:50.037132 #5868]  INFO -- : (0.000311s) SELECT * FROM `users`
+I, [2026-05-12T13:00:50.037835 #5868]  INFO -- : (0.000296s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:50.038531 #5868]  INFO -- : (0.000254s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:50.039160 #5868]  INFO -- : (0.000232s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:50.040018 #5868]  INFO -- : (0.000320s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:50.040772 #5868]  INFO -- : (0.000247s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:50.044910 #5868]  INFO -- : (0.000078s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:50.045430 #5868]  INFO -- : (0.000083s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:50.045701 #5868]  INFO -- : (0.001247s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:50.046310 #5868]  INFO -- : (0.000304s) SELECT * FROM `users`
+I, [2026-05-12T13:00:50.047012 #5868]  INFO -- : (0.000259s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:50.047715 #5868]  INFO -- : (0.000258s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:50.048380 #5868]  INFO -- : (0.000299s) SELECT * FROM `users`
+I, [2026-05-12T13:00:50.049149 #5868]  INFO -- : (0.000375s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:50.049790 #5868]  INFO -- : (0.000260s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:50.050387 #5868]  INFO -- : (0.000292s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:50.051167 #5868]  INFO -- : (0.000248s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:50.052034 #5868]  INFO -- : (0.000297s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:50.057529 #5868]  INFO -- : (0.000037s) BEGIN
+I, [2026-05-12T13:00:50.058148 #5868]  INFO -- : (0.000262s) SELECT * FROM `Basket` WHERE (`UserId` = 1)
+I, [2026-05-12T13:00:50.058466 #5868]  INFO -- : (0.000038s) COMMIT
+I, [2026-05-12T13:00:50.082798 #5868]  INFO -- : (0.007820s) DELETE FROM `feedbacks` WHERE (1 = 1)
+I, [2026-05-12T13:00:50.090691 #5868]  INFO -- : (0.007488s) DELETE FROM `transactions` WHERE (1 = 1)
+I, [2026-05-12T13:00:50.098214 #5868]  INFO -- : (0.007097s) DELETE FROM `users` WHERE (1 = 1)
+I, [2026-05-12T13:00:50.106160 #5868]  INFO -- : (0.007498s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-05-12T13:00:50.114004 #5868]  INFO -- : (0.007262s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc', 'Brazil', 'Medium', 0)
+I, [2026-05-12T13:00:50.122440 #5868]  INFO -- : (0.007998s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (2, 'Blend', 5, 5.0, 'blend.jpg', 'blend desc', 'Colombia', 'Light', 0)
+I, [2026-05-12T13:00:50.130052 #5868]  INFO -- : (0.007162s) INSERT INTO `users` (`UserId`, `Username`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (1, 'testuser', 0, 0, 0)
+I, [2026-05-12T13:00:50.491401 #5868]  INFO -- : (0.010590s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (2, 'manager', '$2a$12$v6ygXxWA84iIiFUG0z.uN.IMV.CZZagS73ImyY8hzMOwhk0EjpQG2', 0, 0, 0)
+I, [2026-05-12T13:00:50.499841 #5868]  INFO -- : (0.007955s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (1, 1, 10.0, '2024-01-15', 'Pending', 0, 0)
+I, [2026-05-12T13:00:50.507875 #5868]  INFO -- : (0.007498s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (2, 1, 15.0, '2024-02-20', 'Pending', 1, 0)
+I, [2026-05-12T13:00:50.515634 #5868]  INFO -- : (0.007338s) INSERT INTO `feedbacks` (`FeedbackId`, `UserId`, `TransactionId`, `IssueContent`, `RefundReason`, `RefundRequest`, `TicketNumber`) VALUES (1, 1, 2, 'General issue', 'Cold coffee', 1, 1001)
+I, [2026-05-12T13:00:50.530274 #5868]  INFO -- : (0.000083s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:50.530820 #5868]  INFO -- : (0.000083s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:50.531095 #5868]  INFO -- : (0.001397s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:50.531724 #5868]  INFO -- : (0.000317s) SELECT * FROM `users`
+I, [2026-05-12T13:00:50.532513 #5868]  INFO -- : (0.000271s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:50.533215 #5868]  INFO -- : (0.000333s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:50.533810 #5868]  INFO -- : (0.000308s) SELECT * FROM `users`
+I, [2026-05-12T13:00:50.534599 #5868]  INFO -- : (0.000387s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:50.535241 #5868]  INFO -- : (0.000259s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:50.535925 #5868]  INFO -- : (0.000332s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:50.536797 #5868]  INFO -- : (0.000267s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:50.537707 #5868]  INFO -- : (0.000362s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:50.541805 #5868]  INFO -- : (0.000081s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:50.542277 #5868]  INFO -- : (0.000083s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:50.542547 #5868]  INFO -- : (0.001238s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:50.543229 #5868]  INFO -- : (0.000374s) SELECT * FROM `users`
+I, [2026-05-12T13:00:50.543862 #5868]  INFO -- : (0.000262s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:50.544539 #5868]  INFO -- : (0.000256s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:50.545127 #5868]  INFO -- : (0.000302s) SELECT * FROM `users`
+I, [2026-05-12T13:00:50.545886 #5868]  INFO -- : (0.000290s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:50.546594 #5868]  INFO -- : (0.000259s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:50.547134 #5868]  INFO -- : (0.000229s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:50.548020 #5868]  INFO -- : (0.000344s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:50.548774 #5868]  INFO -- : (0.000246s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:50.568322 #5868]  INFO -- : (0.007822s) DELETE FROM `feedbacks` WHERE (1 = 1)
+I, [2026-05-12T13:00:50.577067 #5868]  INFO -- : (0.007905s) DELETE FROM `transactions` WHERE (1 = 1)
+I, [2026-05-12T13:00:50.585717 #5868]  INFO -- : (0.008141s) DELETE FROM `users` WHERE (1 = 1)
+I, [2026-05-12T13:00:50.596652 #5868]  INFO -- : (0.010561s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-05-12T13:00:50.607968 #5868]  INFO -- : (0.010843s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc', 'Brazil', 'Medium', 0)
+I, [2026-05-12T13:00:50.622849 #5868]  INFO -- : (0.014364s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (2, 'Blend', 5, 5.0, 'blend.jpg', 'blend desc', 'Colombia', 'Light', 0)
+I, [2026-05-12T13:00:50.631872 #5868]  INFO -- : (0.008481s) INSERT INTO `users` (`UserId`, `Username`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (1, 'testuser', 0, 0, 0)
+I, [2026-05-12T13:00:50.990797 #5868]  INFO -- : (0.008417s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (2, 'manager', '$2a$12$qZAUQja6Fi0y3bZ/25s05O7pIaWmD462dPTeqizv0GihAhZDZMJPW', 0, 0, 0)
+I, [2026-05-12T13:00:50.999671 #5868]  INFO -- : (0.008313s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (1, 1, 10.0, '2024-01-15', 'Pending', 0, 0)
+I, [2026-05-12T13:00:51.008333 #5868]  INFO -- : (0.008168s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (2, 1, 15.0, '2024-02-20', 'Pending', 1, 0)
+I, [2026-05-12T13:00:51.017216 #5868]  INFO -- : (0.008329s) INSERT INTO `feedbacks` (`FeedbackId`, `UserId`, `TransactionId`, `IssueContent`, `RefundReason`, `RefundRequest`, `TicketNumber`) VALUES (1, 1, 2, 'General issue', 'Cold coffee', 1, 1001)
+I, [2026-05-12T13:00:51.040581 #5868]  INFO -- : (0.000083s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:51.041062 #5868]  INFO -- : (0.000082s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:51.041334 #5868]  INFO -- : (0.001307s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:51.042065 #5868]  INFO -- : (0.000405s) SELECT * FROM `users`
+I, [2026-05-12T13:00:51.042713 #5868]  INFO -- : (0.000266s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:51.043411 #5868]  INFO -- : (0.000263s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:51.044025 #5868]  INFO -- : (0.000312s) SELECT * FROM `users`
+I, [2026-05-12T13:00:51.044830 #5868]  INFO -- : (0.000302s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:51.045578 #5868]  INFO -- : (0.000357s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:51.046133 #5868]  INFO -- : (0.000233s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:51.047036 #5868]  INFO -- : (0.000254s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:51.047933 #5868]  INFO -- : (0.000358s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:51.052449 #5868]  INFO -- : (0.000084s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:51.052969 #5868]  INFO -- : (0.000083s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:51.053240 #5868]  INFO -- : (0.001410s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:51.053869 #5868]  INFO -- : (0.000315s) SELECT * FROM `users`
+I, [2026-05-12T13:00:51.054626 #5868]  INFO -- : (0.000362s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:51.055309 #5868]  INFO -- : (0.000286s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:51.056016 #5868]  INFO -- : (0.000395s) SELECT * FROM `users`
+I, [2026-05-12T13:00:51.056823 #5868]  INFO -- : (0.000303s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:51.058209 #5868]  INFO -- : (0.000987s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:51.058761 #5868]  INFO -- : (0.000234s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:51.059658 #5868]  INFO -- : (0.000254s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:51.060490 #5868]  INFO -- : (0.000310s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:51.104832 #5868]  INFO -- : (0.007772s) DELETE FROM `feedbacks` WHERE (1 = 1)
+I, [2026-05-12T13:00:51.112153 #5868]  INFO -- : (0.006801s) DELETE FROM `transactions` WHERE (1 = 1)
+I, [2026-05-12T13:00:51.119739 #5868]  INFO -- : (0.007199s) DELETE FROM `users` WHERE (1 = 1)
+I, [2026-05-12T13:00:51.127379 #5868]  INFO -- : (0.007227s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-05-12T13:00:51.136263 #5868]  INFO -- : (0.008272s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc', 'Brazil', 'Medium', 0)
+I, [2026-05-12T13:00:51.145007 #5868]  INFO -- : (0.008267s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (2, 'Blend', 5, 5.0, 'blend.jpg', 'blend desc', 'Colombia', 'Light', 0)
+I, [2026-05-12T13:00:51.154007 #5868]  INFO -- : (0.008543s) INSERT INTO `users` (`UserId`, `Username`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (1, 'testuser', 0, 0, 0)
+I, [2026-05-12T13:00:51.513857 #5868]  INFO -- : (0.009247s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (2, 'manager', '$2a$12$2H0m.gRoi/GTD6cJ.EH5qubvDUIQRkWQW2qkvdZ18tuaKrfmFOyL2', 0, 0, 0)
+I, [2026-05-12T13:00:51.522012 #5868]  INFO -- : (0.007640s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (1, 1, 10.0, '2024-01-15', 'Pending', 0, 0)
+I, [2026-05-12T13:00:51.531134 #5868]  INFO -- : (0.008617s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (2, 1, 15.0, '2024-02-20', 'Pending', 1, 0)
+I, [2026-05-12T13:00:51.540086 #5868]  INFO -- : (0.008430s) INSERT INTO `feedbacks` (`FeedbackId`, `UserId`, `TransactionId`, `IssueContent`, `RefundReason`, `RefundRequest`, `TicketNumber`) VALUES (1, 1, 2, 'General issue', 'Cold coffee', 1, 1001)
+I, [2026-05-12T13:00:51.554505 #5868]  INFO -- : (0.000080s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:51.555269 #5868]  INFO -- : (0.000366s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:51.555544 #5868]  INFO -- : (0.001548s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:51.556241 #5868]  INFO -- : (0.000379s) SELECT * FROM `users`
+I, [2026-05-12T13:00:51.556877 #5868]  INFO -- : (0.000260s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:51.557559 #5868]  INFO -- : (0.000255s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:51.558157 #5868]  INFO -- : (0.000303s) SELECT * FROM `users`
+I, [2026-05-12T13:00:51.558924 #5868]  INFO -- : (0.000291s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:51.559642 #5868]  INFO -- : (0.000326s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:51.560186 #5868]  INFO -- : (0.000230s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:51.561067 #5868]  INFO -- : (0.000330s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:51.561827 #5868]  INFO -- : (0.000247s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:51.565701 #5868]  INFO -- : (0.000082s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:51.566201 #5868]  INFO -- : (0.000083s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:51.566556 #5868]  INFO -- : (0.001369s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:51.567186 #5868]  INFO -- : (0.000319s) SELECT * FROM `users`
+I, [2026-05-12T13:00:51.567922 #5868]  INFO -- : (0.000341s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:51.568552 #5868]  INFO -- : (0.000261s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:51.569211 #5868]  INFO -- : (0.000367s) SELECT * FROM `users`
+I, [2026-05-12T13:00:51.569914 #5868]  INFO -- : (0.000294s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:51.570565 #5868]  INFO -- : (0.000259s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:51.571124 #5868]  INFO -- : (0.000236s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:51.572026 #5868]  INFO -- : (0.000246s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:51.572856 #5868]  INFO -- : (0.000245s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:51.593797 #5868]  INFO -- : (0.007433s) DELETE FROM `feedbacks` WHERE (1 = 1)
+I, [2026-05-12T13:00:51.601758 #5868]  INFO -- : (0.007528s) DELETE FROM `transactions` WHERE (1 = 1)
+I, [2026-05-12T13:00:51.609286 #5868]  INFO -- : (0.007077s) DELETE FROM `users` WHERE (1 = 1)
+I, [2026-05-12T13:00:51.617166 #5868]  INFO -- : (0.007437s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-05-12T13:00:51.625232 #5868]  INFO -- : (0.007570s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc', 'Brazil', 'Medium', 0)
+I, [2026-05-12T13:00:51.632934 #5868]  INFO -- : (0.007315s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (2, 'Blend', 5, 5.0, 'blend.jpg', 'blend desc', 'Colombia', 'Light', 0)
+I, [2026-05-12T13:00:51.640901 #5868]  INFO -- : (0.007501s) INSERT INTO `users` (`UserId`, `Username`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (1, 'testuser', 0, 0, 0)
+I, [2026-05-12T13:00:52.000574 #5868]  INFO -- : (0.009719s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (2, 'manager', '$2a$12$aDFYONNOwunALT5qvnK.u.cMNhownarDGjvjVzwFGU/kUayZhMfye', 0, 0, 0)
+I, [2026-05-12T13:00:52.012341 #5868]  INFO -- : (0.011262s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (1, 1, 10.0, '2024-01-15', 'Pending', 0, 0)
+I, [2026-05-12T13:00:52.021256 #5868]  INFO -- : (0.008309s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (2, 1, 15.0, '2024-02-20', 'Pending', 1, 0)
+I, [2026-05-12T13:00:52.030100 #5868]  INFO -- : (0.007784s) INSERT INTO `feedbacks` (`FeedbackId`, `UserId`, `TransactionId`, `IssueContent`, `RefundReason`, `RefundRequest`, `TicketNumber`) VALUES (1, 1, 2, 'General issue', 'Cold coffee', 1, 1001)
+I, [2026-05-12T13:00:52.044580 #5868]  INFO -- : (0.000083s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:52.045123 #5868]  INFO -- : (0.000083s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:52.045394 #5868]  INFO -- : (0.001396s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:52.046018 #5868]  INFO -- : (0.000310s) SELECT * FROM `users`
+I, [2026-05-12T13:00:52.046718 #5868]  INFO -- : (0.000260s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:52.047463 #5868]  INFO -- : (0.000281s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:52.048147 #5868]  INFO -- : (0.000376s) SELECT * FROM `users`
+I, [2026-05-12T13:00:52.048859 #5868]  INFO -- : (0.000297s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:52.049580 #5868]  INFO -- : (0.000258s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:52.050125 #5868]  INFO -- : (0.000229s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:52.050988 #5868]  INFO -- : (0.000247s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:52.051813 #5868]  INFO -- : (0.000244s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:52.055990 #5868]  INFO -- : (0.000079s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:52.056448 #5868]  INFO -- : (0.000082s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:52.056723 #5868]  INFO -- : (0.001269s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:52.057502 #5868]  INFO -- : (0.000307s) SELECT * FROM `users`
+I, [2026-05-12T13:00:52.058224 #5868]  INFO -- : (0.000348s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:52.058842 #5868]  INFO -- : (0.000258s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:52.059526 #5868]  INFO -- : (0.000389s) SELECT * FROM `users`
+I, [2026-05-12T13:00:52.060235 #5868]  INFO -- : (0.000289s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:52.060948 #5868]  INFO -- : (0.000256s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:52.061481 #5868]  INFO -- : (0.000227s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:52.062315 #5868]  INFO -- : (0.000245s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:52.063232 #5868]  INFO -- : (0.000408s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:52.082431 #5868]  INFO -- : (0.007959s) DELETE FROM `feedbacks` WHERE (1 = 1)
+I, [2026-05-12T13:00:52.090296 #5868]  INFO -- : (0.007280s) DELETE FROM `transactions` WHERE (1 = 1)
+I, [2026-05-12T13:00:52.098225 #5868]  INFO -- : (0.007500s) DELETE FROM `users` WHERE (1 = 1)
+I, [2026-05-12T13:00:52.106649 #5868]  INFO -- : (0.007932s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-05-12T13:00:52.114582 #5868]  INFO -- : (0.007444s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc', 'Brazil', 'Medium', 0)
+I, [2026-05-12T13:00:52.122772 #5868]  INFO -- : (0.007780s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (2, 'Blend', 5, 5.0, 'blend.jpg', 'blend desc', 'Colombia', 'Light', 0)
+I, [2026-05-12T13:00:52.130362 #5868]  INFO -- : (0.007077s) INSERT INTO `users` (`UserId`, `Username`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (1, 'testuser', 0, 0, 0)
+I, [2026-05-12T13:00:52.491858 #5868]  INFO -- : (0.011308s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (2, 'manager', '$2a$12$DkjxkeNfydzwjBslC.bGb.yVhscrl0oCrpyfQUC52DkxBMPArxfpi', 0, 0, 0)
+I, [2026-05-12T13:00:52.500552 #5868]  INFO -- : (0.008127s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (1, 1, 10.0, '2024-01-15', 'Pending', 0, 0)
+I, [2026-05-12T13:00:52.509569 #5868]  INFO -- : (0.008525s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (2, 1, 15.0, '2024-02-20', 'Pending', 1, 0)
+I, [2026-05-12T13:00:52.517982 #5868]  INFO -- : (0.007920s) INSERT INTO `feedbacks` (`FeedbackId`, `UserId`, `TransactionId`, `IssueContent`, `RefundReason`, `RefundRequest`, `TicketNumber`) VALUES (1, 1, 2, 'General issue', 'Cold coffee', 1, 1001)
+I, [2026-05-12T13:00:52.532256 #5868]  INFO -- : (0.000081s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:52.532791 #5868]  INFO -- : (0.000151s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:52.533062 #5868]  INFO -- : (0.001387s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:52.533701 #5868]  INFO -- : (0.000332s) SELECT * FROM `users`
+I, [2026-05-12T13:00:52.534395 #5868]  INFO -- : (0.000257s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:52.535011 #5868]  INFO -- : (0.000258s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:52.535665 #5868]  INFO -- : (0.000302s) SELECT * FROM `users`
+I, [2026-05-12T13:00:52.536359 #5868]  INFO -- : (0.000294s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:52.537010 #5868]  INFO -- : (0.000259s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:52.537550 #5868]  INFO -- : (0.000230s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:52.538413 #5868]  INFO -- : (0.000247s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:52.539230 #5868]  INFO -- : (0.000244s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:52.542817 #5868]  INFO -- : (0.000079s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:52.543335 #5868]  INFO -- : (0.000083s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:52.543607 #5868]  INFO -- : (0.001223s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:52.544327 #5868]  INFO -- : (0.000413s) SELECT * FROM `users`
+I, [2026-05-12T13:00:52.545153 #5868]  INFO -- : (0.000272s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:52.545837 #5868]  INFO -- : (0.000348s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:52.546397 #5868]  INFO -- : (0.000305s) SELECT * FROM `users`
+I, [2026-05-12T13:00:52.547166 #5868]  INFO -- : (0.000295s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:52.547877 #5868]  INFO -- : (0.000258s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:52.548401 #5868]  INFO -- : (0.000231s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:52.549228 #5868]  INFO -- : (0.000246s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:52.550034 #5868]  INFO -- : (0.000314s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:52.574383 #5868]  INFO -- : (0.007707s) DELETE FROM `feedbacks` WHERE (1 = 1)
+I, [2026-05-12T13:00:52.582098 #5868]  INFO -- : (0.007277s) DELETE FROM `transactions` WHERE (1 = 1)
+I, [2026-05-12T13:00:52.589622 #5868]  INFO -- : (0.007042s) DELETE FROM `users` WHERE (1 = 1)
+I, [2026-05-12T13:00:52.597687 #5868]  INFO -- : (0.007613s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-05-12T13:00:52.605911 #5868]  INFO -- : (0.007625s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc', 'Brazil', 'Medium', 0)
+I, [2026-05-12T13:00:52.614472 #5868]  INFO -- : (0.007963s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (2, 'Blend', 5, 5.0, 'blend.jpg', 'blend desc', 'Colombia', 'Light', 0)
+I, [2026-05-12T13:00:52.623352 #5868]  INFO -- : (0.008355s) INSERT INTO `users` (`UserId`, `Username`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (1, 'testuser', 0, 0, 0)
+I, [2026-05-12T13:00:52.984570 #5868]  INFO -- : (0.011353s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (2, 'manager', '$2a$12$SmMzrDsOanKxuhLxWiX7q.pgW02rT/yYc8XXcE0/STEKJOYESbaKK', 0, 0, 0)
+I, [2026-05-12T13:00:52.993327 #5868]  INFO -- : (0.008233s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (1, 1, 10.0, '2024-01-15', 'Pending', 0, 0)
+I, [2026-05-12T13:00:53.002230 #5868]  INFO -- : (0.008408s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (2, 1, 15.0, '2024-02-20', 'Pending', 1, 0)
+I, [2026-05-12T13:00:53.011349 #5868]  INFO -- : (0.008610s) INSERT INTO `feedbacks` (`FeedbackId`, `UserId`, `TransactionId`, `IssueContent`, `RefundReason`, `RefundRequest`, `TicketNumber`) VALUES (1, 1, 2, 'General issue', 'Cold coffee', 1, 1001)
+I, [2026-05-12T13:00:53.025756 #5868]  INFO -- : (0.000082s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:53.026409 #5868]  INFO -- : (0.000123s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:53.026677 #5868]  INFO -- : (0.001435s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:53.027217 #5868]  INFO -- : (0.000319s) SELECT * FROM `users`
+I, [2026-05-12T13:00:53.027929 #5868]  INFO -- : (0.000267s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:53.028540 #5868]  INFO -- : (0.000266s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:53.029137 #5868]  INFO -- : (0.000379s) SELECT * FROM `users`
+I, [2026-05-12T13:00:53.029851 #5868]  INFO -- : (0.000295s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:53.030593 #5868]  INFO -- : (0.000352s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:53.031142 #5868]  INFO -- : (0.000234s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:53.032090 #5868]  INFO -- : (0.000249s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:53.032957 #5868]  INFO -- : (0.000353s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:53.036712 #5868]  INFO -- : (0.000078s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:53.037179 #5868]  INFO -- : (0.000085s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:53.037456 #5868]  INFO -- : (0.001182s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:53.038070 #5868]  INFO -- : (0.000306s) SELECT * FROM `users`
+I, [2026-05-12T13:00:53.038705 #5868]  INFO -- : (0.000260s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:53.039387 #5868]  INFO -- : (0.000258s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:53.039980 #5868]  INFO -- : (0.000302s) SELECT * FROM `users`
+I, [2026-05-12T13:00:53.040756 #5868]  INFO -- : (0.000378s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:53.045473 #5868]  INFO -- : (0.004321s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:53.046165 #5868]  INFO -- : (0.000255s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:53.047108 #5868]  INFO -- : (0.000343s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:53.047868 #5868]  INFO -- : (0.000246s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:53.071097 #5868]  INFO -- : (0.007054s) DELETE FROM `feedbacks` WHERE (1 = 1)
+I, [2026-05-12T13:00:53.079187 #5868]  INFO -- : (0.007637s) DELETE FROM `transactions` WHERE (1 = 1)
+I, [2026-05-12T13:00:53.086945 #5868]  INFO -- : (0.007268s) DELETE FROM `users` WHERE (1 = 1)
+I, [2026-05-12T13:00:53.095080 #5868]  INFO -- : (0.007682s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-05-12T13:00:53.103231 #5868]  INFO -- : (0.007639s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc', 'Brazil', 'Medium', 0)
+I, [2026-05-12T13:00:53.111682 #5868]  INFO -- : (0.007955s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (2, 'Blend', 5, 5.0, 'blend.jpg', 'blend desc', 'Colombia', 'Light', 0)
+I, [2026-05-12T13:00:53.119944 #5868]  INFO -- : (0.007775s) INSERT INTO `users` (`UserId`, `Username`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (1, 'testuser', 0, 0, 0)
+I, [2026-05-12T13:00:53.481037 #5868]  INFO -- : (0.010996s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (2, 'manager', '$2a$12$iE6/gbhUCwCJgomrRqmJCu0VnNEc2E6GcHSLPe4EUJ7z6hugoSzR6', 0, 0, 0)
+I, [2026-05-12T13:00:53.489983 #5868]  INFO -- : (0.008403s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (1, 1, 10.0, '2024-01-15', 'Pending', 0, 0)
+I, [2026-05-12T13:00:53.498891 #5868]  INFO -- : (0.008398s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (2, 1, 15.0, '2024-02-20', 'Pending', 1, 0)
+I, [2026-05-12T13:00:53.507797 #5868]  INFO -- : (0.008393s) INSERT INTO `feedbacks` (`FeedbackId`, `UserId`, `TransactionId`, `IssueContent`, `RefundReason`, `RefundRequest`, `TicketNumber`) VALUES (1, 1, 2, 'General issue', 'Cold coffee', 1, 1001)
+I, [2026-05-12T13:00:53.523162 #5868]  INFO -- : (0.000165s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:53.523667 #5868]  INFO -- : (0.000090s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:53.523955 #5868]  INFO -- : (0.001543s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:53.524698 #5868]  INFO -- : (0.000424s) SELECT * FROM `users`
+I, [2026-05-12T13:00:53.525289 #5868]  INFO -- : (0.000268s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:53.525999 #5868]  INFO -- : (0.000259s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:53.526599 #5868]  INFO -- : (0.000304s) SELECT * FROM `users`
+I, [2026-05-12T13:00:53.527324 #5868]  INFO -- : (0.000296s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:53.528064 #5868]  INFO -- : (0.000349s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:53.528612 #5868]  INFO -- : (0.000230s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:53.529482 #5868]  INFO -- : (0.000247s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:53.530632 #5868]  INFO -- : (0.000246s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:53.534469 #5868]  INFO -- : (0.000144s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:53.534935 #5868]  INFO -- : (0.000083s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:53.535210 #5868]  INFO -- : (0.001243s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:53.535889 #5868]  INFO -- : (0.000370s) SELECT * FROM `users`
+I, [2026-05-12T13:00:53.536524 #5868]  INFO -- : (0.000260s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:53.537259 #5868]  INFO -- : (0.000337s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:53.537852 #5868]  INFO -- : (0.000304s) SELECT * FROM `users`
+I, [2026-05-12T13:00:53.538791 #5868]  INFO -- : (0.000541s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:53.539968 #5868]  INFO -- : (0.000425s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:53.540599 #5868]  INFO -- : (0.000252s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:53.541514 #5868]  INFO -- : (0.000331s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:53.542340 #5868]  INFO -- : (0.000262s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:53.543966 #5868]  INFO -- : (0.000225s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:53.562858 #5868]  INFO -- : (0.008373s) DELETE FROM `feedbacks` WHERE (1 = 1)
+I, [2026-05-12T13:00:53.571689 #5868]  INFO -- : (0.008333s) DELETE FROM `transactions` WHERE (1 = 1)
+I, [2026-05-12T13:00:53.580337 #5868]  INFO -- : (0.008147s) DELETE FROM `users` WHERE (1 = 1)
+I, [2026-05-12T13:00:53.589220 #5868]  INFO -- : (0.008397s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-05-12T13:00:53.598263 #5868]  INFO -- : (0.008382s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc', 'Brazil', 'Medium', 0)
+I, [2026-05-12T13:00:53.607103 #5868]  INFO -- : (0.008273s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (2, 'Blend', 5, 5.0, 'blend.jpg', 'blend desc', 'Colombia', 'Light', 0)
+I, [2026-05-12T13:00:53.615830 #5868]  INFO -- : (0.008224s) INSERT INTO `users` (`UserId`, `Username`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (1, 'testuser', 0, 0, 0)
+I, [2026-05-12T13:00:53.979495 #5868]  INFO -- : (0.011201s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (2, 'manager', '$2a$12$VojvxRNot5ZcYBA3eWErJuD2kEgVba.0won9B97IDFd1w0gESR7ku', 0, 0, 0)
+I, [2026-05-12T13:00:53.988039 #5868]  INFO -- : (0.008037s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (1, 1, 10.0, '2024-01-15', 'Pending', 0, 0)
+I, [2026-05-12T13:00:53.997183 #5868]  INFO -- : (0.008713s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (2, 1, 15.0, '2024-02-20', 'Pending', 1, 0)
+I, [2026-05-12T13:00:54.006494 #5868]  INFO -- : (0.008809s) INSERT INTO `feedbacks` (`FeedbackId`, `UserId`, `TransactionId`, `IssueContent`, `RefundReason`, `RefundRequest`, `TicketNumber`) VALUES (1, 1, 2, 'General issue', 'Cold coffee', 1, 1001)
+I, [2026-05-12T13:00:54.021291 #5868]  INFO -- : (0.000081s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:54.021705 #5868]  INFO -- : (0.000082s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:54.021999 #5868]  INFO -- : (0.001235s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:54.022631 #5868]  INFO -- : (0.000313s) SELECT * FROM `users`
+I, [2026-05-12T13:00:54.023331 #5868]  INFO -- : (0.000323s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:54.023963 #5868]  INFO -- : (0.000267s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:54.024626 #5868]  INFO -- : (0.000370s) SELECT * FROM `users`
+I, [2026-05-12T13:00:54.025328 #5868]  INFO -- : (0.000293s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:54.026053 #5868]  INFO -- : (0.000256s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:54.026594 #5868]  INFO -- : (0.000229s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:54.027447 #5868]  INFO -- : (0.000244s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:54.028476 #5868]  INFO -- : (0.000449s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:54.032966 #5868]  INFO -- : (0.000082s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:54.033425 #5868]  INFO -- : (0.000083s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:54.033699 #5868]  INFO -- : (0.001296s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:54.034414 #5868]  INFO -- : (0.000308s) SELECT * FROM `users`
+I, [2026-05-12T13:00:54.035110 #5868]  INFO -- : (0.000260s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:54.035727 #5868]  INFO -- : (0.000257s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:54.036390 #5868]  INFO -- : (0.000369s) SELECT * FROM `users`
+I, [2026-05-12T13:00:54.037084 #5868]  INFO -- : (0.000293s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:54.037803 #5868]  INFO -- : (0.000327s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:54.038344 #5868]  INFO -- : (0.000228s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:54.039193 #5868]  INFO -- : (0.000245s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:54.040034 #5868]  INFO -- : (0.000330s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:54.401367 #5868]  INFO -- : (0.010550s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`, `DateJoined`) VALUES (10, 'member_this_month', '$2a$12$59YKukqDuJfYOENH0aZhSO4Doat516DwGYB65DfnVPpXVn8Q91K4q', 0, 0, 0, '2026-05-12')
+I, [2026-05-12T13:00:54.762311 #5868]  INFO -- : (0.010987s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`, `DateJoined`) VALUES (11, 'member_last_month', '$2a$12$wgMEKZYnw6UzihbA/iY9OuEP/UBCfruCLPuoytQjSKorQ3p5b0ptK', 0, 0, 0, '2026-04-12')
+I, [2026-05-12T13:00:54.765570 #5868]  INFO -- : (0.000079s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:54.765972 #5868]  INFO -- : (0.000082s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:54.766246 #5868]  INFO -- : (0.001165s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:54.766970 #5868]  INFO -- : (0.000406s) SELECT * FROM `users`
+I, [2026-05-12T13:00:54.767599 #5868]  INFO -- : (0.000258s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:54.768306 #5868]  INFO -- : (0.000345s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:54.768930 #5868]  INFO -- : (0.000330s) SELECT * FROM `users`
+I, [2026-05-12T13:00:54.769695 #5868]  INFO -- : (0.000292s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:54.770735 #5868]  INFO -- : (0.000637s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:54.771386 #5868]  INFO -- : (0.000258s) SELECT * FROM `transactions` WHERE ((`UserId` = 10) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:54.772101 #5868]  INFO -- : (0.000256s) SELECT * FROM `transactions` WHERE ((`UserId` = 11) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:54.772657 #5868]  INFO -- : (0.000230s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:54.773557 #5868]  INFO -- : (0.000263s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:54.774389 #5868]  INFO -- : (0.000248s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:54.776125 #5868]  INFO -- : (0.000246s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:54.794023 #5868]  INFO -- : (0.008281s) DELETE FROM `feedbacks` WHERE (1 = 1)
+I, [2026-05-12T13:00:54.802607 #5868]  INFO -- : (0.007902s) DELETE FROM `transactions` WHERE (1 = 1)
+I, [2026-05-12T13:00:54.811358 #5868]  INFO -- : (0.008289s) DELETE FROM `users` WHERE (1 = 1)
+I, [2026-05-12T13:00:54.820213 #5868]  INFO -- : (0.008289s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-05-12T13:00:54.829319 #5868]  INFO -- : (0.008577s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc', 'Brazil', 'Medium', 0)
+I, [2026-05-12T13:00:54.837916 #5868]  INFO -- : (0.008082s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (2, 'Blend', 5, 5.0, 'blend.jpg', 'blend desc', 'Colombia', 'Light', 0)
+I, [2026-05-12T13:00:54.846861 #5868]  INFO -- : (0.008432s) INSERT INTO `users` (`UserId`, `Username`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (1, 'testuser', 0, 0, 0)
+I, [2026-05-12T13:00:55.206000 #5868]  INFO -- : (0.008310s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (2, 'manager', '$2a$12$gSy5JoAGI5ywhOj./3/YCOFbEIhkdG0w7hnwE5WXB5tf5WhIwxYUa', 0, 0, 0)
+I, [2026-05-12T13:00:55.214915 #5868]  INFO -- : (0.008398s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (1, 1, 10.0, '2024-01-15', 'Pending', 0, 0)
+I, [2026-05-12T13:00:55.222849 #5868]  INFO -- : (0.007370s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (2, 1, 15.0, '2024-02-20', 'Pending', 1, 0)
+I, [2026-05-12T13:00:55.231637 #5868]  INFO -- : (0.008304s) INSERT INTO `feedbacks` (`FeedbackId`, `UserId`, `TransactionId`, `IssueContent`, `RefundReason`, `RefundRequest`, `TicketNumber`) VALUES (1, 1, 2, 'General issue', 'Cold coffee', 1, 1001)
+I, [2026-05-12T13:00:55.245714 #5868]  INFO -- : (0.000080s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:55.246187 #5868]  INFO -- : (0.000083s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:55.246459 #5868]  INFO -- : (0.001253s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:55.247411 #5868]  INFO -- : (0.000479s) SELECT * FROM `users`
+I, [2026-05-12T13:00:55.248179 #5868]  INFO -- : (0.000398s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:55.248892 #5868]  INFO -- : (0.000279s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:55.249594 #5868]  INFO -- : (0.000404s) SELECT * FROM `users`
+I, [2026-05-12T13:00:55.250353 #5868]  INFO -- : (0.000310s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:55.251097 #5868]  INFO -- : (0.000261s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:55.251639 #5868]  INFO -- : (0.000230s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:55.252497 #5868]  INFO -- : (0.000245s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:55.253316 #5868]  INFO -- : (0.000315s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:55.257257 #5868]  INFO -- : (0.000096s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:55.257708 #5868]  INFO -- : (0.000082s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:55.257982 #5868]  INFO -- : (0.001251s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:55.258679 #5868]  INFO -- : (0.000393s) SELECT * FROM `users`
+I, [2026-05-12T13:00:55.259318 #5868]  INFO -- : (0.000272s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:55.260000 #5868]  INFO -- : (0.000325s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:55.260590 #5868]  INFO -- : (0.000305s) SELECT * FROM `users`
+I, [2026-05-12T13:00:55.261343 #5868]  INFO -- : (0.000288s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:55.261981 #5868]  INFO -- : (0.000257s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:55.262681 #5868]  INFO -- : (0.000241s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:55.263538 #5868]  INFO -- : (0.000314s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:55.264293 #5868]  INFO -- : (0.000245s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:55.626408 #5868]  INFO -- : (0.010968s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`, `DateJoined`) VALUES (10, 'member_this_month', '$2a$12$yW0A0aZW9F4rYly04vanK.tRgoYb3xvH3c9jSZmDDnkEE2L7xixMG', 0, 0, 0, '2026-05-12')
+I, [2026-05-12T13:00:55.989725 #5868]  INFO -- : (0.012826s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`, `DateJoined`) VALUES (11, 'member_last_month', '$2a$12$K6QHjq3sMtm1mZzc5wDeguuEyL4Phs24oj2.aqlzQ1MMGGerai21q', 0, 0, 0, '2026-04-12')
+I, [2026-05-12T13:00:55.993091 #5868]  INFO -- : (0.000149s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:55.993536 #5868]  INFO -- : (0.000082s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:55.993804 #5868]  INFO -- : (0.001274s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:55.994507 #5868]  INFO -- : (0.000397s) SELECT * FROM `users`
+I, [2026-05-12T13:00:55.995203 #5868]  INFO -- : (0.000326s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:55.995847 #5868]  INFO -- : (0.000322s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:55.996466 #5868]  INFO -- : (0.000330s) SELECT * FROM `users`
+I, [2026-05-12T13:00:55.997228 #5868]  INFO -- : (0.000289s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:55.997872 #5868]  INFO -- : (0.000257s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:55.998582 #5868]  INFO -- : (0.000255s) SELECT * FROM `transactions` WHERE ((`UserId` = 10) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:55.999314 #5868]  INFO -- : (0.000348s) SELECT * FROM `transactions` WHERE ((`UserId` = 11) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:55.999873 #5868]  INFO -- : (0.000230s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:56.000753 #5868]  INFO -- : (0.000323s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:56.001520 #5868]  INFO -- : (0.000250s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:56.023108 #5868]  INFO -- : (0.007452s) DELETE FROM `feedbacks` WHERE (1 = 1)
+I, [2026-05-12T13:00:56.031000 #5868]  INFO -- : (0.007452s) DELETE FROM `transactions` WHERE (1 = 1)
+I, [2026-05-12T13:00:56.039727 #5868]  INFO -- : (0.008232s) DELETE FROM `users` WHERE (1 = 1)
+I, [2026-05-12T13:00:56.048003 #5868]  INFO -- : (0.007751s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-05-12T13:00:56.055907 #5868]  INFO -- : (0.007429s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc', 'Brazil', 'Medium', 0)
+I, [2026-05-12T13:00:56.063584 #5868]  INFO -- : (0.007199s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (2, 'Blend', 5, 5.0, 'blend.jpg', 'blend desc', 'Colombia', 'Light', 0)
+I, [2026-05-12T13:00:56.072243 #5868]  INFO -- : (0.008242s) INSERT INTO `users` (`UserId`, `Username`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (1, 'testuser', 0, 0, 0)
+I, [2026-05-12T13:00:56.433650 #5868]  INFO -- : (0.010607s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (2, 'manager', '$2a$12$HS6yUIy0RgiRD3QTBskRoOnJD.qkgMfb3gbfaPMslkZsh1LpqQSvi', 0, 0, 0)
+I, [2026-05-12T13:00:56.447738 #5868]  INFO -- : (0.013641s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (1, 1, 10.0, '2024-01-15', 'Pending', 0, 0)
+I, [2026-05-12T13:00:56.459136 #5868]  INFO -- : (0.010829s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (2, 1, 15.0, '2024-02-20', 'Pending', 1, 0)
+I, [2026-05-12T13:00:56.467590 #5868]  INFO -- : (0.007988s) INSERT INTO `feedbacks` (`FeedbackId`, `UserId`, `TransactionId`, `IssueContent`, `RefundReason`, `RefundRequest`, `TicketNumber`) VALUES (1, 1, 2, 'General issue', 'Cold coffee', 1, 1001)
+I, [2026-05-12T13:00:56.484973 #5868]  INFO -- : (0.000083s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:56.485452 #5868]  INFO -- : (0.000083s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:56.485725 #5868]  INFO -- : (0.001333s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:56.486433 #5868]  INFO -- : (0.000384s) SELECT * FROM `users`
+I, [2026-05-12T13:00:56.487062 #5868]  INFO -- : (0.000261s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:56.487777 #5868]  INFO -- : (0.000261s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:56.488377 #5868]  INFO -- : (0.000309s) SELECT * FROM `users`
+I, [2026-05-12T13:00:56.489095 #5868]  INFO -- : (0.000298s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:56.489838 #5868]  INFO -- : (0.000358s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:56.490380 #5868]  INFO -- : (0.000230s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:56.491243 #5868]  INFO -- : (0.000245s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:56.491996 #5868]  INFO -- : (0.000245s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:56.496253 #5868]  INFO -- : (0.000149s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:56.496593 #5868]  INFO -- : (0.000076s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:56.496860 #5868]  INFO -- : (0.001170s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:56.497558 #5868]  INFO -- : (0.000400s) SELECT * FROM `users`
+I, [2026-05-12T13:00:56.498176 #5868]  INFO -- : (0.000262s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:56.498848 #5868]  INFO -- : (0.000321s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:56.499420 #5868]  INFO -- : (0.000308s) SELECT * FROM `users`
+I, [2026-05-12T13:00:56.500186 #5868]  INFO -- : (0.000293s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:56.500831 #5868]  INFO -- : (0.000259s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:56.501454 #5868]  INFO -- : (0.000230s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:56.502314 #5868]  INFO -- : (0.000317s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:56.503073 #5868]  INFO -- : (0.000246s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:56.862838 #5868]  INFO -- : (0.008014s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`, `DateJoined`) VALUES (12, 'only_this_month', '$2a$12$y5yylSccyqY1/4g4Y0RIWOI7Rbvq1VIkuGu.GDmM6qjIbyN88Av6S', 0, 0, 0, '2026-05-12')
+I, [2026-05-12T13:00:56.866221 #5868]  INFO -- : (0.000080s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:56.866674 #5868]  INFO -- : (0.000081s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:56.866945 #5868]  INFO -- : (0.001307s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:56.867640 #5868]  INFO -- : (0.000317s) SELECT * FROM `users`
+I, [2026-05-12T13:00:56.868273 #5868]  INFO -- : (0.000260s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:56.868955 #5868]  INFO -- : (0.000255s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:56.869563 #5868]  INFO -- : (0.000317s) SELECT * FROM `users`
+I, [2026-05-12T13:00:56.870332 #5868]  INFO -- : (0.000293s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:56.871049 #5868]  INFO -- : (0.000327s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:56.871697 #5868]  INFO -- : (0.000260s) SELECT * FROM `transactions` WHERE ((`UserId` = 12) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:56.872305 #5868]  INFO -- : (0.000291s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:56.873100 #5868]  INFO -- : (0.000253s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:56.876461 #5868]  INFO -- : (0.000386s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:56.878211 #5868]  INFO -- : (0.000249s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:56.896543 #5868]  INFO -- : (0.008727s) DELETE FROM `feedbacks` WHERE (1 = 1)
+I, [2026-05-12T13:00:56.905930 #5868]  INFO -- : (0.008896s) DELETE FROM `transactions` WHERE (1 = 1)
+I, [2026-05-12T13:00:56.914616 #5868]  INFO -- : (0.007873s) DELETE FROM `users` WHERE (1 = 1)
+I, [2026-05-12T13:00:56.924293 #5868]  INFO -- : (0.009172s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-05-12T13:00:56.932858 #5868]  INFO -- : (0.008030s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc', 'Brazil', 'Medium', 0)
+I, [2026-05-12T13:00:56.942239 #5868]  INFO -- : (0.008809s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (2, 'Blend', 5, 5.0, 'blend.jpg', 'blend desc', 'Colombia', 'Light', 0)
+I, [2026-05-12T13:00:56.951019 #5868]  INFO -- : (0.008136s) INSERT INTO `users` (`UserId`, `Username`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (1, 'testuser', 0, 0, 0)
+I, [2026-05-12T13:00:57.310208 #5868]  INFO -- : (0.008752s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (2, 'manager', '$2a$12$uqKGrBv63ulrdUBYYw/jf.nIqprKJDFRQIaBZhy2g5bUyoU3m3p0S', 0, 0, 0)
+I, [2026-05-12T13:00:57.318961 #5868]  INFO -- : (0.008244s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (1, 1, 10.0, '2024-01-15', 'Pending', 0, 0)
+I, [2026-05-12T13:00:57.327319 #5868]  INFO -- : (0.007803s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (2, 1, 15.0, '2024-02-20', 'Pending', 1, 0)
+I, [2026-05-12T13:00:57.336086 #5868]  INFO -- : (0.008318s) INSERT INTO `feedbacks` (`FeedbackId`, `UserId`, `TransactionId`, `IssueContent`, `RefundReason`, `RefundRequest`, `TicketNumber`) VALUES (1, 1, 2, 'General issue', 'Cold coffee', 1, 1001)
+I, [2026-05-12T13:00:57.351256 #5868]  INFO -- : (0.000083s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:57.351787 #5868]  INFO -- : (0.000084s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:57.352064 #5868]  INFO -- : (0.001386s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:57.352700 #5868]  INFO -- : (0.000315s) SELECT * FROM `users`
+I, [2026-05-12T13:00:57.353714 #5868]  INFO -- : (0.000570s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:57.354390 #5868]  INFO -- : (0.000256s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:57.354985 #5868]  INFO -- : (0.000304s) SELECT * FROM `users`
+I, [2026-05-12T13:00:57.355853 #5868]  INFO -- : (0.000294s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:57.356721 #5868]  INFO -- : (0.000374s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:57.357399 #5868]  INFO -- : (0.000235s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:57.358255 #5868]  INFO -- : (0.000246s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:57.358875 #5868]  INFO -- : (0.000229s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:57.362828 #5868]  INFO -- : (0.000081s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:57.363289 #5868]  INFO -- : (0.000084s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:57.363564 #5868]  INFO -- : (0.001275s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:57.364244 #5868]  INFO -- : (0.000310s) SELECT * FROM `users`
+I, [2026-05-12T13:00:57.364888 #5868]  INFO -- : (0.000260s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:57.365575 #5868]  INFO -- : (0.000258s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:57.366238 #5868]  INFO -- : (0.000371s) SELECT * FROM `users`
+I, [2026-05-12T13:00:57.366932 #5868]  INFO -- : (0.000293s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:57.367654 #5868]  INFO -- : (0.000326s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:57.368201 #5868]  INFO -- : (0.000229s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:57.369049 #5868]  INFO -- : (0.000245s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:57.369870 #5868]  INFO -- : (0.000311s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:57.732317 #5868]  INFO -- : (0.008919s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`, `DateJoined`) VALUES (12, 'only_this_month', '$2a$12$efpCVOfFpi1Ng.lwlFnFrOXKBobedNqrCFLlk5SeDwww4Kh7Rh.Ki', 0, 0, 0, '2026-05-12')
+I, [2026-05-12T13:00:57.735584 #5868]  INFO -- : (0.000152s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:57.736042 #5868]  INFO -- : (0.000083s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:57.736313 #5868]  INFO -- : (0.001292s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:57.737027 #5868]  INFO -- : (0.000407s) SELECT * FROM `users`
+I, [2026-05-12T13:00:57.737837 #5868]  INFO -- : (0.000355s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:57.738460 #5868]  INFO -- : (0.000262s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:57.739147 #5868]  INFO -- : (0.000381s) SELECT * FROM `users`
+I, [2026-05-12T13:00:57.740037 #5868]  INFO -- : (0.000359s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:57.740667 #5868]  INFO -- : (0.000261s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:57.741334 #5868]  INFO -- : (0.000310s) SELECT * FROM `transactions` WHERE ((`UserId` = 12) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:57.741874 #5868]  INFO -- : (0.000230s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:57.742750 #5868]  INFO -- : (0.000332s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:57.743509 #5868]  INFO -- : (0.000250s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:57.766400 #5868]  INFO -- : (0.008201s) DELETE FROM `feedbacks` WHERE (1 = 1)
+I, [2026-05-12T13:00:57.774517 #5868]  INFO -- : (0.007648s) DELETE FROM `transactions` WHERE (1 = 1)
+I, [2026-05-12T13:00:57.782540 #5868]  INFO -- : (0.007521s) DELETE FROM `users` WHERE (1 = 1)
+I, [2026-05-12T13:00:57.791710 #5868]  INFO -- : (0.008693s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-05-12T13:00:57.800763 #5868]  INFO -- : (0.008464s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc', 'Brazil', 'Medium', 0)
+I, [2026-05-12T13:00:57.810075 #5868]  INFO -- : (0.008774s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (2, 'Blend', 5, 5.0, 'blend.jpg', 'blend desc', 'Colombia', 'Light', 0)
+I, [2026-05-12T13:00:57.819484 #5868]  INFO -- : (0.008913s) INSERT INTO `users` (`UserId`, `Username`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (1, 'testuser', 0, 0, 0)
+I, [2026-05-12T13:00:58.179343 #5868]  INFO -- : (0.008761s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (2, 'manager', '$2a$12$RHQxeC40P5jOAY6uzWWqY.Wx6TeEvYcplD.6X3Vu/Vp0ZSnYrH3Vm', 0, 0, 0)
+I, [2026-05-12T13:00:58.188164 #5868]  INFO -- : (0.008097s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (1, 1, 10.0, '2024-01-15', 'Pending', 0, 0)
+I, [2026-05-12T13:00:58.196771 #5868]  INFO -- : (0.008145s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (2, 1, 15.0, '2024-02-20', 'Pending', 1, 0)
+I, [2026-05-12T13:00:58.205886 #5868]  INFO -- : (0.008606s) INSERT INTO `feedbacks` (`FeedbackId`, `UserId`, `TransactionId`, `IssueContent`, `RefundReason`, `RefundRequest`, `TicketNumber`) VALUES (1, 1, 2, 'General issue', 'Cold coffee', 1, 1001)
+I, [2026-05-12T13:00:58.220046 #5868]  INFO -- : (0.000154s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:58.220546 #5868]  INFO -- : (0.000086s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:58.220806 #5868]  INFO -- : (0.001344s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:58.221477 #5868]  INFO -- : (0.000316s) SELECT * FROM `users`
+I, [2026-05-12T13:00:58.222151 #5868]  INFO -- : (0.000334s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:58.222754 #5868]  INFO -- : (0.000258s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:58.223410 #5868]  INFO -- : (0.000371s) SELECT * FROM `users`
+I, [2026-05-12T13:00:58.224146 #5868]  INFO -- : (0.000293s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:58.224868 #5868]  INFO -- : (0.000260s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:58.225416 #5868]  INFO -- : (0.000230s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:58.226220 #5868]  INFO -- : (0.000250s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:58.227048 #5868]  INFO -- : (0.000243s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
+I, [2026-05-12T13:00:58.231248 #5868]  INFO -- : (0.000081s) SELECT * FROM `Basket` WHERE (`ProductId` = 1)
+I, [2026-05-12T13:00:58.231706 #5868]  INFO -- : (0.000082s) SELECT * FROM `Basket` WHERE (`ProductId` = 2)
+I, [2026-05-12T13:00:58.231963 #5868]  INFO -- : (0.001296s) SELECT * FROM `Products` WHERE (`Bean` = 0)
+I, [2026-05-12T13:00:58.232665 #5868]  INFO -- : (0.000309s) SELECT * FROM `users`
+I, [2026-05-12T13:00:58.233358 #5868]  INFO -- : (0.000324s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:58.233973 #5868]  INFO -- : (0.000257s) SELECT * FROM `Products` WHERE (`Bean` = 1)
+I, [2026-05-12T13:00:58.234654 #5868]  INFO -- : (0.000315s) SELECT * FROM `users`
+I, [2026-05-12T13:00:58.235362 #5868]  INFO -- : (0.000292s) SELECT * FROM `transactions` WHERE ((`UserId` = 1) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:58.236078 #5868]  INFO -- : (0.000257s) SELECT * FROM `transactions` WHERE ((`UserId` = 2) AND (`RefundRequested` = 0))
+I, [2026-05-12T13:00:58.236619 #5868]  INFO -- : (0.000229s) SELECT count(*) AS 'count' FROM `users` LIMIT 1
+I, [2026-05-12T13:00:58.237489 #5868]  INFO -- : (0.000330s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '05')) LIMIT 1
+I, [2026-05-12T13:00:58.238247 #5868]  INFO -- : (0.000244s) SELECT count(*) AS 'count' FROM `users` WHERE ((strftime('%Y', `DateJoined`) = '2026') AND (strftime('%m', `DateJoined`) = '04')) LIMIT 1
