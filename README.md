@@ -50,7 +50,8 @@
 
   ### 1. Clone the repository
   > git clone https://github.com/yourusername/badly-brewed-coffee.git
-  > cd badly-brewed-coffee
+
+  > cd project/bbc/
 
   ### 2. Install dependencies
   > bundle install
@@ -62,6 +63,15 @@
   Or with rack:
   > rackup
 
+  ---
+
   ## Account access
 
-  This section is about to be written.
+  | Type | Username | Password |
+  |----------|-------------|-------------|
+  | **Admin** | admin | admin |
+  | **Manager** | manager | manager |
+  | **Barista** | staff | staff |
+  | **User** | test | password |
+
+  ---
