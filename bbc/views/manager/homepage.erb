@@ -82,78 +82,139 @@
           <a href="/manager/salesmetrics" style="color: black; text-decoration: none; margin-left: 30px; font-family: Helvetica, sans-serif; font-weight: bold; font-size: 14pt;">Sales Metrics</a>
           <a href="/manager/adjustloyalty" style="color: black; text-decoration: none; margin-left: 30px; font-family: Helvetica, sans-serif; font-weight: bold; font-size: 14pt;">Adjust Loyalty</a>
           <a href="/manager/viewfeedback" style="color: black; text-decoration: none; margin-left: 30px; font-family: Helvetica, sans-serif; font-weight: bold; font-size: 14pt;">View Feedback</a>
-          </nav>
+        </nav>
 
         <div class="container">
-          <div class="glass-card" style="top: 15%; left: 5%; width: 42%; height: 35%;">
-            <h1>Profits Pie Chart</h1>
+          <div class="glass-card" style="top: 8%; left: 5%; width: 42%; height: 24%;">
+            <h1>Top Coffees</h1>
+            <% @top_coffees = find_top_coffees %>
+            <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+              <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Coffee Name</th>
+                <th>Coffee Cost</th>
+                <th>Total Sold</th>
+              </tr>
+              </thead>
+              <tbody>
+              <% if @top_coffees.empty? %>
+                <tr>
+                  <td colspan="3">No Coffees.</td>
+                </tr>
+              <% else %>
+                <% @top_coffees.each do |coffee| %>
+                  <tr>
+                    <td><%= @top_coffees.find_index(coffee) +1 %></td>
+                    <td><%= coffee.product_name %></td>
+                    <td><%= coffee.price %></td>
+                    <td><%= coffee.quantity_sold %></td>
+                  </tr>
+                <% end %>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+
+
+          <div class="glass-card" style="top: 8%; left: 53%; width: 42%; height: 24%;">
+            <h1 style="text-align: center; margin-top: 2vh;">Free Coffees Redeemed</h1>
+            <% @free_coffees = get_free_coffees_redeemed %>
             <div>
-              <script
-                src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0">
-              </script>
-
-              <canvas>
-                id="main_pie_chart" style="width:100%;max-width:700px"
-              </canvas>
-              <script>
-                  const xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
-                  const yValues = [55, 49, 44, 24, 15];
-                  const barColors = [
-                      "#b91d47",
-                      "#00aba9",
-                      "#2b5797",
-                      "#e8c3b9",
-                      "#1e7145"
-                  ];
-
-                  const ctx = document.getElementById('main_pie_chart');
-
-                  new Chart(ctx, {
-                      type: "pie",
-                      data: {
-                          labels: xValues,
-                          datasets: [{
-                              backgroundColor: barColors,
-                              data: yValues
-                          }]
-                      },
-                      options: {
-                          plugins: {
-                              legend: {display:true},
-                              title: {
-                                  display: true,
-                                  text: "World Wine Production 2018",
-                                  font: {size:16}
-                              }
-                          }
-                      }
-                  });
-              </script>
+              <%= @free_coffees %>
+              Coffees have been redeemed!
             </div>
+          </div>
+
+          <div class="glass-card" style="top: 34%; left: 5%; width: 42%; height: 24%;">
+            <h1>Top Beans</h1>
+            <% @top_beans = find_top_beans %>
+            <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+              <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Bean Name</th>
+                <th>Bean Cost</th>
+                <th>Total Sold</th>
+              </tr>
+              </thead>
+              <tbody>
+              <% if @top_beans.empty? %>
+                <tr>
+                  <td colspan="3">No Beans.</td>
+                </tr>
+              <% else %>
+                <% @top_beans.each do |bean| %>
+                  <tr>
+                    <td><%= @top_beans.find_index(bean) +1 %></td>
+                    <td><%= bean.product_name %></td>
+                    <td><%= bean.price %></td>
+                    <td><%= bean.quantity_sold %></td>
+                  </tr>
+                <% end %>
+              <% end %>
+              </tbody>
+            </table>
           </div>
         </div>
 
-
-        <div class="glass-card" style="top: 15%; left: 53%; width: 42%; height: 35%; text-align: left;">
-          <h2 style="margin-top: 0; font-size: 18pt;">A brief summary of business successes:</h2>
-          <p style="font-size: 10pt; color: #333;">There should be a drop-down menu to select the period for the data shown.</p>
-          <ul style="font-size: 12pt;">
-            <li>Coffees sold</li>
-            <li>Profit from coffee</li>
-            <li>Beans sold</li>
-            <li>Profit from beans</li>
-            <li>Free coffees given away</li>
-            <li>Most popular coffee</li>
-            <li>Most popular beans</li>
-          </ul>
+        <div class="glass-card" style="top: 34%; left: 53%; width: 42%; height: 24%;">
+          <h1>Top Customers</h1>
+          <% @top_beans = find_top_beans %>
+          <% @top_customers = find_top_customers %>
+          <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+            <thead>
+            <tr>
+              <th>Ranking</th>
+              <th>User ID</th>
+              <th>Username</th>
+              <th>Total Spent</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% if @top_customers.empty? %>
+              <tr>
+                <td colspan="4">No Users.</td>
+              </tr>
+            <% else %>
+              <% @top_customers.each do |customer| %>
+                <tr>
+                  <td><%= @top_customers.find_index(customer) +1 %></td>
+                  <td><%= customer.user_id %></td>
+                  <td><%= customer.username %></td>
+                  <td><%= customer.total_spent %></td>
+                </tr>
+              <% end %>
+            <% end %>
+            </tbody>
+          </table>
         </div>
 
-        <div class="glass-card" style="top: 55%; left: 5%; width: 90%; height: 40%;">
-          <h1>Discounts / Recent Transactions</h1>
-          <p>From Database Data</p>
+        <div class="glass-card" style="top: 60%; left: 5%; width: 90%; height: 34%;">
+          <h1>Membership</h1>
+          <p style="font-size: 24px">There are <%= Users.count %> members in total</p>
+
+          <% this_month = Date.today.strftime("%m") %>
+          <% this_year  = Date.today.strftime("%Y") %>
+          <% members_this_month = get_members_this_month(this_month, this_year) %>
+
+          <% last_month_date = Date.today.prev_month %>
+          <% last_month = last_month_date.strftime("%m") %>
+          <% last_year  = last_month_date.strftime("%Y") %>
+          <% members_last_month = get_members_this_month(last_month, last_year) %>
+
+          <p style="font-size: 18px">There have been <%= members_this_month %> new members this month</p>
+
+          <% if members_last_month > 0 %>
+            <p style="font-size: 18px">That is <%= ((members_this_month.to_f / members_last_month) * 100).round(2) %>% of last month's growth</p>
+          <% else %>
+            <p style="font-size: 18px">Last month had no new members to compare.</p>
+          <% end %>
         </div>
 
       </div>
+
+    </div>
     </div>
   </main>
 </body>
