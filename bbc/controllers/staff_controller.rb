@@ -1,7 +1,5 @@
 before "/staff/*" do
-  unless session[:uname] == "staff" || session[:uname] == "manager"
-    redirect "/"
-  end
+  redirect "/login" unless ["staff", "manager", "admin"].include?(session[:uname])
   session[:userId] = 7
 end
 
