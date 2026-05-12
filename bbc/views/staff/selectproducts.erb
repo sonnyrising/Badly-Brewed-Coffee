@@ -89,6 +89,18 @@
       height: 80%;
       margin: 5% auto;
       }
+
+      .scrollbox {
+        height: 97%;
+        width: 97%;
+        max-width: 97%;
+        border: 2px solid #0f9d58;
+        border-radius: 8px;
+        padding: 10px;
+        overflow-y: auto;
+        background-color: transparent;
+      }
+
      
       .product-image {
       width: 100px;
@@ -213,6 +225,10 @@
                 <% (Basket.getProductNamesForUser(session[:userId])).each do |p| %>
                   <div class="sidebar-item">
                     <span style="font-size: 0.9em; font-weight: bold;"><%= p.ProductName %></span>
+                    <% if p.ProductId > 6 %>
+                      <p> - Size </p>
+                      <p> - MilkType </p>
+                    <% end %>
                     <div class="buttons">
                       <form action="/staff/shop/add" method="post">
                         <input type="hidden" name="userId" value="<%= session[:userId] %>">
@@ -238,13 +254,17 @@
               </div>
           </div>
             <div class="display-area">
+              <div class="scrollbox">
                 <div class="product-inner-grid">
                 <% @products.each do |product| %>
                     <%= erb :"staff/product", locals: { p: product } %>
                 <% end %>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
+
     </main>
 
     <footer></footer>

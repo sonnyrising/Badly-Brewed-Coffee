@@ -98,7 +98,7 @@ get "/user/orders" do
 
   @all_transactions.each do |transaction|
     @orders_with_items[transaction.TransactionId] = Basket.join(:Products, :ProductId => :ProductId).where(TransactionId: transaction.TransactionId).all
-
+  end
   erb :"user/orderhistory"
 end
 
