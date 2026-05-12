@@ -86,26 +86,30 @@
             }
           </style>
           
-          <h1>Discounts / Recent Transactions</h1>
-          <table style="width: 100%; table-layout: fixed; border-collapse: collapse; overflow-y: scroll; color: black !important;">
-            <tr>
-              <td>Items</td>
-              <td>Date</td>
-              <td>Price</td>
-            </tr>
+          <h1>Most Recent Transaction</h1>
+          <% if @recent_items&.any? %>
+            <p style="color: black; font-weight: bold;">Date: <%= @transaction_date %> | Total: £<%= sprintf('%.2f', @total_cost) %></p>
             
-            <% if @shown_orders&.any? %>
-              <% @shown_orders.each do |order| %>
+            <table style="width: 100%; border-collapse: collapse; color: black !important;">
+              <tr style="border-bottom: 2px solid #824818;">
+                <td style="font-weight: bold;">Product</td>
+                <td style="font-weight: bold;">Quantity</td>
+                <td style="font-weight: bold;">Price (each)</td>
+                <td style="font-weight: bold;">Subtotal</td>
+              </tr>
+              
+              <% @recent_items.each do |item| %>
                 <tr>
-                  <td><%= order.UserId %></td>
-                  <td><%= order.TransactionDate %></td>
-                  <td>£<%= order.TotalCost %></td>
+                  <td><%= item[:ProductName] %></td>
+                  <td><%= item.Quantity %></td>
+                  <td>£<%= sprintf('%.2f', item[:Price]) %></td>
+                  <td>£<%= sprintf('%.2f', item[:Price] * item.Quantity) %></td>
                 </tr>
               <% end %>
-            <% else %>
-              <tr><td colspan="3" style="text-align:center; color:black;">No past transactions.</td></tr>
-            <% end %>
-          </table>
+            </table>
+          <% else %>
+            <p style="color:black; text-align:center;">No recent transactions found.</p>
+          <% end %>
         </div>
       </div>
     </div>

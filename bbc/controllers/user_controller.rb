@@ -5,6 +5,19 @@ end
 get "/user/homepage" do
   @shown_orders = Transactions.where(UserId: session[:userId]).all
 
+
+  latest_transaction = Transactions.where(UserId: session[:userId]).order(:TransactionDate).last
+
+  if latest_transaction
+    @total_cost = latest_transaction.TotalCost
+    @transaction_date = latest_transaction.TransactionDate
+    
+    @recent_items = Basket.join(:Products, :ProductId => :ProductId).where(TransactionId: latest_transaction.TransactionId).all
+  else
+    @recent_items = []
+
+end
+
   erb :"user/homepage"
 end
 
