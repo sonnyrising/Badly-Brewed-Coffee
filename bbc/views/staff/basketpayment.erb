@@ -40,25 +40,25 @@
     <main>
         <div style="display: grid; grid-template-columns: 1fr 1fr;">
             <div style="background-color: rgb(130 72 24); height: 100vh; box-shadow: 11px 5px 15px rgba(0, 0, 0, 0.3); z-index: 100;">
-            
-              <a href="/staff/selectproducts" style="text-decoration: none; color: white; font-family: Helvetica; font-weight: bold; display: flex; align-items: center; gap: 5px;">
-              <span style="font-size: 20pt;">←</span> Back to Shop
-              </a>
-              
-              <h1 style="text-align: center;position: relative;top: 5vh;">Checkout</h1>
+                
+                <a href="/staff/selectproducts" style="text-decoration: none; color: white; font-family: Helvetica; font-weight: bold; display: flex; align-items: center; gap: 5px;">
+                <span style="font-size: 20pt;">←</span> Back to Shop
+                </a>
+                
+                <h1 style="text-align: center;position: relative;top: 5vh;">Checkout</h1>
 
-              <div style="margin-top: 50px; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 20px; font-family: Helvetica;">
+                <div style="margin-top: 50px; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 20px; font-family: Helvetica;">
 
-                <h2 style="color: white;">Order Summary</h2>
+                    <h2 style="color: white;">Order Summary</h2>
 
                     <% total_cost = 0 %>
                     
                     <% (Basket.getProductNamesForUser(session[:userId])).each do |p| %>
                         <div style="display: flex; justify-content: space-between; margin-top: 10px; font-size: 1.1rem;">
                             <% 
-                              qty_item = Basket.where(UserId: session[:userId], ProductId: p.ProductId).first
-                              subtotal = p.Price * qty_item.Quantity
-                              total_cost += subtotal
+                            qty_item = Basket.where(UserId: session[:userId], ProductId: p.ProductId).first
+                            subtotal = p.Price * qty_item.Quantity
+                            total_cost += subtotal
                             %>
                             <span><%= p.ProductName %> (x<%= qty_item.Quantity %>)</span>
                             <span>£<%= '%.2f' % subtotal %></span>
@@ -74,22 +74,22 @@
                         <span>Total Cost:</span>
                         <span>£<%= '%.2f' % total_cost %></span> 
                     </div>
-              </div>
+                </div>
 
-              <div style="text-align: center; margin-top: 20px;">
-                  <form action="/thankyoupage" method="post">
-                      <h2 style="padding: 15px 40px; font-size: 18pt; font-weight: bold; border-radius: 50px; cursor: pointer;">Account Number</h2>
-                      <input type="text" name="accountnum" placeholder="Account Number" required style="width: 25vw;height: 5vh;border: 2px solid #69312b;border-radius: 15px;padding-left:10px;">
-                      <h2 style="padding: 15px 40px; font-size: 18pt; font-weight: bold; border-radius: 50px; cursor: pointer;">Payment details</h2>
-                      <input type="text" name="card_number" placeholder="Card Number" required style="width: 25vw;height: 5vh;border: 2px solid #69312b;border-radius: 15px;padding-left:10px;">
-                      <input type="text" name="cvv" placeholder="CVV" required style="width: 10vw;height: 5vh;border: 2px solid #69312b;border-radius: 15px;padding-left:10px;">
-                      <input type="date" name="expiry_date" placeholder="Expiry Date" equired style="widthr: 25vw;height: 5vh;border: 2px solid #69312b;border-radius: 15px;padding-left:10px;">
+                <div style="text-align: center; margin-top: 20px;">
+                    <form action="/staff/thankyoupage" method="post">
+                        <h2 style="padding: 15px 40px; font-size: 18pt; font-weight: bold; border-radius: 50px; cursor: pointer;">Account Number</h2>
+                        <input type="number" name="accountnum" placeholder="Account Number" step="1" required style="width: 25vw;height: 5vh;border: 2px solid #69312b;border-radius: 15px;padding-left:10px;">
+                        <h2 style="padding: 15px 40px; font-size: 18pt; font-weight: bold; border-radius: 50px; cursor: pointer;">Payment details</h2>
+                        <input type="text" name="card_number" placeholder="Card Number" required style="width: 25vw;height: 5vh;border: 2px solid #69312b;border-radius: 15px;padding-left:10px;">
+                        <input type="text" name="cvv" placeholder="CVV" required style="width: 10vw;height: 5vh;border: 2px solid #69312b;border-radius: 15px;padding-left:10px;">
+                        <input type="date" name="expiry_date" placeholder="Expiry Date" required style="width: 25vw;height: 5vh;border: 2px solid #69312b;border-radius: 15px;padding-left:10px;">
 
-                      <button type="submit" style="background-color: white; color: rgb(130 72 24); border: 2px solid white; padding: 15px 40px; font-size: 18pt; font-weight: bold; border-radius: 50px; cursor: pointer;">
-                          Buy Now
-                      </button>
-                  </form>
-              </div>
+                        <button type="submit" style="background-color: white; color: rgb(130 72 24); border: 2px solid white; padding: 15px 40px; font-size: 18pt; font-weight: bold; border-radius: 50px; cursor: pointer;">
+                            Buy Now
+                        </button>
+                    </form>
+                </div>
 
             </div>
             <div style="background-color: rgb(255, 255, 255); height: 100vh;">

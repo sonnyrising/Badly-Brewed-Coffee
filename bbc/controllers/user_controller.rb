@@ -120,9 +120,11 @@ end
 post "/thankyoupage" do
   transaction = Transactions.insert(
     UserId: params[:userId],
-    TotalCost: params[:totalcost],
+    TotalCost: params[:totalcost].to_f.round(2),
     Address: params[:address],
-    TransactionDate: Time.now.strftime("%d%m%Y").to_i
+    TransactionDate: Time.now.strftime("%d%m%Y").to_i,
+    Status: "Pending",
+    RefundRequested: false
   )
 
   transaction = Transactions[transaction]
