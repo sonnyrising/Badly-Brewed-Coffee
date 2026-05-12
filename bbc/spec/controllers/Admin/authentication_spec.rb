@@ -10,11 +10,10 @@ RSpec.describe "Authentication Tests" do
   let(:guest_session)   { { 'rack.session' => { user_id: nil, uname: nil } } }
 
   admin_get_routes = [
-    "/admin",
+    "/admin/homepage",
     "/admin/accounts",
     "/admin/views",
-    "/admin/feedback",
-    "/admin/run-inactivity-check",
+    "/admin/feedback"
   ]
 
   admin_post_routes = [
@@ -23,11 +22,15 @@ RSpec.describe "Authentication Tests" do
     "/admin/feedback/delete",         "/admin/accounts/create",
     "/admin/accounts/create/submit",  "/admin/accounts/filter",
     "/admin/accounts/view",           "/admin/accounts/edit",
-    "/admin/accounts/edit/update",
+    "/admin/accounts/edit/update",    "/admin/run-inactivity-check"
   ]
 
   test_params = { userId: 1, feedbackId: 1, 
-                  'id-data': 1, 'search-filter': 'test'  }
+                  'id-data': 1, 'search-filter': 'test',
+                  'account-data': 1, 'username-data': 'Alice',
+                  'email-data': 'Alice@gmail.com', 'loyaltypoint-data': 10,
+                  'inactivity-data': 7
+                }
 
   admin_get_routes.each do |route| 
     describe "GET #{route}" do

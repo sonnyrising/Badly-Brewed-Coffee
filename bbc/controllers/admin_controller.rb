@@ -1,10 +1,8 @@
-# frozen_string_literal: true
-
 before '/admin/*' do
   redirect '/' if session[:uname] != 'admin'
 end
 
-get '/admin' do
+get '/admin/homepage' do
   erb :"admin/homepage"
 end
 
@@ -18,14 +16,26 @@ get '/admin/views' do
 end
 
 post '/admin/views/manager' do
+  redirect 'admin/views/manager'
+end
+
+get '/admin/views/manager' do
   erb :'manager/homepage'
 end
 
 post '/admin/views/barista' do
+  redirect '/admin/views/barista'
+end
+
+get '/admin/views/barista' do
   erb :'staff/homepage'
 end
 
 post '/admin/views/user' do
+  redirect '/admin/views/user'
+end
+
+get '/admin/views/user' do
   erb :'user/homepage'
 end
 
@@ -34,7 +44,7 @@ get '/admin/feedback' do
   erb :"admin/feedback"
 end
 
-get '/admin/run-inactivity-check' do
+post '/admin/run-inactivity-check' do
   Users.daily_acc_activity_check
   redirect '/admin/accounts'
 end
@@ -68,12 +78,10 @@ post '/admin/accounts/create/submit' do
   @password = BCrypt::Password.create('password')
   puts params[:'type-data']
   if h(params[:'type-data']) == 'Staff'
-    puts 'Creating a staff account!'
     @user_id = validate_staff_id(@user_id)
     Staff.insert(StaffId: @user_id, StaffUsername: params[:'username-data'].to_s,
                  StaffEmail: params[:'email-data'].to_s, StaffPasswordHash: @password, EmployeeLevel: 'Barista', EmploymentStatus: 1)
   else
-    puts 'Creating a user account!'
     @user_id = validate_user_id(@user_id)
     Users.insert(UserId: @user_id, Username: params[:'username-data'].to_s, PassHash: @password,
                  Email: params[:'email-data'].to_s, LoyaltyPoints: 0, DaysSinceLastUse: 0, Suspended: 0)
@@ -107,10 +115,18 @@ end
 
 post '/admin/accounts/view' do
   @account = Users[params[:'account-data'].to_i]
+  redirect '/admin/accounts/view'
+end
+
+get '/admin/accounts/view' do
   erb :"admin/account"
 end
 
 post '/admin/accounts/edit' do
+  redirect 'admin/accounts/edit'
+end
+
+get '/admin/accounts/edit' do
   @account = Users[params[:'account-data'].to_i]
   erb :"admin/accountedit"
 end
