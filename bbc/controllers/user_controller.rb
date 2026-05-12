@@ -84,7 +84,12 @@ post "/user/shop/delete" do
 end
 
 get "/user/orders" do
-  @shown_orders = Transactions.where(UserId: session[:userId]).all
+  @all_transactions = Transaction.where(UserId: session[userId]).order(Sequal.desc(:TransactionId)).all
+
+  @orders_with_items = {}
+
+  @all_transactions.each do |transaction|
+    @orders_with_items[transaction.TransactionId] = Basket.join(:Products, :ProductId => :ProductId).where(TransactionId: transaction.TransactionId).all
 
   erb :"user/orderhistory"
 end
