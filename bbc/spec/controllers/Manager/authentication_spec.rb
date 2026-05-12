@@ -12,8 +12,8 @@ RSpec.describe "Manager Route Authentication Tests" do
 
   manager_routes = [
     "/manager/homepage",
-    "/manager/salesmetrics",
-    "/manager/viewfeedback"
+    "/manager/viewfeedback",
+    "/manager/adjustloyalty",
   ]
 
   manager_routes.each do |route|

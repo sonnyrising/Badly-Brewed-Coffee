@@ -46,7 +46,6 @@ RSpec.describe 'Adjust Loyalty Page', type: :feature do
     it 'renders the navigation bar with all links' do
       within('nav') do
         expect(page).to have_link('Dashboard',      href: '/manager/homepage')
-        expect(page).to have_link('Sales Metrics',  href: '/manager/salesmetrics')
         expect(page).to have_link('Adjust Loyalty', href: '/manager/adjustloyalty')
         expect(page).to have_link('View Feedback',  href: '/manager/viewfeedback')
       end
@@ -311,11 +310,6 @@ RSpec.describe 'Adjust Loyalty Page', type: :feature do
   # -------------------------------------------------------------------------
 
   describe 'Top navigation bar' do
-    it 'navigates to Sales Metrics' do
-      within('nav') { click_link 'Sales Metrics' }
-      expect(page).to have_current_path('/manager/salesmetrics')
-    end
-
     it 'navigates to View Feedback' do
       within('nav') { click_link 'View Feedback' }
       expect(page).to have_current_path('/manager/viewfeedback')
@@ -324,6 +318,11 @@ RSpec.describe 'Adjust Loyalty Page', type: :feature do
     it 'navigates to Dashboard' do
       within('nav') { click_link 'Dashboard' }
       expect(page).to have_current_path('/manager/homepage')
+    end
+
+    it 'navigates to Adjust Loyalty' do
+      within('nav') { click_link 'Adjust Loyalty' }
+      expect(page).to have_current_path('/manager/adjustloyalty')
     end
   end
 end

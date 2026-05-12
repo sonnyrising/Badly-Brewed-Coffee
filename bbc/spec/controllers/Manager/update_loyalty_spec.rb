@@ -44,29 +44,6 @@ RSpec.describe "Manager Controller Tests" do
     end
   end
 
-
-  # ---------------------------------------------------------------------------
-  # GET /manager/salesmetrics
-  # ---------------------------------------------------------------------------
-
-  describe "GET /manager/salesmetrics" do
-    context "when logged in as manager" do
-      it "returns 200" do
-        get "/manager/salesmetrics", {}, manager_session
-        expect(last_response.status).to eq(200)
-      end
-    end
-
-    context "when not logged in as manager" do
-      it "redirects to /login" do
-        get "/manager/salesmetrics", {}, guest_session
-        expect(last_response.status).to eq(302)
-        expect(last_response.location).to include("/login")
-      end
-    end
-  end
-
-
   # ---------------------------------------------------------------------------
   # GET /manager/adjustloyalty
   # ---------------------------------------------------------------------------

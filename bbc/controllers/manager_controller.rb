@@ -21,10 +21,6 @@ get "/manager/homepage" do
   erb :"manager/homepage"
 end
 
-get "/manager/salesmetrics" do
-  erb :"manager/salesmetrics"
-end
-
 get "/manager/adjustloyalty" do
   @users = Users.where(Suspended: 0)
   erb :"manager/adjustloyalty"
