@@ -22,7 +22,7 @@ post "/login" do
   elsif @uname == "admin" && @password == "admin"
     session[:uname] = @uname
     session[:userId] = 1
-    redirect "/admin"
+    redirect "/admin/homepage"
   else
     user_id = Users.GetUserId(@uname)
     if !user_id.nil?

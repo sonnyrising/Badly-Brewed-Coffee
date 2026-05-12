@@ -11,7 +11,8 @@ RSpec.describe "Order Management Logic" do
 
     post "/admin/orders/edit/update", {
       'order-data': 500,
-      'address-data': "New address"
+      'address-data': "New address",
+      'refund-data': true
     }, admin_session
 
     expect(last_response.status).to eq(302)
