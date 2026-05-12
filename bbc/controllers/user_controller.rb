@@ -10,7 +10,9 @@ get "/user/homepage" do
 
   if latest_transaction
     @total_cost = latest_transaction.TotalCost
-    @transaction_date = latest_transaction.TransactionDate
+    @transaction_date = latest_transaction.TransactionDate.to_s
+    @formatted_date = "#{@transaction_date[0..1]}/#{@transaction_date[2..3]}/#{@transaction_date[4..7]}" 
+
     
     @recent_items = Basket.join(:Products, :ProductId => :ProductId).where(TransactionId: latest_transaction.TransactionId).all
   else

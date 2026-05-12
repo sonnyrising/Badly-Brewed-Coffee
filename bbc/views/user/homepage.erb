@@ -87,8 +87,12 @@
           </style>
           
           <h1>Most Recent Transaction</h1>
-          <% if @recent_items&.any? %>
-            <p style="color: black; font-weight: bold;">Date: <%= @transaction_date %> | Total: £<%= sprintf('%.2f', @total_cost) %></p>
+          
+            <% if @recent_items&.any? %>
+              <p style="color: black;">
+                <strong>Date:</strong> <%= @formatted_date %> | 
+                <strong>Total Paid:</strong> £<%= '%.2f' % @total_cost %>
+              </p>
             
             <table style="width: 100%; border-collapse: collapse; color: black !important;">
               <tr style="border-bottom: 2px solid #824818;">
