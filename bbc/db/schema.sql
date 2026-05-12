@@ -77,8 +77,7 @@ CREATE TABLE CoffeeSize (
   Quantity INTEGER,
   CoffeeSize TEXT,
   FOREIGN KEY (BasketId) REFERENCES Basket(BasketId) ON DELETE CASCADE,
-  FOREIGN KEY (ProductId) REFERENCES Basket(ProductId) ON DELETE CASCADE,
-  FOREIGN KEY (Quantity) REFERENCES Basket(Quantity) ON DELETE CASCADE
+  FOREIGN KEY (ProductId) REFERENCES Products(ProductId) ON DELETE CASCADE
 );
 
 CREATE TABLE MilkTypes (
@@ -88,8 +87,7 @@ CREATE TABLE MilkTypes (
   Quantity INTEGER,
   MilkType TEXT,
   FOREIGN KEY (BasketId) REFERENCES Basket(BasketId) ON DELETE CASCADE,
-  FOREIGN KEY (ProductId) REFERENCES Basket(ProductId) ON DELETE CASCADE,
-  FOREIGN KEY (Quantity) REFERENCES Basket(Quantity) ON DELETE CASCADE
+  FOREIGN KEY (ProductId) REFERENCES Products(ProductId) ON DELETE CASCADE
 );
 
 CREATE TABLE Logs (
