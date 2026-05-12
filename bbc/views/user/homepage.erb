@@ -87,8 +87,8 @@
           </style>
           
           <h1>Discounts / Recent Transactions</h1>
-          <table style="width: 100%; overflow-y: scroll; color: black !important;">
-            <tr style="display: flex; flex-direction: row; justify-content: space-evenly;">
+          <table style="width: 100%; table-layout: fixed; border-collapse: collapse; overflow-y: scroll; color: black !important;">
+            <tr>
               <td>Items</td>
               <td>Date</td>
               <td>Price</td>
@@ -96,7 +96,7 @@
             
             <% if @shown_orders&.any? %>
               <% @shown_orders.each do |order| %>
-                <tr style="display: flex; flex-direction: row; justify-content: space-evenly;">
+                <tr>
                   <td><%= order.UserId %></td>
                   <td><%= order.TransactionDate %></td>
                   <td>£<%= order.TotalCost %></td>
