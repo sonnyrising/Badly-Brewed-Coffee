@@ -6,7 +6,7 @@ get "/user/homepage" do
   @shown_orders = Transactions.where(UserId: session[:userId]).all
 
 
-  latest_transaction = Transactions.where(UserId: session[:userId]).order(:TransactionDate).last
+  latest_transaction = Transactions.where(UserId: session[:userId]).order(:TransactionId).last
 
   if latest_transaction
     @transaction_date = latest_transaction.TransactionDate.to_s
@@ -17,8 +17,7 @@ get "/user/homepage" do
     @calculated_total = @recent_items.sum { |item| item[:Price] * item.Quantity }
   else
     @recent_items = []
-
-end
+  end
 
   erb :"user/homepage"
 end
@@ -92,13 +91,17 @@ post "/user/shop/delete" do
 end
 
 get "/user/orders" do
-  @all_transactions = Transaction.where(UserId: session[userId]).order(Sequal.desc(:TransactionId)).all
+  @all_transactions = Transactions.where(UserId: session[:userId]).order(Sequel.desc(:TransactionId)).all
 
   @orders_with_items = {}
 
   @all_transactions.each do |transaction|
     @orders_with_items[transaction.TransactionId] = Basket.join(:Products, :ProductId => :ProductId).where(TransactionId: transaction.TransactionId).all
   end
+<<<<<<< HEAD
+=======
+  
+>>>>>>> d0a15469d871424ec2f5ed1d94c161602c34fd69
   erb :"user/orderhistory"
 end
 
