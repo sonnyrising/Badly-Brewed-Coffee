@@ -89,7 +89,7 @@ class Users < Sequel::Model
     def load(params)
       self.Username = params.fetch("uname","").strip
       self.Email = params.fetch("email","").strip
-      self.PassHash = params.fetch("pword","").strip
+      self.PassHash = BCrypt::Password.create(params.fetch("pword","").strip)
       self.LoyaltyPoints = 0
       self.DaysSinceLastUse = 0
       self.DateJoined = Date.today.to_s
