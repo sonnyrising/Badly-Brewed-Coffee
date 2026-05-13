@@ -52,7 +52,7 @@
                 <h2 style="color: white;">Order Summary</h2>
 
                     <% total_cost = 0 %>
-                    <% cheapestCoffeePrice = 0 %>
+                    <% cheapestCoffeePrice = 10 %>
                     <% coffees = 0 %>
                     <% (Basket.getProductNamesForUser(session[:userId])).each do |p| %>
                         <div style="display: flex; justify-content: space-between; margin-top: 10px; font-size: 1.1rem;">
