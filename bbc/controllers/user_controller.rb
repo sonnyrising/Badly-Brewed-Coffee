@@ -173,9 +173,9 @@ post "/user/feedback-page-submit" do
 
     if session[:uname] == 'manager' || session[:uname] == 'staff'
       @refunds = Transactions.where(RefundRequested: true).all
-      return erb :"/refunds"
+      redirect :"/refunds"
     else
-      return erb :"user/feedback_page_submission"
+      redirect :"user/feedback_page_submission"
     end
   else
     @alert_message = "Something went wrong while saving. Please try again!"

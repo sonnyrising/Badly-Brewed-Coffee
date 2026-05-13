@@ -77,8 +77,6 @@ get "/orders" do
 end
 
 get "/refunds" do
-  @refunds = Transactions.where(refundRequested: true)
-
   if params[:message] == "accept"
     @alert_message = "Refund has been accepted."
     Transactions.where(TransactionId: params[:refund_id]).update(refundRequested: false)
@@ -88,6 +86,8 @@ get "/refunds" do
     @alert_message = "Refund has been declined."
     Transactions.where(TransactionId: params[:refund_id]).update(refundRequested: false)
   end
+
+  @refunds = Transactions.where(refundRequested: true)  # ← now reflects the updated DB state
 
   erb :"refunds"
 end
@@ -149,22 +149,6 @@ post '/updatestock' do
   update_product_values(values_hash)
 
   redirect 'managestock'
-end
-
-post "/manager/updatediscount" do
-  user_id = params[:user_id]
-  discount = params[:discount]
-
-  # Use a regex to check the discount is a number
-  if discount.nil? || discount.empty? || discount !~ /\A\d+\z/ || discount.to_i < 0 || discount.to_i > 100
-    @alert_message = "Please enter a valid discount percentage (0-100)."
-    @users = Users.where(Suspended: 0)
-    return erb :"manager/adjustloyalty"
-  else
-    Users.where(UserId: user_id).update(LoyaltyDiscount: discount.to_i)
-  end
-
-  redirect "/manager/adjustloyalty"
 end
 
 get "/addproduct" do
