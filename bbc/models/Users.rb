@@ -109,11 +109,13 @@ class Users < Sequel::Model
 
   def self.beanLoyaltyPointIncrease(userId)
     points = Users.where(UserId: userId).get(:LoyaltyPoints)
-    Users.where(UserId: userId).update(LoyaltyPoints: points + 3)
+    newpoints = (points.to_i) + 3
+    Users.where(UserId: userId).update(LoyaltyPoints: newpoints)
   end
 
-  def self.coffeeLoyaltyPointsIncrease(userId)
+  def self.coffeeLoyaltyPointIncrease(userId)
     points = Users.where(UserId: userId).get(:LoyaltyPoints)
-    Users.where(UserId: userId).update(LoyaltyPoints: points + 1)
+    newpoints = (points.to_i) + 1
+    Users.where(UserId: userId).update(LoyaltyPoints: newpoints)
   end
 end

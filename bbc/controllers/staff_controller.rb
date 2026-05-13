@@ -104,6 +104,22 @@ post "/staff/managestock" do
   redirect '/staff/managestock'
 end
 
+post "/staff/save_coffee_choices" do
+  session[:milkType] = params[:milkType]
+  session[:coffeeSize] = params[:Size]
+  if params[:Size] == "Small"
+    params[:totalcost] -= 1
+  elsif params[:Size] == "Large"
+    params[:totalcost] += 1
+  end
+
+  if params[:milkType] == "Soy Milk"
+    params[:totalcost] += 1
+  elsif params[:milkType] == "Oat Milk"
+    params[:totalcost] += 2
+  end
+end
+
 # Helper method to update the values of the product table
 def update_product_values(params)
   # Check all inputs are valid
@@ -145,9 +161,6 @@ get "/staff/basketpayment" do
 end
 
 post "/staff/thankyoupage" do
-  user = Users[params[:accountnum]]
-  redirect '/staff/basketpayment' unless !user.nil? && user.UserId != 7
-
   transaction = Transactions.insert(
     UserId: params[:accountnum],
     TotalCost: params[:totalcost],
@@ -161,7 +174,7 @@ post "/staff/thankyoupage" do
 
   Basket.orderPlaced(transaction.UserId, transaction.TransactionId)
 
-  user.update(LoyaltyPoints: user.LoyaltyPoints + 3)
+  Users.beanLoyaltyPointIncrease(params[:accountnum])
 
   erb :"staff/thankyoupage"
 end

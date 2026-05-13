@@ -68,4 +68,5 @@ class Products < Sequel::Model(:Products)
       Bean: bean
     )
   end
+
 end
