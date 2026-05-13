@@ -123,4 +123,5 @@ class Users < Sequel::Model
     points = Users.where(UserId: userId).get(:LoyaltyPoints)
     Users.where(UserId:userId).update(LoyaltyPoints:points - 10)
   end
+
 end

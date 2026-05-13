@@ -69,4 +69,10 @@ class Products < Sequel::Model(:Products)
     )
   end
 
+  def self.coffeeOrBeans(params)
+    productId = params[:productId]
+
+    return Products.where(ProductId: productId).get(:Bean) 
+  end
+
 end

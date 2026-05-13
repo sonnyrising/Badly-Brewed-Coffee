@@ -91,28 +91,44 @@ post "/user/shop" do
     @basket.updateQuantity(params)
   end
 
-  erb :"user/selectproducts"
+  if Products.coffeeOrBeans(params) == true
+    erb :"user/selectproducts"
+  else 
+    erb :"user/coffeeSelect"
+  end
 end
 
 post "/user/shop/add" do
   @products = Products.all
   Basket.add(params)
 
-  erb :"user/selectproducts"
+  if Products.coffeeOrBeans(params) == true
+    erb :"user/selectproducts"
+  else 
+    erb :"user/coffeeSelect"
+  end
 end
 
 post "/user/shop/subtract" do
   @products = Products.all
   Basket.subtract(params)
 
-  erb :"user/selectproducts"
+  if Products.coffeeOrBeans(params) == true
+    erb :"user/selectproducts"
+  else 
+    erb :"user/coffeeSelect"
+  end
 end
 
 post "/user/shop/delete" do
   @products = Products.all
   Basket.RemoveItem(params)
 
-  erb :"user/selectproducts"
+  if Products.coffeeOrBeans(params) == true
+    erb :"user/selectproducts"
+  else 
+    erb :"user/coffeeSelect"
+  end
 end
 
 get "/user/orders" do
@@ -176,7 +192,7 @@ post "/thankyoupage" do
     Users.beanLoyaltyPointIncrease(userId)
   else
     Users.coffeeLoyaltyPointIncrease(userId)
-    
+
     if Users.get_loyalty_points(userId) >= 10
       Users.pointsRedeemed(userId)
     end
