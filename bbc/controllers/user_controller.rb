@@ -52,17 +52,21 @@ post "/user/shop" do
   item_bought = @basket.bought(params)
 
   if !item_bought.nil?
+    puts "right place"
     latest_product = @basket.checkLatest(params)
     if latest_product.nil?
+      puts "latest prdoduct nil"
       @basket.addToBasket(params)
       @basket.save_changes
     else 
+      puts "update quan 2"
       @basket.updateQuantity(params)
     end
   elsif exists.nil? || user_exists.nil? || product_exists.nil?
     @basket.addToBasket(params)
     @basket.save_changes
   else
+    puts "update quan"
     @basket.updateQuantity(params)
   end
 
