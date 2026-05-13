@@ -32,6 +32,20 @@ get "/user/settings" do
   erb :"user/settings"
 end
 
+post "/user/update_settings" do
+  new_username = params[:username]
+  new_email = params[:email]
+
+  Users.where(UserId: session[:userId]).update(
+    Username: new_username,
+    Email: new_email
+  )
+
+  session[:uname] = new_username
+
+  redirect "/user/settings"
+end
+
 get "/user/shop" do
   @products = Products.all
 
