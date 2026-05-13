@@ -255,7 +255,7 @@
                         <button type="submit" class="bin"><img src="/imgs/bin.png" alt="Delete"></button>
                       </form>
                     </div>
-                    <span class="qty-tag">x<%= Basket.where(UserId: session[:userId], ProductId: p.ProductId).first.Quantity %></span>
+                    <span class="qty-tag">x<%= Basket.where(UserId: session[:userId], ProductId: p.ProductId).last.Quantity %></span>
                   </div>
                   <% end %>
                 <% end %>
