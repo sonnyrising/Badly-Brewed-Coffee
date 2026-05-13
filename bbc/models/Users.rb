@@ -118,4 +118,9 @@ class Users < Sequel::Model
     newpoints = (points.to_i) + 1
     Users.where(UserId: userId).update(LoyaltyPoints: newpoints)
   end
+
+  def self.pointsRedeemed(userId)
+    points = Users.where(UserId: userId).get(:LoyaltyPoints)
+    Users.where(UserId:userId).update(LoyaltyPoints:points - 10)
+  end
 end

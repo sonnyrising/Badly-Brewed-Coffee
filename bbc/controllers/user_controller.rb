@@ -77,21 +77,17 @@ post "/user/shop" do
   item_bought = @basket.bought(params)
 
   if !item_bought.nil?
-    puts "right place"
     latest_product = @basket.checkLatest(params)
     if latest_product.nil?
-      puts "latest prdoduct nil"
       @basket.addToBasket(params)
       @basket.save_changes
     else 
-      puts "update quan 2"
       @basket.updateQuantity(params)
     end
   elsif exists.nil? || user_exists.nil? || product_exists.nil?
     @basket.addToBasket(params)
     @basket.save_changes
   else
-    puts "update quan"
     @basket.updateQuantity(params)
   end
 
@@ -174,8 +170,18 @@ post "/thankyoupage" do
   transaction = Transactions[transaction]
 
   Basket.orderPlaced(transaction.UserId, transaction.TransactionId)
+  userId = params[:userId]
 
-  Users.beanLoyaltyPointIncrease(params[:userId])
+  if params[:beans].to_i > 0
+    Users.beanLoyaltyPointIncrease(userId)
+  else
+    Users.coffeeLoyaltyPointIncrease(userId)
+    
+    if Users.get_loyalty_points(userId) >= 10
+      Users.pointsRedeemed(userId)
+    end
+  end
+
 
   erb :"user/thankyoupage"
 end
