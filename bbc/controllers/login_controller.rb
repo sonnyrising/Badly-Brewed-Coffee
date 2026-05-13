@@ -11,16 +11,16 @@ post "/login" do
   @pword_error = @password.empty? ? "Please enter a password" : nil
   @matching_error = nil
 
-  if @uname == "manager" && @password == "manager"
-    session[:uname] = @uname
+  if @uname == "Manager" && BCrypt::Password.new("$2a$12$9CBEK/IV6GtNCFW8AG1qVOJ66zx8Q3he3YQlMvcLa8r1vzboQSKei") == @password
+    session[:uname] = @uname.downcase
     puts "Login. Session username: " + session[:uname]
     redirect "/manager/homepage"
     puts "Redirecting"
-  elsif @uname == "staff" && @password == "staff"
-    session[:uname] = @uname
+  elsif @uname == "Staff" && BCrypt::Password.new("$2a$12$nW2DIockRWPhi90But102OUMRXYR7/LCQRdUbH771UlqS2Zwan7O6") == @password
+    session[:uname] = @uname.downcase
     redirect "/staff/homepage"
-  elsif @uname == "admin" && @password == "admin"
-    session[:uname] = @uname
+  elsif @uname == "Admin" && BCrypt::Password.new("$2a$12$sK6oWkCNEDorTY00zHArXOV7O/4iA3DMsQagqYVJ6DVT9F2jCrONq") == @password
+    session[:uname] = @uname.downcase
     session[:userId] = 1
     redirect "/admin/homepage"
   else
