@@ -108,6 +108,7 @@ get "/user/orders" do
     @recent_items = []
   end
 
+  @all_transactions = Transactions.where(UserId: session[:userId]).order(:TransactionId).reverse.all || []
   @orders_with_items = {}
 
   @all_transactions.each do |transaction|
