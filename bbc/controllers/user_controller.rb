@@ -28,7 +28,8 @@ end
 
 get "/user/settings" do
   @user = Users.where(UserId: session[:userId]).first
-
+  @success_message = session.delete(:success_message)
+  
   erb :"user/settings"
 end
 
@@ -42,6 +43,7 @@ post "/user/update_settings" do
   )
 
   session[:uname] = new_username
+  session[:success_message] = "Account details successfully updated!"
 
   redirect "/user/settings"
 end
