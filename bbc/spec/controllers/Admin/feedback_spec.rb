@@ -16,8 +16,11 @@ RSpec.describe "For feedback listing," do
 
   context "when a filter is applied" do
     it "it returns 302 and displays all refund feedback entries" do
-      post "/admin/feedback/filter", {}, admin_session
-      expect(last_response.status).to eq(302)
+      Feedbacks.insert(RefundRequest: 'Yes', TicketNumber: 1001, RefundReason: 'test reason')
+
+      post "/admin/feedback/filter", { 'filter' => 'refund_issue' }, admin_session
+      expect(last_response.status).to eq(200)
+      expect(last_response.body).to include("admin/feedback")
     end
   end
 
