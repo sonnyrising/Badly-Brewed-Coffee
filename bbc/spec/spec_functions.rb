@@ -1,5 +1,6 @@
 def spec_before
   Feedbacks.dataset.delete
+  Basket.dataset.delete
   Transactions.dataset.delete
   Users.dataset.delete
   Products.dataset.delete
@@ -21,7 +22,7 @@ def spec_before
     ProductName: "Blend",
     StockQuantity: 5,
     Price: 5.00,
-    ProductImage:       "blend.jpg",
+    ProductImage: "blend.jpg",
     ProductDescription: "blend desc",
     Origin: "Colombia",
     Roast: "Light",
@@ -37,6 +38,15 @@ def spec_before
   )
 
   Users.insert(
+    UserId: 3,
+    Username: "test",
+    PassHash: BCrypt::Password.create('password'),
+    LoyaltyDiscount: 0,
+    LoyaltyPoints: 0,
+    Suspended: false
+  )
+
+  Users.insert(
     UserId: 2,
     Username: "manager",
     PassHash: BCrypt::Password.create('manager'),
@@ -44,6 +54,25 @@ def spec_before
     LoyaltyPoints: 0,
     Suspended: false
   )
+
+  Users.insert(
+    UserId: 4,
+    Username: "staff",
+    PassHash: BCrypt::Password.create('staff'),
+    LoyaltyDiscount: 0,
+    LoyaltyPoints: 0,
+    Suspended: false
+  )
+
+  Users.insert(
+    UserId: 5,
+    Username: "admin",
+    PassHash: BCrypt::Password.create('admin'),
+    LoyaltyDiscount: 0,
+    LoyaltyPoints: 0,
+    Suspended: false
+  )
+
 
   Transactions.insert(
     TransactionId: 1,

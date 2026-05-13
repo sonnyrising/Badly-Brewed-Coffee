@@ -214,6 +214,9 @@
           if is_success
             @payment_message = "The Payment Provider has been notified of the refund."
             @email_message = "The user has been emailed a receipt for the refund."
+          else
+            @payment_message = "The refund has been denied"
+            @email_message = "The user has been emailed to inform them of the rejection."
           end
         %>
 

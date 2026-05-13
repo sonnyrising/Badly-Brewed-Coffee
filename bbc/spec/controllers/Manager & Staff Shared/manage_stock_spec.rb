@@ -12,7 +12,7 @@ RSpec.describe "Manage Stock Page Tests" do
     it "lists all seeded products by name" do
       get "/managestock", {}, manager_session
       expect(last_response.body).to include("Old Coffee")
-      expect(last_response.body).to include("Spare Blend")
+      expect(last_response.body).to include("Blend")
     end
 
     it "includes a Save Changes button for each product" do

@@ -1,12 +1,17 @@
 require 'capybara/rspec'
 require 'rack/test'
 
-require_relative '../../../'
+require_relative '../spec_helper'
 
 Capybara.app = Sinatra::Application
 Capybara.default_driver = :rack_test
 
-login_as_manager
+def login_as_manager
+  visit '/login'
+  fill_in 'uname', with: 'manager'
+  fill_in 'pword', with: 'manager'
+  click_button 'Log in'
+end
 
 RSpec.describe 'Manage Stock Page', type: :feature do
 
