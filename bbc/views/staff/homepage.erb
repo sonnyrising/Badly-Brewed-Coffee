@@ -112,61 +112,58 @@
             </div>
 
             <div style="background-color: rgb(255, 255, 255); height: 100vh;" class="squish">
-              <a href="/"><img src="/imgs/dashboard.png" alt="Dashboard" style="width:100%; height:100vh;"></a>
-            </div>
+              <img src="/imgs/dashboard.png" alt="Dashboard" style="width: 100%;height: 100%;object-fit: fill;"></a>
 
-            <div style="color: black;width: 55vw;height: 40vh;position: absolute;top: 10%;left: 30%;background: transparent;backdrop-filter: blur(15px);box-shadow: 0px 0px 20px 0px #0000007a;border-radius: 30px; text-align: center;">
-	            <h1>History of BBC</h1>
-             <p>
-              Badly Brewed Coffee (BBC) was founded on a simple mission: to bring the "Wild Side" of coffee to the everyday drinker. Our story began in the rugged highlands of Mexico, where we discovered the <strong>JorgeBean</strong>—a rare variety that thrives in the untamed rainforest rather than on a traditional farm.
-            </p>
+              <div style="color: black;width: 55vw;height: 40vh;position: absolute;top: 10%;left: 30%;background: transparent;backdrop-filter: blur(15px);box-shadow: 0px 0px 20px 0px #0000007a;border-radius: 30px; text-align: center;">
+	              <h1>History of BBC</h1>
+              <p>
+                Badly Brewed Coffee (BBC) was founded on a simple mission: to bring the "Wild Side" of coffee to the everyday drinker. Our story began in the rugged highlands of Mexico, where we discovered the <strong>JorgeBean</strong>—a rare variety that thrives in the untamed rainforest rather than on a traditional farm.
+              </p>
             
-            <p>
-              We hand-collect these beans from their natural habitat and bring them back for a specialized process we call "The Cracking." Instead of standard industrial roasting, we carefully fracture the sun-dried husks to access the raw green coffee inside. This unique method ensures that the intense, authentic flavors of the high-altitude harvest are preserved in every cup.
-            </p>
+              <p>
+                We hand-collect these beans from their natural habitat and bring them back for a specialized process we call "The Cracking." Instead of standard industrial roasting, we carefully fracture the sun-dried husks to access the raw green coffee inside. This unique method ensures that the intense, authentic flavors of the high-altitude harvest are preserved in every cup.
+              </p>
+              <p> </p>
+              <hr>
 
-            <hr>
-
-            <h2>Our Products</h2>
+              <h2>Our Products</h2>
             
-            <p>
-              Our flagship <strong>Mexican JorgeBean (£12.99)</strong> is harvested directly from the wild for a rich, deep flavor. For those needing a bold, high-acidity roast, the <strong>Kenyan AA (£10.99)</strong> is designed for a strong start to your morning. If you prefer a smooth, complex cup, the <strong>Guatemalan Antigua (£7.99)</strong> offers a taste of pure nostalgia.
-            </p>
+              <p>
+                Our flagship <strong>Mexican JorgeBean (£12.99)</strong> is harvested directly from the wild for a rich, deep flavor. For those needing a bold, high-acidity roast, the <strong>Kenyan AA (£10.99)</strong> is designed for a strong start to your morning. If you prefer a smooth, complex cup, the <strong>Guatemalan Antigua (£7.99)</strong> offers a taste of pure nostalgia.
+              </p>
 
-            <p>
-              For the more adventurous, the earthy <strong>Amazonian Blend (£6.59)</strong> makes you feel the river flow in every sip. We also offer the <strong>Ethiopian Yirgacheffe (£4.99)</strong>, which is bright and floral, filled with joy and flavor. Finally, our <strong>Colombian Supremo (£3.99)</strong> remains a classic, dependable choice for an authentic Colombian taste.
-            </p>
+              <p>
+                For the more adventurous, the earthy <strong>Amazonian Blend (£6.59)</strong> makes you feel the river flow in every sip. We also offer the <strong>Ethiopian Yirgacheffe (£4.99)</strong>, which is bright and floral, filled with joy and flavor. Finally, our <strong>Colombian Supremo (£3.99)</strong> remains a classic, dependable choice for an authentic Colombian taste.
+              </p>
 
-            <p><em>All items are available for purchase in quantities of up to 10 units.</em></p>
- 
+              <p><em>All items are available for purchase in quantities of up to 10 units.</em></p>
+              </div>
+        
 
-            </div>
-
-
-            <div style="color: black;width: 55vw;height: 40vh;position: absolute;top: 55%;left: 30%;background: transparent;backdrop-filter: blur(15px);box-shadow: 0px 0px 20px 0px #0000007a;border-radius: 30px; text-align: center;">
-				<h1>Recent Transactions</h1>
-				<div style="position:relative;top:3vh;">
-					<table style="width: 100%; table-layout: fixed; border-collapse: collapse; overflow-y: scroll; color: black !important;">
-						<tr>
-							<td>Items</td>
-							<td>Date</td>
-							<td>Price</td>
-						</tr>
+              <div style="color: black;width: 55vw;height: 40vh;position: absolute;top: 55%;left: 30%;background: transparent;backdrop-filter: blur(15px);box-shadow: 0px 0px 20px 0px #0000007a;border-radius: 30px; text-align: center;">
+				        <h1>Recent Transactions</h1>
+				        <div style="position:relative;top:3vh;">
+					      <table style="width: 100%; table-layout: fixed; border-collapse: collapse; overflow-y: scroll; color: black !important;">
+						    <tr>
+							    <td>Items</td>
+							    <td>Date</td>
+							    <td>Price</td>
+						    </tr>
 						
-						<% if @shown_orders&.any? %>
-							<% @shown_orders.each do |order| %>
-								<tr>
-									<td><%= order.UserId %></td>
-									<td><%= order.TransactionDate.to_s.insert(2, "/").insert(5, "/") %></td>
-									<td>£<%= order.TotalCost %></td>
-								</tr>
-							<% end %>
-						<% else %>
-							<tr><td colspan="3" style="text-align:center; color:black;">No past transactions.</td></tr>
-						<% end %>
-					</table>
-				</div>
-            </div>
+						    <% if @shown_orders&.any? %>
+							    <% @shown_orders.each do |order| %>
+				 				    <tr>
+									    <td><%= order.UserId %></td>
+									    <td><%= order.TransactionDate.to_s.insert(2, "/").insert(5, "/") %></td>
+									    <td>£<%= order.TotalCost %></td>
+								    </tr>
+							    <% end %>
+						    <% else %>
+							    <tr><td colspan="3" style="text-align:center; color:black;">No past transactions.</td></tr>
+						    <% end %>
+					      </table>
+				      </div>
+           </div>
         </div>
     </main>
     <footer>
