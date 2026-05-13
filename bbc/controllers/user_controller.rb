@@ -28,24 +28,31 @@ end
 
 get "/user/settings" do
   @user = Users.where(UserId: session[:userId]).first
+
   @success_message = session.delete(:success_message)
-  
+  @error_message = session.delete(:error_message)
+
+
   erb :"user/settings"
 end
 
 post "/user/update_settings" do
   new_username = params[:username]
   new_email = params[:email]
+  current_user_id = session[:userId]
 
-  Users.where(UserId: session[:userId]).update(
-    Username: new_username,
-    Email: new_email
-  )
+  existing_user = Users.where(Username: new_username).exclude(UserId: current_user_id).first
 
-  session[:uname] = new_username
-  session[:success_message] = "Account details successfully updated!"
+  if existing_user
+    session[:error_message] = "Sorry, the username '#{new_username}' is already taken!"
+    redirect "/user/settings"
+  else  
+    Users.where(UserId: session[:userId]).update(Username: new_username,Email: new_email)
 
-  redirect "/user/settings"
+    session[:uname] = new_username
+    session[:success_message] = "Account details successfully updated!"
+    redirect "/user/settings"
+  end
 end
 
 get "/user/shop" do
