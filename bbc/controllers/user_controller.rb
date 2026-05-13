@@ -95,7 +95,6 @@ post "/user/shop/delete" do
 end
 
 get "/user/orders" do
-  #@shown_orders = Transactions.where(UserId: session[:userId]).all
   latest_transaction = Transactions.where(UserId: session[:userId]).order(:TransactionDate).last
 
   if latest_transaction
