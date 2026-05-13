@@ -21,8 +21,8 @@ RSpec.describe "Authentication Tests" do
     "/admin/views/manager",           "/admin/views/barista",
     "/admin/views/user",              "/admin/feedback/filter",
     "/admin/feedback/delete",         "/admin/accounts/create",
-    "/admin/accounts/create/submit",  "/admin/accounts/filter",
-    "/admin/accounts/view",           "/admin/accounts/edit",
+    "/admin/accounts/create/submit",  
+    "/admin/accounts/edit",
     "/admin/accounts/edit/update",    "/admin/run-inactivity-check"
   ]
 

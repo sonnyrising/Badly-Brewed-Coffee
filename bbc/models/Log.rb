@@ -1,3 +1,3 @@
-class Log < Sequel::Model
+class Logs < Sequel::Model
 
 end
