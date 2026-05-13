@@ -56,7 +56,7 @@
                     <% (Basket.getProductNamesForUser(session[:userId])).each do |p| %>
                         <div style="display: flex; justify-content: space-between; margin-top: 10px; font-size: 1.1rem;">
                             <% 
-                              qty_item = Basket.where(UserId: session[:userId], ProductId: p.ProductId).first
+                              qty_item = Basket.where(UserId: session[:userId], ProductId: p.ProductId).last
                               subtotal = p.Price * qty_item.Quantity
                               total_cost += subtotal
                             %>
