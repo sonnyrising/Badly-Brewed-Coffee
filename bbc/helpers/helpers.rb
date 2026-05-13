@@ -241,7 +241,7 @@ class User
 
     transactions = Transactions.where(UserId: @user_id, RefundRequested: false)
     transactions.each do |transaction|
-      @total_spent += transaction.TotalCost
+      @total_spent += transaction.TotalCost.to_f
     end
   end
 end
