@@ -27,6 +27,8 @@ post "/user/homepage" do
 end
 
 get "/user/settings" do
+  @user = Users.where(UserId: session[:userId]).first
+
   erb :"user/settings"
 end
 
