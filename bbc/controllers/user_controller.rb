@@ -133,6 +133,24 @@ post '/user/shop/delete' do
   end
 end
 
+post '/user/filter' do
+  if !params[:'search'].empty? && !Products[params[:'search']].nil?
+    @products = []
+    @products << Products[params[:'search']]
+    if params[:'search'].to_i < 6
+      erb :"user/selectproducts"
+    else
+      erb :"user/coffeeSelect"
+    end
+  else
+    if params[:'search'].to_i < 6
+      redirect "/user/shop"
+    else
+      redirect "user/coffeeSelect"
+    end
+  end
+end
+
 get '/user/orders' do
   latest_transaction = Transactions.where(UserId: session[:userId]).order(:TransactionDate).last
 
