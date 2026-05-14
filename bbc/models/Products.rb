@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'sequel'
 require 'sqlite3'
 require_relative '../db/db'
@@ -5,7 +7,7 @@ require_relative '../db/db'
 class Products < Sequel::Model(:Products)
   # Product Name
   def self.GetProductName(productId)
-    return Products.where(ProductId: productId).get(:ProductName)
+    Products.where(ProductId: productId).get(:ProductName)
   end
 
   def self.SetProductName(productId, productName)
@@ -14,7 +16,7 @@ class Products < Sequel::Model(:Products)
 
   # Product Price
   def self.GetPrice(productId)
-    return Products.where(ProductId: productId).get(:Price)
+    Products.where(ProductId: productId).get(:Price)
   end
 
   def self.SetPrice(productId, productPrice)
@@ -23,7 +25,7 @@ class Products < Sequel::Model(:Products)
 
   # Product Quantity
   def self.GetStockQuantity(productId)
-    return Products.where(ProductId: productId).get(:StockQuantity)
+    Products.where(ProductId: productId).get(:StockQuantity)
   end
 
   def self.SetStockQuantity(productId, stockQuantity)
@@ -32,7 +34,7 @@ class Products < Sequel::Model(:Products)
 
   # Product Image
   def self.GetProductImage(productId)
-    return Products.where(ProductId: productId).get(:ProductImage)
+    Products.where(ProductId: productId).get(:ProductImage)
   end
 
   def self.SetProductImage(productId, productImage)
@@ -41,21 +43,16 @@ class Products < Sequel::Model(:Products)
 
   # Product Description
   def self.GetProductDescription(productId)
-    return Products.where(ProductId: productId).get(:ProductDescription)
+    Products.where(ProductId: productId).get(:ProductDescription)
   end
 
   def self.SetProductDescription(productId, productDescription)
     Products.where(ProductId: productId).update(ProductDescription: productDescription)
   end
 
-
   # Update All
   def self.update_product(productId, productName, price, stockQuantity, description, origin, roast, image, type)
-    if type == "Bean"
-      bean = true
-    else
-      bean = false
-    end
+    bean = type == 'Bean'
 
     Products.where(ProductId: productId).update(
       ProductName: productName,
@@ -72,7 +69,6 @@ class Products < Sequel::Model(:Products)
   def self.coffeeOrBeans(params)
     productId = params[:productId]
 
-    return Products.where(ProductId: productId).get(:Bean) 
+    Products.where(ProductId: productId).get(:Bean)
   end
-
 end
