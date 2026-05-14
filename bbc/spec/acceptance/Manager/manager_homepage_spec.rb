@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'capybara/rspec'
 require 'rack/test'
 
@@ -14,7 +16,6 @@ def login_as_manager
 end
 
 RSpec.describe 'Manager Homepage', type: :feature do
-
   before(:each) do
     login_as_manager
     visit '/manager/homepage'
@@ -176,8 +177,10 @@ RSpec.describe 'Manager Homepage', type: :feature do
         this_month = Date.today.strftime('%Y-%m-%d')
         last_month = Date.today.prev_month.strftime('%Y-%m-%d')
 
-        Users.insert(UserId: 10, Username: 'member_this_month', PassHash: BCrypt::Password.create('password'), LoyaltyDiscount: 0, LoyaltyPoints: 0, Suspended: false, DateJoined: this_month)
-        Users.insert(UserId: 11, Username: 'member_last_month', PassHash: BCrypt::Password.create('password'), LoyaltyDiscount: 0, LoyaltyPoints: 0, Suspended: false, DateJoined: last_month)
+        Users.insert(UserId: 10, Username: 'member_this_month', PassHash: BCrypt::Password.create('password'),
+                     LoyaltyDiscount: 0, LoyaltyPoints: 0, Suspended: false, DateJoined: this_month)
+        Users.insert(UserId: 11, Username: 'member_last_month', PassHash: BCrypt::Password.create('password'),
+                     LoyaltyDiscount: 0, LoyaltyPoints: 0, Suspended: false, DateJoined: last_month)
 
         visit '/manager/homepage'
       end
@@ -201,7 +204,8 @@ RSpec.describe 'Manager Homepage', type: :feature do
       before do
         this_month = Date.today.strftime('%Y-%m-%d')
 
-        Users.insert(UserId: 12, Username: 'only_this_month', PassHash: BCrypt::Password.create('password'), LoyaltyDiscount: 0, LoyaltyPoints: 0, Suspended: false, DateJoined: this_month)
+        Users.insert(UserId: 12, Username: 'only_this_month', PassHash: BCrypt::Password.create('password'),
+                     LoyaltyDiscount: 0, LoyaltyPoints: 0, Suspended: false, DateJoined: this_month)
 
         visit '/manager/homepage'
       end

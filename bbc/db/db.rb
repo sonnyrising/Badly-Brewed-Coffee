@@ -1,13 +1,15 @@
+# frozen_string_literal: true
+
 # db.rb
 #
 # Warning: You shouldn't need to edit this file!
 
-require "logger"
-require "sequel"
+require 'logger'
+require 'sequel'
 
 # Start to build the path to the database/log file
 path = "#{__dir__}/db"
-path += "_test" if ENV["APP_ENV"] == "test"
+path += '_test' if ENV['APP_ENV'] == 'test'
 
 # Instantiate a logger for the database
 logger_file_path = "#{path}.log"

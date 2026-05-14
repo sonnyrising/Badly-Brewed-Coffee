@@ -1,4 +1,6 @@
-require_relative "validation"
+# frozen_string_literal: true
+
+require_relative 'validation'
 # ... Add "require" statements for your own helpers here ...
 
 # Register helpers with Sinatra
@@ -23,15 +25,15 @@ helpers do
   end
 
   def admin?
-    logged_in? #Add check for admin.
+    logged_in? # Add check for admin.
   end
 
   def protected!
-    halt 401, "Not authorized" unless logged_in?
+    halt 401, 'Not authorized' unless logged_in?
   end
 
   def admin_protected!
-    halt 403, "Admins only" unless admin?
+    halt 403, 'Admins only' unless admin?
   end
 
   # Helper method to update the values of the product table
@@ -40,7 +42,7 @@ helpers do
     if params[:name] && params[:stock] && params[:price] && params[:image] && params[:description] &&
        params[:origin] && params[:roast] && params[:type]
       # Update the product
-      is_bean = (params[:type] == "Bean")
+      is_bean = (params[:type] == 'Bean')
 
       if params[:product]
         params[:product].update(
@@ -54,7 +56,7 @@ helpers do
           Bean: is_bean
         )
       else
-        redirect "/managestock?error=invalid_name"
+        redirect '/managestock?error=invalid_name'
       end
     else
       product_error_message(params)
@@ -64,21 +66,21 @@ helpers do
   # Return an appropriate error message if any input user input is invalid
   def product_error_message(params)
     if !params[:name]
-      redirect "/managestock?error=invalid_name"
+      redirect '/managestock?error=invalid_name'
     elsif !params[:stock]
-      redirect "/managestock?error=invalid_stock"
+      redirect '/managestock?error=invalid_stock'
     elsif !params[:price]
-      redirect "/managestock?error=invalid_price"
+      redirect '/managestock?error=invalid_price'
     elsif !params[:image]
-      redirect "/managestock?error=invalid_image"
+      redirect '/managestock?error=invalid_image'
     elsif !params[:description]
-      redirect "/managestock?error=invalid_description"
+      redirect '/managestock?error=invalid_description'
     elsif !params[:origin]
-      redirect "/managestock?error=invalid_origin"
+      redirect '/managestock?error=invalid_origin'
     elsif !params[:roast]
-      redirect "/managestock?error=invalid_roast"
+      redirect '/managestock?error=invalid_roast'
     elsif !params[:type]
-      redirect "/managestock?error=invalid_type"
+      redirect '/managestock?error=invalid_type'
     end
   end
 
@@ -88,10 +90,10 @@ helpers do
 
     # Ensure the input is a valid positive number
     # Uses a regex to allow for decimal values
-    if input.match?(/^\d+(\.\d+)?$/) && input.to_f > 0
-      return '%.2f' % input.to_f
+    if input.match?(/^\d+(\.\d+)?$/) && input.to_f.positive?
+      format('%.2f', input.to_f)
     else
-      return false
+      false
     end
   end
 
@@ -99,10 +101,10 @@ helpers do
     return false if input.nil?
 
     # Ensure the input is an integer greater than 0
-    if (input.to_i.to_s == input) && (input.to_i > 0)
-      return input.to_i
+    if (input.to_i.to_s == input) && input.to_i.positive?
+      input.to_i
     else
-      return false
+      false
     end
   end
 
@@ -110,18 +112,17 @@ helpers do
     return false if input.nil? || input.to_s.strip.empty?
 
     # Check for any SQL injection attempts
-    if (input.include?("'") || input.include?('"') || input.include?(";") || input.include?("="))
-      return false
+    if input.include?("'") || input.include?('"') || input.include?(';') || input.include?('=')
+      false
     else
-      return input
+      input
     end
   end
 
   def check_type(input)
-    unless input == "Bean" || input == "Coffee"
-      return false
-    end
-    return input
+    return false unless %w[Bean Coffee].include?(input)
+
+    input
   end
 
   # Helper method to format an integer as a date
@@ -139,12 +140,10 @@ helpers do
     users = Users.all
     free_coffees = 0
     users.each do |user|
-      unless user.FreeCoffeesRedeemed.nil?
-        free_coffees += user.FreeCoffeesRedeemed
-      end
+      free_coffees += user.FreeCoffeesRedeemed unless user.FreeCoffeesRedeemed.nil?
     end
 
-    return free_coffees
+    free_coffees
   end
 
   def get_coffees_ordered(userID)
@@ -159,17 +158,17 @@ helpers do
       end
     end
 
-    return count
+    count
   end
 
   def get_loyalty_discount(userID)
     user = Users.where(UserId: userID)
-    return user.get(:LoyaltyDiscount)
+    user.get(:LoyaltyDiscount)
   end
 
   def get_quantity(transactionID)
     basket = Basket.where(TransactionId: transactionID)
-    return basket.get(:Quantity)
+    basket.get(:Quantity)
   end
 
   def get_members_this_month(month, year)
@@ -182,7 +181,7 @@ helpers do
       Sequel.function(:strftime, '%m', :DateJoined) => formatted_month
     )
 
-    return members_month.count
+    members_month.count
   end
 
   def find_top_customers
@@ -192,8 +191,8 @@ helpers do
       top_customers << User.new(customer.UserId, customer.Username)
     end
 
-    top_customers.sort_by! { |user| user.total_spent }.reverse!
-    return top_customers
+    top_customers.sort_by!(&:total_spent).reverse!
+    top_customers
   end
 
   def find_top_products
@@ -203,8 +202,8 @@ helpers do
       top_products << Product.new(product.ProductId, product.ProductName)
     end
 
-    top_products.sort_by! { |product| product.quantity_sold }.reverse!
-    return top_products
+    top_products.sort_by!(&:quantity_sold).reverse!
+    top_products
   end
 
   def find_top_coffees
@@ -214,8 +213,8 @@ helpers do
       top_coffees << Product.new(product.ProductId, product.ProductName, product.Price)
     end
 
-    top_coffees.sort_by! { |product| product.quantity_sold }.reverse!
-    return top_coffees
+    top_coffees.sort_by!(&:quantity_sold).reverse!
+    top_coffees
   end
 
   def find_top_beans
@@ -225,8 +224,8 @@ helpers do
       top_beans << Product.new(product.ProductId, product.ProductName, product.Price)
     end
 
-    top_beans.sort_by! { |product| product.quantity_sold }.reverse!
-    return top_beans
+    top_beans.sort_by!(&:quantity_sold).reverse!
+    top_beans
   end
 end
 
@@ -262,5 +261,3 @@ class Product
     end
   end
 end
-
-

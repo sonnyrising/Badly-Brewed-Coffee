@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 def spec_before
   Feedbacks.dataset.delete
   Basket.dataset.delete
@@ -7,31 +9,31 @@ def spec_before
 
   Products.insert(
     ProductId: 1,
-    ProductName: "Old Coffee",
+    ProductName: 'Old Coffee',
     StockQuantity: 10,
     Price: 10.00,
-    ProductImage:  "old.jpg",
-    ProductDescription: "Old desc",
-    Origin: "Brazil",
-    Roast: "Medium",
+    ProductImage: 'old.jpg',
+    ProductDescription: 'Old desc',
+    Origin: 'Brazil',
+    Roast: 'Medium',
     Bean: false
   )
 
   Products.insert(
     ProductId: 2,
-    ProductName: "Blend",
+    ProductName: 'Blend',
     StockQuantity: 5,
     Price: 5.00,
-    ProductImage: "blend.jpg",
-    ProductDescription: "blend desc",
-    Origin: "Colombia",
-    Roast: "Light",
+    ProductImage: 'blend.jpg',
+    ProductDescription: 'blend desc',
+    Origin: 'Colombia',
+    Roast: 'Light',
     Bean: false
   )
 
   Users.insert(
     UserId: 1,
-    Username: "testuser",
+    Username: 'testuser',
     LoyaltyDiscount: 0,
     LoyaltyPoints: 0,
     Suspended: false
@@ -39,7 +41,7 @@ def spec_before
 
   Users.insert(
     UserId: 3,
-    Username: "test",
+    Username: 'test',
     PassHash: BCrypt::Password.create('password'),
     LoyaltyDiscount: 0,
     LoyaltyPoints: 0,
@@ -48,7 +50,7 @@ def spec_before
 
   Users.insert(
     UserId: 2,
-    Username: "manager",
+    Username: 'manager',
     PassHash: BCrypt::Password.create('manager'),
     LoyaltyDiscount: 0,
     LoyaltyPoints: 0,
@@ -57,7 +59,7 @@ def spec_before
 
   Users.insert(
     UserId: 4,
-    Username: "staff",
+    Username: 'staff',
     PassHash: BCrypt::Password.create('staff'),
     LoyaltyDiscount: 0,
     LoyaltyPoints: 0,
@@ -66,7 +68,7 @@ def spec_before
 
   Users.insert(
     UserId: 5,
-    Username: "admin",
+    Username: 'admin',
     PassHash: BCrypt::Password.create('admin'),
     LoyaltyDiscount: 0,
     LoyaltyPoints: 0,
@@ -78,8 +80,8 @@ def spec_before
     TransactionId: 1,
     UserId: 1,
     TotalCost: 10.00,
-    TransactionDate: "2024-01-15",
-    Status: "Pending",
+    TransactionDate: '2024-01-15',
+    Status: 'Pending',
     RefundRequested: false,
     Refunded: false
   )
@@ -88,8 +90,8 @@ def spec_before
     TransactionId: 2,
     UserId: 1,
     TotalCost: 15.00,
-    TransactionDate: "2024-02-20",
-    Status: "Pending",
+    TransactionDate: '2024-02-20',
+    Status: 'Pending',
     RefundRequested: true,
     Refunded: false
   )
@@ -98,8 +100,8 @@ def spec_before
     FeedbackId: 1,
     UserId: 1,
     TransactionId: 2,
-    IssueContent: "General issue",
-    RefundReason: "Cold coffee",
+    IssueContent: 'General issue',
+    RefundReason: 'Cold coffee',
     RefundRequest: true,
     TicketNumber: 1001
   )
