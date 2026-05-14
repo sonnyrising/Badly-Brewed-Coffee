@@ -194,6 +194,10 @@ post '/thankyoupage' do
 
   if params[:beans].to_i.positive?
     Users.beanLoyaltyPointIncrease(userId)
+    basket = Basket.where(TransactionId: transaction.TransactionId)
+    product = Products.where(ProductId: basket.get(:ProductId))
+    quantity = basket.get(:Quantity)
+    decrease_bean_stock(product.get(:ProductId), quantity)
   else
     Users.coffeeLoyaltyPointIncrease(userId)
 

@@ -97,6 +97,11 @@ helpers do
     end
   end
 
+  def decrease_bean_stock(productId, quantity)
+    product = Products.where(ProductId: productId)
+    product.update(StockQuantity: product.get(:StockQuantity) - quantity)
+  end
+
   def sanitise_int(input)
     return false if input.nil?
 
