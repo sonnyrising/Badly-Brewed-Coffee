@@ -157,4 +157,67 @@ RSpec.describe 'Accounts page' do
       expect(last_response.status).to eq(302)
     end
   end
+
+  context "When editing an account's details" do
+    it "it displays the account editing page for a specific account" do
+      Users.dataset.delete
+      Users.insert(UserId: 1, Username: 'johntest')
+      get "/admin/accounts/edit/1", { 'id' => "1" }, admin_session
+
+      expect(last_response.status).to eq(200)
+      expect(last_response.body).to include("1")
+    end
+
+    it "it redirects if the account doesn't exist" do
+      Users.dataset.delete
+      get "/admin/accounts/edit/2", { 'id' => "2" }, admin_session
+
+      expect(last_response.status).to eq(302)
+      expect(last_response.location).to include("/admin/accounts")
+    end
+
+    it "it verifies the return page" do
+      Users.dataset.delete
+      Users.insert(UserId: 1, Username: 'johntest')
+      post "/admin/accounts/edit", { 'account-data' => "1" }, admin_session
+
+      expect(last_response.status).to eq(302)
+      expect(last_response.location).to eq("http://example.org/admin/accounts/edit/1")
+    end
+
+    it "it changes the user account's password" do
+      Users.dataset.delete
+      Users.insert(UserId: 1, Username: 'johntest', PassHash: 'password')
+      post "/admin/accounts/edit/recover", { 'account-data' => "1" }, admin_session
+
+      updated_account = Users[1]
+      stored_hash = BCrypt::Password.new(updated_account.PassHash)
+
+      expect(stored_hash).to eq('password')
+      expect(last_response.status).to eq(302)
+      expect(last_response.location).to include("/admin/accounts")
+    end
+
+    it "it updates the user account's details with the new ones" do
+      Users.dataset.delete
+      Users.insert(UserId: 10, Username: 'johntest', Email: 'johntest@test.com', 
+                    LoyaltyPoints: 5, DaysSinceLastUse: 0)
+
+      post "/admin/accounts/edit/update", {
+        'account-data' => "10",
+        'username-data' => "JohnTest",
+        'email-data'  => "johntest@gmail.com",
+        'loyaltypoint-data' => "10",
+        'inactivity-data' => "5"
+      }, admin_session
+
+      expect(last_response.status).to eq(302)
+      expect(last_response.location).to include("/admin/accounts")
+
+      expect(Users[10].Username).to eq("JohnTest")
+      expect(Users[10].Email).to eq("johntest@gmail.com")
+      expect(Users[10].LoyaltyPoints).to eq(10)
+      expect(Users[10].DaysSinceLastUse).to eq(5)
+    end
+  end
 end
