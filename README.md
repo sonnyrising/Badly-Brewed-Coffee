@@ -6,50 +6,40 @@
 
   ## Overview
 
-  Badly Brewed Coffee needs a lightweight, fast, and maintainable system to support:
-
-  - Staff order management  
-  - Admin transaction and product control  
-  - Customer-facing purchase and refund interfaces
-
   ---
 
   ## Features
 
   ### For Admins
   - View all transactions
-  - Add, edit, and delete products
-  - Manage staff accounts
-  - Access reporting tools
+  - Manage accounts
+  - View and delete user feedbacks
 
   ### For Staff
   - Create and manage customer orders
   - Process transactions
   - View product availability
+  - Add, delete, and manage products
 
   ### For Customers
   - Browse products
-  - Place orders (if enabled)
+  - Place orders
   - Receive order confirmations
+  - Leave feedback and request refunds
 
-  ---
-
-  ## Technology Stack
-
-  | Component | Description |
-  |----------|-------------|
-  | **Sinatra** | Lightweight Ruby web framework used for routing and views |
-  | **Puma** | High-performance Ruby web server |
-  | **Rack** | Middleware layer connecting Sinatra to Puma |
-  | **Sequel** | Database toolkit for interacting with SQL databases |
-  | **ERB** | Templating engine for rendering HTML views |
+ ### For the Manager
+ - Add, delete, and manage products
+ - Accept and decline refunds
+ - View product availability
+ - View order history
+ - View sales metrics for the business
 
   ---
 
   ## Installation & Setup
 
-  ### 1. Clone the repository
-  > git clone https://github.com/yourusername/badly-brewed-coffee.git
+  ### 1. Download the project
+  > git clone https://git.shefcompsci.org.uk/com1001-2025-26/team22/project.git
 
   > cd project/bbc/
 
@@ -57,21 +47,16 @@
   > bundle install
 
   ### 4. Start the server
-  Using Puma:
-  > puma
-  
-  Or with rack:
-  > rackup
+  > sinatra
 
   ---
 
   ## Account access
-
-  | Type | Username | Password |
-  |----------|-------------|-------------|
-  | **Admin** | admin | admin |
-  | **Manager** | manager | manager |
-  | **Barista** | staff | staff |
-  | **User** | test | password |
+| User Type | Username | Password |
+| :---- | :---- | :---- |
+| Customer | User123\! | User123\! |
+| Barista | Staff123\! | Staff123\! |
+| Manager (Kenny) | Manager123\! | Manager123\! |
+| Admin | Admin123\! | Admin123\! |
 
   ---
