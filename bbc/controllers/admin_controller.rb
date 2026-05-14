@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 before '/admin/*' do
-  redirect '/' if session[:uname] != 'admin'
+  redirect '/' if session[:uname] != 'Admin'
 end
 
 get '/admin/homepage' do

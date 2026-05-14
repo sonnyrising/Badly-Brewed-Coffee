@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 before '/staff/*' do
-  redirect '/login' unless %w[staff manager admin].include?(session[:uname])
+  redirect '/login' unless ["Staff", "Manager", "Admin"].include?(session[:uname])
   session[:userId] = 7
 end
 

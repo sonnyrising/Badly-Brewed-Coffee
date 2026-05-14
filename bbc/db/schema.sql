@@ -12,7 +12,8 @@ CREATE TABLE Users(
   Suspended INTEGER,
   FreeCoffeesRedeemed INTEGER,
   LoyaltyDiscount FLOAT,
-  DateJoined TEXT
+  DateJoined TEXT,
+  AccountType TEXT
 );
 
 CREATE TABLE Transactions(

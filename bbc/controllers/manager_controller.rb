@@ -14,7 +14,7 @@ set :public_folder, File.expand_path('../public', __dir__)
 set :views, File.expand_path('../views', __dir__)
 
 before '/manager/*' do
-  redirect '/login' unless %w[manager admin].include?(session[:uname])
+  redirect '/login' unless ["Manager", "Admin"].include?(session[:uname])
 end
 
 get '/manager/homepage' do
