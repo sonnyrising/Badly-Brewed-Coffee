@@ -61,15 +61,6 @@ CREATE TABLE Basket(
   FOREIGN KEY (TransactionId) REFERENCES Transactions(TransactionId) ON DELETE CASCADE
 );
 
-CREATE TABLE Staff(
-  StaffId INTEGER,
-  StaffUsername TEXT,
-  StaffPasswordHash TEXT,
-  EmployeeLevel TEXT,
-  EmploymentStatus TEXT
-);
-
-
 CREATE TABLE CoffeeSize (
   ItemID INTEGER PRIMARY KEY,
   BasketId INTEGER,

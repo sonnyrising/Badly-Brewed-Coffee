@@ -69,8 +69,8 @@ post '/admin/accounts/create/submit' do
   puts params[:'type-data']
   if h(params[:'type-data']) == 'Staff'
     @user_id = validate_staff_id(@user_id)
-    Staff.insert(StaffId: @user_id, StaffUsername: params[:'username-data'].to_s,
-                 StaffEmail: params[:'email-data'].to_s, StaffPasswordHash: @password, EmployeeLevel: 'Barista', EmploymentStatus: 1)
+    Users.insert(UserId: @user_id, Username: params[:'username-data'].to_s,
+                 PassHash: @password,Email: params[:'email-data'].to_s)
   else
     @user_id = validate_user_id(@user_id)
     Users.insert(UserId: @user_id, Username: params[:'username-data'].to_s, PassHash: @password,

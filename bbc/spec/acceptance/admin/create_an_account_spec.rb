@@ -22,9 +22,10 @@ RSpec.describe 'Admin account creation.' do
       fill_in 'email-data', with: 'test@example.com'
       fill_in 'loyaltypoint-data', with: '100'
 
-      click_on 'Save'
-
-      expect(page).to have_current_path('/admin/accounts')
+      click_on "Save"
+      
+      expect(page).to have_current_path("/admin/accounts")
+      expect(page).to have_content("testuser123")
     end
   end
 end
