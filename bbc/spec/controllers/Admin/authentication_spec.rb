@@ -6,9 +6,9 @@ require_relative '../../spec_helper'
 # Authentication Tests
 # =============================================================================
 RSpec.describe 'Authentication Tests' do
-  let(:admin_session)   { { 'rack.session' => { user_id: 1, uname: 'admin' } } }
-  let(:manager_session) { { 'rack.session' => { user_id: 2, uname: 'manager' } } }
-  let(:guest_session)   { { 'rack.session' => { user_id: nil, uname: nil } } }
+  let(:admin_session)   { { 'rack.session' => { userId: 1, uname: 'admin' } } }
+  let(:manager_session) { { 'rack.session' => { userId: 2, uname: 'manager' } } }
+  let(:guest_session)   { { 'rack.session' => { userId: 3, uname: 'guest' } } }
 
   admin_get_routes = [
     '/admin/homepage',
@@ -37,6 +37,8 @@ RSpec.describe 'Authentication Tests' do
     describe "GET #{route}" do
       context 'when logged in as an admin' do
         it 'has a status code of 200 (OK)' do
+          Users.dataset.delete
+          Users.insert(UserId: 1, Username: 'admin', AccountType: 'admin')
           get route, test_params, admin_session
           expect(last_response.status).to eq(200)
         end
@@ -44,6 +46,8 @@ RSpec.describe 'Authentication Tests' do
 
       context 'when logged in as manager' do
         it 'denies access and redirects (302)' do
+          Users.dataset.delete
+          Users.insert(UserId: 2, Username: 'manager', AccountType: 'manager')
           get route, {}, manager_session
           expect(last_response.status).to eq(302)
         end
@@ -51,6 +55,8 @@ RSpec.describe 'Authentication Tests' do
 
       context 'when not logged in' do
         it 'denies access and redirects (302)' do
+          Users.dataset.delete
+          Users.insert(UserId: 3, Username: 'guest', AccountType: 'user')
           get route, {}, guest_session
           expect(last_response.status).to eq(302)
         end
@@ -62,6 +68,8 @@ RSpec.describe 'Authentication Tests' do
     describe "POST #{route}" do
       context 'logged in as an admin' do
         it 'allows the admin to perform the operations' do
+          Users.dataset.delete
+          Users.insert(UserId: 1, Username: 'admin', AccountType: 'admin')
           post route, test_params, admin_session
           expect(last_response.status).to eq(302)
           expect(last_response.location).not_to eq('http://example.org/')
@@ -70,6 +78,8 @@ RSpec.describe 'Authentication Tests' do
 
       context 'not logged in as an admin' do
         it 'denies access and redirects' do
+          Users.dataset.delete
+          Users.insert(UserId: 3, Username: 'guest', AccountType: 'guest')
           post route, test_params, guest_session
           expect(last_response.status).to eq(302)
           expect(last_response.location).to eq('http://example.org/')

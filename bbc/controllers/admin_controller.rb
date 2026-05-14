@@ -18,7 +18,7 @@ get '/admin/views' do
 end
 
 post '/admin/views/manager' do
-  redirect 'manager/homepage'
+  redirect '/manager/homepage'
 end
 
 post '/admin/views/barista' do

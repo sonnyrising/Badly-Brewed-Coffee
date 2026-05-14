@@ -6,7 +6,7 @@ require_relative '../../spec_helper'
 # Simulating account view
 # =============================================================================
 RSpec.describe 'Simulating account view' do
-  let(:admin_session) { { 'rack.session' => { user_id: 1, uname: 'admin' } } }
+  let(:admin_session) { { 'rack.session' => { userId: 1, uname: 'admin' } } }
 
   accounts_viewing_routes = [
     '/admin/views/manager',
@@ -18,6 +18,10 @@ RSpec.describe 'Simulating account view' do
     describe "POST #{route}" do
       context 'viewing accounts' do
         it "viewing as other roles' (barista, manager, user)" do
+
+          Users.dataset.delete
+          Users.insert(UserId: 1, Username: 'admin', AccountType: 'admin')
+                    
           post route, {}, admin_session
           expect(last_response.status).to eq(302)
           expect(last_response.location).not_to eq('http://example.org/')
