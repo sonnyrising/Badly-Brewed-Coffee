@@ -70,11 +70,11 @@ post '/admin/accounts/create/submit' do
   if h(params[:'type-data']) == 'Staff'
     @user_id = validate_staff_id(@user_id)
     Users.insert(UserId: @user_id, Username: params[:'username-data'].to_s,
-                 PassHash: @password,Email: params[:'email-data'].to_s)
+                 PassHash: @password,Email: params[:'email-data'].to_s, AccountType: "staff")
   else
     @user_id = validate_user_id(@user_id)
     Users.insert(UserId: @user_id, Username: params[:'username-data'].to_s, PassHash: @password,
-                 Email: params[:'email-data'].to_s, LoyaltyPoints: 0, DaysSinceLastUse: 0, Suspended: 0)
+                 Email: params[:'email-data'].to_s, LoyaltyPoints: 0, DaysSinceLastUse: 0, Suspended: 0, AccountType: "user")
   end
   redirect '/admin/accounts'
 end
