@@ -52,13 +52,24 @@
                 <h2 style="color: white;">Order Summary</h2>
 
                     <% total_cost = 0 %>
-                    
+                    <% cheapestCoffeePrice = 10 %>
+                    <% coffees = 0 %>
+                    <% beans = 0 %>
                     <% (Basket.getProductNamesForUser(session[:userId])).each do |p| %>
                         <div style="display: flex; justify-content: space-between; margin-top: 10px; font-size: 1.1rem;">
                             <% 
                               qty_item = Basket.where(UserId: session[:userId], ProductId: p.ProductId).last
                               subtotal = p.Price * qty_item.Quantity
                               total_cost += subtotal
+                              
+                              if !p.Bean 
+                                coffees += 1
+                                if cheapestCoffeePrice > p.Price 
+                                  cheapestCoffeePrice = p.Price
+                                end
+                              else 
+                                beans += 1
+                              end
                             %>
                             <span><%= p.ProductName %> (x<%= qty_item.Quantity %>)</span>
                             <span>£<%= '%.2f' % subtotal %></span>
@@ -74,30 +85,54 @@
                       <span>Subtotal:</span>
                       <span>£<%= '%.2f' % total_cost %></span>
                     </div>
-
-                    <% discount = get_loyalty_discount(session[:userId]) || 0%>
-                    <% final_cost = total_cost * (1 - (discount / 100.0)) %>
-                    <% if discount > 0 %>
-                      <div style="display: flex; justify-content: space-between; margin-top: 20px; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 10px;">
-                        <span>Your Loyalty Discount:</span>
-                        <span><%= discount %>%</span>
-                      </div>
+                    
+                    <% if session[:userId] != 1 %>
+                      <% points = Users.get_loyalty_points(session[:userId])%>
+                      <% if beans > 0 
+                          points += 3
+                          else
+                            points += 1
+                          end %>
+                      <% if points >= 10 %>
+                        <div style="margin-top: 20px; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 10px;">
+                          <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                            <span>Your Loyalty Points:</span>
+                            <span><%= points %></span>
+                          </div>
+                          <div style="display: flex; justify-content: space-between;">
+                            <% if coffees > 0 %>
+                              <span> Your Discount:</span>
+                              <% if cheapestCoffeePrice > 5 %> 
+                                  <% total_cost -=5 %>
+                                  <span>-£5</span>
+                              <% else %>
+                                <span> -£<%= '%.2f' % cheapestCoffeePrice %></span>
+                                <% total_cost -= cheapestCoffeePrice %>
+                              <% end %>
+                            <% end %>
+                            </div>
+                        </div>
+                      <% end %>
                     <% end %>
 
                     <div style="display: flex; justify-content: space-between; margin-top: 10px; font-size: 1.5rem; font-weight: bold; border-top: 2px solid white; padding-top: 10px;">
                         <span>Total Cost:</span>
-                        <span>£<%= '%.2f' % final_cost %></span>
+                        <span>£<%= '%.2f' % total_cost %></span>
                     </div>
               </div>
 
               <div style="text-align: center; margin-top: 20px;">
+              <% if beans !=0 || coffees != 0 %>
                   <form action="/thankyoupage" method="post">
                       <input type="hidden" name="userId" value="<%= session[:userId] %>">
-                      <input type="hidden" name="totalcost" value="<%= final_cost %>">
-                      <h2 style="padding: 15px 40px; font-size: 18pt; font-weight: bold; border-radius: 50px; cursor: pointer;">Payment details</h2>
-                      <input type="text" name="card_number" placeholder="Card Number" required style="width: 20vw;height: 5vh;border: 2px solid #69312b;border-radius: 15px;padding-left:10px;">
-                      <input type="text" name="cvv" placeholder="CVV" required style="width: 10vw;height: 5vh;border: 2px solid #69312b;border-radius: 15px;padding-left:10px;">
-                      <input type="date" name="expiry_date" placeholder="Expiry Date" required style="widthr: 25vw;height: 5vh;border: 2px solid #69312b;border-radius: 15px;padding-left:10px;">
+                      <input type="hidden" name="totalcost" value="<%= total_cost %>">
+                      <input type="hidden" name ="beans" value="<%= beans %>">
+                      <% if total_cost > 0 %>
+                        <h2 style="padding: 15px 40px; font-size: 18pt; font-weight: bold; border-radius: 50px; cursor: pointer;">Payment details</h2>
+                        <input type="text" name="card_number" placeholder="Card Number" required style="width: 20vw;height: 5vh;border: 2px solid #69312b;border-radius: 15px;padding-left:10px;">
+                        <input type="text" name="cvv" placeholder="CVV" required style="width: 10vw;height: 5vh;border: 2px solid #69312b;border-radius: 15px;padding-left:10px;">
+                        <input type="date" name="expiry_date" placeholder="Expiry Date" required style="widthr: 25vw;height: 5vh;border: 2px solid #69312b;border-radius: 15px;padding-left:10px;">
+                      <% end %>
                       <h2 style="padding: 15px 40px; font-size: 18pt; font-weight: bold; border-radius: 50px; cursor: pointer;">Delivery</h2>
                       <input type="text" name="address" placeholder="Address" required style="width: 25vw;height: 5vh;border: 2px solid #69312b;border-radius: 15px;padding-left:10px;">
                       <input type="text" name="city" placeholder="City" required style="width: 25vw;height: 5vh;border: 2px solid #69312b;border-radius: 15px;padding-left:10px;">
@@ -107,6 +142,7 @@
                           Buy Now
                       </button>
                   </form>
+                <% end %>
               </div>
 
             </div>

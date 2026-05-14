@@ -1,4 +1,3 @@
-# frozen_string_literal: true
+class Logs < Sequel::Model
 
-class Log < Sequel::Model
 end

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 before '/admin/*' do
   redirect '/' if session[:uname] != 'admin'
 end
@@ -96,7 +94,9 @@ post '/admin/accounts/filter' do
   redirect '/admin/accounts' if filter.empty?
 
   @shown_accounts = Users.where(Username: filter).all
-  redirect '/admin/accounts' if @shown_accounts.empty?
+  if @shown_accounts.empty?
+    redirect '/admin/accounts'
+  end
 
   erb :"admin/accounts"
 end
@@ -111,6 +111,7 @@ post '/admin/accounts/view' do
 end
 
 get '/admin/accounts/view' do
+  @account = Users[params[:'account-data'].to_i]
   erb :"admin/account"
 end
 
@@ -121,7 +122,7 @@ end
 
 get '/admin/accounts/edit/:id' do
   @account = Users[params[:id].to_i]
-  if @account
+  if @account 
     erb :"admin/accountedit"
   else
     redirect '/admin/accounts'
@@ -172,11 +173,13 @@ end
 
 post '/admin/accounts/delete' do
   @account = Users[h(params[:'account-data']).to_i]
-  @account.delete
-  Transactions.where(UserId: @account.UserId).delete
-  Feedbacks.where(UserId: @account.UserId).delete
-  Basket.where(UserId: @account.UserId).delete
+  if @account
+    Transactions.where(UserId: @account.UserId).delete
+    Feedbacks.where(UserId: @account.UserId).delete
+    Basket.where(UserId: @account.UserId).delete
 
+    @account.delete
+  end
   redirect '/admin/accounts'
 end
 
@@ -208,8 +211,7 @@ post '/admin/orders/edit/update' do
   order.update(Address: h(params[:'address-data']).to_s) unless params[:'address-data'].empty?
   order.update(Refunded: h(params[:'refund-data']).to_s) unless params[:'refund-data'].empty?
 
-  Log.insert(UserId: session[:userId], LogDate: Time.now.strftime('%d/%m/%Y'),
-             LogDescription: h(params[:'refund-reason']))
+  Logs.insert(UserId: session[:userId], LogDate: Time.now.strftime("%d/%m/%Y"), LogDescription: h(params[:'refund-reason']))
 
   redirect '/admin/orders'
 end
@@ -222,6 +224,6 @@ post '/admin/orders/delete' do
 end
 
 get '/admin/log' do
-  @shown_logs = Log.all
+  @shown_logs = Logs.all
   erb :'admin/logpage'
 end
