@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'capybara/rspec'
 require 'rack/test'
 
@@ -7,7 +9,6 @@ Capybara.app = Sinatra::Application
 Capybara.default_driver = :rack_test
 
 RSpec.describe 'Login Tests', type: :feature do
-
   def attempt_login(username, password)
     visit '/login'
     fill_in 'uname', with: username
@@ -140,7 +141,7 @@ RSpec.describe 'Login Tests', type: :feature do
   # -------------------------------------------------------------------------
 
   describe 'SQL injection attempts' do
-    context "when the username contains a classic OR 1=1 injection" do
+    context 'when the username contains a classic OR 1=1 injection' do
       before { attempt_login("' OR '1'='1", 'anything') }
 
       it 'does not log in' do
@@ -152,7 +153,7 @@ RSpec.describe 'Login Tests', type: :feature do
       end
     end
 
-    context "when the username contains a comment-based injection" do
+    context 'when the username contains a comment-based injection' do
       before { attempt_login("manager'--", 'anything') }
 
       it 'does not log in' do
@@ -164,7 +165,7 @@ RSpec.describe 'Login Tests', type: :feature do
       end
     end
 
-    context "when the username contains a UNION-based injection" do
+    context 'when the username contains a UNION-based injection' do
       before { attempt_login("' UNION SELECT * FROM Users--", 'anything') }
 
       it 'does not log in' do
@@ -176,7 +177,7 @@ RSpec.describe 'Login Tests', type: :feature do
       end
     end
 
-    context "when the password contains a SQL injection attempt" do
+    context 'when the password contains a SQL injection attempt' do
       before { attempt_login('manager', "' OR '1'='1") }
 
       it 'does not log in' do
@@ -188,7 +189,7 @@ RSpec.describe 'Login Tests', type: :feature do
       end
     end
 
-    context "when both fields contain injection attempts" do
+    context 'when both fields contain injection attempts' do
       before { attempt_login("' OR 1=1--", "' OR 1=1--") }
 
       it 'does not log in' do

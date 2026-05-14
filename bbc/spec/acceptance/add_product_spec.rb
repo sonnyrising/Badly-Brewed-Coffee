@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'capybara/rspec'
 require 'rack/test'
 
@@ -14,7 +16,6 @@ def login_as_manager
 end
 
 RSpec.describe 'Add Product Page', type: :feature do
-
   before(:each) do
     login_as_manager
     visit '/addproduct'
@@ -81,7 +82,7 @@ RSpec.describe 'Add Product Page', type: :feature do
   def fill_in_product(overrides = {})
     defaults = {
       'product_name' => 'Test Coffee',
-      'product_stock'  => '10',
+      'product_stock' => '10',
       'product_price' => '3.50',
       'product_roast' => 'Medium',
       'product_origin' => 'Brazil',

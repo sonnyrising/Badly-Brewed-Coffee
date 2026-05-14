@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Provide various functions for validating data
 module Validation
   def str_email_address?(str)
@@ -33,14 +35,14 @@ module Validation
   def str_uk_telephone?(str)
     return false if str.nil?
 
-    str = str.delete(" ").delete("-")
-    str.start_with?(str, "0") && str_min_length?(str, 10) && str_max_length?(str, 11)
+    str = str.delete(' ').delete('-')
+    str.start_with?(str, '0') && str_min_length?(str, 10) && str_max_length?(str, 11)
   end
 
   def str_yyyy_mm_dd_date?(str)
     return false if str.nil?
 
-    y, m, d = str.split("-")
+    y, m, d = str.split('-')
 
     return Date.valid_date?(y.to_i, m.to_i, d.to_i) if str_length?(y, 4)
 

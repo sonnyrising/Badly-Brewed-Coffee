@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'capybara/rspec'
 require 'rack/test'
 
@@ -20,7 +22,6 @@ def submit_invalid_discount(value)
 end
 
 RSpec.describe 'Adjust Loyalty Page', type: :feature do
-
   before(:each) do
     login_as_manager
     visit '/manager/adjustloyalty'

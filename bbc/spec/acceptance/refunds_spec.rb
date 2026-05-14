@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'capybara/rspec'
 require 'rack/test'
 
@@ -14,7 +16,6 @@ def login_as_manager
 end
 
 RSpec.describe 'Refunds Page', type: :feature do
-
   before(:each) do
     login_as_manager
     visit '/refunds'
@@ -214,7 +215,6 @@ RSpec.describe 'Refunds Page', type: :feature do
   # -------------------------------------------------------------------------
 
   describe 'In-store refund form' do
-
     def submit_instore_refund(reason: 'Cold coffee', transaction_id: '1')
       within('.glass-card', text: 'In-Store Refunds') do
         fill_in 'reason',         with: reason

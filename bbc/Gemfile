@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 # Use sinatra as the backend tech stack development framework.
@@ -5,8 +7,8 @@ gem 'sinatra'
 
 # Rack is used to interface sinatra and the running web server.
 gem 'rack'
-gem 'rackup'
 gem 'rack-test'
+gem 'rackup'
 
 # Puma is the web server that the application is hosted upon.
 gem 'puma'
@@ -36,4 +38,3 @@ gem 'simplecov'
 
 # Used to get the current date when a user registers.
 gem 'date'
-

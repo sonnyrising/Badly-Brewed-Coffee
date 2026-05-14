@@ -1,21 +1,23 @@
-before "/staff/*" do
-  redirect "/login" unless ["staff", "manager", "admin"].include?(session[:uname])
+# frozen_string_literal: true
+
+before '/staff/*' do
+  redirect '/login' unless %w[staff manager admin].include?(session[:uname])
   session[:userId] = 7
 end
 
-get "/staff/homepage" do
+get '/staff/homepage' do
   @shown_orders = Transactions.all
 
   erb :"staff/homepage"
 end
 
-post "/staff/selectproducts" do
+post '/staff/selectproducts' do
   @products = Products.all
 
   erb :"staff/selectproducts"
 end
 
-post "/staff/shop" do
+post '/staff/shop' do
   @products = Products.all
   @basket = Basket.new
 
@@ -30,66 +32,66 @@ post "/staff/shop" do
     @basket.updateQuantity(params)
   end
 
-  redirect "/staff/selectproducts"
+  redirect '/staff/selectproducts'
 end
 
-get "/staff/selectproducts" do
+get '/staff/selectproducts' do
   @products = Products.all
 
   erb :"staff/selectproducts"
 end
 
-get "/staff/register" do
+get '/staff/register' do
   erb :"staff/employeeregisterpage"
 end
 
-post "/staff/staffaccountview" do
+post '/staff/staffaccountview' do
   erb :"staff/staffaccountview"
 end
 
-get "/staff/staffaccountview" do
+get '/staff/staffaccountview' do
   erb :"staff/staffaccountview"
 end
 
-post "/staff/account" do
+post '/staff/account' do
   @account = Users[params[:'account-data'].to_i]
   erb :"staff/account"
 end
 
-post "/staff/generatelabel" do
+post '/staff/generatelabel' do
   erb :"staff/generatelabel"
 end
 
-post "/staff/settings" do
+post '/staff/settings' do
   erb :"staff/settings"
 end
 
-get "/staff/settings" do
+get '/staff/settings' do
   erb :"staff/settings"
 end
 
-get "/staff/orders" do
+get '/staff/orders' do
   @shown_orders = Transactions.all
 
   erb :'admin/orders'
 end
 
 
-get "/staff/managestock" do
+get '/staff/managestock' do
   @products = Products.all
 
   @alert_message = case params[:error]
-    when "invalid_name"  then "Please enter a valid product name."
-    when "invalid_stock" then "Please enter a valid stock quantity."
-    when "invalid_price" then "Please enter a valid price."
-    when "invalid_image" then "Please enter a valid image URL."
-    when "invalid_description" then "Please enter a valid description."
+                   when 'invalid_name'  then 'Please enter a valid product name.'
+                   when 'invalid_stock' then 'Please enter a valid stock quantity.'
+                   when 'invalid_price' then 'Please enter a valid price.'
+                   when 'invalid_image' then 'Please enter a valid image URL.'
+                   when 'invalid_description' then 'Please enter a valid description.'
                    end
 
   erb :"staff/managestock"
 end
 
-post "/staff/managestock" do
+post '/staff/managestock' do
   values_hash = {
     product: Products[params['product_id']],
     # Sanitise the input before updating the database
@@ -104,18 +106,18 @@ post "/staff/managestock" do
   redirect '/staff/managestock'
 end
 
-post "/staff/save_coffee_choices" do
+post '/staff/save_coffee_choices' do
   session[:milkType] = params[:milkType]
   session[:coffeeSize] = params[:Size]
-  if params[:Size] == "Small"
+  if params[:Size] == 'Small'
     params[:totalcost] -= 1
-  elsif params[:Size] == "Large"
+  elsif params[:Size] == 'Large'
     params[:totalcost] += 1
   end
 
-  if params[:milkType] == "Soy Milk"
+  if params[:milkType] == 'Soy Milk'
     params[:totalcost] += 1
-  elsif params[:milkType] == "Oat Milk"
+  elsif params[:milkType] == 'Oat Milk'
     params[:totalcost] += 2
   end
 end
@@ -134,7 +136,7 @@ def update_product_values(params)
         ProductDescription: params[:description]
       )
     else
-      redirect "/staff/managestock?error=invalid_name"
+      redirect '/staff/managestock?error=invalid_name'
     end
   else
     product_error_message(params)
@@ -144,29 +146,29 @@ end
 # Return an appropriate error message if any input user input is invalid
 def product_error_message(params)
   if params[:name]
-    redirect "/staff/managestock?error=invalid_name"
+    redirect '/staff/managestock?error=invalid_name'
   elsif params[:stock]
-    redirect "/staff/managestock?error=invalid_stock"
+    redirect '/staff/managestock?error=invalid_stock'
   elsif params[:price]
-    redirect "/staff/managestock?error=invalid_price"
+    redirect '/staff/managestock?error=invalid_price'
   elsif params[:image]
-    redirect "/staff/managestock?error=invalid_image"
+    redirect '/staff/managestock?error=invalid_image'
   elsif params[:description]
-    redirect "/staff/managestock?error=invalid_description"
+    redirect '/staff/managestock?error=invalid_description'
   end
 end
 
-get "/staff/basketpayment" do
+get '/staff/basketpayment' do
   erb :"staff/basketpayment"
 end
 
-post "/staff/thankyoupage" do
+post '/staff/thankyoupage' do
   transaction = Transactions.insert(
     UserId: params[:accountnum],
     TotalCost: params[:totalcost],
     Address: params[:address],
-    TransactionDate: Time.now.strftime("%d%m%Y").to_i,
-    Status: "Pending",
+    TransactionDate: Time.now.strftime('%d%m%Y').to_i,
+    Status: 'Pending',
     RefundRequested: false
   )
 
@@ -179,37 +181,35 @@ post "/staff/thankyoupage" do
   erb :"staff/thankyoupage"
 end
 
-post "/staff/staffaccountview/filter" do
-  if !params[:'search-filter'].empty?
+post '/staff/staffaccountview/filter' do
+  unless params[:'search-filter'].empty?
     @shown_accounts = []
-    @shown_accounts << Users.where(Username: "#{params[:'search-filter']}").get(:UserId)
-    redirect "/staff/staffaccountview"
-  else
-    redirect "/staff/staffaccountview"
+    @shown_accounts << Users.where(Username: params[:'search-filter'].to_s).get(:UserId)
   end
+  redirect '/staff/staffaccountview'
 end
 
-post "/staff/view" do
+post '/staff/view' do
   erb :"staff/account"
 end
 
-post "/staff/shop/add" do
+post '/staff/shop/add' do
   @products = Products.all
   Basket.add(params)
 
-  redirect "/staff/selectproducts"
+  redirect '/staff/selectproducts'
 end
 
-post "/staff/shop/subtract" do
+post '/staff/shop/subtract' do
   @products = Products.all
   Basket.subtract(params)
 
-  redirect "/staff/selectproducts"
+  redirect '/staff/selectproducts'
 end
 
-post "/staff/shop/delete" do
+post '/staff/shop/delete' do
   @products = Products.all
   Basket.RemoveItem(params)
 
-  redirect "/staff/selectproducts"
+  redirect '/staff/selectproducts'
 end

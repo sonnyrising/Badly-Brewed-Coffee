@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'capybara/rspec'
 require 'rack/test'
 
@@ -14,7 +16,6 @@ def login_as_manager
 end
 
 RSpec.describe 'Refund Details Page', type: :feature do
-
   before(:each) do
     login_as_manager
     # Transaction 2 is seeded with RefundRequested: true
