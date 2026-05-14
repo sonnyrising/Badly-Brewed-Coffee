@@ -85,32 +85,34 @@
                       <span>Subtotal:</span>
                       <span>£<%= '%.2f' % total_cost %></span>
                     </div>
-
-                    <% points = Users.get_loyalty_points(session[:userId])%>
-                    <% if beans > 0 
-                         points += 3
-                        else
-                          points += 1
-                        end %>
-                    <% if points >= 10 %>
-                      <div style="margin-top: 20px; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 10px;">
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
-                          <span>Your Loyalty Points:</span>
-                          <span><%= points %></span>
-                        </div>
-                        <div style="display: flex; justify-content: space-between;">
-                          <% if coffees > 0 %>
-                            <span> Your Discount:</span>
-                            <% if cheapestCoffeePrice > 5 %> 
-                                <% total_cost -=5 %>
-                                <span>-£5</span>
-                            <% else %>
-                              <span> -£<%= '%.2f' % cheapestCoffeePrice %></span>
-                              <% total_cost -= cheapestCoffeePrice %>
-                            <% end %>
-                          <% end %>
+                    
+                    <% if session[:userId] != 1 %>
+                      <% points = Users.get_loyalty_points(session[:userId])%>
+                      <% if beans > 0 
+                          points += 3
+                          else
+                            points += 1
+                          end %>
+                      <% if points >= 10 %>
+                        <div style="margin-top: 20px; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 10px;">
+                          <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                            <span>Your Loyalty Points:</span>
+                            <span><%= points %></span>
                           </div>
-                      </div>
+                          <div style="display: flex; justify-content: space-between;">
+                            <% if coffees > 0 %>
+                              <span> Your Discount:</span>
+                              <% if cheapestCoffeePrice > 5 %> 
+                                  <% total_cost -=5 %>
+                                  <span>-£5</span>
+                              <% else %>
+                                <span> -£<%= '%.2f' % cheapestCoffeePrice %></span>
+                                <% total_cost -= cheapestCoffeePrice %>
+                              <% end %>
+                            <% end %>
+                            </div>
+                        </div>
+                      <% end %>
                     <% end %>
 
                     <div style="display: flex; justify-content: space-between; margin-top: 10px; font-size: 1.5rem; font-weight: bold; border-top: 2px solid white; padding-top: 10px;">
