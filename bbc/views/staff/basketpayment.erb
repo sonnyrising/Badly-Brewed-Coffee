@@ -57,10 +57,29 @@
                         <div style="display: flex; justify-content: space-between; margin-top: 10px; font-size: 1.1rem;">
                             <% 
                             qty_item = Basket.where(UserId: session[:userId], ProductId: p.ProductId).first
-                            subtotal = p.Price * qty_item.Quantity
+                            additional_costs = 0
+                            Customisations.getItemID(session[:userId], p.ProductId).each do |item|
+                              if !item.nil? && item == Basket.getItemID(UserId: session[:userId], ProductId: p.ProductId)
+                                milkType = Customisations.getMilkType(item).to_s
+                                coffeeSize = Customisations.getCoffeeSize(item).to_s
+
+                                if coffeeSize == "Small"
+                                  additional_costs -= 1
+                                elsif coffeeSize == "Large"
+                                  additional_costs += 1
+                                end
+
+                                if milkType == "Soy Milk"
+                                  additional_costs += 1
+                                elsif milkType == "Oat Milk"
+                                  additional_costs += 2
+                                end
+                              end
+                            end
+                            subtotal = (p.Price + additional_costs) * qty_item.Quantity
                             total_cost += subtotal
                             %>
-                            <span><%= p.ProductName %> (x<%= qty_item.Quantity %>)</span>
+                            <span><%= p.ProductName %>   <% coffeeSize %>  <% milkType %> (x<%= qty_item.Quantity %>)</span>
                             <span>£<%= '%.2f' % subtotal %></span>
                         </div>
                     <% end %>

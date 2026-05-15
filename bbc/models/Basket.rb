@@ -5,8 +5,22 @@ class Basket < Sequel::Model(:Basket)
     self.UserId = params.fetch('userId', '').strip
     self.ProductId = params.fetch('productId', '').strip
     self.TransactionId = nil
+    self.ItemId = nil
     self.Quantity = params.fetch('quantity', '').strip
   end
+
+  def setItemId(params)
+    product = params.fetch('productId', '')
+    item = params.fetch('itemId', '')
+
+    Basket.where(UserId: user, ProductId: product).update(ItemId: item)
+  end
+
+  def getItemId(params)
+    user = params.fetch('userId', '')
+    product = params.fetch('productId', '')
+    Basket.where(UserId: user, ProductId: product).get(:ItemId)
+  end 
 
   def productExists(params)
     user = params.fetch('userId', '')

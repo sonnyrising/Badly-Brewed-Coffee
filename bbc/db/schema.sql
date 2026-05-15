@@ -56,29 +56,18 @@ CREATE TABLE Basket(
   TransactionId INTEGER,
   ProductId INTEGER, 
   UserId INTEGER,
+  ItemId INTEGER,
   Quantity INTEGER,
   FOREIGN KEY (UserId) REFERENCES Users(UserId) ON DELETE CASCADE,
   FOREIGN KEY (ProductId) REFERENCES Products(ProductId) ON DELETE CASCADE,
   FOREIGN KEY (TransactionId) REFERENCES Transactions(TransactionId) ON DELETE CASCADE
 );
 
-CREATE TABLE CoffeeSize (
+CREATE TABLE Customisations (
   ItemID INTEGER PRIMARY KEY,
-  BasketId INTEGER,
   ProductId INTEGER,
-  Quantity INTEGER,
-  CoffeeSize TEXT,
-  FOREIGN KEY (BasketId) REFERENCES Basket(BasketId) ON DELETE CASCADE,
-  FOREIGN KEY (ProductId) REFERENCES Products(ProductId) ON DELETE CASCADE
-);
-
-CREATE TABLE MilkTypes (
-  ItemID INTEGER PRIMARY KEY,
-  BasketId INTEGER,
-  ProductId INTEGER,
-  Quantity INTEGER,
   MilkType TEXT,
-  FOREIGN KEY (BasketId) REFERENCES Basket(BasketId) ON DELETE CASCADE,
+  CoffeeSize TEXT,
   FOREIGN KEY (ProductId) REFERENCES Products(ProductId) ON DELETE CASCADE
 );
 
