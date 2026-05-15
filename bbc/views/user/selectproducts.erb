@@ -269,6 +269,15 @@
             <div class="filter-container" style="padding: 20px 20px 0px 20px; margin-bottom: 0px;">
               <form method="post" action="/user/filterbeans" style="margin: 0px 0 0px 22vw; padding: 0;">
                 <div style="display: flex; align-items: center; gap: 10px;">
+                  <select name="roast" style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; background-color: white; color: #333;">
+                    <option value="">All Roasts</option>
+                    <option value="Light">Light Roast</option>
+                    <option value="Medium">Medium Roast</option>
+                    <option value="Dark">Dark Roast</option>
+                    <option value="Extra Dark ;)">Extra Dark Roast</option>
+                  </select>
+
+
                   <input type="text" name="search" placeholder="Search..." style="width: 200px; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
                   <button type="submit" name="submit" style="background-color: #7d461b; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer;">Search</button>
                   <button type="submit" name="clear" value="true" style="background-color: #f4f4f4; color: #333; border: 1px solid #ccc; padding: 8px 15px; border-radius: 4px; cursor: pointer;">Clear</button>
