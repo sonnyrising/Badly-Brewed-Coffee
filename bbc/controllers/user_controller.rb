@@ -137,12 +137,26 @@ post '/user/shop/delete' do
 end
 
 post '/user/filterbeans' do
+  
+  roast_selected = params[:roast].to_s
+  
   name_searched = params[:'search']
-  if !name_searched.empty?
+  if !name_searched.empty? || !roast_selected.empty?   
     @products = Products.all.select do |product|
       product.ProductName.to_s.downcase.include?(name_searched.downcase)
     end
+
+    if roast_selected && !roast_selected.empty?
+      @products = @products.select { |product| product.Roast.to_s == roast_selected }
+    end
     erb :"user/selectproducts"
+
+  elsif roast_selected && !roast_selected.empty?
+    @products = Products.all.select do |product|
+      product.Roast.to_s == roast_selected
+    end
+    erb :"user/selectproducts"  
+    
   else
     redirect "/user/shop"
   end
