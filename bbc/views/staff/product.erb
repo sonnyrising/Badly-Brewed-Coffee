@@ -28,7 +28,7 @@
           <% end %>
         </select>
       <p></p>
-      <% if p.ProductId > 6 %>
+      <% if p.Bean == false %>
             <label for="Size">Size</label>
             <p></p>
               <select name="coffeeSize">
@@ -48,7 +48,7 @@
     <button onclick=addToCustomisations() style="cursor: pointer;">Add to basket</button>
     <script>
         function addItemCustom() {
-          if p.ProductId > 6
+          if p.Bean == false
             Customisations.addToCustomisations(UserId: session[:userId], ProductId: p.ProductId, MilkType: params(milkType), CoffeeSize: params(coffeeSize))
           end
         }
