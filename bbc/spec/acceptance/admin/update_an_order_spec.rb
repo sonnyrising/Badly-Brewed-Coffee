@@ -8,14 +8,15 @@ RSpec.describe 'Updating an order', type: :feature do
         UserId: user.UserId,
         TotalCost: 12.99,
         Address: 'Old address',
-        TransactionDate: 0o1012024,
+        TransactionDate: 01012024,
         Refunded: 'false'
       )
 
+      login_as_admin
+
       visit '/admin/orders'
 
-      click_on 'Edit'
-
+      find(:xpath, "//form[input[@value='#{order.TransactionId}'] and @action='/admin/orders/edit']//button").click
 
       fill_in 'address-data', with: 'New Address'
       fill_in 'refund-data', with: 'true'
@@ -26,7 +27,7 @@ RSpec.describe 'Updating an order', type: :feature do
 
       updated_order = Transactions[order.TransactionId]
       expect(updated_order.Address).to eq('New Address')
-      expect(updated_order.Refunded).to eq('true')
+      expect(updated_order.Refunded).to eq(true)
     end
   end
 end

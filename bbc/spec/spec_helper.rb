@@ -36,3 +36,10 @@ end
 
 # Spec functions
 require_relative 'spec_functions'
+
+def login_as_admin
+  visit '/login'
+  fill_in 'username', with: "Admin"
+  fill_in 'password', with: "Admin123!"
+  click_on 'Log in'
+end

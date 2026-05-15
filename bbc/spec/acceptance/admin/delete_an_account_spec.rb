@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe 'Deleting an account', type: :feature do
+RSpec.describe 'Deleting an account' do
   it 'deletes the account and associated data' do
     account = Users.create(
       Username: 'alice',
@@ -15,12 +15,15 @@ RSpec.describe 'Deleting an account', type: :feature do
       TransactionDate: '01012024',
       TransactionId: 1000
     )
+
     Feedbacks.create(UserId: account.UserId, IssueContent: 'hi')
-    Basket.create(UserId: account.UserId, ItemId: 1)
+    Basket.create(UserId: account.UserId)
 
-    visit "/admin/accounts/#{account.UserId}"
+    login_as_admin
 
-    click_on 'Delete'
+    visit "/admin/accounts"
+
+    find(:xpath, "//form[input[@value='#{account.UserId}'] and @action='/admin/accounts/delete']//button").click
 
     expect(page).to have_current_path('/admin/accounts')
     expect(Users[account.UserId]).to be_nil

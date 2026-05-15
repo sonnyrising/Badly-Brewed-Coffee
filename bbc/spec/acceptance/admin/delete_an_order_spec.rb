@@ -10,9 +10,11 @@ RSpec.describe 'Admin deleting an order', type: :feature do
       Status: 'Pending'
     )
 
+    login_as_admin
+
     visit '/admin/orders'
 
-    click_on 'Delete'
+    find(:xpath, "//form[input[@value='#{order.TransactionId}'] and @action='/admin/orders/delete']//button").click
 
 
     expect(page).to have_current_path('/admin/orders')

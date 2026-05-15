@@ -66,7 +66,7 @@ end
 post '/admin/accounts/create/submit' do
   @user_id = 1
   @password = BCrypt::Password.create('password')
-  puts params[:'type-data']
+  
   if h(params[:'type-data']) == 'Staff'
     @user_id = validate_user_id(@user_id)
     Users.insert(UserId: @user_id, Username: params[:'username-data'].to_s,

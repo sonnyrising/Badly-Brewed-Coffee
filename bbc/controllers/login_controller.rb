@@ -14,6 +14,7 @@ post '/login' do
   @matching_error = nil
 
   user_id = Users.GetUserId(@uname)
+
   if !user_id.nil?
     if Users.isSuspended?(user_id)
       @matching_error = 'Account suspended due to inactivity for more than 6 months. Please contact support.'

@@ -2,21 +2,13 @@
 
 require_relative '../../spec_helper'
 
-def login_as_admin
-  visit '/login'
-  fill_in 'uname', with: 'admin'
-  fill_in 'pword', with: 'admin'
-  click_on 'Log in'
-end
-
 RSpec.describe 'Admin account creation.' do
   context 'when the admin is logged in' do
     it 'allows an admin to create a new account' do
       login_as_admin
-
       visit '/admin/accounts/create'
 
-      choose 'Staff'
+      choose 'staffoption'
 
       fill_in 'username-data', with: 'testuser123'
       fill_in 'email-data', with: 'test@example.com'

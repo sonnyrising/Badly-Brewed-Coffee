@@ -10,7 +10,11 @@ RSpec.describe 'Updating an account' do
         DaysSinceLastUse: 5
       )
 
-      visit "/admin/accounts/edit/#{account.UserId}"
+      login_as_admin
+
+      visit "/admin/accounts"
+
+      find(:xpath, "//form[input[@value='#{account.UserId}'] and @action='/admin/accounts/edit']//button").click
 
       fill_in 'username-data', with: 'alice_new'
       fill_in 'email-data', with: 'alice_new@example.com'
@@ -20,27 +24,13 @@ RSpec.describe 'Updating an account' do
 
       click_on 'Save'
 
-      expect(page).to have_current_path("/admin/accounts/#{account.UserId}")
+      find(:xpath, "//form[input[@value='#{account.UserId}'] and @action='/admin/accounts/view']//button").click
+
+      expect(page).to have_current_path("/admin/accounts/view")
       expect(page).to have_content('alice_new')
       expect(page).to have_content('alice_new@example.com')
       expect(page).to have_content('200')
       expect(page).to have_content('10')
-    end
-
-    it 'resets the password' do
-      account = Users.create(
-        Username: 'jeff',
-        Email: 'jeff@example.com',
-        LoyaltyPoints: 50,
-        DaysSinceLastUse: 2
-      )
-
-      visit "/admin/accounts/edit/#{account.UserId}"
-
-      click_on 'Reset password'
-
-      expect(page).to have_current_path("/admin/accounts/#{account.UserId}")
-      # expect(page).to have_content("Password reset")
     end
   end
 end

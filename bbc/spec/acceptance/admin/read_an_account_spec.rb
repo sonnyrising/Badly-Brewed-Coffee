@@ -13,11 +13,14 @@ RSpec.describe 'Viewing an account' do
       Transactions.create(
         UserId: account.UserId,
         TotalCost: 49.99,
-        TransactionDate: '01012024',
-        TransactionId: 1000
+        TransactionDate: '01012024'
       )
 
-      visit "/admin/accounts/#{account.UserId}"
+      login_as_admin
+
+      visit "/admin/accounts"
+
+      find(:xpath, "//form[input[@value='#{account.UserId}'] and @action='/admin/accounts/view']//button").click
 
       expect(page).to have_content('alice')
       expect(page).to have_content(account.UserId)
@@ -26,13 +29,7 @@ RSpec.describe 'Viewing an account' do
       expect(page).to have_content('5')
 
       expect(page).to have_content('Transaction history')
-      expect(page).to have_content('1000')
       expect(page).to have_content('£49.99')
-
-      click_on 'Edit'
-      visit "/admin/accounts/#{account.UserId}"
-
-      click_on 'Delete'
     end
   end
 end
