@@ -45,6 +45,7 @@ post '/user/update_settings' do
   current_user_id = session[:userId]
 
   existing_user = Users.where(Username: new_username).exclude(UserId: current_user_id).first
+  existing_email = Users.where(Email: new_email).exclude(UserId: current_user_id).first
 
   if existing_user
     session[:error_message] = "Sorry, the username '#{new_username}' is already taken!"
