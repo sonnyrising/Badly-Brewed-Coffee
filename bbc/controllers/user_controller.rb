@@ -48,7 +48,9 @@ post '/user/update_settings' do
   existing_email = Users.where(Email: new_email).exclude(UserId: current_user_id).first
 
   if existing_user
-    session[:error_message] = "Sorry, the username '#{new_username}' is already taken!"
+    session[:error_message] = "Sorry, the username '#{new_username}' is already taken!"  
+  elsif existing_email
+    session[:error_message] = "Sorry, the email '#{new_email}' is already taken!"
   else
     Users.where(UserId: session[:userId]).update(Username: new_username, Email: new_email)
 
