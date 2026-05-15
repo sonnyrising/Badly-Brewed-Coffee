@@ -133,21 +133,27 @@ post '/user/shop/delete' do
   end
 end
 
-post '/user/filter' do
-  if !params[:'search'].empty? && !Products[params[:'search']].nil?
-    @products = []
-    @products << Products[params[:'search']]
-    if params[:'search'].to_i < 6
-      erb :"user/selectproducts"
-    else
-      erb :"user/coffeeSelect"
+post '/user/filterbeans' do
+  name_searched = params[:'search']
+  if !name_searched.empty?
+    @products = Products.all.select do |product|
+      product.ProductName.to_s.downcase.include?(name_searched.downcase)
     end
+    erb :"user/selectproducts"
   else
-    if params[:'search'].to_i < 6
-      redirect "/user/shop"
-    else
-      redirect "user/coffeeSelect"
+    redirect "/user/shop"
+  end
+end
+
+post '/user/filtercoffees' do
+  name_searched = params[:'search']
+  if !name_searched.empty?
+    @products = Products.all.select do |product|
+      product.ProductName.to_s.downcase.include?(name_searched.downcase)
     end
+    erb :"user/coffeeSelect"
+  else
+    redirect "/user/coffeeshop"
   end
 end
 
