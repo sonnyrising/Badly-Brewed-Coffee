@@ -163,12 +163,26 @@ post '/user/filterbeans' do
 end
 
 post '/user/filtercoffees' do
+  
+  roast_selected = params[:roast]
+
   name_searched = params[:'search']
   if !name_searched.empty?
     @products = Products.all.select do |product|
       product.ProductName.to_s.downcase.include?(name_searched.downcase)
     end
+
+    if roast_selected && !roast_selected.empty?
+      @products = @products.select { |product| product.Roast.to_s == roast_selected }
+    end
     erb :"user/coffeeSelect"
+  
+  elsif roast_selected && !roast_selected.empty?
+    @products = Products.all.select do |product|
+      product.Roast.to_s == roast_selected && (product.Bean == 0 || product.Bean == false || product.Bean == "0")
+    end
+    erb :"user/coffeeSelect"
+
   else
     redirect "/user/coffeeshop"
   end
