@@ -10,9 +10,8 @@ class Transactions < Sequel::Model
     self.RefundRequested = false
   end
 
-  def totalsales(currentDate)
-    totalsales = 0
-    totalsales += Transactions.where(TransactionDate: currentDate).get(:TotalCost)
+  def self.get_total_sales(currentDate)
+    totalsales = Transactions.where(TransactionDate: currentDate).sum(:TotalCost) || 0
     totalsales
   end
 end
