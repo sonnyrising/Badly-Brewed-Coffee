@@ -23,7 +23,27 @@
             <option value="<%= q %>"><%= q %></option>
           <% end %>
         </select>
-        <button type="submit" style="cursor: pointer;">Add to basket</button>
-      </form>
+       <label for="Size">Size</label>
+          <p></p>
+            <select name="coffeeSize">
+              <option value="Small">Small</option>
+               <option value="Medium">Medium</option>
+              <option value="Large">Large</option>
+             </select>
+          <p></p>
+          <label for="milkType">Milk Type</label>
+          <p></p>
+            <select name="milkType">
+               <option value="Whole Milk">Whole Milk</option>
+              <option value="Soy Milk">Soy Milk</option>
+              <option value="Oat Milk">Oat Milk</option>
+            </select>
+      <button type="submit" style="cursor: pointer;">Add to basket</button>
+      <script>
+        function addItemCustom() {
+          Customisations.addToCustomisations(UserId: session[:userId], ProductId: p.ProductId, MilkType: params(milkType), CoffeeSize: params(coffeeSize))
+        }
+    </script>
+    </form>
   </div>  
 <% end %>
