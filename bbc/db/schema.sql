@@ -64,7 +64,7 @@ CREATE TABLE Basket(
 );
 
 CREATE TABLE Customisations (
-  ItemID INTEGER PRIMARY KEY,
+  ItemId INTEGER PRIMARY KEY,
   ProductId INTEGER,
   MilkType TEXT,
   CoffeeSize TEXT,

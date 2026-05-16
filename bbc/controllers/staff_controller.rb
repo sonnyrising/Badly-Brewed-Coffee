@@ -2,7 +2,6 @@
 
 before '/staff/*' do
   redirect '/login' unless ["staff", "manager", "admin"].include?(Users[session[:userId]].AccountType)
-  session[:userId] = 7
 end
 
 get '/staff/homepage' do
@@ -45,17 +44,34 @@ get '/staff/register' do
   erb :"staff/employeeregisterpage"
 end
 
-post '/staff/staffaccountview' do
-  erb :"staff/staffaccountview"
+post '/staff/accounts' do
+  @shown_accounts = Users.all
+  erb :"staff/accounts"
 end
 
-get '/staff/staffaccountview' do
-  erb :"staff/staffaccountview"
+get '/staff/accounts' do
+  @shown_accounts = Users.all
+  erb :"staff/accounts"
 end
 
 post '/staff/account' do
   @account = Users[params[:'account-data'].to_i]
   erb :"staff/account"
+end
+
+get '/staff/account' do
+  @account = Users[params[:'account-data'].to_i]
+  erb :"staff/account"
+end
+
+post '/staff/accounts/filter' do
+  filter = h(params[:'search-filter'].to_s.strip)
+  redirect '/staff/accounts' if filter.empty?
+
+  @shown_accounts = Users.where(Username: filter).all
+  redirect '/staff/accounts' if @shown_accounts.empty?
+
+  erb :"staff/accounts"
 end
 
 post '/staff/generatelabel' do
@@ -213,3 +229,6 @@ post '/staff/shop/delete' do
 
   redirect '/staff/selectproducts'
 end
+
+post '/staff/editpoints' do
+  @account.update(LoyaltyPoints: h(params[:'points'])) unless params[:'points'].empty?

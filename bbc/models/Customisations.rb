@@ -2,23 +2,33 @@
 
 class Customisations < Sequel::Model(:Customisations)
   def addToCustomisations(params)
-    self.ItemId = rand(1000000)
+    self.ItemId = nil
     self.ProductId = params.fetch('productId', '').strip
     self.MilkType = params.fetch('MilkType', '').strip
     self.CoffeeSize = params.fetch('CoffeeSize', '').strip
 
-    Basket.setItemId(itemId: self.ItemId, productId: self.ProductId)
   end
 
+<<<<<<< Updated upstream
   def self.getItemID(user, product)
     Customisations.where(UserId: user, ProductId: product).get(:ItemId)
   end 
+=======
+  def setItemId(product)
+    item = Basket.where(ProductId: product).get(:ItemId)
+    Customisations.where(ItemId: item).update(ItemId: item)
+  end
 
-  def getMilkType(item)
+  def self.getItemId(product)
+    Customisations.where(ProductId: product).get(:ItemId)
+  end
+>>>>>>> Stashed changes
+
+  def self.getMilkType(item)
     Customisations.where(ItemId: item).get(:MilkType)
   end
 
-  def getCoffeeSize(item)
+  def self.getCoffeeSize(item)
     Customisations.where(ItemId: item).get(:CoffeeSize)
   end
 end
