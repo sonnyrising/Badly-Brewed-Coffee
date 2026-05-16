@@ -68,11 +68,12 @@ def spec_before
 
   Users.insert(
     UserId: 5,
-    Username: 'admin',
-    PassHash: BCrypt::Password.create('admin'),
+    Username: 'Admin',
+    PassHash: BCrypt::Password.create('Admin123!'),
     LoyaltyDiscount: 0,
     LoyaltyPoints: 0,
-    Suspended: false
+    Suspended: false,
+    AccountType: 'admin'
   )
 
 

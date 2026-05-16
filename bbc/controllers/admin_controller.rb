@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 before '/admin/*' do
-  redirect '/' if session[:uname] != 'admin'
+  redirect '/' if Users[session[:userId]].AccountType != 'admin'
 end
 
 get '/admin/homepage' do
@@ -18,7 +18,7 @@ get '/admin/views' do
 end
 
 post '/admin/views/manager' do
-  redirect 'manager/homepage'
+  redirect '/manager/homepage'
 end
 
 post '/admin/views/barista' do
@@ -66,23 +66,17 @@ end
 post '/admin/accounts/create/submit' do
   @user_id = 1
   @password = BCrypt::Password.create('password')
-  puts params[:'type-data']
+  
   if h(params[:'type-data']) == 'Staff'
-    @user_id = validate_staff_id(@user_id)
-    Staff.insert(StaffId: @user_id, StaffUsername: params[:'username-data'].to_s,
-                 StaffEmail: params[:'email-data'].to_s, StaffPasswordHash: @password, EmployeeLevel: 'Barista', EmploymentStatus: 1)
+    @user_id = validate_user_id(@user_id)
+    Users.insert(UserId: @user_id, Username: params[:'username-data'].to_s,
+                 PassHash: @password,Email: params[:'email-data'].to_s, AccountType: "staff")
   else
     @user_id = validate_user_id(@user_id)
     Users.insert(UserId: @user_id, Username: params[:'username-data'].to_s, PassHash: @password,
-                 Email: params[:'email-data'].to_s, LoyaltyPoints: 0, DaysSinceLastUse: 0, Suspended: 0)
+                 Email: params[:'email-data'].to_s, LoyaltyPoints: 0, DaysSinceLastUse: 0, Suspended: 0, AccountType: "user")
   end
   redirect '/admin/accounts'
-end
-
-def validate_staff_id(user_id)
-  return user_id if Staff.where(StaffId: user_id).empty?
-
-  validate_staff_id(user_id + 1)
 end
 
 def validate_user_id(user_id)

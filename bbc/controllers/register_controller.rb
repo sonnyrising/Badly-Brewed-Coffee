@@ -16,10 +16,18 @@ post '/register' do
   @confirmpword = params.fetch('confirmpword', '').strip
 
   if @form_was_submitted
+    existing_email = Users.where(Email: @email).first
+    
     @uname_error = 'Please enter a username' if @uname.empty?
     @password_error = 'Please enter a password' if @pword.empty?
     @confirmpassword_error = 'Please enter your password again' if @confirmpword.empty?
-    @email_error = 'Please enter a valid email' unless str_email_address?(@email)
+
+    if !str_email_address?(@email)
+      @email_error = 'Please enter a valid email'
+    elsif existing_email
+      @email_error = 'This email is already registered to another account'
+    end
+
     @pword_match_error = 'Passwords dont match' if @pword != @confirmpword
     unless @pword.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[[:^alnum:]]).{8,}$/)
       @invalid_pword = 'Password must contain contain lower and upper case letters, a digit, a special character and be at least 8 characters long'

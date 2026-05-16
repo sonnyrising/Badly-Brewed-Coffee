@@ -1,12 +1,8 @@
-INSERT INTO Users VALUES (1, 'Guest', null, null, null,null, null, null, null, null, 0, null);
-INSERT INTO Users VALUES (2, 'Bill', 'PasswordHere', 'billboy@yahoo.com', 2, 1, 0, 0, 0, 0, 0, 2026-05-03);
-INSERT INTO Users VALUES (3, 'Bob', 'PasswordHere', 'bobby@hotmail.co.uk', 7, 1, 0, 0, 0, 2, 0, 2026-04-19);
-INSERT INTO Users VALUES (4, 'Ross', 'PasswordHere', 'rossbob@outlook.com', 6, 1, 0, 0, 0, 4, 0, 2026-03-27);
-INSERT INTO Users VALUES (5, 'Steve', 'PasswordHere', 'steveneven@gmail.com', 4, 1, 0, 0, 0, 5, 20, 2025-12-11);
-INSERT INTO Users VALUES (6,'test', '$2a$12$DK0nnutcRQTkgVMfVSqX3uBQY7YLkG06Cxr1FULFcdPZxrs9ZOcP2', 'test@gmail.com', 0, 0, 0, 0, 0, 6, 10, 2026-01-01);
-INSERT INTO Users VALUES (7, 'staff', 'staff', null, null,null, null, null, null, null, 0, null);
-
-INSERT INTO Staff VALUES (1, 'staff', 'staff', 'staff', 'employed');
+INSERT INTO Users VALUES (1, 'Guest', null, null, null,null, null, null, null, null, 0, null, 'user');
+INSERT INTO Users VALUES (2, 'Staff', '$2a$12$nW2DIockRWPhi90But102OUMRXYR7/LCQRdUbH771UlqS2Zwan7O6', null, null,null, null, null, null, null, 0, null, 'staff');
+INSERT INTO Users VALUES (3, 'Manager', '$2a$12$9CBEK/IV6GtNCFW8AG1qVOJ66zx8Q3he3YQlMvcLa8r1vzboQSKei', null, null,null, null, null, null, null, 0, null, 'manager');
+INSERT INTO Users VALUES (4, 'Admin', '$2a$12$sK6oWkCNEDorTY00zHArXOV7O/4iA3DMsQagqYVJ6DVT9F2jCrONq', null, null,null, null, null, null, null, 0, null, 'admin');
+INSERT INTO Users VALUES (5,'test', '$2a$12$DK0nnutcRQTkgVMfVSqX3uBQY7YLkG06Cxr1FULFcdPZxrs9ZOcP2', 'test@gmail.com', 0, 0, 0, 0, 0, 6, 10, 2026-01-01, 'user');
 
 INSERT INTO Products VALUES (1, 'JorgeBean','jorge_bean.jpeg', 'The rich mexican Jorge bean', 'Extra Dark ;)', 'Mexico', 12.99, 10, 1);
 INSERT INTO Products VALUES (2, 'Ethiopian Yirgacheffe', 'Ethiopian_Yirgacheffe.webp','Filled with  joy and flavour', 'Medium', 'Ethiopia', 4.99, 256, 1);

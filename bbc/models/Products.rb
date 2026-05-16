@@ -71,4 +71,5 @@ class Products < Sequel::Model(:Products)
 
     Products.where(ProductId: productId).get(:Bean)
   end
+
 end

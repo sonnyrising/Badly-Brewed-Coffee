@@ -45,9 +45,12 @@ post '/user/update_settings' do
   current_user_id = session[:userId]
 
   existing_user = Users.where(Username: new_username).exclude(UserId: current_user_id).first
+  existing_email = Users.where(Email: new_email).exclude(UserId: current_user_id).first
 
   if existing_user
-    session[:error_message] = "Sorry, the username '#{new_username}' is already taken!"
+    session[:error_message] = "Sorry, the username '#{new_username}' is already taken!"  
+  elsif existing_email
+    session[:error_message] = "Sorry, the email '#{new_email}' is already taken!"
   else
     Users.where(UserId: session[:userId]).update(Username: new_username, Email: new_email)
 
@@ -130,6 +133,58 @@ post '/user/shop/delete' do
     erb :"user/selectproducts"
   else
     erb :"user/coffeeSelect"
+  end
+end
+
+post '/user/filterbeans' do
+  
+  roast_selected = params[:roast].to_s
+  
+  name_searched = params[:'search']
+  if !name_searched.empty? || !roast_selected.empty?   
+    @products = Products.all.select do |product|
+      product.ProductName.to_s.downcase.include?(name_searched.downcase)
+    end
+
+    if roast_selected && !roast_selected.empty?
+      @products = @products.select { |product| product.Roast.to_s == roast_selected }
+    end
+    erb :"user/selectproducts"
+
+  elsif roast_selected && !roast_selected.empty?
+    @products = Products.all.select do |product|
+      product.Roast.to_s == roast_selected
+    end
+    erb :"user/selectproducts"  
+    
+  else
+    redirect "/user/shop"
+  end
+end
+
+post '/user/filtercoffees' do
+  
+  roast_selected = params[:roast]
+
+  name_searched = params[:'search']
+  if !name_searched.empty?
+    @products = Products.all.select do |product|
+      product.ProductName.to_s.downcase.include?(name_searched.downcase)
+    end
+
+    if roast_selected && !roast_selected.empty?
+      @products = @products.select { |product| product.Roast.to_s == roast_selected }
+    end
+    erb :"user/coffeeSelect"
+  
+  elsif roast_selected && !roast_selected.empty?
+    @products = Products.all.select do |product|
+      product.Roast.to_s == roast_selected && (product.Bean == 0 || product.Bean == false || product.Bean == "0")
+    end
+    erb :"user/coffeeSelect"
+
+  else
+    redirect "/user/coffeeshop"
   end
 end
 

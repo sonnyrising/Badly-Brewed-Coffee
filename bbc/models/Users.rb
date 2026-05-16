@@ -87,6 +87,7 @@ class Users < Sequel::Model
     self.LoyaltyPoints = 0
     self.DaysSinceLastUse = 0
     self.DateJoined = Date.today.to_s
+    self.AccountType = "user"
   end
 
   def compareUsername(username)

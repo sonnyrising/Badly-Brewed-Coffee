@@ -2,13 +2,20 @@
 
 require_relative '../../spec_helper'
 
+def admin_dummy
+  Users.insert(UserId: 1, Username: 'admin', AccountType: 'admin')
+end
+
 # =============================================================================
 # Order Management Tests
 # =============================================================================
 RSpec.describe 'Order Management Logic' do
-  let(:admin_session) { { 'rack.session' => { user_id: 1, uname: 'admin' } } }
+  let(:admin_session) { { 'rack.session' => { userId: 1, uname: 'admin' } } }
 
   it 'displays all order entries' do
+    Users.dataset.delete
+    admin_dummy
+
     get '/admin/orders', {}, admin_session
     expect(last_response.status).to eq(200)
   end
@@ -16,6 +23,7 @@ RSpec.describe 'Order Management Logic' do
   it 'displays order edit page for a specific order' do
     Users.dataset.delete
     Transactions.dataset.delete
+    admin_dummy
     Users.insert(UserId: 200, Username: 'admin test')
     Transactions.insert(TransactionId: 200, UserId: 200)
 
@@ -24,6 +32,9 @@ RSpec.describe 'Order Management Logic' do
   end
 
   it 'updates order details correctly' do
+    Users.dataset.delete
+    Transactions.dataset.delete
+    admin_dummy
     Transactions.insert(TransactionId: 500, UserId: 1, Address: 'Old address', TotalCost: 5.00)
 
     post '/admin/orders/edit/update', {
@@ -38,6 +49,9 @@ RSpec.describe 'Order Management Logic' do
   end
 
   it 'deletes an order from database' do
+    Transactions.dataset.delete
+    Users.dataset.delete
+    admin_dummy
     Transactions.insert(TransactionId: 501, UserId: 1, TotalCost: 10.00)
     expect(Transactions[501]).not_to be_nil
 
@@ -49,6 +63,9 @@ RSpec.describe 'Order Management Logic' do
 
   context 'searches an order' do
     it 'it displays the searched order' do
+      Transactions.dataset.delete
+      Users.dataset.delete
+      admin_dummy
       Transactions.insert(TransactionId: 502, UserId: 1, TotalCost: 10.00)
 
       post '/admin/orders/filter', { 'search-filter': '502' }, admin_session
@@ -58,6 +75,8 @@ RSpec.describe 'Order Management Logic' do
     end
 
     it "it redirects if searched order doesn't exist" do
+      Users.dataset.delete
+      admin_dummy
       post '/admin/orders/filter', { 'search-filter': '400' }, admin_session
 
       expect(last_response.status).to eq(302)
@@ -69,8 +88,9 @@ RSpec.describe 'Order Management Logic' do
     it 'it displays the order edit log list' do
       Users.dataset.delete
       Logs.dataset.delete
-      Users.insert(UserId: 1, Username: 'testing')
-      Logs.insert(LogId: 1, UserId: 1, LogDescription: 'testing')
+      admin_dummy
+      Users.insert(UserId: 2, Username: 'testing')
+      Logs.insert(LogId: 1, UserId: 2, LogDescription: 'testing')
       get '/admin/log', {}, admin_session
       expect(last_response.status).to eq(200)
     end
