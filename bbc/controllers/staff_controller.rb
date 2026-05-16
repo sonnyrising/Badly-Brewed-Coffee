@@ -91,20 +91,20 @@ get '/staff/managestock' do
   erb :"staff/managestock"
 end
 
-post '/staff/managestock' do
-  values_hash = {
-    product: Products[params['product_id']],
-    # Sanitise the input before updating the database
-    name: sanitise_string(params['product_name']),
-    stock: sanitise_int(params['product_stock']),
-    price: sanitise_price(params['product_price']),
-    image: sanitise_string(params['product_image']),
-    description: sanitise_string(params['product_description'])
-  }
-  update_product_values(values_hash)
-
-  redirect '/staff/managestock'
-end
+# post '/staff/managestock' do
+#   values_hash = {
+#     product: Products[params['product_id']],
+#     # Sanitise the input before updating the database
+#     name: sanitise_string(params['product_name']),
+#     stock: sanitise_int(params['product_stock']),
+#     price: sanitise_price(params['product_price']),
+#     image: sanitise_string(params['product_image']),
+#     description: sanitise_string(params['product_description'])
+#   }
+#   update_product_values(values_hash)
+#
+#   redirect '/staff/managestock'
+# end
 
 post '/staff/save_coffee_choices' do
   session[:milkType] = params[:milkType]

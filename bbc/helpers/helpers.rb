@@ -234,6 +234,13 @@ helpers do
   end
 end
 
+def initialise_users
+  Users.insert(UserId: 20, Username: 'Admin123!', PassHash: BCrypt::Password.create('Admin123!'), Email: '')
+  Users.insert(UserId: 21, Username: 'Staff123!', PassHash: BCrypt::Password.create('Staff123!'), Email: '')
+  Users.insert(UserId: 22, Username: 'User123!', PassHash: BCrypt::Password.create('User123!'), Email: '')
+  Users.insert(UserId: 23, Username: 'Manager123!', PassHash: BCrypt::Password.create('Manager123!'), Email: '')
+end
+
 # ---------| Helper Classes |---------
 class User
   attr_accessor :user_id, :username, :total_spent

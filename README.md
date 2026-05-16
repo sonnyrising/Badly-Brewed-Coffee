@@ -36,7 +36,7 @@
 
   ---
 
-  ## Installation & Setup
+  ## Installation
 
   ### 1. Download the project
   > git clone https://git.shefcompsci.org.uk/com1001-2025-26/team22/project.git
@@ -51,6 +51,25 @@
 
   ---
 
+ ## Running the Software
+ > cd project/bbc/
+ > bundle install
+ > sinatra
+ Click the link or navigate to http://127.0.0.1:456/ in a browser
+ 
+ ---
+
+ ## Running Tests
+ > bundle install
+ > cd project/bbc/spec
+ 
+ ###Run all tests
+ > rspec spec
+ 
+ ###Run specific tests
+ > rspec spec/acceptance
+ > rspec spec/controller
+
   ## Account access
 | User Type | Username | Password |
 | :---- | :---- | :---- |
@@ -60,3 +79,7 @@
 | Admin | Admin123\! | Admin123\! |
 
   ---
+
+ ## Using the Software
+ ### Before Logging In
+ 
