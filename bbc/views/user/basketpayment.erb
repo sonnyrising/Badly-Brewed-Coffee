@@ -60,8 +60,11 @@
                             <% 
                               qty_item = Basket.where(UserId: session[:userId], ProductId: p.ProductId).last
                               additional_costs = 0
+                              milkType = ""
+                              coffeeSize = ""
+                              
                               Customisations.getItemID(session[:userId], p.ProductId).each do |item|
-                              if !item.nil? && item == Basket.getItemID(UserId: session[:userId], ProductId: p.ProductId)
+                              if !item.nil? && item == Basket.getItemId(UserId: session[:userId], ProductId: p.ProductId)
                                 milkType = Customisations.getMilkType(item).to_s
                                 coffeeSize = Customisations.getCoffeeSize(item).to_s
 

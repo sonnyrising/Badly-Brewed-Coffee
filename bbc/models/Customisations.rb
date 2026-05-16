@@ -10,7 +10,7 @@ class Customisations < Sequel::Model(:Customisations)
   end
   
   def self.getItemID(user, product)
-    Customisations.where(UserId: user, ProductId: product).get(:ItemId)
+    Basket.where(UserId: user, ProductId: product).map(:ItemId)
   end 
 
   def setItemId(product)
