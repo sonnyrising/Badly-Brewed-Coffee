@@ -8,12 +8,11 @@ class Customisations < Sequel::Model(:Customisations)
     self.CoffeeSize = params.fetch('CoffeeSize', '').strip
 
   end
-
-<<<<<<< Updated upstream
+  
   def self.getItemID(user, product)
     Customisations.where(UserId: user, ProductId: product).get(:ItemId)
   end 
-=======
+
   def setItemId(product)
     item = Basket.where(ProductId: product).get(:ItemId)
     Customisations.where(ItemId: item).update(ItemId: item)
@@ -22,7 +21,6 @@ class Customisations < Sequel::Model(:Customisations)
   def self.getItemId(product)
     Customisations.where(ProductId: product).get(:ItemId)
   end
->>>>>>> Stashed changes
 
   def self.getMilkType(item)
     Customisations.where(ItemId: item).get(:MilkType)

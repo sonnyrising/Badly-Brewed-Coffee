@@ -232,3 +232,4 @@ end
 
 post '/staff/editpoints' do
   @account.update(LoyaltyPoints: h(params[:'points'])) unless params[:'points'].empty?
+end
