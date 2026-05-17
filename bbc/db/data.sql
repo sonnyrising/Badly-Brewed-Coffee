@@ -3,6 +3,7 @@ INSERT INTO Users VALUES (2, 'Admin123!', '$2a$12$CaNu0UwgSlOyXiQK3H4GrupctjoZbT
 INSERT INTO Users VALUES (3, 'Staff123!', '$2a$12$abLeT270BPYLJ080Cnpg5uueu2UD7G2cxMbqicgAao9SbvZehSoDa', '', 0, 0, 0, 0, 0, 0, 0, '2026-01-01', 'staff');
 INSERT INTO Users VALUES (4, 'User123!', '$2a$12$uB1ft5Wdr8T5J66mnrKUo.uFBtggB7BLO0r2G9r/CELbBeYJuQO0S', '', 0, 0, 0, 0, 0, 0, 0, '2026-01-01', 'user');
 INSERT INTO Users VALUES (5, 'Manager123!', '$2a$12$IOX8hQeTd3MMhM4.Krtp.OuVetpGe/PQ7KJN22IiKt.vtf7VO20rO', '', 0, 0, 0, 0, 0, 0, 0, '2026-01-01', 'manager');
+INSERT INTO Users VALUES (6, 'Suspended', 'Suspended123!',null, null, null, null, null, 1, null, null,null, null);
 
 INSERT INTO Products VALUES (1, 'JorgeBean','jorge_bean.jpeg', 'The rich mexican Jorge bean', 'Extra Dark ;)', 'Mexico', 12.99, 10, 1);
 INSERT INTO Products VALUES (2, 'Ethiopian Yirgacheffe', 'Ethiopian_Yirgacheffe.webp','Filled with  joy and flavour', 'Medium', 'Ethiopia', 4.99, 256, 1);
