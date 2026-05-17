@@ -1,8 +1,8 @@
-INSERT INTO Users VALUES (1, 'Guest', null, null, null,null, null, null, null, null, 0, null, 'user');
-INSERT INTO Users VALUES (2, 'Staff', '$2a$12$nW2DIockRWPhi90But102OUMRXYR7/LCQRdUbH771UlqS2Zwan7O6', null, null,null, null, null, null, null, 0, null, 'staff');
-INSERT INTO Users VALUES (3, 'Manager', '$2a$12$9CBEK/IV6GtNCFW8AG1qVOJ66zx8Q3he3YQlMvcLa8r1vzboQSKei', null, null,null, null, null, null, null, 0, null, 'manager');
-INSERT INTO Users VALUES (4, 'Admin', '$2a$12$sK6oWkCNEDorTY00zHArXOV7O/4iA3DMsQagqYVJ6DVT9F2jCrONq', null, null,null, null, null, null, null, 0, null, 'admin');
-INSERT INTO Users VALUES (5,'test', '$2a$12$DK0nnutcRQTkgVMfVSqX3uBQY7YLkG06Cxr1FULFcdPZxrs9ZOcP2', 'test@gmail.com', 0, 0, 0, 0, 0, 6, 10, 2026-01-01, 'user');
+INSERT INTO Users VALUES (1, 'Guest', null, null, null, null, null, null, null, null, null,null, null);
+INSERT INTO Users VALUES (2, 'Admin123!', '$2a$12$CaNu0UwgSlOyXiQK3H4GrupctjoZbTMDv51fLx67xXSuVABTGat5K', '', 0, 0, 0, 0, 0, 0, 0, '2026-01-01', 'admin');
+INSERT INTO Users VALUES (3, 'Staff123!', '$2a$12$abLeT270BPYLJ080Cnpg5uueu2UD7G2cxMbqicgAao9SbvZehSoDa', '', 0, 0, 0, 0, 0, 0, 0, '2026-01-01', 'staff');
+INSERT INTO Users VALUES (4, 'User123!', '$2a$12$uB1ft5Wdr8T5J66mnrKUo.uFBtggB7BLO0r2G9r/CELbBeYJuQO0S', '', 0, 0, 0, 0, 0, 0, 0, '2026-01-01', 'user');
+INSERT INTO Users VALUES (5, 'Manager123!', '$2a$12$IOX8hQeTd3MMhM4.Krtp.OuVetpGe/PQ7KJN22IiKt.vtf7VO20rO', '', 0, 0, 0, 0, 0, 0, 0, '2026-01-01', 'manager');
 
 INSERT INTO Products VALUES (1, 'JorgeBean','jorge_bean.jpeg', 'The rich mexican Jorge bean', 'Extra Dark ;)', 'Mexico', 12.99, 10, 1);
 INSERT INTO Products VALUES (2, 'Ethiopian Yirgacheffe', 'Ethiopian_Yirgacheffe.webp','Filled with  joy and flavour', 'Medium', 'Ethiopia', 4.99, 256, 1);
@@ -23,4 +23,5 @@ INSERT INTO Transactions VALUES (3,3, 3.99, "Sonny park avenue", 24032026, 'Pend
 
 INSERT INTO Feedbacks VALUES (1, 1, 1, 'I dislike the fact that BBC coffee has not released more BBC into the world.', '0', 'true', 1);
 INSERT INTO Feedbacks VALUES (2, 4, 2, 'I am scrumming right now. For no particular reason.', '0', 'true', 2);
+
 

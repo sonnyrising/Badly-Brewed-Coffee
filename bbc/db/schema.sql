@@ -36,7 +36,8 @@ CREATE TABLE Feedbacks(
   RefundRequest TEXT,
   RefundReason TEXT,
   TicketNumber INTEGER,
-  FOREIGN KEY (UserId) REFERENCES Users(UserId) ON DELETE CASCADE
+  FOREIGN KEY (UserId) REFERENCES Users(UserId) ON DELETE CASCADE,
+  FOREIGN KEY (TransactionId) REFERENCES Transactions(TransactionId) ON DELETE CASCADE
 );
 
 CREATE TABLE Products(
