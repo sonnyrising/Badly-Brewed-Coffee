@@ -203,8 +203,15 @@ get '/staff/basketpayment' do
 end
 
 post '/staff/thankyoupage' do
+  if params[:beans] == true
+    Users.beanLoyaltyPointIncrease(params[:customerId])
+  else
+    Users.coffeeLoyaltyPointIncrease(params[:customerId])
+  end
+
+
   transaction = Transactions.insert(
-    UserId: params[:accountnum],
+    UserId: params[:customerId],
     TotalCost: params[:totalcost],
     Address: params[:address],
     TransactionDate: Time.now.strftime('%d%m%Y').to_i,
@@ -215,8 +222,6 @@ post '/staff/thankyoupage' do
   transaction = Transactions[transaction]
 
   Basket.orderPlaced(transaction.UserId, transaction.TransactionId)
-
-  Users.beanLoyaltyPointIncrease(params[:accountnum])
 
   erb :"staff/thankyoupage"
 end
@@ -255,5 +260,7 @@ post '/staff/shop/delete' do
 end
 
 post '/staff/editpoints' do
-  @account.update(LoyaltyPoints: h(params[:'points'])) unless params[:'points'].empty?
+  Users.manualPointsAdd(params[:customer_id], params[:points])
+
+  redirect '/staff/accounts'
 end
