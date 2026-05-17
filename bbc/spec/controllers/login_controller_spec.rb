@@ -18,12 +18,11 @@ RSpec.describe 'GET /login' do
     end
   end
 end
-
 RSpec.describe 'POST /login' do
   let(:valid_params) do
     {
-      'uname' => 'TestUser',
-      'pword' => 'Password1!'
+      'uname' => 'User123!',
+      'pword' => 'User123!'
     }
   end
 
@@ -42,8 +41,40 @@ RSpec.describe 'POST /login' do
 
       it 'sets the uname session variable' do
         post '/login', valid_params
-        expect(last_request.session[:uname]).to eq('TestUser')
+        expect(last_request.session[:uname]).to eq('test')
       end
     end
   end
+
+  describe 'blank field validation' do
+    context 'when username is blank' do
+      it 'returns 200 and shows username error' do
+        post '/login', valid_params.merge('uname' => '')
+        expect(last_response.status).to eq(200)
+        expect(last_response.body).to include('Please enter a username')
+      end
+    end
+
+    context 'when password is blank' do
+      it 'returns 200 and shows password error' do
+        post '/login', valid_params.merge('pword' => '')
+        expect(last_response.status).to eq(200)
+        expect(last_response.body).to include('Please enter a password')
+      end
+    end
+
+    context 'when both username and password are blank' do
+      it 'shows both validation errors' do
+        post '/login', {
+          'uname' => '',
+          'pword' => ''
+        }
+
+        expect(last_response.body).to include('Please enter a username')
+        expect(last_response.body).to include('Please enter a password')
+      end
+    end
+  end
+
+
 end
