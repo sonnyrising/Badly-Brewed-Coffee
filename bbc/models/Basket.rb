@@ -1,12 +1,25 @@
 # frozen_string_literal: true
 
 class Basket < Sequel::Model(:Basket)
-  def addToBasket(params)
+  def addBeanToBasket(params)
     self.UserId = params.fetch('userId', '').strip
     self.ProductId = params.fetch('productId', '').strip
     self.TransactionId = nil
     self.ItemId = rand(10000000)
     self.Quantity = params.fetch('quantity', '').strip
+    self.Milk = nil
+    self.Size = nil
+
+  end
+
+  def addCoffeeToBasket(params)
+    self.UserId = params.fetch('userId', '').strip
+    self.ProductId = params.fetch('productId', '').strip
+    self.TransactionId = nil
+    self.ItemId = rand(10000000)
+    self.Quantity = params.fetch('quantity', '').strip
+    self.Milk = params.fetch('milk', '').strip
+    self.Size = params.fetch('size','').strip
   end
 
   def self.getItemId(params)

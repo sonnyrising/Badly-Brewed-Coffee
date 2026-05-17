@@ -25,25 +25,20 @@
         </select>
        <label for="Size">Size</label>
           <p></p>
-            <select name="coffeeSize">
+            <select name="size">
               <option value="Small">Small</option>
-               <option value="Medium">Medium</option>
-              <option value="Large">Large</option>
+               <option value="Medium">Medium (+£1)</option>
+              <option value="Large">Large (+£2)</option>
              </select>
           <p></p>
-          <label for="milkType">Milk Type</label>
+          <label for="milk">Milk Type</label>
           <p></p>
-            <select name="milkType">
-               <option value="Whole Milk">Whole Milk</option>
-              <option value="Soy Milk">Soy Milk</option>
-              <option value="Oat Milk">Oat Milk</option>
+            <select name="milk">
+              <option value="Whole Milk">Whole Milk</option>
+              <option value="Soy Milk">Soy Milk (+£1)</option>
+              <option value="Oat Milk">Oat Milk (+£2)</option>
             </select>
       <button type="submit" style="cursor: pointer;">Add to basket</button>
-      <script>
-        function addItemCustom() {
-          Customisations.addToCustomisations(UserId: session[:userId], ProductId: p.ProductId, MilkType: params(milkType), CoffeeSize: params(coffeeSize))
-        }
-    </script>
     </form>
   </div>  
 <% end %>

@@ -55,45 +55,44 @@
                     <% cheapestCoffeePrice = 10 %>
                     <% coffees = 0 %>
                     <% beans = 0 %>
+
                     <% (Basket.getProductNamesForUser(session[:userId])).each do |p| %>
                         <div style="display: flex; justify-content: space-between; margin-top: 10px; font-size: 1.1rem;">
                             <% 
-                              qty_item = Basket.where(UserId: session[:userId], ProductId: p.ProductId).last
+                              item = Basket.where(UserId: session[:userId], ProductId: p.ProductId).last
                               additional_costs = 0
-                              milkType = ""
-                              coffeeSize = ""
-                              
-                              Customisations.getItemID(session[:userId], p.ProductId).each do |item|
-                              if !item.nil? && item == Basket.getItemId(UserId: session[:userId], ProductId: p.ProductId)
-                                milkType = Customisations.getMilkType(item).to_s
-                                coffeeSize = Customisations.getCoffeeSize(item).to_s
 
-                                if coffeeSize == "Small"
-                                  additional_costs -= 1
-                                elsif coffeeSize == "Large"
-                                  additional_costs += 1
-                                end
-
-                                if milkType == "Soy Milk"
-                                  additional_costs += 1
-                                elsif milkType == "Oat Milk"
-                                  additional_costs += 2
-                                end
-                              end
-                            end
-                            subtotal = (p.Price + additional_costs) * qty_item.Quantity
-                            total_cost += subtotal
                             if !p.Bean 
                               coffees += 1
                               if cheapestCoffeePrice > p.Price 
                                 cheapestCoffeePrice = p.Price
                               end
+                              size = item.Size
+                              milkType = item.Milk 
+
+                              if size == "Medium"
+                                additional_costs -= 1
+                              elsif size == "Large"
+                                additional_costs += 2
+                              end
+                              
+                              if milkType == "Soy Milk"
+                                additional_costs += 1
+                              elsif milkType == "Oat Milk"
+                                additional_costs += 2
+                              end         
                             else 
                               beans += 1
                             end
+                            subtotal = (p.Price + additional_costs) * item.Quantity
+                            total_cost += subtotal
                             %>
-                            <span><%= p.ProductName %>   <% coffeeSize %>  <% milkType %> (x<%= qty_item.Quantity %>)</span>
-                            <span>£<%= '%.2f' % subtotal %></span>
+                            <span><%= p.ProductName %> -  <%= size %> -  <%= milkType %> (x<%= item.Quantity %>)</span>
+                            <% if additional_costs == 0 %>
+                              <span>£<%= '%.2f' % subtotal %></span>
+                            <% else %>
+                              <span>(+£<%= additional_costs %>) £<%= '%.2f' % subtotal %></span>
+                            <% end %>     
                         </div>
                     <% end %>
 

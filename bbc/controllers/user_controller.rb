@@ -84,13 +84,21 @@ post '/user/shop' do
   if !item_bought.nil?
     latest_product = @basket.checkLatest(params)
     if latest_product.nil?
-      @basket.addToBasket(params)
+      if Products.coffeeOrBeans(params) == true
+        @basket.addBeanToBasket(params)
+      else
+        @basket.addCoffeeToBasket(params)
+      end
       @basket.save_changes
     else
       @basket.updateQuantity(params)
     end
   elsif exists.nil? || user_exists.nil? || product_exists.nil?
-    @basket.addToBasket(params)
+    if Products.coffeeOrBeans(params) == true
+      @basket.addBeanToBasket(params)
+    else
+      @basket.addCoffeeToBasket(params)
+    end
     @basket.save_changes
   else
     @basket.updateQuantity(params)
