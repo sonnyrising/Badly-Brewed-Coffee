@@ -142,7 +142,7 @@
 
               <div style="text-align: center; margin-top: 20px;">
               <% if beans !=0 || coffees != 0 %>
-                  <form action="/thankyoupage" method="post">
+                  <form action="/staff/thankyoupage" method="post">
                       <input type="hidden" name="userId" value="<%= session[:userId] %>">
                       <input type="hidden" name="totalcost" value="<%= total_cost %>">
                       <input type="hidden" name ="beans" value="<%= beans %>">

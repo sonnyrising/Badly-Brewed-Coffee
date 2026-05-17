@@ -10,6 +10,12 @@ get '/staff/homepage' do
   erb :"staff/homepage"
 end
 
+post '/staff/homepage' do
+  @shown_orders = Transactions.all
+
+  erb :"staff/homepage"
+end
+
 post '/staff/selectproducts' do
   @products = Products.all
 
