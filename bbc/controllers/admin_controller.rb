@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 before '/admin/*' do
-  redirect '/' if Users[session[:userId]].AccountType != 'admin'
+  redirect '/' if Users[session[:userId]].AccountType != 'admin' && Users[session[:userId]].AccountType != 'staff'
 end
 
 get '/admin/homepage' do

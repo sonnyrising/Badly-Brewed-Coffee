@@ -23,16 +23,33 @@ post '/staff/shop' do
   exists = @basket.productExists(params)
   user_exists = @basket.userCheck(params)
   product_exists = @basket.productCheck(params)
+  item_bought = @basket.bought(params)
 
-  if exists.nil? || user_exists.nil? || product_exists.nil?
-    @basket.addToBasket(params)
+  if !item_bought.nil?
+    latest_product = @basket.checkLatest(params)
+    if latest_product.nil?
+      if Products.coffeeOrBeans(params) == true
+        @basket.addBeanToBasket(params)
+      else
+        @basket.addCoffeeToBasket(params)
+      end
+      @basket.save_changes
+    else
+      @basket.updateQuantity(params)
+    end
+  elsif exists.nil? || user_exists.nil? || product_exists.nil?
+    if Products.coffeeOrBeans(params) == true
+      @basket.addBeanToBasket(params)
+    else
+      @basket.addCoffeeToBasket(params)
+    end
     @basket.save_changes
   else
     @basket.updateQuantity(params)
   end
-
-  redirect '/staff/selectproducts'
+  erb :"staff/selectproducts"
 end
+
 
 get '/staff/selectproducts' do
   @products = Products.all
@@ -75,6 +92,7 @@ post '/staff/accounts/filter' do
 end
 
 post '/staff/generatelabel' do
+  @account = Users[params[:'account-data'].to_i]
   erb :"staff/generatelabel"
 end
 
