@@ -49,6 +49,16 @@ def spec_before
   )
 
   Users.insert(
+    UserId: 6,
+    Username: 'User123!',
+    PassHash: BCrypt::Password.create('User123!'),
+    LoyaltyDiscount: 0,
+    LoyaltyPoints: 0,
+    Suspended: false,
+    AccountType: 'user'
+  )
+
+  Users.insert(
     UserId: 2,
     Username: 'manager',
     PassHash: BCrypt::Password.create('manager'),
@@ -74,6 +84,16 @@ def spec_before
     LoyaltyPoints: 0,
     Suspended: false,
     AccountType: 'admin'
+  )
+  
+  Users.insert(
+    UserId: 7,
+    Username: 'Suspended',
+    PassHash: BCrypt::Password.create('Suspended!'),
+    LoyaltyDiscount: 0,
+    LoyaltyPoints: 0,
+    Suspended: true,
+    AccountType: 'user'
   )
 
 
@@ -106,4 +126,5 @@ def spec_before
     RefundRequest: true,
     TicketNumber: 1001
   )
+
 end
