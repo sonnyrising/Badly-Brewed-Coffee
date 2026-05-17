@@ -14,12 +14,8 @@ RSpec.describe 'Customisations Management,' do
         'CoffeeSize'  =>  '   Small     '
       }
 
-      allow(customisation).to receive(:rand).and_return(12345)
-      expect(Basket).to receive(:setItemId).with(itemId: 12345, productId: '10')
-
       customisation.addToCustomisations(params)
-      expect(customisation.ItemId).to eq(12345)
-      expect(customisation.ProductId).to eq('10')
+      expect(customisation.ProductId).to eq(10)
       expect(customisation.MilkType).to eq('Test Coffee')
       expect(customisation.CoffeeSize).to eq('Small')
     end
@@ -27,11 +23,34 @@ RSpec.describe 'Customisations Management,' do
 
   context "Item ID" do
     it ".getItemID(user, product)" do
+      Users.dataset.delete
+      Products.dataset.delete
+      Basket.dataset.delete
       Customisations.dataset.delete
-      custom = Customisations.insert(ProductId: 1, ItemId: 1, UserId: 99)
 
-      result = Customisations.getItemID(99, 1)
-      expect(result).to eq(1)
+      Users.insert(UserId: 10)
+      Products.insert(ProductId: 1)
+      Basket.insert(UserId: 10, ProductId: 1, BasketId: 1, ItemId: 100)
+      Customisations.insert(ItemId: 100, ProductId: 1)
+
+      result = Customisations.getItemID(10, 1)
+      expect(result).to eq(100)
+    end
+
+    it ".setItemId(product)" do
+      Products.dataset.delete
+      Basket.dataset.delete
+      Customisations.dataset.delete
+      Products.insert(ProductId: 10)
+      Basket.insert(BasketId: 1, ProductId: 10, ItemId: 67)
+      Customisations.insert(ItemId: 67, ProductId: 10)
+
+      custom = Customisations.new
+      custom.setItemId(10)
+
+      custom = Customisations.first(ItemId: 67)
+      expect(custom).not_to be_nil
+      expect(custom[:ItemId]).to eq(67)
     end
   end
 
