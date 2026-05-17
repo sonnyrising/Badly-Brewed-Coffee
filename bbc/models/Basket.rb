@@ -34,6 +34,10 @@ class Basket < Sequel::Model(:Basket)
     Basket.where(UserId: user, ProductId: product).last
   end
 
+  def self.clearGuestBasket
+    Basket.where(UserId: 1).destroy
+  end
+
   def userCheck(params)
     user = params.fetch('userId', '')
     Basket.where(UserId: user).last

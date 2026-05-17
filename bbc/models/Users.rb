@@ -24,7 +24,7 @@ class Users < Sequel::Model
   end
 
   def self.ComparePassword(userId, password)
-    database_password = Users.where(UserID: userId).get(:PassHash)
+    database_password = Users.where(UserId: userId).get(:PassHash)
     return true if validate_password(database_password, password)
 
 
@@ -36,7 +36,10 @@ class Users < Sequel::Model
   end
 
   def self.SetLoyaltyPoints(userId, offset)
-    Users.where(UserId: userId).update(LoyaltyPoints: Sequel[:LoyaltyPoints] + offset)
+    current_points = Users.where(UserId: userId).get(:LoyaltyPoints) || 0
+    new_total = current_points + offset.to_i
+    Users.where(UserId: userId).update(LoyaltyPoints: new_total)
+    new_total
   end
 
   def self.GetTransactionHistory(_userId)
@@ -76,8 +79,9 @@ class Users < Sequel::Model
   def self.daily_acc_activity_check
     Users.where(Warning: 1, DaysSinceWarning: 5).update(Suspended: 1, Warning: 0)
     Users.where(DaysSinceLastUse: 180).update(Warning: 1, DaysSinceWarning: 0)
+
     Users.where(Suspended: 0).update(DaysSinceLastUse: Sequel[:DaysSinceLastUse] + 1)
-    Users.where(Warning: 1).update(DaysSinceWarning: Sequel[:DaysSinceWarning] + 1)
+    Users.where(Warning: 1).update(DaysSinceWarning: Sequel[:DaysSinceWarning] + 1) 
   end
 
   def load(params)
@@ -98,9 +102,6 @@ class Users < Sequel::Model
     false
   end
 
-  def self.clearGuestBasket
-    Basket.where(UserId: 1).destroy
-  end
 
   def self.beanLoyaltyPointIncrease(userId)
     points = Users.where(UserId: userId).get(:LoyaltyPoints)
