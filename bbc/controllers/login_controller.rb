@@ -51,7 +51,7 @@ end
 
 get '/logout' do
   session.clear
-  Users.clearGuestBasket
+  Basket.clearGuestBasket
 
   redirect '/login'
 end

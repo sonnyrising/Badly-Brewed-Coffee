@@ -41,6 +41,7 @@ post '/register' do
     if @submission_error.nil?
       session[:uname] = @uname
       @user.save_changes
+      session[:userId] = Users.GetUserId(@uname)
       redirect '/user/homepage'
     end
   end
