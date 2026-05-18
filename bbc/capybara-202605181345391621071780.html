@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<head>
+    <link href="/css/GenericTheme.css" rel="stylesheet">
+    <title>Staff Homepage</title>
+    <style>
+    button {
+      background-color: rgb(130 72 24);
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      margin: 30px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font: 16pt Helvetica, bold;
+    }
+
+    column-buttons {
+      display: flex;              
+      flex-direction: column;     
+      align-items: center;        
+      gap: 30px;
+      margin-top: 50px;
+
+    }
+
+
+    .pie-chart {
+	    background:
+		  radial-gradient(
+			  circle closest-side,
+			  white 0,
+			  white 55.38%,
+			  transparent 55.38%,
+			  transparent 78%,
+			  white 0
+		  ),
+		  conic-gradient(
+	  		#4e79a7 0,
+  			#4e79a7 81.6%,
+			  #f28e2c 0,
+			  #f28e2c 100%
+	  );
+	  position: relative;
+	  width: 500px;
+	  min-height: 350px;
+  	margin: 0;
+  	outline: 1px solid #ccc;
+  }
+  .pie-chart h2 {
+	  position: absolute;
+	  margin: 1rem;
+  }
+  .pie-chart figcaption {
+	  position: absolute;
+	  bottom: 1em;
+	  right: 1em;
+  	font-size: smaller;
+	  text-align: right;
+  }
+  .pie-chart span:after {
+	  display: inline-block;
+	  content: "";
+	  width: 0.8em;
+	  height: 0.8em;
+	  margin-left: 0.4em;
+	  height: 0.8em;
+	  border-radius: 0.2em;
+	  
+  }
+  </style>
+
+</head>
+<body>
+    <header>
+        <nav>
+
+        </nav>
+    </header>
+    <main>
+      <div style="display: grid;grid-template-columns: 20vw 80vw;" class="squish">
+            <div style="background-color: rgb(130 72 24); height: 100vh; padding:15px; box-shadow: 11px 5px 15px rgba(0, 0, 0, 0.3); z-index: 100;">
+
+              <div style="width: 100%; text-align: left;">
+                <a href="/logout" style="font-size: 24px; color: white; text-decoration: none">Logout</a>
+              </div>
+
+                <h1 style="text-align: center;position: relative;top: 5vh;">Welcome Staff123!!</h1>
+                <div style="position: relative; top: 25px; left: 80px; column-gap: 5px" class="column-buttons">
+                  <div style="width: 100%; text-align: center;" class="column-buttons">
+                    <a href = "/staff/selectproducts">
+                      <button class="button">Shop</button>
+                    </a>
+                    <a href = "/staff/settings">
+                      <button class="button">Settings</button>
+                    </a>
+                    <a href = "/staff/accounts">
+                      <button class="button">Accounts</button>
+                    </a>
+                    <a href = "/managestock">
+                      <button class="button">Manage Stock</button>
+                    </a>
+                    <a href = "/staff/orders">
+                      <button class="button">View Orders</button>
+                    </a>
+                    <a href = "/refunds">
+                      <button class="button">View Refunds</button>
+                    </a>
+                  </div>
+                </div>
+              </div>
+                          <div style="background-color: rgb(255, 255, 255); height: 100vh;" class="squish">
+              <img src="/imgs/dashboard.png" alt="Dashboard" style="width: 100%;height: 100%;object-fit: fill;"></a>
+
+              <div style="color: black;width: 55vw;height: 40vh;position: absolute;top: 10%;left: 30%;background: transparent;backdrop-filter: blur(15px);box-shadow: 0px 0px 20px 0px #0000007a;border-radius: 30px; text-align: center;">
+	              <h1>History of BBC</h1>
+              <p>
+                Badly Brewed Coffee (BBC) was founded on a simple mission: to bring the "Wild Side" of coffee to the everyday drinker. Our story began in the rugged highlands of Mexico, where we discovered the <strong>JorgeBean</strong>—a rare variety that thrives in the untamed rainforest rather than on a traditional farm.
+              </p>
+            
+              <p>
+                We hand-collect these beans from their natural habitat and bring them back for a specialized process we call "The Cracking." Instead of standard industrial roasting, we carefully fracture the sun-dried husks to access the raw green coffee inside. This unique method ensures that the intense, authentic flavors of the high-altitude harvest are preserved in every cup.
+              </p>
+              <p> </p>
+              <hr>
+
+              <h2>Our Products</h2>
+            
+              <p>
+                Our flagship <strong>Mexican JorgeBean (£12.99)</strong> is harvested directly from the wild for a rich, deep flavor. For those needing a bold, high-acidity roast, the <strong>Kenyan AA (£10.99)</strong> is designed for a strong start to your morning. If you prefer a smooth, complex cup, the <strong>Guatemalan Antigua (£7.99)</strong> offers a taste of pure nostalgia.
+              </p>
+
+              <p>
+                For the more adventurous, the earthy <strong>Amazonian Blend (£6.59)</strong> makes you feel the river flow in every sip. We also offer the <strong>Ethiopian Yirgacheffe (£4.99)</strong>, which is bright and floral, filled with joy and flavor. Finally, our <strong>Colombian Supremo (£3.99)</strong> remains a classic, dependable choice for an authentic Colombian taste.
+              </p>
+
+              <p><em>All items are available for purchase in quantities of up to 10 units.</em></p>
+              </div>
+        
+
+              <div style="color: black;width: 55vw;height: 40vh;position: absolute;top: 55%;left: 30%;background: transparent;backdrop-filter: blur(15px);box-shadow: 0px 0px 20px 0px #0000007a;border-radius: 30px; text-align: center;">
+				        <h1>Recent Transactions</h1>
+				        <div style="position:relative;top:3vh;">
+					      <table style="width: 100%; table-layout: fixed; border-collapse: collapse; overflow-y: scroll; color: black !important;">
+						    <tr>
+							    <td>Account Number</td>
+							    <td>Date</td>
+							    <td>Price</td>
+						    </tr>
+						
+						    
+							    
+				 				    <tr>
+									    <td>1</td>
+									    <td>20/24/</td>
+									    <td>£10.0</td>
+								    </tr>
+							    
+				 				    <tr>
+									    <td>1</td>
+									    <td>20/24/</td>
+									    <td>£15.0</td>
+								    </tr>
+							    
+						    
+					      </table>
+				      </div>
+           </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+
+    </footer>
+</body>

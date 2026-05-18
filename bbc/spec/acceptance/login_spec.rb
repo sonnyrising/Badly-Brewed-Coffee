@@ -11,8 +11,8 @@ Capybara.default_driver = :rack_test
 RSpec.describe 'Login Tests', type: :feature do
   def attempt_login(username, password)
     visit '/login'
-    fill_in 'uname', with: username
-    fill_in 'pword', with: password
+    fill_in 'username', with: username
+    fill_in 'password', with: password
     click_button 'Log in'
   end
 
@@ -22,7 +22,7 @@ RSpec.describe 'Login Tests', type: :feature do
 
   describe 'Valid credentials' do
     context 'when logging in as a manager' do
-      before { attempt_login('manager', 'manager') }
+      before { attempt_login('Manager123!', 'Manager123!') }
 
       it 'logs in successfully' do
         expect(page.current_path).not_to eq('/login')
@@ -34,7 +34,7 @@ RSpec.describe 'Login Tests', type: :feature do
     end
 
     context 'when logging in as staff' do
-      before { attempt_login('staff', 'staff') }
+      before { attempt_login('Staff123!', 'Staff123!') }
 
       it 'logs in successfully' do
         expect(page.current_path).not_to eq('/login')
@@ -46,7 +46,7 @@ RSpec.describe 'Login Tests', type: :feature do
     end
 
     context 'when logging in as admin' do
-      before { attempt_login('admin', 'admin') }
+      before { attempt_login('Admin123!', 'Admin123!') }
 
       it 'logs in successfully' do
         expect(page.current_path).not_to eq('/login')
@@ -54,7 +54,7 @@ RSpec.describe 'Login Tests', type: :feature do
     end
 
     context 'when logging in as a regular user' do
-      before { attempt_login('test', 'password') }
+      before { attempt_login('User123!', 'User123!') }
 
       it 'logs in successfully' do
         expect(page.current_path).not_to eq('/login')
@@ -84,7 +84,7 @@ RSpec.describe 'Login Tests', type: :feature do
     end
 
     context 'when the password is wrong' do
-      before { attempt_login('manager', 'wrongpassword') }
+      before { attempt_login('Manager123!', 'wrongpassword') }
 
       it 'stays on the login page' do
         expect(page.current_path).to eq('/login')
@@ -96,7 +96,7 @@ RSpec.describe 'Login Tests', type: :feature do
     end
 
     context 'when the username is blank' do
-      before { attempt_login('', 'manager') }
+      before { attempt_login('', 'Manager123!') }
 
       it 'stays on the login page' do
         expect(page.current_path).to eq('/login')
@@ -104,7 +104,7 @@ RSpec.describe 'Login Tests', type: :feature do
     end
 
     context 'when the password is blank' do
-      before { attempt_login('manager', '') }
+      before { attempt_login('Manager123!', '') }
 
       it 'stays on the login page' do
         expect(page.current_path).to eq('/login')
@@ -120,7 +120,7 @@ RSpec.describe 'Login Tests', type: :feature do
     end
 
     context 'when the correct username is used with a blank password' do
-      before { attempt_login('manager', '') }
+      before { attempt_login('Manager123!', '') }
 
       it 'does not log in' do
         expect(page.current_path).to eq('/login')
@@ -128,7 +128,7 @@ RSpec.describe 'Login Tests', type: :feature do
     end
 
     context 'when the password is correct but the username case is wrong' do
-      before { attempt_login('Manager', 'manager') }
+      before { attempt_login('manager123!', 'Manager123!') }
 
       it 'does not log in' do
         expect(page.current_path).to eq('/login')
@@ -154,7 +154,7 @@ RSpec.describe 'Login Tests', type: :feature do
     end
 
     context 'when the username contains a comment-based injection' do
-      before { attempt_login("manager'--", 'anything') }
+      before { attempt_login("Manager123!'--", 'anything') }
 
       it 'does not log in' do
         expect(page.current_path).to eq('/login')
@@ -178,7 +178,7 @@ RSpec.describe 'Login Tests', type: :feature do
     end
 
     context 'when the password contains a SQL injection attempt' do
-      before { attempt_login('manager', "' OR '1'='1") }
+      before { attempt_login('Manager123!', "' OR '1'='1") }
 
       it 'does not log in' do
         expect(page.current_path).to eq('/login')
@@ -240,7 +240,7 @@ RSpec.describe 'Login Tests', type: :feature do
     end
 
     context 'when the username contains HTML special characters' do
-      before { attempt_login('<b>admin</b>', 'password') }
+      before { attempt_login('<b>Admin123!</b>', 'Admin123!') }
 
       it 'does not log in' do
         expect(page.current_path).to eq('/login')
@@ -258,7 +258,7 @@ RSpec.describe 'Login Tests', type: :feature do
 
   describe 'Session behaviour' do
     context 'after a successful login' do
-      before { attempt_login('manager', 'manager') }
+      before { attempt_login('Manager123!', 'Manager123!') }
 
       it 'does not leave the user on the login page' do
         expect(page.current_path).not_to eq('/login')
@@ -267,7 +267,7 @@ RSpec.describe 'Login Tests', type: :feature do
 
     context 'after visiting the landing page' do
       before do
-        attempt_login('manager', 'manager')
+        attempt_login('Manager123!', 'Manager123!')
         visit '/landingpage'
       end
 
