@@ -82,7 +82,7 @@ def spec_before
 
   Users.insert(
     UserId: 5,
-    Username: 'Admin',
+    Username: 'Admin123!',
     PassHash: BCrypt::Password.create('Admin123!'),
     LoyaltyDiscount: 0,
     LoyaltyPoints: 0,
