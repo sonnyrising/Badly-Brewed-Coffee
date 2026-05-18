@@ -68,7 +68,7 @@ RSpec.describe 'Order Management Logic' do
       admin_dummy
       Transactions.insert(TransactionId: 502, UserId: 1, TotalCost: 10.00)
 
-      post '/admin/orders/filter', { 'search-filter': '502' }, admin_session
+      post '/admin/orders/filter', { 'search-filter': 502 }, admin_session
 
       expect(last_response.status).to eq(200)
       expect(last_response.body).to include('admin/orders')
