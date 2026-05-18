@@ -12,7 +12,7 @@ RSpec.describe 'Coffee and Bean Shop Logic' do
       Products.insert(ProductId: 10, ProductName: 'Ethiopian Yirgacheffe', StockQuantity: 10, Price: 10, Roast: 'Medium', Bean: true)
       Products.insert(ProductId: 11, ProductName: 'Steffspresso', StockQuantity: 10, Price: 10, Roast: 'Medium', Bean: false)
 
-      post '/staff/shop', {}, staff_session
+      post '/staff/selectproducts', {}, staff_session
 
       expect(last_response.status).to eq(200)
       expect(last_response.body).to include('Ethiopian Yirgacheffe')
@@ -22,7 +22,7 @@ RSpec.describe 'Coffee and Bean Shop Logic' do
     it 'shows basket count on shop page' do
       Basket.insert(BasketId: 1, UserId: 1, ProductId: 1, Quantity: 2)
 
-      get '/staff/shop', {}, staff_session
+      get '/staff/selectproducts', {}, staff_session
 
       expect(last_response.body).to include('2')
     end

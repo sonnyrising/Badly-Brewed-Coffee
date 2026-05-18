@@ -10,6 +10,7 @@ SimpleCov.start do
   add_filter '/app.rb'
   add_filter '/db/db.rb'
   add_filter '/helpers/helpers.rb'
+
 end
 SimpleCov.coverage_dir "#{__dir__}/_coverage"
 
@@ -39,7 +40,7 @@ require_relative 'spec_functions'
 
 def login_as_admin
   visit '/login'
-  fill_in 'username', with: "Admin"
+  fill_in 'username', with: "Admin123!"
   fill_in 'password', with: "Admin123!"
   click_on 'Log in'
 end

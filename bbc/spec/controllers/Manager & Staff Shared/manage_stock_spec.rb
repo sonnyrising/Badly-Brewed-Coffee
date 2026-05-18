@@ -7,7 +7,7 @@ require_relative '../../spec_helper'
 # =============================================================================
 
 RSpec.describe 'Manage Stock Page Tests' do
-  let(:manager_session) { { 'rack.session' => { user_id: 1, uname: 'manager' } } }
+  let(:manager_session) { { 'rack.session' => { user_id: 1, uname: 'Manager123!' } } }
 
   describe 'page content' do
     it 'lists all seeded products by name' do

@@ -3,8 +3,8 @@
 require_relative '../../spec_helper'
 
 RSpec.describe 'Manager/Staff Shared Route Authentication Tests' do
-  let(:manager_session) { { 'rack.session' => { user_id: 1, uname: 'manager' } } }
-  let(:staff_session)   { { 'rack.session' => { user_id: 2, uname: 'staff'   } } }
+  let(:manager_session) { { 'rack.session' => { user_id: 1, uname: 'Manager123!' } } }
+  let(:staff_session)   { { 'rack.session' => { user_id: 2, uname: 'Staff123!'   } } }
   let(:guest_session)   { { 'rack.session' => { user_id: nil, uname: nil     } } }
 
   manager_staff_shared_routes = [

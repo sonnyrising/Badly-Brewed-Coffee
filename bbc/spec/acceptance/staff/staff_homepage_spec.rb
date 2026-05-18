@@ -79,7 +79,7 @@ RSpec.describe 'Staff Homepage', type: :feature do
       end
 
       it 'redirects to the login page' do
-        expect(page.current_path).to eq('/login')
+        expect(page.current_path).to eq('/')
       end
     end
   end

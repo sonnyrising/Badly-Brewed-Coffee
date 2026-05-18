@@ -7,7 +7,7 @@
       body, html {
         margin: 0;
         padding: 0;
-        height: 100v;
+        height: 100vh;
         overflow:visible;
       }
 
@@ -162,7 +162,7 @@
       width: 28px;
       height: 28px;
       border-radius: 6px;
-      background-color: rbg(130 72 24);
+      background-color: rgb(130 72 24);
       color: white;
       cursor: pointer;
     }
@@ -225,13 +225,6 @@
                 <% (Basket.getProductNamesForUser(session[:userId])).each do |p| %>
                   <div class="sidebar-item">
                     <span style="font-size: 0.9em; font-weight: bold;"><%= p.ProductName %></span>
-                    <% if p.ProductId > 6 
-                        item_id = Customisations.getItemId(p.ProductId)
-                          if item_id == Basket.getItemId(ProductId: p.ProductId)
-                            milkType = Customisations.getMilkType(item_id).to_s
-                            coffeeSize = Customisations.getCoffeeSize(item_id).to_s
-                          end
-                    end %>
                     <div class="buttons">
                       <form action="/staff/shop/add" method="post">
                         <input type="hidden" name="userId" value="<%= session[:userId] %>">
