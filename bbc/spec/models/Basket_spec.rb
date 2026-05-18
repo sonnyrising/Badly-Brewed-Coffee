@@ -5,7 +5,7 @@ require_relative '../spec_helper'
 #========== Basket Model Tests ==========#
 RSpec.describe 'Bakset Management,' do
 
-  context "addBeanToBasket(params)" do
+  context "add_bean_to_basket(params)" do
     let(:basket_instance) { Basket.new }
     it "correctly assigns fields, strips whitespace, updates the basket" do
       params = {
@@ -14,7 +14,7 @@ RSpec.describe 'Bakset Management,' do
         'quantity'    =>  ' 8   '
       }
 
-      basket_instance.addBeanToBasket(params)
+      basket_instance.add_bean_to_basket(params)
       expect(basket_instance.UserId).to eq(1)
       expect(basket_instance.ProductId).to eq(10)
       expect(basket_instance.Quantity).to eq(8)
@@ -30,13 +30,13 @@ RSpec.describe 'Bakset Management,' do
       }
 
       allow(basket_instance).to receive(:rand).and_return(20, 50)
-      basket_instance.addBeanToBasket(params)
+      basket_instance.add_bean_to_basket(params)
           
       expect(basket_instance.ItemId).to eq(50)
     end
   end
 
-  context "addCoffeeToBasket(params)" do
+  context "add_coffee_to_basket(params)" do
     let(:new_basket) { Basket.new }
     it "correctly assigns fields, strips whitespace, updates the basket" do
       params = {
@@ -47,7 +47,7 @@ RSpec.describe 'Bakset Management,' do
         'size'        =>  ' Large '
       }
 
-      new_basket.addCoffeeToBasket(params)
+      new_basket.add_coffee_to_basket(params)
       expect(new_basket.UserId).to eq(2)
       expect(new_basket.ProductId).to eq(12)
       expect(new_basket.Quantity).to eq(10)
@@ -67,7 +67,7 @@ RSpec.describe 'Bakset Management,' do
       }
 
       allow(new_basket).to receive(:rand).and_return(5, 10)
-      new_basket.addCoffeeToBasket(params)
+      new_basket.add_coffee_to_basket(params)
           
       expect(new_basket.ItemId).to eq(10)
     end
@@ -88,20 +88,20 @@ RSpec.describe 'Bakset Management,' do
     end
   end
 
-  context "productExists(params)" do
+  context "product_exists(params)" do
     let(:new_basket) { Basket.new }
     it "returns basket record if product entry exists" do
       Basket.dataset.delete
       Basket.insert(BasketId: 1, UserId: 1, ProductId: 1)
       params = {  'userId'  =>  1, 'productId'  => 1  }
 
-      result = new_basket.productExists(params)
+      result = new_basket.product_exists(params)
       expect(result).not_to be_nil
       expect(result[:ProductId]).to eq(1)
     end
   end
 
-  context "clearGuestBasket" do
+  context "clear_guest_basket" do
     it "removes items belonging to guests" do
       Basket.dataset.delete
       Users.dataset.delete
@@ -112,7 +112,7 @@ RSpec.describe 'Bakset Management,' do
       Basket.insert(BasketId: 4, UserId: 1, ItemId: 20, Quantity: 10)
       Basket.insert(BasketId: 2, UserId: 99, ItemId: 40, Quantity: 20)
 
-      Basket.clearGuestBasket
+      Basket.clear_guest_basket
       guest_acc = Basket.where(UserId: 1).count
       non_guest = Basket.where(UserId: 99).count
 
@@ -121,27 +121,27 @@ RSpec.describe 'Bakset Management,' do
     end
   end
 
-  context "userCheck(params)" do
+  context "user_check(params)" do
     let(:new_basket) { Basket.new }
     it "returns last basket record if user entry exists" do
       Basket.dataset.delete
       Basket.insert(BasketId: 1, UserId: 1, ProductId: 1)
       params = {  'userId'  =>  1 }
 
-      result = new_basket.userCheck(params)
+      result = new_basket.user_check(params)
       expect(result).not_to be_nil
       expect(result[:UserId]).to eq(1)
     end
   end
 
-  context "productCheck(params)" do
+  context "product_check(params)" do
     let(:new_basket) { Basket.new }
     it "returns last basket record if product entry exists" do
       Basket.dataset.delete
       Basket.insert(BasketId: 1, UserId: 1, ProductId: 1)
       params = {  'productId'  => 1  }
 
-      result = new_basket.productCheck(params)
+      result = new_basket.product_check(params)
       expect(result).not_to be_nil
       expect(result[:ProductId]).to eq(1)
     end

@@ -26,32 +26,32 @@ post '/staff/shop' do
   @products = Products.all
   @basket = Basket.new
 
-  exists = @basket.productExists(params)
-  user_exists = @basket.userCheck(params)
-  product_exists = @basket.productCheck(params)
+  exists = @basket.product_exists(params)
+  user_exists = @basket.user_check(params)
+  product_exists = @basket.product_check(params)
   item_bought = @basket.bought(params)
 
   if !item_bought.nil?
-    latest_product = @basket.checkLatest(params)
+    latest_product = @basket.check_latest(params)
     if latest_product.nil?
       if Products.coffeeOrBeans(params) == true
-        @basket.addBeanToBasket(params)
+        @basket.add_bean_to_basket(params)
       else
-        @basket.addCoffeeToBasket(params)
+        @basket.add_coffee_to_basket(params)
       end
       @basket.save_changes
     else
-      @basket.updateQuantity(params)
+      @basket.update_quantity(params)
     end
   elsif exists.nil? || user_exists.nil? || product_exists.nil?
     if Products.coffeeOrBeans(params) == true
-      @basket.addBeanToBasket(params)
+      @basket.add_bean_to_basket(params)
     else
-      @basket.addCoffeeToBasket(params)
+      @basket.add_coffee_to_basket(params)
     end
     @basket.save_changes
   else
-    @basket.updateQuantity(params)
+    @basket.update_quantity(params)
   end
   erb :"staff/selectproducts"
 end

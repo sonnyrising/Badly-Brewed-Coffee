@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Basket < Sequel::Model(:Basket)
-  def addBeanToBasket(params)
+  def add_bean_to_basket(params)
     self.UserId = params.fetch('userId', '').strip
     self.ProductId = params.fetch('productId', '').strip
     self.TransactionId = nil
@@ -15,7 +15,7 @@ class Basket < Sequel::Model(:Basket)
     end
   end
 
-  def addCoffeeToBasket(params)
+  def add_coffee_to_basket(params)
     self.UserId = params.fetch('userId', '').strip
     self.ProductId = params.fetch('productId', '').strip
     self.TransactionId = nil
@@ -34,23 +34,23 @@ class Basket < Sequel::Model(:Basket)
     Basket.where(ProductId: product).get(:ItemId)
   end
 
-  def productExists(params)
+  def product_exists(params)
     user = params.fetch('userId', '')
     product = params.fetch('productId', '')
 
     Basket.where(UserId: user, ProductId: product).last
   end
 
-  def self.clearGuestBasket
+  def self.clear_guest_basket
     Basket.where(UserId: 1).delete
   end
 
-  def userCheck(params)
+  def user_check(params)
     user = params.fetch('userId', '')
     Basket.where(UserId: user).last
   end
 
-  def productCheck(params)
+  def product_check(params)
     product = params.fetch('productId', '')
     Basket.where(ProductId: product).last
   end
@@ -66,7 +66,7 @@ class Basket < Sequel::Model(:Basket)
     item unless item.TransactionId.nil?
   end
 
-  def checkLatest(params)
+  def check_latest(params)
     user = params.fetch('userId', '')
     product = params.fetch('productId', '')
 
@@ -74,7 +74,7 @@ class Basket < Sequel::Model(:Basket)
     nil if latest.TransactionId.nil?
   end
 
-  def updateQuantity(params)
+  def update_quantity(params)
     user = params.fetch('userId', '')
     product = params.fetch('productId', '')
 
@@ -88,7 +88,7 @@ class Basket < Sequel::Model(:Basket)
     end
   end
 
-  def self.numOfProductsInBasket(userId)
+  def self.num_of_products_in_basket(userId)
     count = 0
     Basket.each do |product|
       count += product.Quantity if product.TransactionId.nil? && (product.UserId == userId)
