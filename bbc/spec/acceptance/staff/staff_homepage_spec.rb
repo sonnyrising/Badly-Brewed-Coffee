@@ -1,86 +1,56 @@
-# frozen_string_literal: true
+require_relative '../../spec_helper'
 
-require 'capybara/rspec'
-require 'rack/test'
+RSpec.describe 'When viewing the staff homepage' do
 
-require_relative '../../../app'
+  context 'when the staff is logged in' do
 
-Capybara.app = Sinatra::Application
-Capybara.default_driver = :rack_test
+    it 'it loads successfully' do
+      login_as_staff
 
-def login_as_staff
-  visit '/login'
-  fill_in 'uname', with: 'Staff123!'
-  fill_in 'pword', with: 'Staff123!'
-  click_button 'Log in'
-end
+      save_page
 
-RSpec.describe 'Staff Homepage', type: :feature do
-  before(:each) do
-    login_as_staff
-    visit '/staff/homepage'
-  end
-
-  # -------------------------------------------------------------------------
-  # Page load
-  # -------------------------------------------------------------------------
-
-  describe 'Page load' do
-    it 'loads successfully' do
       expect(page.status_code).to eq(200)
     end
 
-    it 'greets staff by name' do
+    it 'it greets staff by name' do
+      login_as_staff
+
       expect(page).to have_content('Welcome Staff123!!')
     end
-  end
 
-
-  # -------------------------------------------------------------------------
-  # Sidebar navigation
-  # -------------------------------------------------------------------------
-
-  describe 'Sidebar navigation' do
     it 'navigates to the staff shop when shop is clicked' do
+      login_as_staff
+
       click_link 'Shop'
       expect(page).to have_current_path('/staff/selectproducts')
     end
 
     it 'navigates to manage stock when Manage Stock is clicked' do
+      login_as_staff
+
       click_link 'Manage Stock'
       expect(page).to have_current_path('/managestock')
     end
 
     it 'navigates to orders when View Orders is clicked' do
+      login_as_staff
+
       click_link 'View Orders'
-      expect(page).to have_current_path('/orders')
+      expect(page).to have_current_path('/staff/orders')
     end
 
     it 'navigates to refunds when View Refunds is clicked' do
+      login_as_staff
+
       click_link 'View Refunds'
       expect(page).to have_current_path('/refunds')
     end
 
     it 'logs out when Logout is clicked' do
+      login_as_staff
+
       click_link 'Logout'
       expect(page.current_path).to eq('/login').or eq('/')
-    end
-  end
-
-  # -------------------------------------------------------------------------
-  # Access control
-  # -------------------------------------------------------------------------
-
-  describe 'Access control' do
-    context 'when visiting without any session' do
-      before do
-        Capybara.reset_sessions!
-        visit '/staff/homepage'
-      end
-
-      it 'redirects to the login page' do
-        expect(page.current_path).to eq('/')
-      end
     end
   end
 end

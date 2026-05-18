@@ -32,6 +32,7 @@ RSpec.describe 'User Account Settings Flow', type: :feature do
   end
 
   #  Data Display
+
   context 'when viewing the profile configuration layout' do
     it 'accurately extracts  loyalty data' do
       visit '/user/settings'

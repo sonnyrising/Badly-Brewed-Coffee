@@ -44,3 +44,10 @@ def login_as_admin
   fill_in 'password', with: "Admin123!"
   click_on 'Log in'
 end
+
+def login_as_staff
+  visit '/login'
+  fill_in 'username', with: 'Staff123!'
+  fill_in 'password', with: 'Staff123!'
+  click_on 'Log in'
+end
