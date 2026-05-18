@@ -36,7 +36,8 @@ def spec_before
     Username: 'testuser',
     LoyaltyDiscount: 0,
     LoyaltyPoints: 0,
-    Suspended: false
+    Suspended: false,
+    AccountType: 'user'
   )
 
   Users.insert(
@@ -45,7 +46,8 @@ def spec_before
     PassHash: BCrypt::Password.create('password'),
     LoyaltyDiscount: 0,
     LoyaltyPoints: 0,
-    Suspended: false
+    Suspended: false,
+    AccountType: 'user'
   )
 
   Users.insert(
@@ -60,20 +62,22 @@ def spec_before
 
   Users.insert(
     UserId: 2,
-    Username: 'manager',
-    PassHash: BCrypt::Password.create('manager'),
+    Username: 'Manager123!',
+    PassHash: BCrypt::Password.create('Manager123!'),
     LoyaltyDiscount: 0,
     LoyaltyPoints: 0,
-    Suspended: false
+    Suspended: false,
+    AccountType: 'manager'
   )
 
   Users.insert(
     UserId: 4,
-    Username: 'staff',
-    PassHash: BCrypt::Password.create('staff'),
+    Username: 'Staff123!',
+    PassHash: BCrypt::Password.create('Staff123!'),
     LoyaltyDiscount: 0,
     LoyaltyPoints: 0,
-    Suspended: false
+    Suspended: false,
+    AccountType: 'staff'
   )
 
   Users.insert(
