@@ -229,6 +229,7 @@ get '/user/contact_us_page' do
 end
 
 get '/user/feedback_page_submission' do
+  @feedback = Feedbacks.last || Feedbacks.new
   erb :"user/feedback_page_submission"
 end
 
