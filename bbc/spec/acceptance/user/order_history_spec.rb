@@ -36,9 +36,7 @@ RSpec.describe 'User Order History Flow', type: :feature do
     @user = login_as_test_user('coffee_buyer')
   end
 
-  # -------------------------------------------------------------------------
   # No Order History
-  # -------------------------------------------------------------------------
   context 'when a new user has no past purchases' do
     it 'displays a  message matching the layout state' do
       visit '/user/orders'
@@ -49,9 +47,7 @@ RSpec.describe 'User Order History Flow', type: :feature do
     end
   end
 
-  # -------------------------------------------------------------------------
   # Populated Transactions Table
-  # -------------------------------------------------------------------------
   context 'when a user has recent purchases' do
     it 'renders a table of the transaction items' do
       coffee = Products.create(

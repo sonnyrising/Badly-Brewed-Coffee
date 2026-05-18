@@ -31,9 +31,7 @@ RSpec.describe 'User Account Settings Flow', type: :feature do
     @user = login_as_test_user('original_name')
   end
 
-  # -------------------------------------------------------------------------
-  # ic Data Display
-  # -------------------------------------------------------------------------
+  #  Data Display
   context 'when viewing the profile configuration layout' do
     it 'accurately extracts  loyalty data' do
       visit '/user/settings'
@@ -43,9 +41,7 @@ RSpec.describe 'User Account Settings Flow', type: :feature do
     end
   end
 
-  # -------------------------------------------------------------------------
   # Successful Profile Updates
-  # -------------------------------------------------------------------------
   context 'when entering valid registration modifications' do
     it 'commits changes to the  database and confirms with success flash' do
       visit '/user/settings'
@@ -61,9 +57,7 @@ RSpec.describe 'User Account Settings Flow', type: :feature do
     end
   end
   
-  # -------------------------------------------------------------------------
   # Profile Validation Failures
-  # -------------------------------------------------------------------------
   context 'when entering a pre-existing username or email' do
     it 'rejects a duplicate username and displays an error message' do
       # Seed a conflicting user in the database
