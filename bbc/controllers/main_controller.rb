@@ -26,7 +26,7 @@ end
 
 #------------------------------ Manager and Staff Shared Functionality -------------------------------
 before '/*' do
-  @has_access = true if %w[staff manager admin].include?(session[:uname])
+  @has_access = true if %w[Staff123! Manager123! Admin123!].include?(session[:uname])
 end
 
 before '/managestock' do

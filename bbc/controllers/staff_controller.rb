@@ -128,7 +128,7 @@ get '/staff/managestock' do
                    when 'invalid_description' then 'Please enter a valid description.'
                    end
 
-  erb :"staff/managestock"
+  erb :"admin/managestock"
 end
 
 # post '/staff/managestock' do

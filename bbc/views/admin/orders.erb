@@ -50,7 +50,7 @@
                   </style>
                   <div style="display: flex; flex-direction: row; justify-content: space-evenly; width: 50%;">
                     <h3 style="margin-left: 10%;"><%= order.TransactionId %></h3>
-                    <b><%= Users[order.UserId].Username %></b>
+                    <b><%= Users.GetUsername(order.UserId) %></b>
                     <b>£<%= order.TotalCost %></b>
                     <b>
                       <%= order.TransactionDate.to_s.length > 5 ?

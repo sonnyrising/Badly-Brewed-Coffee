@@ -186,7 +186,7 @@ end
 post '/admin/orders/filter' do
   if !params[:'search-filter'].empty? && !Transactions[params[:'search-filter']].nil?
     @shown_orders = []
-    @shown_orders << Transactions[params[:'search-filter']]
+    @shown_orders << Transactions[params[:'search-filter']].to_s.strip
     erb :'admin/orders'
   else
     redirect '/admin/orders'
@@ -222,3 +222,5 @@ get '/admin/log' do
   @shown_logs = Logs.all
   erb :'admin/logpage'
 end
+
+
