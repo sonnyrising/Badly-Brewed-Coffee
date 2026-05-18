@@ -5,21 +5,28 @@ class Basket < Sequel::Model(:Basket)
     self.UserId = params.fetch('userId', '').strip
     self.ProductId = params.fetch('productId', '').strip
     self.TransactionId = nil
-    self.ItemId = rand(10000000)
     self.Quantity = params.fetch('quantity', '').strip
     self.Milk = nil
     self.Size = nil
 
+    loop do
+      new_item_id = rand(10000000)
+      break self.ItemId = new_item_id if Basket.where(ItemId: new_item_id).empty?
+    end
   end
 
   def addCoffeeToBasket(params)
     self.UserId = params.fetch('userId', '').strip
     self.ProductId = params.fetch('productId', '').strip
     self.TransactionId = nil
-    self.ItemId = rand(10000000)
     self.Quantity = params.fetch('quantity', '').strip
     self.Milk = params.fetch('milk', '').strip
     self.Size = params.fetch('size','').strip
+
+    loop do
+      new_item_id = rand(10000000)
+      break self.ItemId = new_item_id if Basket.where(ItemId: new_item_id).empty?
+    end
   end
 
   def self.getItemId(params)
@@ -35,7 +42,7 @@ class Basket < Sequel::Model(:Basket)
   end
 
   def self.clearGuestBasket
-    Basket.where(UserId: 1).destroy
+    Basket.where(UserId: 1).delete
   end
 
   def userCheck(params)
