@@ -60,4 +60,38 @@ RSpec.describe 'User Account Settings Flow', type: :feature do
       expect(page).to have_field('email', with: 'updated_email@example.com')
     end
   end
+  
+  # -------------------------------------------------------------------------
+  # Profile Validation Failures
+  # -------------------------------------------------------------------------
+  context 'when entering a pre-existing username or email' do
+    it 'rejects a duplicate username and displays an error message' do
+      # Seed a conflicting user in the database
+      Users.create(
+        Username: 'taken_username',
+        Email: 'other@example.com',
+        PassHash: BCrypt::Password.create('password')
+      )
+
+      visit '/user/settings'
+      fill_in 'username', with: 'taken_username'
+      click_button 'Save Changes'
+
+      expect(page).to have_content("Sorry, the username 'taken_username' is already taken!")
+    end
+
+    it 'rejects a duplicate email address and displays an error message' do
+      Users.create(
+        Username: 'other_user',
+        Email: 'taken_email@example.com',
+        PassHash: BCrypt::Password.create('password')
+      )
+
+      visit '/user/settings'
+      fill_in 'email', with: 'taken_email@example.com'
+      click_button 'Save Changes'
+
+      expect(page).to have_content("Sorry, the email 'taken_email@example.com' is already taken!")  
+    end
+  end
 end
