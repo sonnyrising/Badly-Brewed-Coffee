@@ -1,7 +1,7 @@
 require_relative '../../spec_helper'
 
 RSpec.describe 'Coffee and Bean Shop Logic' do
-  let(:staff_session) { { 'rack.session' => { userId: 1, uname: 'teststaff' } } }
+  let(:staff_session) { { 'rack.session' => { userId: 100, uname: 'teststaff' } } }
 
   before(:each) do
     spec_before
@@ -20,7 +20,7 @@ RSpec.describe 'Coffee and Bean Shop Logic' do
     end
 
     it 'shows basket count on shop page' do
-      Basket.insert(BasketId: 1, UserId: 1, ProductId: 1, Quantity: 2)
+      Basket.insert(BasketId: 1, UserId: 100, ProductId: 1, Quantity: 2)
 
       get '/staff/selectproducts', {}, staff_session
 
@@ -30,28 +30,28 @@ RSpec.describe 'Coffee and Bean Shop Logic' do
 
   context 'basket quantity management' do
     it 'adds item to basket and increases quantity' do
-      Basket.insert(BasketId: 1, UserId: 1, ProductId: 1, Quantity: 1)
+      Basket.insert(BasketId: 1, UserId: 100, ProductId: 1, Quantity: 1)
 
-      post '/staff/shop/add', { 'userId' => 1, 'productId' => 1 }, staff_session
+      post '/staff/shop/add', { 'userId' => 100, 'productId' => 1 }, staff_session
 
       basket_item = Basket.where(UserId: 1, ProductId: 1).first
       expect(basket_item.Quantity).to eq(2)
     end
 
     it 'subtracts item from basket or removes it' do
-      Basket.insert(BasketId: 1, UserId: 1, ProductId: 1, Quantity: 1)
+      Basket.insert(BasketId: 1, UserId: 100, ProductId: 1, Quantity: 1)
 
-      post '/staff/shop/subtract', { 'userId' => 1, 'productId' => 1 }, staff_session
+      post '/staff/shop/subtract', { 'userId' => 100, 'productId' => 1 }, staff_session
 
-      expect(Basket.where(UserId: 1, ProductId: 1).first).to be_nil
+      expect(Basket.where(UserId: 100, ProductId: 1).first).to be_nil
     end
 
     it 'removes item from basket using delete action' do
-      Basket.insert(BasketId: 1, UserId: 1, ProductId: 1, Quantity: 1)
+      Basket.insert(BasketId: 1, UserId: 100, ProductId: 1, Quantity: 1)
 
-      post '/staff/shop/delete', { 'userId' => 1, 'productId' => 1 }, staff_session
+      post '/staff/shop/delete', { 'userId' => 100, 'productId' => 1 }, staff_session
 
-      expect(Basket.where(UserId: 1, ProductId: 1).first).to be_nil
+      expect(Basket.where(UserId: 100, ProductId: 1).first).to be_nil
     end
   end
 end
