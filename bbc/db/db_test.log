@@ -94240,3 +94240,287 @@ I, [2026-05-18T08:35:14.131248 #426]  INFO -- : (0.061926s) DELETE FROM `users` 
 I, [2026-05-18T08:35:14.193457 #426]  INFO -- : (0.061858s) INSERT INTO `users` (`Username`) VALUES ('Alice')
 I, [2026-05-18T08:35:14.257299 #426]  INFO -- : (0.063458s) INSERT INTO `users` (`Username`) VALUES ('John Test')
 I, [2026-05-18T08:35:14.257829 #426]  INFO -- : (0.000329s) SELECT * FROM `users`
+I, [2026-05-18T10:28:44.992284 #536]  INFO -- : Database file found and loaded ('/home/codio/workspace/project/bbc/db/db_test.sqlite3')
+I, [2026-05-18T10:28:45.025037 #536]  INFO -- : (0.000078s) PRAGMA foreign_keys = 1
+I, [2026-05-18T10:28:45.025161 #536]  INFO -- : (0.000024s) PRAGMA case_sensitive_like = 1
+I, [2026-05-18T10:28:45.027163 #536]  INFO -- : (0.000312s) SELECT sqlite_version()
+I, [2026-05-18T10:28:45.027684 #536]  INFO -- : (0.000240s) PRAGMA table_xinfo('Basket')
+I, [2026-05-18T10:28:45.029701 #536]  INFO -- : (0.000200s) PRAGMA table_xinfo('Customisations')
+I, [2026-05-18T10:28:45.031350 #536]  INFO -- : (0.000209s) PRAGMA table_xinfo('feedbacks')
+I, [2026-05-18T10:28:45.032754 #536]  INFO -- : (0.000195s) PRAGMA table_xinfo('logs')
+I, [2026-05-18T10:28:45.034255 #536]  INFO -- : (0.000244s) PRAGMA table_xinfo('Products')
+I, [2026-05-18T10:28:45.036196 #536]  INFO -- : (0.000226s) PRAGMA table_xinfo('transactions')
+I, [2026-05-18T10:28:45.038533 #536]  INFO -- : (0.000401s) PRAGMA table_xinfo('users')
+I, [2026-05-18T10:28:45.857353 #536]  INFO -- : (0.000140s) DELETE FROM `feedbacks` WHERE (1 = 1)
+I, [2026-05-18T10:28:45.857685 #536]  INFO -- : (0.000097s) DELETE FROM `Basket` WHERE (1 = 1)
+I, [2026-05-18T10:28:45.858001 #536]  INFO -- : (0.000101s) DELETE FROM `transactions` WHERE (1 = 1)
+I, [2026-05-18T10:28:45.912569 #536]  INFO -- : (0.054371s) DELETE FROM `users` WHERE (1 = 1)
+I, [2026-05-18T10:28:45.973295 #536]  INFO -- : (0.060295s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-05-18T10:28:46.039933 #536]  INFO -- : (0.066021s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc', 'Brazil', 'Medium', 0)
+I, [2026-05-18T10:28:46.099218 #536]  INFO -- : (0.058892s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (2, 'Blend', 5, 5.0, 'blend.jpg', 'blend desc', 'Colombia', 'Light', 0)
+I, [2026-05-18T10:28:46.159015 #536]  INFO -- : (0.059395s) INSERT INTO `users` (`UserId`, `Username`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (1, 'testuser', 0, 0, 0)
+I, [2026-05-18T10:28:46.534316 #536]  INFO -- : (0.063734s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (3, 'test', '$2a$12$zXvbjELMMHT8FE./9LFTpuI9j6/ewCvi8kb5jUcpzU1KfaNoUOT6a', 0, 0, 0)
+I, [2026-05-18T10:28:46.900928 #536]  INFO -- : (0.058328s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`, `AccountType`) VALUES (6, 'User123!', '$2a$12$RtIOiIfCyhbFJdqe8IhEHeNXgLYXclLmbYN3MWFD.apDJabgH0LmG', 0, 0, 0, 'user')
+I, [2026-05-18T10:28:47.263794 #536]  INFO -- : (0.054072s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (2, 'manager', '$2a$12$iazFp.sJWvhr20qVQcr0aOmwuteiHnz0S6juLXMlScxHhZOYDjphe', 0, 0, 0)
+I, [2026-05-18T10:28:47.632619 #536]  INFO -- : (0.057735s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (4, 'staff', '$2a$12$KFvmUHECsKngFsrEkD4kjO5/q89OAKKvnfttoEOQvr4vqkJdC0Wde', 0, 0, 0)
+I, [2026-05-18T10:28:48.003371 #536]  INFO -- : (0.061155s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`, `AccountType`) VALUES (5, 'Admin', '$2a$12$ZI.Gomx8ogNV7Dg.ANRmceKFSWWNstdtMXhp8.4YoRhGRPrxh6qg6', 0, 0, 0, 'admin')
+I, [2026-05-18T10:28:48.410241 #536]  INFO -- : (0.074140s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`, `AccountType`) VALUES (7, 'Suspended', '$2a$12$GgfbgD/0p6JC7KgKskMT7O9BF335bieYyDgA3jF4eb/ny3TH8pPK2', 0, 0, 1, 'user')
+I, [2026-05-18T10:28:48.470126 #536]  INFO -- : (0.059388s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (1, 1, 10.0, '2024-01-15', 'Pending', 0, 0)
+I, [2026-05-18T10:28:48.530956 #536]  INFO -- : (0.060449s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (2, 1, 15.0, '2024-02-20', 'Pending', 1, 0)
+I, [2026-05-18T10:28:48.592644 #536]  INFO -- : (0.061204s) INSERT INTO `feedbacks` (`FeedbackId`, `UserId`, `TransactionId`, `IssueContent`, `RefundReason`, `RefundRequest`, `TicketNumber`) VALUES (1, 1, 2, 'General issue', 'Cold coffee', 1, 1001)
+I, [2026-05-18T10:28:48.660757 #536]  INFO -- : (0.067711s) DELETE FROM `users` WHERE (1 = 1)
+I, [2026-05-18T10:28:48.661718 #536]  INFO -- : (0.000419s) SELECT * FROM `users` WHERE (`Username` = 'original_name') LIMIT 1
+I, [2026-05-18T10:28:48.985888 #536]  INFO -- : (0.000056s) BEGIN
+I, [2026-05-18T10:28:48.986834 #536]  INFO -- : (0.000548s) INSERT INTO `users` (`Username`, `Email`, `PassHash`, `LoyaltyPoints`, `Suspended`, `DateJoined`) VALUES ('original_name', 'test@example.com', '$2a$12$WGo64nkvRZUS7YwJgZAqcOjxLVXkrZjHxRXrGQqrcE/wVRIa22F3y', 10, 0, '01/01/2026') RETURNING *
+I, [2026-05-18T10:28:49.046707 #536]  INFO -- : (0.059704s) COMMIT
+I, [2026-05-18T10:28:49.089040 #536]  INFO -- : (0.000184s) SELECT `UserId` FROM `users` WHERE (`Username` = 'original_name') LIMIT 1
+I, [2026-05-18T10:28:49.089378 #536]  INFO -- : (0.000090s) SELECT `Suspended` FROM `users` WHERE (`UserId` = 1) LIMIT 1
+I, [2026-05-18T10:28:49.089749 #536]  INFO -- : (0.000171s) SELECT `PassHash` FROM `users` WHERE (`UserId` = 1) LIMIT 1
+I, [2026-05-18T10:28:49.461512 #536]  INFO -- : (0.060978s) UPDATE `users` SET `DaysSinceLastUse` = 0 WHERE (`UserId` = 1)
+I, [2026-05-18T10:28:49.461987 #536]  INFO -- : (0.000239s) SELECT * FROM `users` WHERE `UserId` = 1
+I, [2026-05-18T10:28:49.468421 #536]  INFO -- : (0.000278s) SELECT * FROM `users` WHERE (`UserId` = 1) LIMIT 1
+I, [2026-05-18T10:28:49.484279 #536]  INFO -- : (0.000142s) DELETE FROM `feedbacks` WHERE (1 = 1)
+I, [2026-05-18T10:28:49.484544 #536]  INFO -- : (0.000071s) DELETE FROM `Basket` WHERE (1 = 1)
+I, [2026-05-18T10:28:49.484839 #536]  INFO -- : (0.000091s) DELETE FROM `transactions` WHERE (1 = 1)
+I, [2026-05-18T10:28:49.547905 #536]  INFO -- : (0.062881s) DELETE FROM `users` WHERE (1 = 1)
+I, [2026-05-18T10:28:49.609274 #536]  INFO -- : (0.061031s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-05-18T10:28:49.678433 #536]  INFO -- : (0.068823s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc', 'Brazil', 'Medium', 0)
+I, [2026-05-18T10:28:49.740296 #536]  INFO -- : (0.061506s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (2, 'Blend', 5, 5.0, 'blend.jpg', 'blend desc', 'Colombia', 'Light', 0)
+I, [2026-05-18T10:28:49.803886 #536]  INFO -- : (0.063207s) INSERT INTO `users` (`UserId`, `Username`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (1, 'testuser', 0, 0, 0)
+I, [2026-05-18T10:28:50.173023 #536]  INFO -- : (0.062518s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (3, 'test', '$2a$12$XmDJxcHdUtDioMMo6zW8ruw5WpKEe3h75bfxNRpClT6v6MYMZqjkK', 0, 0, 0)
+I, [2026-05-18T10:28:50.541245 #536]  INFO -- : (0.060999s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`, `AccountType`) VALUES (6, 'User123!', '$2a$12$Q1PjLPG43ACL4T2JVnBqt.TwrEyIbDgeRMXUggs1wpTZmAYYFYT3q', 0, 0, 0, 'user')
+I, [2026-05-18T10:28:50.910555 #536]  INFO -- : (0.059820s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (2, 'manager', '$2a$12$jdE7EX1YvTGN.LWO8Mcq4uUz.j.2ArNgKFkyShN7FOkrfnpbYyHN.', 0, 0, 0)
+I, [2026-05-18T10:28:51.280138 #536]  INFO -- : (0.062655s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (4, 'staff', '$2a$12$ualdp0nESqguiWUJIAtaLOIq0/roc8.HfBTNB6jsfy9w/GlQPPfgG', 0, 0, 0)
+I, [2026-05-18T10:28:51.658530 #536]  INFO -- : (0.065168s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`, `AccountType`) VALUES (5, 'Admin', '$2a$12$5Sd5OdeiWvCC4vwbtVI/8.ZSv/yB7mJVqF5A1mlDqe8QXnQH1yyFC', 0, 0, 0, 'admin')
+I, [2026-05-18T10:28:52.034304 #536]  INFO -- : (0.066609s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`, `AccountType`) VALUES (7, 'Suspended', '$2a$12$nwzBBlPLfwNvnqfoouIY8ufYgQvcK4xlONl6hemfjenkYs3ngF1vu', 0, 0, 1, 'user')
+I, [2026-05-18T10:28:52.102908 #536]  INFO -- : (0.068208s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (1, 1, 10.0, '2024-01-15', 'Pending', 0, 0)
+I, [2026-05-18T10:28:52.169425 #536]  INFO -- : (0.066162s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (2, 1, 15.0, '2024-02-20', 'Pending', 1, 0)
+I, [2026-05-18T10:28:52.228585 #536]  INFO -- : (0.058782s) INSERT INTO `feedbacks` (`FeedbackId`, `UserId`, `TransactionId`, `IssueContent`, `RefundReason`, `RefundRequest`, `TicketNumber`) VALUES (1, 1, 2, 'General issue', 'Cold coffee', 1, 1001)
+I, [2026-05-18T10:28:52.289941 #536]  INFO -- : (0.061000s) DELETE FROM `users` WHERE (1 = 1)
+I, [2026-05-18T10:28:52.290483 #536]  INFO -- : (0.000206s) SELECT * FROM `users` WHERE (`Username` = 'original_name') LIMIT 1
+I, [2026-05-18T10:28:52.599013 #536]  INFO -- : (0.000048s) BEGIN
+I, [2026-05-18T10:28:52.599798 #536]  INFO -- : (0.000499s) INSERT INTO `users` (`Username`, `Email`, `PassHash`, `LoyaltyPoints`, `Suspended`, `DateJoined`) VALUES ('original_name', 'test@example.com', '$2a$12$H80p6RmvzfiEUk/cOZIWOujoza6G2py2zVcJ31h6k7I4M/8Bnacsu', 10, 0, '01/01/2026') RETURNING *
+I, [2026-05-18T10:28:52.655474 #536]  INFO -- : (0.055557s) COMMIT
+I, [2026-05-18T10:28:52.666845 #536]  INFO -- : (0.000199s) SELECT `UserId` FROM `users` WHERE (`Username` = 'original_name') LIMIT 1
+I, [2026-05-18T10:28:52.667304 #536]  INFO -- : (0.000199s) SELECT `Suspended` FROM `users` WHERE (`UserId` = 1) LIMIT 1
+I, [2026-05-18T10:28:52.667697 #536]  INFO -- : (0.000190s) SELECT `PassHash` FROM `users` WHERE (`UserId` = 1) LIMIT 1
+I, [2026-05-18T10:28:53.028073 #536]  INFO -- : (0.054087s) UPDATE `users` SET `DaysSinceLastUse` = 0 WHERE (`UserId` = 1)
+I, [2026-05-18T10:28:53.028522 #536]  INFO -- : (0.000246s) SELECT * FROM `users` WHERE `UserId` = 1
+I, [2026-05-18T10:28:53.033766 #536]  INFO -- : (0.000258s) SELECT * FROM `users` WHERE (`UserId` = 1) LIMIT 1
+I, [2026-05-18T10:28:53.043165 #536]  INFO -- : (0.000216s) SELECT * FROM `users` WHERE ((`Username` = 'new_awesome_name') AND (`UserId` != 1)) LIMIT 1
+I, [2026-05-18T10:28:53.043568 #536]  INFO -- : (0.000135s) SELECT * FROM `users` WHERE ((`Email` = 'updated_email@example.com') AND (`UserId` != 1)) LIMIT 1
+I, [2026-05-18T10:28:53.099556 #536]  INFO -- : (0.055718s) UPDATE `users` SET `Username` = 'new_awesome_name', `Email` = 'updated_email@example.com' WHERE (`UserId` = 1)
+I, [2026-05-18T10:28:53.102844 #536]  INFO -- : (0.000286s) SELECT * FROM `users` WHERE (`UserId` = 1) LIMIT 1
+I, [2026-05-18T10:30:12.021911 #552]  INFO -- : Database file found and loaded ('/home/codio/workspace/project/bbc/db/db_test.sqlite3')
+I, [2026-05-18T10:30:12.059004 #552]  INFO -- : (0.000081s) PRAGMA foreign_keys = 1
+I, [2026-05-18T10:30:12.059150 #552]  INFO -- : (0.000031s) PRAGMA case_sensitive_like = 1
+I, [2026-05-18T10:30:12.061752 #552]  INFO -- : (0.000454s) SELECT sqlite_version()
+I, [2026-05-18T10:30:12.062515 #552]  INFO -- : (0.000400s) PRAGMA table_xinfo('Basket')
+I, [2026-05-18T10:30:12.065121 #552]  INFO -- : (0.000219s) PRAGMA table_xinfo('Customisations')
+I, [2026-05-18T10:30:12.067166 #552]  INFO -- : (0.000289s) PRAGMA table_xinfo('feedbacks')
+I, [2026-05-18T10:30:12.068908 #552]  INFO -- : (0.000202s) PRAGMA table_xinfo('logs')
+I, [2026-05-18T10:30:12.070823 #552]  INFO -- : (0.000327s) PRAGMA table_xinfo('Products')
+I, [2026-05-18T10:30:12.074008 #552]  INFO -- : (0.000375s) PRAGMA table_xinfo('transactions')
+I, [2026-05-18T10:30:12.077310 #552]  INFO -- : (0.000435s) PRAGMA table_xinfo('users')
+I, [2026-05-18T10:30:12.981053 #552]  INFO -- : (0.000168s) DELETE FROM `feedbacks` WHERE (1 = 1)
+I, [2026-05-18T10:30:12.981399 #552]  INFO -- : (0.000081s) DELETE FROM `Basket` WHERE (1 = 1)
+I, [2026-05-18T10:30:12.981813 #552]  INFO -- : (0.000108s) DELETE FROM `transactions` WHERE (1 = 1)
+I, [2026-05-18T10:30:13.039782 #552]  INFO -- : (0.057709s) DELETE FROM `users` WHERE (1 = 1)
+I, [2026-05-18T10:30:13.104941 #552]  INFO -- : (0.064746s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-05-18T10:30:13.166346 #552]  INFO -- : (0.060788s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc', 'Brazil', 'Medium', 0)
+I, [2026-05-18T10:30:13.227911 #552]  INFO -- : (0.061170s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (2, 'Blend', 5, 5.0, 'blend.jpg', 'blend desc', 'Colombia', 'Light', 0)
+I, [2026-05-18T10:30:13.289530 #552]  INFO -- : (0.061156s) INSERT INTO `users` (`UserId`, `Username`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (1, 'testuser', 0, 0, 0)
+I, [2026-05-18T10:30:13.663844 #552]  INFO -- : (0.059127s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (3, 'test', '$2a$12$AsHMZL3Y5TOCwVpyETtfAeA2KI0etECg9L/ikeUxBLQ1MjuAezMju', 0, 0, 0)
+I, [2026-05-18T10:30:14.027714 #552]  INFO -- : (0.055735s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`, `AccountType`) VALUES (6, 'User123!', '$2a$12$fT7ISLZ/pZ8r/6zVbFV/e.O6ju/dkaWZprXG7sQW4A73CGwIBPMdC', 0, 0, 0, 'user')
+I, [2026-05-18T10:30:14.403385 #552]  INFO -- : (0.056902s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (2, 'manager', '$2a$12$bzF8TOEYVbSKB.7dziaZcuaFqfKiyvCFWLCCBkKc5/kgkLlcRzFAO', 0, 0, 0)
+I, [2026-05-18T10:30:14.763806 #552]  INFO -- : (0.052270s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (4, 'staff', '$2a$12$LWpT18eIHv2gefRvDJBdn.8C/NdeQbq5OrrgD1SWpb/qkOAFZYJAi', 0, 0, 0)
+I, [2026-05-18T10:30:15.135188 #552]  INFO -- : (0.057265s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`, `AccountType`) VALUES (5, 'Admin', '$2a$12$YS.DNWX0xC/XXQvIekaNQeXfFLn8bKRSlBStOBsG2WNSUE5HhKBES', 0, 0, 0, 'admin')
+I, [2026-05-18T10:30:15.493173 #552]  INFO -- : (0.050813s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`, `AccountType`) VALUES (7, 'Suspended', '$2a$12$l05B9bgtsyP3/o.eYmLDp.N6P3NpPCqMekYfj65sCwuVMTMNjLedi', 0, 0, 1, 'user')
+I, [2026-05-18T10:30:15.547165 #552]  INFO -- : (0.053552s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (1, 1, 10.0, '2024-01-15', 'Pending', 0, 0)
+I, [2026-05-18T10:30:15.604846 #552]  INFO -- : (0.057317s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (2, 1, 15.0, '2024-02-20', 'Pending', 1, 0)
+I, [2026-05-18T10:30:15.658358 #552]  INFO -- : (0.053099s) INSERT INTO `feedbacks` (`FeedbackId`, `UserId`, `TransactionId`, `IssueContent`, `RefundReason`, `RefundRequest`, `TicketNumber`) VALUES (1, 1, 2, 'General issue', 'Cold coffee', 1, 1001)
+I, [2026-05-18T10:30:15.712868 #552]  INFO -- : (0.054187s) DELETE FROM `users` WHERE (1 = 1)
+I, [2026-05-18T10:30:15.713587 #552]  INFO -- : (0.000267s) SELECT * FROM `users` WHERE (`Username` = 'original_name') LIMIT 1
+I, [2026-05-18T10:30:16.024078 #552]  INFO -- : (0.000050s) BEGIN
+I, [2026-05-18T10:30:16.025087 #552]  INFO -- : (0.000622s) INSERT INTO `users` (`Username`, `Email`, `PassHash`, `LoyaltyPoints`, `Suspended`, `DateJoined`) VALUES ('original_name', 'test@example.com', '$2a$12$3oiTXYxnnqvRUR/.h8X0V.IJFjLAETtA2lOIj2xuS1qle.1UIMd42', 10, 0, '2026-01-01') RETURNING *
+I, [2026-05-18T10:30:16.083422 #552]  INFO -- : (0.058198s) COMMIT
+I, [2026-05-18T10:30:16.123687 #552]  INFO -- : (0.000179s) SELECT `UserId` FROM `users` WHERE (`Username` = 'original_name') LIMIT 1
+I, [2026-05-18T10:30:16.124049 #552]  INFO -- : (0.000096s) SELECT `Suspended` FROM `users` WHERE (`UserId` = 1) LIMIT 1
+I, [2026-05-18T10:30:16.124372 #552]  INFO -- : (0.000090s) SELECT `PassHash` FROM `users` WHERE (`UserId` = 1) LIMIT 1
+I, [2026-05-18T10:30:16.497811 #552]  INFO -- : (0.061035s) UPDATE `users` SET `DaysSinceLastUse` = 0 WHERE (`UserId` = 1)
+I, [2026-05-18T10:30:16.498278 #552]  INFO -- : (0.000261s) SELECT * FROM `users` WHERE `UserId` = 1
+I, [2026-05-18T10:30:16.504470 #552]  INFO -- : (0.000241s) SELECT * FROM `users` WHERE (`UserId` = 1) LIMIT 1
+I, [2026-05-18T10:30:16.513047 #552]  INFO -- : (0.000120s) DELETE FROM `feedbacks` WHERE (1 = 1)
+I, [2026-05-18T10:30:16.513306 #552]  INFO -- : (0.000069s) DELETE FROM `Basket` WHERE (1 = 1)
+I, [2026-05-18T10:30:16.513545 #552]  INFO -- : (0.000087s) DELETE FROM `transactions` WHERE (1 = 1)
+I, [2026-05-18T10:30:16.573857 #552]  INFO -- : (0.060108s) DELETE FROM `users` WHERE (1 = 1)
+I, [2026-05-18T10:30:16.633539 #552]  INFO -- : (0.059360s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-05-18T10:30:16.701978 #552]  INFO -- : (0.068042s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc', 'Brazil', 'Medium', 0)
+I, [2026-05-18T10:30:16.764762 #552]  INFO -- : (0.062356s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (2, 'Blend', 5, 5.0, 'blend.jpg', 'blend desc', 'Colombia', 'Light', 0)
+I, [2026-05-18T10:30:16.822770 #552]  INFO -- : (0.057667s) INSERT INTO `users` (`UserId`, `Username`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (1, 'testuser', 0, 0, 0)
+I, [2026-05-18T10:30:17.193581 #552]  INFO -- : (0.063499s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (3, 'test', '$2a$12$CJPk3ogwm8SdWyGWxNnmB.6p4xd8fxJso0Iv2v2mHZHg.NJljOP66', 0, 0, 0)
+I, [2026-05-18T10:30:17.562233 #552]  INFO -- : (0.058638s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`, `AccountType`) VALUES (6, 'User123!', '$2a$12$GPeNPXyAzYsw4CnY9lecneZdQFvk4rIv0sZZshCNznkDtmAgIS.B2', 0, 0, 0, 'user')
+I, [2026-05-18T10:30:18.007952 #552]  INFO -- : (0.081311s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (2, 'manager', '$2a$12$7keYycvpiozS4Bosvlys3OLKWV.EtZ6WIL74QRZt.WkFYgFLEeal2', 0, 0, 0)
+I, [2026-05-18T10:30:18.384045 #552]  INFO -- : (0.061873s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (4, 'staff', '$2a$12$uw5rw6kSeEfKEgDMOykrz./THMfUTOEm.XI9pn3dd4Wf9zpQUkcNi', 0, 0, 0)
+I, [2026-05-18T10:30:18.783174 #552]  INFO -- : (0.060653s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`, `AccountType`) VALUES (5, 'Admin', '$2a$12$UWyK.rub7ripTxGQC9xUN.UAO3hXAzDhlJQAWy1PYAj2l5KL2VfFa', 0, 0, 0, 'admin')
+I, [2026-05-18T10:30:19.151964 #552]  INFO -- : (0.060656s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`, `AccountType`) VALUES (7, 'Suspended', '$2a$12$smPLnPCN4lk.i7zF9cukuul4zFyDDB3gfz1p/vzD1Rj8ZTPiyiWgi', 0, 0, 1, 'user')
+I, [2026-05-18T10:30:19.215013 #552]  INFO -- : (0.062688s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (1, 1, 10.0, '2024-01-15', 'Pending', 0, 0)
+I, [2026-05-18T10:30:19.277214 #552]  INFO -- : (0.061805s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (2, 1, 15.0, '2024-02-20', 'Pending', 1, 0)
+I, [2026-05-18T10:30:19.345562 #552]  INFO -- : (0.068030s) INSERT INTO `feedbacks` (`FeedbackId`, `UserId`, `TransactionId`, `IssueContent`, `RefundReason`, `RefundRequest`, `TicketNumber`) VALUES (1, 1, 2, 'General issue', 'Cold coffee', 1, 1001)
+I, [2026-05-18T10:30:19.408531 #552]  INFO -- : (0.062601s) DELETE FROM `users` WHERE (1 = 1)
+I, [2026-05-18T10:30:19.409098 #552]  INFO -- : (0.000204s) SELECT * FROM `users` WHERE (`Username` = 'original_name') LIMIT 1
+I, [2026-05-18T10:30:19.721624 #552]  INFO -- : (0.000047s) BEGIN
+I, [2026-05-18T10:30:19.722423 #552]  INFO -- : (0.000482s) INSERT INTO `users` (`Username`, `Email`, `PassHash`, `LoyaltyPoints`, `Suspended`, `DateJoined`) VALUES ('original_name', 'test@example.com', '$2a$12$UHWDNQ44LLOFdHu3cBzCku27fV3RLSO5QUpL7D/7f7yYCYJiR0PWa', 10, 0, '2026-01-01') RETURNING *
+I, [2026-05-18T10:30:19.781972 #552]  INFO -- : (0.059435s) COMMIT
+I, [2026-05-18T10:30:19.792079 #552]  INFO -- : (0.000169s) SELECT `UserId` FROM `users` WHERE (`Username` = 'original_name') LIMIT 1
+I, [2026-05-18T10:30:19.792417 #552]  INFO -- : (0.000092s) SELECT `Suspended` FROM `users` WHERE (`UserId` = 1) LIMIT 1
+I, [2026-05-18T10:30:19.792724 #552]  INFO -- : (0.000115s) SELECT `PassHash` FROM `users` WHERE (`UserId` = 1) LIMIT 1
+I, [2026-05-18T10:30:20.184810 #552]  INFO -- : (0.083957s) UPDATE `users` SET `DaysSinceLastUse` = 0 WHERE (`UserId` = 1)
+I, [2026-05-18T10:30:20.185249 #552]  INFO -- : (0.000243s) SELECT * FROM `users` WHERE `UserId` = 1
+I, [2026-05-18T10:30:20.190591 #552]  INFO -- : (0.000243s) SELECT * FROM `users` WHERE (`UserId` = 1) LIMIT 1
+I, [2026-05-18T10:30:20.200517 #552]  INFO -- : (0.000215s) SELECT * FROM `users` WHERE ((`Username` = 'new_awesome_name') AND (`UserId` != 1)) LIMIT 1
+I, [2026-05-18T10:30:20.200986 #552]  INFO -- : (0.000144s) SELECT * FROM `users` WHERE ((`Email` = 'updated_email@example.com') AND (`UserId` != 1)) LIMIT 1
+I, [2026-05-18T10:30:20.255579 #552]  INFO -- : (0.054375s) UPDATE `users` SET `Username` = 'new_awesome_name', `Email` = 'updated_email@example.com' WHERE (`UserId` = 1)
+I, [2026-05-18T10:30:20.259002 #552]  INFO -- : (0.000233s) SELECT * FROM `users` WHERE (`UserId` = 1) LIMIT 1
+I, [2026-05-18T10:31:59.644903 #568]  INFO -- : Database file found and loaded ('/home/codio/workspace/project/bbc/db/db_test.sqlite3')
+I, [2026-05-18T10:31:59.680299 #568]  INFO -- : (0.000095s) PRAGMA foreign_keys = 1
+I, [2026-05-18T10:31:59.680420 #568]  INFO -- : (0.000023s) PRAGMA case_sensitive_like = 1
+I, [2026-05-18T10:31:59.682597 #568]  INFO -- : (0.000316s) SELECT sqlite_version()
+I, [2026-05-18T10:31:59.683208 #568]  INFO -- : (0.000315s) PRAGMA table_xinfo('Basket')
+I, [2026-05-18T10:31:59.685536 #568]  INFO -- : (0.000184s) PRAGMA table_xinfo('Customisations')
+I, [2026-05-18T10:31:59.687253 #568]  INFO -- : (0.000209s) PRAGMA table_xinfo('feedbacks')
+I, [2026-05-18T10:31:59.688691 #568]  INFO -- : (0.000163s) PRAGMA table_xinfo('logs')
+I, [2026-05-18T10:31:59.690473 #568]  INFO -- : (0.000304s) PRAGMA table_xinfo('Products')
+I, [2026-05-18T10:31:59.692753 #568]  INFO -- : (0.000311s) PRAGMA table_xinfo('transactions')
+I, [2026-05-18T10:31:59.695215 #568]  INFO -- : (0.000376s) PRAGMA table_xinfo('users')
+I, [2026-05-18T10:32:00.571924 #568]  INFO -- : (0.000145s) DELETE FROM `feedbacks` WHERE (1 = 1)
+I, [2026-05-18T10:32:00.572276 #568]  INFO -- : (0.000097s) DELETE FROM `Basket` WHERE (1 = 1)
+I, [2026-05-18T10:32:00.572571 #568]  INFO -- : (0.000097s) DELETE FROM `transactions` WHERE (1 = 1)
+I, [2026-05-18T10:32:00.631138 #568]  INFO -- : (0.058294s) DELETE FROM `users` WHERE (1 = 1)
+I, [2026-05-18T10:32:00.694196 #568]  INFO -- : (0.062634s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-05-18T10:32:00.753212 #568]  INFO -- : (0.058276s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc', 'Brazil', 'Medium', 0)
+I, [2026-05-18T10:32:00.806870 #568]  INFO -- : (0.053190s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (2, 'Blend', 5, 5.0, 'blend.jpg', 'blend desc', 'Colombia', 'Light', 0)
+I, [2026-05-18T10:32:00.860091 #568]  INFO -- : (0.052690s) INSERT INTO `users` (`UserId`, `Username`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (1, 'testuser', 0, 0, 0)
+I, [2026-05-18T10:32:01.227534 #568]  INFO -- : (0.054215s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (3, 'test', '$2a$12$WiDvE5ECbW8wn6vJGgC54OyYjt6fN.OeZvtxcvcQz1VULWDkzjOha', 0, 0, 0)
+I, [2026-05-18T10:32:01.612399 #568]  INFO -- : (0.062131s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`, `AccountType`) VALUES (6, 'User123!', '$2a$12$YXnJlwjZfy4Ww2jms/1Lruo38UpgwM1SPyIUwozHwf8FCT5s72Yb6', 0, 0, 0, 'user')
+I, [2026-05-18T10:32:01.994468 #568]  INFO -- : (0.062293s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (2, 'manager', '$2a$12$sT77lWuMm4Uef9m8bkgs4.0ENiklxlSXm0.0ZIC3IIPyBv9cGhKEW', 0, 0, 0)
+I, [2026-05-18T10:32:02.365135 #568]  INFO -- : (0.059927s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (4, 'staff', '$2a$12$sxins6PoBWPfd0CWLVI6Vuc/FBTuMEq1gGAML/iPfGkbUUaqwyRAe', 0, 0, 0)
+I, [2026-05-18T10:32:02.735067 #568]  INFO -- : (0.061389s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`, `AccountType`) VALUES (5, 'Admin', '$2a$12$s.gGfgpP5jzgC3JBLUSIuODS5sOx1rZI8brCvInsHPKmiQlVCk3Gu', 0, 0, 0, 'admin')
+I, [2026-05-18T10:32:03.103273 #568]  INFO -- : (0.059556s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`, `AccountType`) VALUES (7, 'Suspended', '$2a$12$brRVOl1aMkI3qxxWgftn7uRnLLd3Qa/Fg/lieKmGRPjcXSuPC0hQm', 0, 0, 1, 'user')
+I, [2026-05-18T10:32:03.163967 #568]  INFO -- : (0.060126s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (1, 1, 10.0, '2024-01-15', 'Pending', 0, 0)
+I, [2026-05-18T10:32:03.224781 #568]  INFO -- : (0.060474s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (2, 1, 15.0, '2024-02-20', 'Pending', 1, 0)
+I, [2026-05-18T10:32:03.291475 #568]  INFO -- : (0.066249s) INSERT INTO `feedbacks` (`FeedbackId`, `UserId`, `TransactionId`, `IssueContent`, `RefundReason`, `RefundRequest`, `TicketNumber`) VALUES (1, 1, 2, 'General issue', 'Cold coffee', 1, 1001)
+I, [2026-05-18T10:32:03.353786 #568]  INFO -- : (0.061931s) DELETE FROM `users` WHERE (1 = 1)
+I, [2026-05-18T10:32:03.354403 #568]  INFO -- : (0.000215s) SELECT * FROM `users` WHERE (`Username` = 'original_name') LIMIT 1
+I, [2026-05-18T10:32:03.663419 #568]  INFO -- : (0.000056s) BEGIN
+I, [2026-05-18T10:32:03.664372 #568]  INFO -- : (0.000531s) INSERT INTO `users` (`Username`, `Email`, `PassHash`, `LoyaltyPoints`, `Suspended`, `DateJoined`) VALUES ('original_name', 'test@example.com', '$2a$12$haoehqWPa5Bdob9cOkHz2Oy.M1u.6D7sV6Vjqkmd7AoGv8fxw8OfC', 10, 0, '01/01/2026') RETURNING *
+I, [2026-05-18T10:32:03.725376 #568]  INFO -- : (0.060867s) COMMIT
+I, [2026-05-18T10:32:03.766888 #568]  INFO -- : (0.000164s) SELECT `UserId` FROM `users` WHERE (`Username` = 'original_name') LIMIT 1
+I, [2026-05-18T10:32:03.767219 #568]  INFO -- : (0.000088s) SELECT `Suspended` FROM `users` WHERE (`UserId` = 1) LIMIT 1
+I, [2026-05-18T10:32:03.767500 #568]  INFO -- : (0.000085s) SELECT `PassHash` FROM `users` WHERE (`UserId` = 1) LIMIT 1
+I, [2026-05-18T10:32:04.136907 #568]  INFO -- : (0.060262s) UPDATE `users` SET `DaysSinceLastUse` = 0 WHERE (`UserId` = 1)
+I, [2026-05-18T10:32:04.137346 #568]  INFO -- : (0.000237s) SELECT * FROM `users` WHERE `UserId` = 1
+I, [2026-05-18T10:32:04.143320 #568]  INFO -- : (0.000223s) SELECT * FROM `users` WHERE (`UserId` = 1) LIMIT 1
+I, [2026-05-18T10:32:04.151291 #568]  INFO -- : (0.000114s) DELETE FROM `feedbacks` WHERE (1 = 1)
+I, [2026-05-18T10:32:04.151576 #568]  INFO -- : (0.000078s) DELETE FROM `Basket` WHERE (1 = 1)
+I, [2026-05-18T10:32:04.151852 #568]  INFO -- : (0.000089s) DELETE FROM `transactions` WHERE (1 = 1)
+I, [2026-05-18T10:32:04.213697 #568]  INFO -- : (0.061644s) DELETE FROM `users` WHERE (1 = 1)
+I, [2026-05-18T10:32:04.273941 #568]  INFO -- : (0.059920s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-05-18T10:32:04.334282 #568]  INFO -- : (0.059991s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc', 'Brazil', 'Medium', 0)
+I, [2026-05-18T10:32:04.393613 #568]  INFO -- : (0.058999s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (2, 'Blend', 5, 5.0, 'blend.jpg', 'blend desc', 'Colombia', 'Light', 0)
+I, [2026-05-18T10:32:04.454014 #568]  INFO -- : (0.060062s) INSERT INTO `users` (`UserId`, `Username`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (1, 'testuser', 0, 0, 0)
+I, [2026-05-18T10:32:04.822129 #568]  INFO -- : (0.060004s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (3, 'test', '$2a$12$aotonO12ldlFfgC5RjA32O/Ey2nWn61c2OQ7ZejSrt.H8n7.YLraW', 0, 0, 0)
+I, [2026-05-18T10:32:05.188526 #568]  INFO -- : (0.060639s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`, `AccountType`) VALUES (6, 'User123!', '$2a$12$YCvUPgXEg7FA783GYqpexuyb4ZV.XN2xVG/Him8rHyrv4UpthGDtq', 0, 0, 0, 'user')
+I, [2026-05-18T10:32:05.562480 #568]  INFO -- : (0.061880s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (2, 'manager', '$2a$12$OXFpOh1FmAq7GOlzX/f8t.TU/u0f5G6JobMkLR6l2Tm7B5lPSevxG', 0, 0, 0)
+I, [2026-05-18T10:32:05.951096 #568]  INFO -- : (0.063742s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (4, 'staff', '$2a$12$EABoJ.0DTL5KmXU0KKuVoOivwG04BdWfW/JWwUosTY4BA/MVU/l5S', 0, 0, 0)
+I, [2026-05-18T10:32:06.319201 #568]  INFO -- : (0.061871s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`, `AccountType`) VALUES (5, 'Admin', '$2a$12$wYqmoLbF2YsC8AKTjj60GuFcglqRAD1buUeY8zf8uOkznqEqCt6ny', 0, 0, 0, 'admin')
+I, [2026-05-18T10:32:06.702871 #568]  INFO -- : (0.065680s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`, `AccountType`) VALUES (7, 'Suspended', '$2a$12$Uob.JzE.VPx0iJNCKhsSqOHs3rn/UDc2rMn7XuIYe3xSlzg97/prO', 0, 0, 1, 'user')
+I, [2026-05-18T10:32:06.765953 #568]  INFO -- : (0.062708s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (1, 1, 10.0, '2024-01-15', 'Pending', 0, 0)
+I, [2026-05-18T10:32:06.826041 #568]  INFO -- : (0.059714s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (2, 1, 15.0, '2024-02-20', 'Pending', 1, 0)
+I, [2026-05-18T10:32:06.895072 #568]  INFO -- : (0.068644s) INSERT INTO `feedbacks` (`FeedbackId`, `UserId`, `TransactionId`, `IssueContent`, `RefundReason`, `RefundRequest`, `TicketNumber`) VALUES (1, 1, 2, 'General issue', 'Cold coffee', 1, 1001)
+I, [2026-05-18T10:32:06.956481 #568]  INFO -- : (0.061037s) DELETE FROM `users` WHERE (1 = 1)
+I, [2026-05-18T10:32:06.957266 #568]  INFO -- : (0.000365s) SELECT * FROM `users` WHERE (`Username` = 'original_name') LIMIT 1
+I, [2026-05-18T10:32:07.265967 #568]  INFO -- : (0.000049s) BEGIN
+I, [2026-05-18T10:32:07.266820 #568]  INFO -- : (0.000533s) INSERT INTO `users` (`Username`, `Email`, `PassHash`, `LoyaltyPoints`, `Suspended`, `DateJoined`) VALUES ('original_name', 'test@example.com', '$2a$12$vR4k.skGOVzvFxYB1bYUeeEpVtDj1htclF4NDNGeG4AxlhHuT8jou', 10, 0, '01/01/2026') RETURNING *
+I, [2026-05-18T10:32:07.326124 #568]  INFO -- : (0.059180s) COMMIT
+I, [2026-05-18T10:32:07.336471 #568]  INFO -- : (0.000158s) SELECT `UserId` FROM `users` WHERE (`Username` = 'original_name') LIMIT 1
+I, [2026-05-18T10:32:07.336856 #568]  INFO -- : (0.000092s) SELECT `Suspended` FROM `users` WHERE (`UserId` = 1) LIMIT 1
+I, [2026-05-18T10:32:07.337162 #568]  INFO -- : (0.000088s) SELECT `PassHash` FROM `users` WHERE (`UserId` = 1) LIMIT 1
+I, [2026-05-18T10:32:07.709830 #568]  INFO -- : (0.061345s) UPDATE `users` SET `DaysSinceLastUse` = 0 WHERE (`UserId` = 1)
+I, [2026-05-18T10:32:07.710329 #568]  INFO -- : (0.000281s) SELECT * FROM `users` WHERE `UserId` = 1
+I, [2026-05-18T10:32:07.717511 #568]  INFO -- : (0.000287s) SELECT * FROM `users` WHERE (`UserId` = 1) LIMIT 1
+I, [2026-05-18T10:32:07.728673 #568]  INFO -- : (0.000211s) SELECT * FROM `users` WHERE ((`Username` = 'new_name') AND (`UserId` != 1)) LIMIT 1
+I, [2026-05-18T10:32:07.729079 #568]  INFO -- : (0.000137s) SELECT * FROM `users` WHERE ((`Email` = 'updated_email@example.com') AND (`UserId` != 1)) LIMIT 1
+I, [2026-05-18T10:32:07.789788 #568]  INFO -- : (0.060488s) UPDATE `users` SET `Username` = 'new_name', `Email` = 'updated_email@example.com' WHERE (`UserId` = 1)
+I, [2026-05-18T10:32:07.792980 #568]  INFO -- : (0.000231s) SELECT * FROM `users` WHERE (`UserId` = 1) LIMIT 1
+I, [2026-05-18T10:32:14.476835 #584]  INFO -- : Database file found and loaded ('/home/codio/workspace/project/bbc/db/db_test.sqlite3')
+I, [2026-05-18T10:32:14.515641 #584]  INFO -- : (0.000088s) PRAGMA foreign_keys = 1
+I, [2026-05-18T10:32:14.515802 #584]  INFO -- : (0.000030s) PRAGMA case_sensitive_like = 1
+I, [2026-05-18T10:32:14.518282 #584]  INFO -- : (0.000423s) SELECT sqlite_version()
+I, [2026-05-18T10:32:14.518958 #584]  INFO -- : (0.000325s) PRAGMA table_xinfo('Basket')
+I, [2026-05-18T10:32:14.521122 #584]  INFO -- : (0.000187s) PRAGMA table_xinfo('Customisations')
+I, [2026-05-18T10:32:14.523034 #584]  INFO -- : (0.000226s) PRAGMA table_xinfo('feedbacks')
+I, [2026-05-18T10:32:14.524448 #584]  INFO -- : (0.000161s) PRAGMA table_xinfo('logs')
+I, [2026-05-18T10:32:14.526193 #584]  INFO -- : (0.000261s) PRAGMA table_xinfo('Products')
+I, [2026-05-18T10:32:14.528288 #584]  INFO -- : (0.000248s) PRAGMA table_xinfo('transactions')
+I, [2026-05-18T10:32:14.530630 #584]  INFO -- : (0.000345s) PRAGMA table_xinfo('users')
+I, [2026-05-18T10:32:15.380014 #584]  INFO -- : (0.000185s) DELETE FROM `feedbacks` WHERE (1 = 1)
+I, [2026-05-18T10:32:15.380389 #584]  INFO -- : (0.000082s) DELETE FROM `Basket` WHERE (1 = 1)
+I, [2026-05-18T10:32:15.380753 #584]  INFO -- : (0.000151s) DELETE FROM `transactions` WHERE (1 = 1)
+I, [2026-05-18T10:32:15.448586 #584]  INFO -- : (0.067602s) DELETE FROM `users` WHERE (1 = 1)
+I, [2026-05-18T10:32:15.509630 #584]  INFO -- : (0.060647s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-05-18T10:32:15.570915 #584]  INFO -- : (0.060720s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc', 'Brazil', 'Medium', 0)
+I, [2026-05-18T10:32:15.632748 #584]  INFO -- : (0.061482s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (2, 'Blend', 5, 5.0, 'blend.jpg', 'blend desc', 'Colombia', 'Light', 0)
+I, [2026-05-18T10:32:15.706638 #584]  INFO -- : (0.073432s) INSERT INTO `users` (`UserId`, `Username`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (1, 'testuser', 0, 0, 0)
+I, [2026-05-18T10:32:16.085421 #584]  INFO -- : (0.066897s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (3, 'test', '$2a$12$.nb.5.XNR0KmvUNtlCkoPu1XKBUEziktmB1/zCbFA2htslPMf8dLm', 0, 0, 0)
+I, [2026-05-18T10:32:16.456631 #584]  INFO -- : (0.060834s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`, `AccountType`) VALUES (6, 'User123!', '$2a$12$76iL6X.6VlXl4yKAQ46P.O.3xZ0ivo9o9sFh5Injdesry2/dYQk6W', 0, 0, 0, 'user')
+I, [2026-05-18T10:32:16.831720 #584]  INFO -- : (0.062451s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (2, 'manager', '$2a$12$Sf5NPgPZWQ9sFhWHlPW0pe/917VyYX74nB00c0BA9l5oQPyzFgtYW', 0, 0, 0)
+I, [2026-05-18T10:32:17.202084 #584]  INFO -- : (0.059572s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (4, 'staff', '$2a$12$aYMDzqRu7aN0rXVnMhIgfOCTGq9mK0g.QOdjIr0e/KHkGF.lJnyhq', 0, 0, 0)
+I, [2026-05-18T10:32:17.575709 #584]  INFO -- : (0.062616s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`, `AccountType`) VALUES (5, 'Admin', '$2a$12$e18QTdfJzjiSfwE8HGULNupt5Sc12uZOcz4McKtxci7/SbeypzmmC', 0, 0, 0, 'admin')
+I, [2026-05-18T10:32:17.963902 #584]  INFO -- : (0.072496s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`, `AccountType`) VALUES (7, 'Suspended', '$2a$12$Q4G56iH6RZyhZixDYxxAcezCljQYDBJd/WkK0TbDkScQRktgW.OuC', 0, 0, 1, 'user')
+I, [2026-05-18T10:32:18.032105 #584]  INFO -- : (0.067658s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (1, 1, 10.0, '2024-01-15', 'Pending', 0, 0)
+I, [2026-05-18T10:32:18.102008 #584]  INFO -- : (0.069509s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (2, 1, 15.0, '2024-02-20', 'Pending', 1, 0)
+I, [2026-05-18T10:32:18.170851 #584]  INFO -- : (0.068375s) INSERT INTO `feedbacks` (`FeedbackId`, `UserId`, `TransactionId`, `IssueContent`, `RefundReason`, `RefundRequest`, `TicketNumber`) VALUES (1, 1, 2, 'General issue', 'Cold coffee', 1, 1001)
+I, [2026-05-18T10:32:18.239638 #584]  INFO -- : (0.068434s) DELETE FROM `users` WHERE (1 = 1)
+I, [2026-05-18T10:32:18.240312 #584]  INFO -- : (0.000227s) SELECT * FROM `users` WHERE (`Username` = 'original_name') LIMIT 1
+I, [2026-05-18T10:32:18.549734 #584]  INFO -- : (0.000078s) BEGIN
+I, [2026-05-18T10:32:18.550709 #584]  INFO -- : (0.000565s) INSERT INTO `users` (`Username`, `Email`, `PassHash`, `LoyaltyPoints`, `Suspended`, `DateJoined`) VALUES ('original_name', 'test@example.com', '$2a$12$XBR21vCLxaM2eWlE7cxGgOlUIDFFPuZW//4bDuapKoOtQiykqjN0G', 10, 0, '01/01/2026') RETURNING *
+I, [2026-05-18T10:32:18.622283 #584]  INFO -- : (0.071411s) COMMIT
+I, [2026-05-18T10:32:18.667593 #584]  INFO -- : (0.000180s) SELECT `UserId` FROM `users` WHERE (`Username` = 'original_name') LIMIT 1
+I, [2026-05-18T10:32:18.668037 #584]  INFO -- : (0.000111s) SELECT `Suspended` FROM `users` WHERE (`UserId` = 1) LIMIT 1
+I, [2026-05-18T10:32:18.668367 #584]  INFO -- : (0.000092s) SELECT `PassHash` FROM `users` WHERE (`UserId` = 1) LIMIT 1
+I, [2026-05-18T10:32:19.079070 #584]  INFO -- : (0.061951s) UPDATE `users` SET `DaysSinceLastUse` = 0 WHERE (`UserId` = 1)
+I, [2026-05-18T10:32:19.079560 #584]  INFO -- : (0.000276s) SELECT * FROM `users` WHERE `UserId` = 1
+I, [2026-05-18T10:32:19.087551 #584]  INFO -- : (0.000334s) SELECT * FROM `users` WHERE (`UserId` = 1) LIMIT 1
+I, [2026-05-18T10:32:19.096733 #584]  INFO -- : (0.000165s) DELETE FROM `feedbacks` WHERE (1 = 1)
+I, [2026-05-18T10:32:19.097029 #584]  INFO -- : (0.000079s) DELETE FROM `Basket` WHERE (1 = 1)
+I, [2026-05-18T10:32:19.097296 #584]  INFO -- : (0.000097s) DELETE FROM `transactions` WHERE (1 = 1)
+I, [2026-05-18T10:32:19.158114 #584]  INFO -- : (0.060617s) DELETE FROM `users` WHERE (1 = 1)
+I, [2026-05-18T10:32:19.221233 #584]  INFO -- : (0.062743s) DELETE FROM `Products` WHERE (1 = 1)
+I, [2026-05-18T10:32:19.285010 #584]  INFO -- : (0.063338s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (1, 'Old Coffee', 10, 10.0, 'old.jpg', 'Old desc', 'Brazil', 'Medium', 0)
+I, [2026-05-18T10:32:19.349145 #584]  INFO -- : (0.063720s) INSERT INTO `Products` (`ProductId`, `ProductName`, `StockQuantity`, `Price`, `ProductImage`, `ProductDescription`, `Origin`, `Roast`, `Bean`) VALUES (2, 'Blend', 5, 5.0, 'blend.jpg', 'blend desc', 'Colombia', 'Light', 0)
+I, [2026-05-18T10:32:19.416430 #584]  INFO -- : (0.066904s) INSERT INTO `users` (`UserId`, `Username`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (1, 'testuser', 0, 0, 0)
+I, [2026-05-18T10:32:19.799951 #584]  INFO -- : (0.066566s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (3, 'test', '$2a$12$HJC2XpKGVxf9FkMtQ82jq./cT2JzOfQkhaQPCLquJZNEt3eNTuXt2', 0, 0, 0)
+I, [2026-05-18T10:32:20.170590 #584]  INFO -- : (0.064613s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`, `AccountType`) VALUES (6, 'User123!', '$2a$12$A4dwQCm0Q2NdjtzbGKB4NuacQrpLrjJYTsUwc50IBeEmF7W9fqlC2', 0, 0, 0, 'user')
+I, [2026-05-18T10:32:20.538981 #584]  INFO -- : (0.060437s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (2, 'manager', '$2a$12$uSKgQTaPXTSHLh7sClwJ6.SG/WsVm1VdPyOCHS2fJ/GCAbcCSHLx6', 0, 0, 0)
+I, [2026-05-18T10:32:20.907240 #584]  INFO -- : (0.059787s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`) VALUES (4, 'staff', '$2a$12$fiiqMWkNAXdTNz5brWknm.HP1od.t0vQYnfvUkaPhVtHd/FZyf4YS', 0, 0, 0)
+I, [2026-05-18T10:32:21.274055 #584]  INFO -- : (0.061257s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`, `AccountType`) VALUES (5, 'Admin', '$2a$12$RGuJmhgQfY51Wx3fwosfOu9N7zkBfYRqdYHkmGEtmtx3yYtLB1eHa', 0, 0, 0, 'admin')
+I, [2026-05-18T10:32:21.645340 #584]  INFO -- : (0.061618s) INSERT INTO `users` (`UserId`, `Username`, `PassHash`, `LoyaltyDiscount`, `LoyaltyPoints`, `Suspended`, `AccountType`) VALUES (7, 'Suspended', '$2a$12$qy2QLtd6cS1ikKpHYKlvMu26wUl2367Ov0FjSJelMHYwt8q9T2Z7y', 0, 0, 1, 'user')
+I, [2026-05-18T10:32:21.720671 #584]  INFO -- : (0.074975s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (1, 1, 10.0, '2024-01-15', 'Pending', 0, 0)
+I, [2026-05-18T10:32:21.787854 #584]  INFO -- : (0.066835s) INSERT INTO `transactions` (`TransactionId`, `UserId`, `TotalCost`, `TransactionDate`, `Status`, `RefundRequested`, `Refunded`) VALUES (2, 1, 15.0, '2024-02-20', 'Pending', 1, 0)
+I, [2026-05-18T10:32:21.853919 #584]  INFO -- : (0.065689s) INSERT INTO `feedbacks` (`FeedbackId`, `UserId`, `TransactionId`, `IssueContent`, `RefundReason`, `RefundRequest`, `TicketNumber`) VALUES (1, 1, 2, 'General issue', 'Cold coffee', 1, 1001)
+I, [2026-05-18T10:32:21.915624 #584]  INFO -- : (0.061339s) DELETE FROM `users` WHERE (1 = 1)
+I, [2026-05-18T10:32:21.916412 #584]  INFO -- : (0.000293s) SELECT * FROM `users` WHERE (`Username` = 'original_name') LIMIT 1
+I, [2026-05-18T10:32:22.224046 #584]  INFO -- : (0.000048s) BEGIN
+I, [2026-05-18T10:32:22.224964 #584]  INFO -- : (0.000582s) INSERT INTO `users` (`Username`, `Email`, `PassHash`, `LoyaltyPoints`, `Suspended`, `DateJoined`) VALUES ('original_name', 'test@example.com', '$2a$12$iTx9k4M6oHPIfb0QbMUinek3IbjJ3VBknTakC93A1Nvf6TnzS6lRe', 10, 0, '01/01/2026') RETURNING *
+I, [2026-05-18T10:32:22.291897 #584]  INFO -- : (0.066796s) COMMIT
+I, [2026-05-18T10:32:22.302695 #584]  INFO -- : (0.000162s) SELECT `UserId` FROM `users` WHERE (`Username` = 'original_name') LIMIT 1
+I, [2026-05-18T10:32:22.303048 #584]  INFO -- : (0.000093s) SELECT `Suspended` FROM `users` WHERE (`UserId` = 1) LIMIT 1
+I, [2026-05-18T10:32:22.303347 #584]  INFO -- : (0.000088s) SELECT `PassHash` FROM `users` WHERE (`UserId` = 1) LIMIT 1
+I, [2026-05-18T10:32:22.678230 #584]  INFO -- : (0.060633s) UPDATE `users` SET `DaysSinceLastUse` = 0 WHERE (`UserId` = 1)
+I, [2026-05-18T10:32:22.678686 #584]  INFO -- : (0.000240s) SELECT * FROM `users` WHERE `UserId` = 1
+I, [2026-05-18T10:32:22.684124 #584]  INFO -- : (0.000254s) SELECT * FROM `users` WHERE (`UserId` = 1) LIMIT 1
+I, [2026-05-18T10:32:22.693970 #584]  INFO -- : (0.000219s) SELECT * FROM `users` WHERE ((`Username` = 'new_name') AND (`UserId` != 1)) LIMIT 1
+I, [2026-05-18T10:32:22.694395 #584]  INFO -- : (0.000154s) SELECT * FROM `users` WHERE ((`Email` = 'updated_email@example.com') AND (`UserId` != 1)) LIMIT 1
+I, [2026-05-18T10:32:22.753955 #584]  INFO -- : (0.059321s) UPDATE `users` SET `Username` = 'new_name', `Email` = 'updated_email@example.com' WHERE (`UserId` = 1)
+I, [2026-05-18T10:32:22.757039 #584]  INFO -- : (0.000258s) SELECT * FROM `users` WHERE (`UserId` = 1) LIMIT 1
