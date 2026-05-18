@@ -10,8 +10,8 @@ Capybara.default_driver = :rack_test
 
 def login_as_manager
   visit '/login'
-  fill_in 'uname', with: 'manager'
-  fill_in 'pword', with: 'manager'
+  fill_in 'uname', with: 'Manager123!'
+  fill_in 'pword', with: 'Manager123!'
   click_button 'Log in'
 end
 
