@@ -77,9 +77,4 @@
 | Barista | Staff123\! | Staff123\! |
 | Manager (Kenny) | Manager123\! | Manager123\! |
 | Admin | Admin123\! | Admin123\! |
-
-  ---
-
- ## Using the Software
- ### Before Logging In
  
